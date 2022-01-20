@@ -101,7 +101,7 @@ class FSM<Owner, ProcessParam>
         m_currentStateId = stateId;
     }
 
-    public void AddState<State>(int stateId, Owner owner) where State : StateBase<Owner>, new()
+    public State AddState<State>(int stateId, Owner owner) where State : StateBase<Owner>, new()
     {
         if (stateId > InvalidID)
         {
@@ -109,7 +109,11 @@ class FSM<Owner, ProcessParam>
             created.Owner = owner;
             created.Master = this;
             m_states[stateId] = created;
+
+            return created;
         }
+
+        return null;
     }
 
     public State GetCachedStateAs<State>(int statedId) where State: StateBase<Owner>

@@ -237,6 +237,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 337e87b46cd4eea73a0b0ff5c9f77794, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skipStart: 1
   StartEntity: {fileID: 1187108189}
   PlayingEntity: {fileID: 267275837}
   GameOverEntity: {fileID: 200058096}
@@ -520,6 +521,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 423614742}
     m_Modifications:
+    - target: {fileID: 975231713233862450, guid: 1a354e67846803f4fbf4afece6754a09, type: 3}
+      propertyPath: m_Text
+      value: Press Space to play
+      objectReference: {fileID: 0}
     - target: {fileID: 975231715343194189, guid: 1a354e67846803f4fbf4afece6754a09, type: 3}
       propertyPath: m_RootOrder
       value: 2

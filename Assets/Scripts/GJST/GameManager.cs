@@ -8,6 +8,9 @@ using GameStateBase = FSM<GameManager, float>.StateBase<GameManager>;
 public class GameManager : MonoBehaviour
 {
     [SerializeField]
+    bool skipStart;
+
+    [SerializeField]
     GameObject StartEntity;
     [SerializeField]
     GameObject PlayingEntity;
@@ -41,7 +44,12 @@ public class GameManager : MonoBehaviour
     }
     private void Awake()
     {
-        m_fsm.AddState<StartState>((int) States.Start, this);
+        var startState = m_fsm.AddState<StartState>((int) States.Start, this);
+        if(startState != null && skipStart)
+        {
+            startState.SetSkipInput();
+        }
+
         m_fsm.AddState<PlayingState>((int) States.Playing, this);
         m_fsm.AddState<GameOverState>((int) States.GameOver, this);
         m_fsm.AddState<GameWonState>((int) States.Won, this);
@@ -59,6 +67,10 @@ public class GameManager : MonoBehaviour
 
     private class StartState : GameStateBase
     {
+        private bool skipInput = false;
+
+        public void SetSkipInput() => skipInput = true;
+
         public override void OnEnter()
         {
             Owner.StartEntity?.SetActive(true);
@@ -68,7 +80,7 @@ public class GameManager : MonoBehaviour
         }
         public override void Process(float deltaTime)
         {
-            if (Input.GetButtonUp(Owner.ProceedActionName))
+            if (Input.GetButtonUp(Owner.ProceedActionName) || skipInput)
             {
                 Continue((int) States.Playing);
             }
