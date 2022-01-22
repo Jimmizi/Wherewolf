@@ -6,4 +6,5 @@ public static class Service
 {
     public static InformationManager InfoManager;
     public static PopulationManager Population;
+    public static ConfigManager Config;
 }

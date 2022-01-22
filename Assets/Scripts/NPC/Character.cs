@@ -20,8 +20,25 @@ public class Character
     public SortedDictionary<Descriptor, List<Emote>> Descriptors = new SortedDictionary<Descriptor, List<Emote>>();
     public bool IsWerewolf;
     public bool IsAlive = true;
+    public Schedule TaskSchedule = new Schedule();
+
+    public Task CurrentTask;
+    public Building Home;
 
     // Functions
+
+    public Emote.EmoteSubType GetWorkType()
+    {
+        if(Descriptors[Descriptor.Occupation].Count == 0)
+        {
+            return Emote.InvalidSubType;
+        }
+
+        // Shouldn't be more than one occupation
+        Debug.Assert(Descriptors[Descriptor.Occupation].Count == 1);
+
+        return Descriptors[Descriptor.Occupation][0].SubType;
+    }
 
     public List<Emote> GetDescriptors(Descriptor eType)
     {
@@ -32,6 +49,11 @@ public class Character
     public bool DoDescriptorsMatch(ref Character other, Descriptor eType)
     {
         if(other.Descriptors[eType].Count != Descriptors[eType].Count)
+        {
+            return false;
+        }
+
+        if(Descriptors[eType].Count == 0)
         {
             return false;
         }

@@ -97,6 +97,8 @@ public class Emote
         Gossip_RelationshipMarriage,
     }
 
+    public static EmoteSubType InvalidSubType => (EmoteSubType)(-1);
+
     [SerializeField]
     public string Name;
 

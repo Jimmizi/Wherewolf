@@ -44,6 +44,12 @@ public class PopulationManager : MonoBehaviour
 
         if(bShowDebug && Input.GetKeyDown(KeyCode.F5))
         {
+            foreach(var c in ActiveCharacters)
+            {
+                c.Home.Owner = null;
+                c.Home = null;
+            }
+
             ActiveCharacters.Clear();
             subTypeNumberCounts.Clear();
             werewolfIndex = -1;
@@ -54,10 +60,11 @@ public class PopulationManager : MonoBehaviour
 
 #if UNITY_EDITOR
 
-    int iTextHeight = 16;
-    int iTextBoxWidth = 250;
-    int iTextBoxHeight = 24;
-    int iPaddingBetweenCharacters = 24;
+    const int iTextHeight = 16;
+    const int iTextBoxWidth = 250;
+    const int iTextBoxHeight = 24;
+    const int iPaddingBetweenCharacters = 24;
+    const int iColumnWidth = iTextBoxWidth + iPaddingBetweenCharacters;
     SortedDictionary<Emote.EmoteType, SortedDictionary<Emote.EmoteSubType, int>> subTypeNumberCounts = new SortedDictionary<Emote.EmoteType, SortedDictionary<Emote.EmoteSubType, int>>();
 
     private void OnGUI()
@@ -67,14 +74,14 @@ public class PopulationManager : MonoBehaviour
             return; 
         }
 
-        GUI.Box(new Rect(15, 15, 950, 700), "");
+        GUI.Box(new Rect(15, 15, 1050, 700), "");
         GUI.Label(new Rect(6, 0, 200, 24), "Population Debug");
 
         GUI.Label(new Rect(206, 0, 400, 24), "F5 - Reroll population");
 
         if (ActiveCharacters.Count > 0)
         {
-            vScrollPosition = GUI.BeginScrollView(new Rect(20, 20, 490, 690), vScrollPosition, new Rect(0, 0, 500, 1200));
+            vScrollPosition = GUI.BeginScrollView(new Rect(20, 20, 590, 690), vScrollPosition, new Rect(0, 0, 590, 2500));
             {
                 Vector2 vPosition = new Vector2(5, 5);
                 RenderCharacterDebug(ref vPosition, GetWerewolf(), werewolfIndex);
@@ -88,7 +95,7 @@ public class PopulationManager : MonoBehaviour
 
                     if(i == 10)
                     {
-                        vPosition = new Vector2(5 + iTextBoxWidth + iPaddingBetweenCharacters, 5);
+                        vPosition = new Vector2(5 + iColumnWidth, 5);
                     }
 
                     RenderCharacterDebug(ref vPosition, ActiveCharacters[i], i);
@@ -121,7 +128,7 @@ public class PopulationManager : MonoBehaviour
                 }
             }
 
-            vScrollPositionForCounts = GUI.BeginScrollView(new Rect(510, 20, 250, 690), vScrollPositionForCounts, new Rect(0, 0, 200, 1200));
+            vScrollPositionForCounts = GUI.BeginScrollView(new Rect(610, 20, 250, 690), vScrollPositionForCounts, new Rect(0, 0, 200, 1200));
             {
                 Vector2 vPosition = new Vector2(5, 5);
                 Character ww = GetWerewolf();
@@ -198,7 +205,7 @@ public class PopulationManager : MonoBehaviour
             }
             GUI.EndScrollView();
 
-            vScrollPositionForInfo = GUI.BeginScrollView(new Rect(760, 20, 190, 690), vScrollPositionForInfo, new Rect(0, 0, 200, 1200));
+            vScrollPositionForInfo = GUI.BeginScrollView(new Rect(860, 20, 190, 690), vScrollPositionForInfo, new Rect(0, 0, 200, 1200));
             {
                 Vector2 vPosition = new Vector2(5, 5);
 
@@ -252,6 +259,48 @@ public class PopulationManager : MonoBehaviour
         GUI.Label(new Rect(vPos.x + 16, vPos.y, iTextBoxWidth, iTextBoxHeight), MakeStringFromDescriptor("Clothing", Character.Descriptor.Clothing));
         vPos.y += iTextHeight;
 
+        GUI.Label(new Rect(vPos.x + 16, vPos.y, iTextBoxWidth, iTextBoxHeight), string.Format("Home: {0}", c.Home ? c.Home.name : "NULL"));
+        vPos.y += iTextHeight;
+
+        if (!c.IsWerewolf)
+        {
+            GUI.contentColor = new Color(1.0f, 0.5f, 0.5f);
+            GUI.Label(new Rect(vPos.x + 16, vPos.y, iColumnWidth / 2, iTextBoxHeight), "Day Tasks");
+            GUI.Label(new Rect(vPos.x + 16 + iColumnWidth / 2, vPos.y, iColumnWidth / 2, iTextBoxHeight), "Night Tasks");
+
+            GUI.contentColor = new Color(0.75f, 0.5f, 0.5f);
+
+            vPos.y += iTextHeight;
+
+            for (int i = 0; i < Math.Max(c.TaskSchedule.DayTasks.Count, c.TaskSchedule.NightTasks.Count); ++i)
+            {
+                if (i < c.TaskSchedule.DayTasks.Count)
+                {
+                    bool bIsActive = c.TaskSchedule.DayTasks[i] == c.CurrentTask;
+
+                    GUI.Label(new Rect(vPos.x + 16, vPos.y, iColumnWidth / 2, iTextBoxHeight),
+                        string.Format("{0}{1}{2}", bIsActive ? "> " : "", c.TaskSchedule.DayTasks[i].Type.ToString(), bIsActive ? " <" : ""));
+                }
+
+                if (i < c.TaskSchedule.NightTasks.Count)
+                {
+                    bool bIsActive = c.TaskSchedule.NightTasks[i] == c.CurrentTask;
+
+                    GUI.Label(new Rect(vPos.x + 16 + iColumnWidth / 2, vPos.y, iColumnWidth / 2, iTextBoxHeight),
+                        string.Format("{0}{1}{2}", bIsActive ? "> " : "", c.TaskSchedule.NightTasks[i].Type.ToString(), bIsActive ? " <" : ""));
+                }
+
+                vPos.y += iTextHeight;
+            }
+
+            GUI.Label(new Rect(vPos.x + 16, vPos.y, iColumnWidth / 2, iTextBoxHeight), 
+                string.Format("TaskTimer: {0}/{1}", (c.CurrentTask != null ? c.CurrentTask.Timer.ToString() : "-"), 
+                (c.CurrentTask != null ? c.CurrentTask.Duration.ToString() : "-")));
+            vPos.y += iTextHeight;
+
+            GUI.contentColor = Color.white;
+        }
+
         vPos.y += iPaddingBetweenCharacters;
     }
 #endif
@@ -268,6 +317,7 @@ public class PopulationManager : MonoBehaviour
         var descriptorsToMatch = ww.GetRandomDescriptors(2);
         int iNumberOfMatches = 0;
 
+        // Then generate the remainder of NPCs
         for (int i = 0; i < 19; ++i)
         {
             Character characterAdded = AddCharacter(descriptorsToMatch);
@@ -343,6 +393,52 @@ public class PopulationManager : MonoBehaviour
             }
         }
 
+        // Randomise up the order in which we give the homes out
+        List<int> randomGiveHomeOrder = new List<int>();
+        while(randomGiveHomeOrder.Count < 20)
+        {
+            int index = UnityEngine.Random.Range(0, 20);
+            if(!randomGiveHomeOrder.Contains(index))
+            {
+                randomGiveHomeOrder.Add(index);
+            }
+        }
+
+        // Give the homes out
+        int iCurrentHomeGiveIndex = 0;
+        var allBuildings = FindObjectsOfType<Building>();
+        foreach(var building in allBuildings)
+        {
+            if(!building.IsHome)
+            {
+                continue;
+            }
+
+            // Shouldn't have any assigned home owners at this point.
+            // Indices should never be able to become out of bounds
+            Debug.Assert(building.Owner == null);
+            Debug.Assert(iCurrentHomeGiveIndex < randomGiveHomeOrder.Count);
+            Debug.Assert(randomGiveHomeOrder[iCurrentHomeGiveIndex] < ActiveCharacters.Count);
+
+            Character c = ActiveCharacters[randomGiveHomeOrder[iCurrentHomeGiveIndex++]];
+            c.Home = building;
+            building.Owner = c;
+        }
+
+        Debug.Assert(iCurrentHomeGiveIndex == ActiveCharacters.Count, "Not all characters have a home, only " + iCurrentHomeGiveIndex + " characters do.");
+
+        // Give the NPCs schedules to follow
+        foreach(var c in ActiveCharacters)
+        {
+            if(!c.IsWerewolf)
+            {
+                // Give them a schedule for day and night
+
+                c.TaskSchedule.DayTasks = GenerateSchedule(c, true);
+                c.TaskSchedule.NightTasks = GenerateSchedule(c, false);
+            }
+        }
+
         bDoneCharacterGeneration = true;
     }
 
@@ -408,8 +504,11 @@ public class PopulationManager : MonoBehaviour
 
         if (descriptorsToGive == null || !descriptorsToGive.ContainsKey(Character.Descriptor.Occupation))
         {
-            // Occupation
-            c.Descriptors[Character.Descriptor.Occupation].Add(Service.InfoManager.GetRandomEmoteOfType(Emote.EmoteType.Occupation));
+            if (UnityEngine.Random.Range(0, 101) < Service.Config.CharacterHasOccupationChance)
+            {
+                // Occupation
+                c.Descriptors[Character.Descriptor.Occupation].Add(Service.InfoManager.GetRandomEmoteOfType(Emote.EmoteType.Occupation));
+            }
         }
 
         if (descriptorsToGive == null || !descriptorsToGive.ContainsKey(Character.Descriptor.Clothing))
@@ -422,6 +521,102 @@ public class PopulationManager : MonoBehaviour
         return c;
     }
 
+    List<Task> GenerateSchedule(Character c, bool bIsDaySchedule)
+    {
+        List<Task> schedule = new List<Task>();
+        bool bHasOccupation = c.Descriptors[Character.Descriptor.Occupation].Count > 0;
 
+        // Between 1 and 3 steps to a schedule. If they have a job, have at least 2 minimum
+        int iScheduleSteps = UnityEngine.Random.Range(bHasOccupation ? 2 : 1, 4);
+
+        bool bHasAddedJobTask = false;
+        for(int i = 0; i < iScheduleSteps; ++i)
+        {
+            // In the day we can: Wander, Idle, Work
+            // In the night we can: Wander, Idle, Sleep
+
+            // If it's day, we've reached the end of the schedule and we haven't added a job task yet, do so
+            if (bIsDaySchedule && bHasOccupation && i == iScheduleSteps - 1 && !bHasAddedJobTask)
+            {
+                schedule.Add(new Task(c, Task.TaskType.Work));
+                bHasAddedJobTask = true;
+            }
+            else
+            {
+                var iRandTask = UnityEngine.Random.Range(0, 3);
+
+                if (iRandTask == 2) // Work/Sleep
+                {
+                    if (bIsDaySchedule)
+                    {
+                        if (bHasOccupation)
+                        {
+                            schedule.Add(new Task(c, Task.TaskType.Work));
+                            bHasAddedJobTask = true;
+                        }
+                    }
+                    else
+                    {
+                        schedule.Add(new Task(c, Task.TaskType.Sleep));
+                        
+                        // If a sleep task is given, always end the schedule on this no matter how long the schedule should be
+                        break;
+                    }
+                }
+                else if (iRandTask == 1) // Idle
+                {
+                    schedule.Add(new Task(c, Task.TaskType.Idle));
+                }
+                else if (iRandTask == 0) // Wander
+                {
+                    schedule.Add(new Task(c, Task.TaskType.WanderArea));
+                }
+            }
+        }
+
+        return schedule;
+    }
+
+    public Vector3 GetHomePosition(Character c)
+    {
+        if(c.Home)
+        {
+            return c.Home.UseBuildingPosition;
+        }
+
+        Debug.LogError("Failed to find home for " + c.Name);
+        return Vector3.zero;
+    }
+
+    public Vector3 GetWorkPosition(Character c)
+    {
+        Emote.EmoteSubType eBuildingType = c.GetWorkType();
+
+#if UNITY_EDITOR
+        bool bValidType = false;
+        foreach(var emote in Service.InfoManager.EmoteMap[Emote.EmoteType.Occupation])
+        {
+            if(emote.SubType == eBuildingType)
+            {
+                bValidType = true;
+                break;
+            }
+        }
+
+        Debug.Assert(bValidType);
+#endif
+
+        var allBuildings = FindObjectsOfType<Building>();
+        foreach(var building in allBuildings)
+        {
+            if(building.BuildingType == eBuildingType)
+            {
+                return building.UseBuildingPosition;
+            }
+        }
+
+        Debug.LogError("Failed to find building of type " + eBuildingType.ToString() + " in the scene.");
+        return Vector3.zero;
+    }
 
 }
