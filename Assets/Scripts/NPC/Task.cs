@@ -42,6 +42,8 @@ public class Task
     public float Duration;
     public float Timer;
 
+    public bool ShouldFinish => Duration > 0.0f && Timer >= Duration;
+
     void SetupWander()
     {
         Duration = UnityEngine.Random.Range(Service.Config.WanderRandomTimeMin, Service.Config.WanderRandomTimeMax);
@@ -66,4 +68,10 @@ public class Task
         Position = Service.Population.GetWorkPosition(TaskOwner);
     }
 
+    public void Update()
+    {
+        Timer += Time.deltaTime;
+
+        // TODO Do tasking stuffs
+    }
 }

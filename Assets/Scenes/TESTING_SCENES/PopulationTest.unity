@@ -444,9 +444,33 @@ PrefabInstance:
       propertyPath: m_Name
       value: Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703565, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: IdleRandomTimeMax
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703565, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: IdleRandomTimeMin
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703565, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: WorkRandomTimeMax
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703565, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: WorkRandomTimeMin
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703565, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: WanderRandomTimeMax
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703565, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: WanderRandomTimeMin
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4957857799237703567, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4957857799237703567, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
       propertyPath: m_LocalPosition.x
@@ -487,6 +511,18 @@ PrefabInstance:
     - target: {fileID: 4957857799237703567, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5354979144481859315, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: Manager
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5601259434335745215, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: Manager
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7230973416862211031, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: Manager
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
@@ -1715,7 +1751,7 @@ Transform:
   - {fileID: 1517425620}
   - {fileID: 39439156}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1642898258
 PrefabInstance:

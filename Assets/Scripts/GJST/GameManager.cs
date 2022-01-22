@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
         WinStreak = 0;
         m_fsm.SetState((int) States.GameOver);
     }
-    private void Awake()
+    protected virtual void Awake()
     {
         var startState = m_fsm.AddState<StartState>((int) States.Start, this);
         if(startState != null && skipStart)
@@ -55,12 +55,12 @@ public class GameManager : MonoBehaviour
         m_fsm.AddState<GameWonState>((int) States.Won, this);
     }
 
-    void Start()
+    protected virtual void Start()
     {
         m_fsm.SetState((int) States.Start);
     }
 
-    void Update()
+    protected virtual void Update()
     {
         m_fsm.Process(Time.deltaTime);
     }

@@ -20,7 +20,7 @@ public class PopulationManager : MonoBehaviour
 
     // Get the character for the werewolf
     public Character GetWerewolf() => werewolfIndex > -1 ? ActiveCharacters[werewolfIndex] : null;
-
+    public bool CharacterCreationDone => bDoneCharacterGeneration;
 
     // Internal Functions
 
@@ -32,6 +32,11 @@ public class PopulationManager : MonoBehaviour
     void Start()
     {
         InitialisePopulation();
+
+        foreach (var c in ActiveCharacters)
+        {
+            c.Start();
+        }
     }
 
     void Update()
@@ -56,6 +61,14 @@ public class PopulationManager : MonoBehaviour
             InitialisePopulation();
         }
 #endif
+
+        if (CharacterCreationDone)
+        {
+            foreach (var c in ActiveCharacters)
+            {
+                c.Update();
+            }
+        }
     }
 
 #if UNITY_EDITOR
@@ -293,9 +306,18 @@ public class PopulationManager : MonoBehaviour
                 vPos.y += iTextHeight;
             }
 
-            GUI.Label(new Rect(vPos.x + 16, vPos.y, iColumnWidth / 2, iTextBoxHeight), 
-                string.Format("TaskTimer: {0}/{1}", (c.CurrentTask != null ? c.CurrentTask.Timer.ToString() : "-"), 
-                (c.CurrentTask != null ? c.CurrentTask.Duration.ToString() : "-")));
+            bool isSleeping = c.CurrentTask != null && c.CurrentTask.Type == Task.TaskType.Sleep;
+
+            if (!isSleeping)
+            {
+                GUI.Label(new Rect(vPos.x + 16, vPos.y, iColumnWidth, iTextBoxHeight),
+                    string.Format("TaskTimer: {0}/{1}", (c.CurrentTask != null ? c.CurrentTask.Timer.ToString("0.0") : "-"),
+                    (c.CurrentTask != null ? c.CurrentTask.Duration.ToString("0.0") : "-")));
+            }
+            else
+            {
+                GUI.Label(new Rect(vPos.x + 16, vPos.y, iColumnWidth, iTextBoxHeight), "Doin a sleep");
+            }
             vPos.y += iTextHeight;
 
             GUI.contentColor = Color.white;
@@ -307,6 +329,8 @@ public class PopulationManager : MonoBehaviour
 
     IEnumerator InitialisePopulationStaggered()
     {
+        int iNumberOfCharactersToMake = 20;
+
         bDoneCharacterGeneration = false;
 
         // First generate the werewolf
@@ -318,7 +342,7 @@ public class PopulationManager : MonoBehaviour
         int iNumberOfMatches = 0;
 
         // Then generate the remainder of NPCs
-        for (int i = 0; i < 19; ++i)
+        for (int i = 0; i < iNumberOfCharactersToMake - 1; ++i)
         {
             Character characterAdded = AddCharacter(descriptorsToMatch);
             yield return new WaitForSeconds(0.04f);
@@ -395,9 +419,9 @@ public class PopulationManager : MonoBehaviour
 
         // Randomise up the order in which we give the homes out
         List<int> randomGiveHomeOrder = new List<int>();
-        while(randomGiveHomeOrder.Count < 20)
+        while(randomGiveHomeOrder.Count < iNumberOfCharactersToMake)
         {
-            int index = UnityEngine.Random.Range(0, 20);
+            int index = UnityEngine.Random.Range(0, iNumberOfCharactersToMake);
             if(!randomGiveHomeOrder.Contains(index))
             {
                 randomGiveHomeOrder.Add(index);
@@ -414,10 +438,14 @@ public class PopulationManager : MonoBehaviour
                 continue;
             }
 
+            if(iCurrentHomeGiveIndex >= randomGiveHomeOrder.Count)
+            {
+                break;
+            }
+
             // Shouldn't have any assigned home owners at this point.
             // Indices should never be able to become out of bounds
             Debug.Assert(building.Owner == null);
-            Debug.Assert(iCurrentHomeGiveIndex < randomGiveHomeOrder.Count);
             Debug.Assert(randomGiveHomeOrder[iCurrentHomeGiveIndex] < ActiveCharacters.Count);
 
             Character c = ActiveCharacters[randomGiveHomeOrder[iCurrentHomeGiveIndex++]];

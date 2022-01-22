@@ -25,6 +25,8 @@ public class Character
     public Task CurrentTask;
     public Building Home;
 
+    private int currentTaskIndex = 0;
+
     // Functions
 
     public Emote.EmoteSubType GetWorkType()
@@ -90,16 +92,104 @@ public class Character
         return grabbedList;
     }
 
+    // Private functions
 
-    // Start is called before the first frame update
-    void Start()
+    void GotoNextTask()
+    {
+        // Will be true in the case of the character being a ghost
+        if(TaskSchedule == null)
+        {
+            return;
+        }
+
+        void TryNextTask(ref List<Task> t)
+        {
+            if(t.Count == 0)
+            {
+                return;
+            }
+
+            // We still have tasks left
+            if (currentTaskIndex + 1 < t.Count)
+            {
+                currentTaskIndex++;
+            }
+            // Otherwise loop to the start
+            else
+            {
+                currentTaskIndex = 0;
+            }
+
+            Debug.Assert(currentTaskIndex < t.Count);
+            if (currentTaskIndex < t.Count)
+            {
+                CurrentTask = t[currentTaskIndex];
+            }
+        }
+
+        void TryGetFirstTask(ref List<Task> t)
+        {
+            if (t.Count > 0)
+            {
+                CurrentTask = t[0];
+                currentTaskIndex = 0;
+            }
+        }
+
+        if(CurrentTask == null)
+        {
+            if(Service.Game.TimeOfDay == WerewolfGame.TOD.Day)
+            {
+                TryGetFirstTask(ref TaskSchedule.DayTasks);
+            }
+            else if (Service.Game.TimeOfDay == WerewolfGame.TOD.Night)
+            {
+                TryGetFirstTask(ref TaskSchedule.NightTasks);
+            }
+        }
+        else
+        {
+            if (Service.Game.TimeOfDay == WerewolfGame.TOD.Day)
+            {
+                TryNextTask(ref TaskSchedule.DayTasks);
+            }
+            else if (Service.Game.TimeOfDay == WerewolfGame.TOD.Night)
+            {
+                TryNextTask(ref TaskSchedule.NightTasks);
+            }
+        }
+    }
+
+    public void Start()
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Update()
     {
-        
+        if(CurrentTask == null || CurrentTask.ShouldFinish)
+        {
+            if (CurrentTask != null)
+            {
+                CurrentTask.Timer = 0.0f;
+            }
+
+            GotoNextTask();
+        }
+        else if(CurrentTask != null)
+        {
+            CurrentTask.Update();
+        }
+    }
+
+    public void OnTimeOfDayPhaseShift() 
+    {
+        if (CurrentTask != null)
+        {
+            CurrentTask.Timer = 0.0f;
+        }
+
+        CurrentTask = null;
+        currentTaskIndex = 0;
     }
 }
