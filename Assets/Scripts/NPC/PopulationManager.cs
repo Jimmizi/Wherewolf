@@ -14,6 +14,7 @@ public class PopulationManager : MonoBehaviour
     private Vector2 vScrollPositionForCounts = new Vector2();
     private Vector2 vScrollPositionForInfo = new Vector2();
     private bool bShowDebug = false;
+    private bool bDoneCharacterGeneration = false;
 
     // API
 
@@ -40,6 +41,14 @@ public class PopulationManager : MonoBehaviour
         {
             bShowDebug = !bShowDebug;
         }
+
+        if(bShowDebug && Input.GetKeyDown(KeyCode.F5))
+        {
+            ActiveCharacters.Clear();
+            subTypeNumberCounts.Clear();
+            werewolfIndex = -1;
+            InitialisePopulation();
+        }
 #endif
     }
 
@@ -59,7 +68,9 @@ public class PopulationManager : MonoBehaviour
         }
 
         GUI.Box(new Rect(15, 15, 950, 700), "");
-        GUI.Label(new Rect(6, 0, 400, 24), "Population Debug");
+        GUI.Label(new Rect(6, 0, 200, 24), "Population Debug");
+
+        GUI.Label(new Rect(206, 0, 400, 24), "F5 - Reroll population");
 
         if (ActiveCharacters.Count > 0)
         {
@@ -86,7 +97,7 @@ public class PopulationManager : MonoBehaviour
             GUI.EndScrollView();
 
             // First time tally up the numbers
-            if (subTypeNumberCounts.Count == 0)
+            if (subTypeNumberCounts.Count == 0 && bDoneCharacterGeneration)
             {
                 foreach (var c in ActiveCharacters)
                 {
@@ -115,8 +126,10 @@ public class PopulationManager : MonoBehaviour
                 Vector2 vPosition = new Vector2(5, 5);
                 Character ww = GetWerewolf();
 
-                GUI.Label(new Rect(vPosition.x, vPosition.y, 250, iTextBoxHeight), "(Alive) Matches to Werewolf:");
+                float fHeaderPosition = vPosition.y;
                 vPosition.y += iTextHeight;
+
+                int iNumMatches = 0;
 
                 // Show which elements of other characters match against the werewolf
                 for (int i = 0; i < ActiveCharacters.Count; ++i)
@@ -138,12 +151,13 @@ public class PopulationManager : MonoBehaviour
 
                     bool bAnyMatch = false;
 
-                    for (int t = 0; t <= (int)Character.Descriptor.Clothing; ++t)
+                    for (int t = 0; t < Character.DescriptorMax; ++t)
                     {
                         var desc = (Character.Descriptor)t;
 
                         if (c.DoDescriptorsMatch(ref ww, desc))
                         {
+                            iNumMatches++;
                             bAnyMatch = true;
 
                             GUI.Label(new Rect(vPosition.x + 15, vPosition.y, 225, iTextBoxHeight), string.Format("Matching {0}", desc.ToString()));
@@ -161,7 +175,10 @@ public class PopulationManager : MonoBehaviour
                         vPosition.y = fNamePosition;
                     }
                 }
-                                
+
+                GUI.Label(new Rect(vPosition.x, fHeaderPosition, 250, iTextBoxHeight), string.Format("(Alive) {0} Matches to Werewolf", iNumMatches));
+
+
                 foreach (var map in subTypeNumberCounts)
                 {
                     GUI.Label(new Rect(vPosition.x, vPosition.y, 150, iTextBoxHeight), map.Key.ToString());
@@ -241,15 +258,92 @@ public class PopulationManager : MonoBehaviour
 
     IEnumerator InitialisePopulationStaggered()
     {
+        bDoneCharacterGeneration = false;
+
         // First generate the werewolf
-        AddCharacter(isWerewolf: true);
+        AddCharacter(null, isWerewolf: true);
         yield return new WaitForSeconds(0.04f);
+
+        Character ww = GetWerewolf();
+        var descriptorsToMatch = ww.GetRandomDescriptors(2);
+        int iNumberOfMatches = 0;
 
         for (int i = 0; i < 19; ++i)
         {
-            AddCharacter();
+            Character characterAdded = AddCharacter(descriptorsToMatch);
             yield return new WaitForSeconds(0.04f);
+
+            // First character made copies two, and then passes one onto the next character made
+            if(i == 0)
+            {
+                var werewolfDescriptors = descriptorsToMatch;
+
+                // Some weird stuff to remove 
+                int indexToRemove = UnityEngine.Random.Range(0, werewolfDescriptors.Keys.Count);
+                var vDescriptors = new List<Character.Descriptor>();
+                foreach(var a in werewolfDescriptors.Keys)
+                {
+                    vDescriptors.Add(a);
+                }
+
+                // For the first character, randomly remove one of the werewolf's descriptors so that another character can add the one remaining
+                var descToRemove = vDescriptors[indexToRemove];
+                werewolfDescriptors.Remove(descToRemove);
+                vDescriptors.RemoveAt(indexToRemove);
+
+                // Set to the remaining descriptor to begin with, so we can know when we've found one that isn't the ones we've copied from the werewolf
+                Character.Descriptor descToGrabFromFirstCharacter = vDescriptors[0];
+                while (descToGrabFromFirstCharacter == descToRemove || descToGrabFromFirstCharacter == vDescriptors[0])
+                {
+                    // Keep grabbing random descriptors until we've grabbed one of the two we didn't use of the werewolf's
+                    descToGrabFromFirstCharacter = (Character.Descriptor)UnityEngine.Random.Range(0, Character.DescriptorMax);
+                }
+
+                // Then add in the second descriptor from this first made character to copy to the next
+                descriptorsToMatch[descToGrabFromFirstCharacter] = characterAdded.GetDescriptors(descToGrabFromFirstCharacter);
+
+            }
+            else if(i == 1)
+            {
+                // For the third character we break the chain of copying werewolf descriptors
+                descriptorsToMatch.Clear();
+            }
+            // Only allow up to 7 manual descriptor matches with the werewolf, so that there aren't too many (making it more difficult)
+            //  this number can go up characters manage to randomly pick some
+            else if(iNumberOfMatches < 8)
+            {
+                // If we're late into the character creation, and there is a low number of matches, make sure some matches get made
+                bool bEmergencyCopyDescriptors = (i > 13 && iNumberOfMatches < 7);
+
+                // From here on, randomly copy 1 or 2 descriptors on a 33% chance to do so
+
+                if (UnityEngine.Random.Range(0, 101) < 33 || bEmergencyCopyDescriptors)
+                {
+                    var randomDescriptorsAmount = UnityEngine.Random.Range(1, 3);
+                    descriptorsToMatch = characterAdded.GetRandomDescriptors(randomDescriptorsAmount);
+                }
+                else
+                {
+                    descriptorsToMatch.Clear();
+                }
+            }
+            else
+            {
+                descriptorsToMatch.Clear();
+            }
+
+            for (int de = 0; de < Character.DescriptorMax; ++de)
+            {
+                var desc = (Character.Descriptor)de;
+
+                if (characterAdded.DoDescriptorsMatch(ref ww, desc))
+                {
+                    iNumberOfMatches++;
+                }
+            }
         }
+
+        bDoneCharacterGeneration = true;
     }
 
     void InitialisePopulation()
@@ -257,12 +351,13 @@ public class PopulationManager : MonoBehaviour
         StartCoroutine(InitialisePopulationStaggered());
     }
 
-    void AddCharacter(bool generateHairStyle = true, bool generateFacial = true, bool generateOccupation = true, bool generateClothing = true, bool isWerewolf = false)
+    Character AddCharacter(SortedDictionary<Character.Descriptor, List<Emote>> descriptorsToGive, bool isWerewolf = false)
     {
-        ActiveCharacters.Add(GenerateCharacter(generateHairStyle, generateFacial, generateOccupation, generateClothing, isWerewolf));
+        ActiveCharacters.Add(GenerateCharacter(descriptorsToGive, isWerewolf));
+        return ActiveCharacters[ActiveCharacters.Count - 1];
     }
 
-    Character GenerateCharacter(bool generateHairStyle = true, bool generateFacial = true, bool generateOccupation = true, bool generateClothing = true, bool isWerewolf = false)
+    Character GenerateCharacter(SortedDictionary<Character.Descriptor, List<Emote>> descriptorsToGive, bool isWerewolf = false)
     {
         Character c = new Character();
 
@@ -276,14 +371,23 @@ public class PopulationManager : MonoBehaviour
         // Grab a random name.
         c.Name = Service.InfoManager.GetRandomName();
 
-        for(int i = 0; i <= (int)Character.Descriptor.Clothing; ++i)
+        for(int i = 0; i < Character.DescriptorMax; ++i)
         {
             c.Descriptors.Add((Character.Descriptor)i, new List<Emote>());
         }
         
+        // Give descriptors
+        if(descriptorsToGive != null)
+        {
+            foreach(var d in descriptorsToGive)
+            {
+                c.Descriptors[d.Key] = d.Value;
+            }
+        }
+
         // Grab one of each type of descriptor
 
-        if (generateHairStyle)
+        if (descriptorsToGive == null || !descriptorsToGive.ContainsKey(Character.Descriptor.Hair))
         {
             // Hair Style
             var hs = Service.InfoManager.GetRandomEmoteOfType(Emote.EmoteType.HairStyle);
@@ -296,19 +400,19 @@ public class PopulationManager : MonoBehaviour
             c.Descriptors[Character.Descriptor.Hair].Add(hs);
         }
 
-        if (generateFacial)
+        if (descriptorsToGive == null || !descriptorsToGive.ContainsKey(Character.Descriptor.Facial))
         {
             // Facial Feature
             c.Descriptors[Character.Descriptor.Facial].Add(Service.InfoManager.GetRandomEmoteOfType(Emote.EmoteType.FacialFeature));
         }
 
-        if (generateOccupation)
+        if (descriptorsToGive == null || !descriptorsToGive.ContainsKey(Character.Descriptor.Occupation))
         {
             // Occupation
             c.Descriptors[Character.Descriptor.Occupation].Add(Service.InfoManager.GetRandomEmoteOfType(Emote.EmoteType.Occupation));
         }
 
-        if (generateClothing)
+        if (descriptorsToGive == null || !descriptorsToGive.ContainsKey(Character.Descriptor.Clothing))
         {
             // Clothing
             c.Descriptors[Character.Descriptor.Clothing].Add(Service.InfoManager.GetRandomEmoteOfType(Emote.EmoteType.Color));

@@ -7,6 +7,8 @@ using UnityEngine;
 /// </summary>
 public class Clue
 {
+    public Character RelatesToCharacter;
+
     // The list of emotes to form the sentence.
     public List<Emote> Emotes;
 

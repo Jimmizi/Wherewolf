@@ -12,6 +12,8 @@ public class Character
         Clothing
     }
 
+    public static int DescriptorMax => (int)Descriptor.Clothing + 1;
+
     // Vars
 
     public string Name;
@@ -47,13 +49,13 @@ public class Character
 
     public SortedDictionary<Descriptor, List<Emote>> GetRandomDescriptors(int iCount)
     {
-        Debug.Assert(iCount <= (int)Descriptor.Clothing + 1);
+        Debug.Assert(iCount <= DescriptorMax);
 
         var grabbedList = new SortedDictionary<Descriptor, List<Emote>>();
 
         while(grabbedList.Count < iCount)
         {
-            var iRandIndex = Random.Range(0, (int)Descriptor.Clothing);
+            var iRandIndex = UnityEngine.Random.Range(0, DescriptorMax);
             var desc = (Descriptor)iRandIndex;
 
             if (!grabbedList.ContainsKey(desc))
