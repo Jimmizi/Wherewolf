@@ -161,9 +161,7 @@ public class PopulationManager : MonoBehaviour
                         vPosition.y = fNamePosition;
                     }
                 }
-
-
-                
+                                
                 foreach (var map in subTypeNumberCounts)
                 {
                     GUI.Label(new Rect(vPosition.x, vPosition.y, 150, iTextBoxHeight), map.Key.ToString());
@@ -241,15 +239,22 @@ public class PopulationManager : MonoBehaviour
     }
 #endif
 
-    void InitialisePopulation()
+    IEnumerator InitialisePopulationStaggered()
     {
         // First generate the werewolf
         AddCharacter(isWerewolf: true);
+        yield return new WaitForSeconds(0.04f);
 
         for (int i = 0; i < 19; ++i)
         {
             AddCharacter();
+            yield return new WaitForSeconds(0.04f);
         }
+    }
+
+    void InitialisePopulation()
+    {
+        StartCoroutine(InitialisePopulationStaggered());
     }
 
     void AddCharacter(bool generateHairStyle = true, bool generateFacial = true, bool generateOccupation = true, bool generateClothing = true, bool isWerewolf = false)

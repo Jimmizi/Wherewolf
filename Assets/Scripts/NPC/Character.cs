@@ -36,11 +36,6 @@ public class Character
 
         for(int i = 0; i < Descriptors[eType].Count; ++i)
         {
-            if(Descriptors[eType][i].Type != other.Descriptors[eType][i].Type)
-            {
-                return false;
-            }
-
             if (Descriptors[eType][i].SubType != other.Descriptors[eType][i].SubType)
             {
                 return false;
