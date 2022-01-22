@@ -8,12 +8,16 @@ public class DragAndDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler
 {
     private RectTransform rectTransform;
     private Image image;
+    private Canvas canvas;
+
+    private static int currentSortOrder=1;
 
     // Start is called before the first frame update
     void Start()
     {
         rectTransform = GetComponent<RectTransform>();
         image = GetComponent<Image>();
+        canvas = GetComponent<Canvas>();
     }
 
     // Update is called once per frame
@@ -25,6 +29,9 @@ public class DragAndDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler
     public void OnPointerDown(PointerEventData eventData)
     {
         Debug.Log("OnPointerDown");
+
+        currentSortOrder++;
+        canvas.sortingOrder = currentSortOrder;
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -33,7 +40,6 @@ public class DragAndDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler
         Color color = image.color;
         color.a = 0.8f;
         image.color = color;
-
     }
 
     public void OnEndDrag(PointerEventData eventData)
