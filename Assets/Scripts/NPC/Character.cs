@@ -2,20 +2,75 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Character : MonoBehaviour
+public class Character
 {
-    enum HairStyles
+    public enum Descriptor
     {
-        Long,
-        Medium,
-        Short,
-        Bald
+        Hair,
+        Facial,
+        Occupation,
+        Clothing
     }
 
-    enum HairColor
-    {
+    // Vars
 
+    public string Name;
+    public SortedDictionary<Descriptor, List<Emote>> Descriptors = new SortedDictionary<Descriptor, List<Emote>>();
+    public bool IsWerewolf;
+    public bool IsAlive = true;
+
+    // Functions
+
+    public List<Emote> GetDescriptors(Descriptor eType)
+    {
+        return Descriptors[eType];
     }
+
+    // Does the descriptors of a descriptor type match between this and another character
+    public bool DoDescriptorsMatch(ref Character other, Descriptor eType)
+    {
+        if(other.Descriptors[eType].Count != Descriptors[eType].Count)
+        {
+            return false;
+        }
+
+        for(int i = 0; i < Descriptors[eType].Count; ++i)
+        {
+            if(Descriptors[eType][i].Type != other.Descriptors[eType][i].Type)
+            {
+                return false;
+            }
+
+            if (Descriptors[eType][i].SubType != other.Descriptors[eType][i].SubType)
+            {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    public SortedDictionary<Descriptor, List<Emote>> GetRandomDescriptors(int iCount)
+    {
+        Debug.Assert(iCount <= (int)Descriptor.Clothing + 1);
+
+        var grabbedList = new SortedDictionary<Descriptor, List<Emote>>();
+
+        while(grabbedList.Count < iCount)
+        {
+            var iRandIndex = Random.Range(0, (int)Descriptor.Clothing);
+            var desc = (Descriptor)iRandIndex;
+
+            if (!grabbedList.ContainsKey(desc))
+            {
+                grabbedList.Add(desc, new List<Emote>());
+                grabbedList[desc] = Descriptors[desc];
+            }
+        }
+
+        return grabbedList;
+    }
+
 
     // Start is called before the first frame update
     void Start()

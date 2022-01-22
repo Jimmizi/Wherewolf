@@ -1,22 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class InformationManager : MonoBehaviour
 {
-    [SerializeField]
-    private List<string> customNames;
+    // Saved variables
 
     [SerializeField]
-    private List<Emote> emoteList;
+    private List<string> customNames = new List<string>();
+
+    [SerializeField]
+    private List<Emote> emoteList = new List<Emote>();
+
+    // Runtime variables
+
+    public SortedDictionary<Emote.EmoteType, List<Emote>> EmoteMap = new SortedDictionary<Emote.EmoteType, List<Emote>>();
+
+    private List<string> availableNamePool = new List<string>();
+    private List<string> inUseNamePool = new List<string>();
 
 
-    private List<string> availableNamePool;
-    private List<string> inUseNamePool;
+    // API Access
 
     public string GetRandomName()
     {
-        int iRandomIndex = Random.Range(0, availableNamePool.Count);
+        int iRandomIndex = UnityEngine.Random.Range(0, availableNamePool.Count);
         string name = availableNamePool[iRandomIndex];
 
         availableNamePool.RemoveAt(iRandomIndex);
@@ -25,17 +34,36 @@ public class InformationManager : MonoBehaviour
         return name;
     }
 
+    public Emote GetRandomEmoteOfType(Emote.EmoteType eType)
+    {
+        return EmoteMap[eType][UnityEngine.Random.Range(0, EmoteMap[eType].Count)];
+    }
+
+
+
 
     public void Awake()
     {
         Service.InfoManager = this;
+
+        AddDefaultNames();
+        availableNamePool.AddRange(customNames);
+
+#if DEBUG
+        // Utility to help us populate default emotes
+        if (emoteList.Count == 0)
+        {
+            AddDefaultEmotes();
+        }
+#endif
+
+        SortEmotes();
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        AddDefaultNames();
-        availableNamePool.AddRange(customNames);
+        
     }
 
     // Update is called once per frame
@@ -446,4 +474,94 @@ public class InformationManager : MonoBehaviour
         availableNamePool.Add("Sue");
         availableNamePool.Add("Christina");
     }
+
+    void SortEmotes()
+    {
+        foreach (var emote in emoteList)
+        {
+            if (!EmoteMap.ContainsKey(emote.Type))
+            {
+                EmoteMap.Add(emote.Type, new List<Emote>());
+            }
+
+            EmoteMap[emote.Type].Add(emote);
+        }
+    }
+
+#if DEBUG
+    void AddDefaultEmotes()
+    {
+        for (int i = 0; i <= (int)Emote.EmoteSubType.Gossip_RelationshipMarriage; ++i)
+        {
+            Emote.EmoteSubType eType = (Emote.EmoteSubType)i;
+            string sType = eType.ToString();
+
+            Emote newEmote = new Emote();
+
+            // Name
+            newEmote.Name = sType.Substring(sType.IndexOf('_') + 1);
+            for(int c = 0; c < newEmote.Name.Length; ++c)
+            {
+                if(c > 0 && char.IsUpper(newEmote.Name[c]))
+                {
+                    newEmote.Name = newEmote.Name.Insert(c, " ");
+                    c++;
+                }
+            }
+
+            // Type
+            if (i <= (int)Emote.EmoteSubType.HairStyle_Bald)
+            {
+                newEmote.Type = Emote.EmoteType.HairStyle;
+            }
+            else if (i >= (int)Emote.EmoteSubType.Facial_Ugly && i <= (int)Emote.EmoteSubType.Facial_BigEars)
+            {
+                newEmote.Type = Emote.EmoteType.FacialFeature;
+            }
+            else if (i >= (int)Emote.EmoteSubType.Color_Brown && i <= (int)Emote.EmoteSubType.Color_Purple)
+            {
+                newEmote.Type = Emote.EmoteType.Color;
+            }
+            else if (i >= (int)Emote.EmoteSubType.Location_1 && i <= (int)Emote.EmoteSubType.Location_10)
+            {
+                newEmote.Type = Emote.EmoteType.Location;
+            }
+            else if (i >= (int)Emote.EmoteSubType.Occupation_Bank && i <= (int)Emote.EmoteSubType.Occupation_GeneralStore)
+            {
+                newEmote.Type = Emote.EmoteType.Occupation;
+            }
+            else if (i >= (int)Emote.EmoteSubType.TimeOfDay_Day && i <= (int)Emote.EmoteSubType.TimeOfDay_Night)
+            {
+                newEmote.Type = Emote.EmoteType.TimeOfDay;
+            }
+            else if (i >= (int)Emote.EmoteSubType.Condition_Dirty && i <= (int)Emote.EmoteSubType.Condition_Torn)
+            {
+                newEmote.Type = Emote.EmoteType.Condition;
+            }
+            else if (i >= (int)Emote.EmoteSubType.Clothing_Shirt && i <= (int)Emote.EmoteSubType.Clothing_Gloves)
+            {
+                newEmote.Type = Emote.EmoteType.Clothing;
+            }
+            else if (i >= (int)Emote.EmoteSubType.Specific_Footsteps && i <= (int)Emote.EmoteSubType.Specific_AccidentFall)
+            {
+                newEmote.Type = Emote.EmoteType.Specific;
+            }
+            else if (i >= (int)Emote.EmoteSubType.Gossip_RelationshipKiss && i <= (int)Emote.EmoteSubType.Gossip_RelationshipMarriage)
+            {
+                newEmote.Type = Emote.EmoteType.Gossip;
+            }
+
+            // SubType
+            newEmote.SubType = (Emote.EmoteSubType)i;
+
+            var spr = Resources.Load<Sprite>("Emotes/" + sType);
+            if(spr != null)
+            {
+                newEmote.EmoteImage = spr;
+            }
+
+            emoteList.Add(newEmote);
+        }
+    }
+#endif
 }
