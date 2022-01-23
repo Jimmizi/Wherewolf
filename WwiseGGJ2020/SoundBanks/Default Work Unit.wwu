@@ -34,7 +34,6 @@
 						<ObjectRef Name="GameOver" ID="{C33449F5-E63A-4964-AF7B-CC7E99795733}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="DoorOpen" ID="{E0E9DF4B-4B82-4BDD-B085-8A3D8867C5B3}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Click" ID="{A7A6A7B7-68FA-4D55-8542-64B17A611A74}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
-						<ObjectRef Name="Death" ID="{CEFE97EC-9591-4E7F-ABFB-D447225377F7}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
 					</ObjectInclusionList>
 					<ObjectExclusionList/>
 					<GameSyncExclusionList/>

@@ -86,24 +86,16 @@
 				</Event>
 			</IncludedEvents>
 		</SoundBank>
-		<SoundBank Id="2889100233" Language="SFX" Hash="4053247870">
+		<SoundBank Id="2889100233" Language="SFX" Hash="3083478482">
 			<ObjectPath>\SoundBanks\Default Work Unit\OneShots_Misc</ObjectPath>
 			<ShortName>OneShots_Misc</ShortName>
 			<Path>OneShots_Misc.bnk</Path>
 			<IncludedEvents>
 				<Event Id="1584507803" Name="Click" ObjectPath="\Events\Default Work Unit\Click" DurationType="OneShot" DurationMin="1." DurationMax="1.">
 					<IncludedMemoryFiles>
-						<File Id="316443751" Language="SFX">
-							<ShortName>ClickPH.wav</ShortName>
-							<Path>SFX\ClickPH_10C4C929.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
-				</Event>
-				<Event Id="779278001" Name="Death" ObjectPath="\Events\Default Work Unit\Death" DurationType="OneShot" DurationMin="5.142854" DurationMax="5.142854">
-					<IncludedMemoryFiles>
-						<File Id="268243322" Language="SFX">
-							<ShortName>DeathPH.wav</ShortName>
-							<Path>SFX\DeathPH_10C4C929.wem</Path>
+						<File Id="995369837" Language="SFX">
+							<ShortName>Click.wav</ShortName>
+							<Path>SFX\Click_10C4C929.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
@@ -123,11 +115,11 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="4158285989" Name="GameOver" ObjectPath="\Events\Default Work Unit\GameOver" DurationType="OneShot" DurationMin="6." DurationMax="6.">
+				<Event Id="4158285989" Name="GameOver" ObjectPath="\Events\Default Work Unit\GameOver" DurationType="OneShot" DurationMin="5." DurationMax="5.">
 					<IncludedMemoryFiles>
-						<File Id="351846115" Language="SFX">
-							<ShortName>GameOverPH.wav</ShortName>
-							<Path>SFX\GameOverPH_10C4C929.wem</Path>
+						<File Id="859219889" Language="SFX">
+							<ShortName>GameOver.wav</ShortName>
+							<Path>SFX\GameOver_10C4C929.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>

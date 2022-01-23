@@ -30,18 +30,7 @@
 						<Action Name="" ID="{9538CEF9-2308-453D-9E36-DA2CCFFAFC1E}" ShortID="404264577">
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="ClickPH" ID="{D0EBDFE8-81A6-4DFD-B03D-CF11CBBA89F2}" WorkUnitID="{A81D3656-2325-46B3-9A64-828E3D72236B}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
-					</ChildrenList>
-				</Event>
-				<Event Name="Death" ID="{CEFE97EC-9591-4E7F-ABFB-D447225377F7}">
-					<ChildrenList>
-						<Action Name="" ID="{F4D2965C-6DE9-40D7-855C-CC8910D75E3B}" ShortID="12998027">
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="DeathPH" ID="{748FBBF6-D19D-4742-86B5-C8D1EFDDED5B}" WorkUnitID="{A81D3656-2325-46B3-9A64-828E3D72236B}"/>
+									<ObjectRef Name="Click" ID="{D0EBDFE8-81A6-4DFD-B03D-CF11CBBA89F2}" WorkUnitID="{A81D3656-2325-46B3-9A64-828E3D72236B}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
@@ -74,7 +63,7 @@
 						<Action Name="" ID="{A99E6FE3-1E59-4E3E-A5C2-B9DCB5E20E23}" ShortID="817785155">
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="GameOverPH" ID="{FB124490-D104-4A5B-88A1-943C433193D0}" WorkUnitID="{A81D3656-2325-46B3-9A64-828E3D72236B}"/>
+									<ObjectRef Name="GameOver" ID="{FB124490-D104-4A5B-88A1-943C433193D0}" WorkUnitID="{A81D3656-2325-46B3-9A64-828E3D72236B}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
