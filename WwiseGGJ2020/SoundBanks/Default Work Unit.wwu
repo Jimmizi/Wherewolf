@@ -1,6 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{3C89D127-AE93-4955-9AD0-2C34935AF1E0}" SchemaVersion="103">
 	<SoundBanks>
-		<WorkUnit Name="Default Work Unit" ID="{3C89D127-AE93-4955-9AD0-2C34935AF1E0}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{3C89D127-AE93-4955-9AD0-2C34935AF1E0}" PersistMode="Standalone">
+			<ChildrenList>
+				<SoundBank Name="DayCycle" ID="{FC5C07BC-DE31-4341-93EA-76B6A8E3E228}">
+					<ObjectInclusionList/>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+				<SoundBank Name="NightCycle" ID="{BCA837B0-7050-4257-875D-ACDB506127D8}">
+					<ObjectInclusionList/>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+				<SoundBank Name="Voices" ID="{E5A3BC42-72B5-43D9-A4A7-2AE3EA06C34C}">
+					<ObjectInclusionList/>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+				<SoundBank Name="OneShots" ID="{9F985250-3CAC-410B-8FA0-585425D47D38}">
+					<ObjectInclusionList/>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+			</ChildrenList>
+		</WorkUnit>
 	</SoundBanks>
 </WwiseDocument>

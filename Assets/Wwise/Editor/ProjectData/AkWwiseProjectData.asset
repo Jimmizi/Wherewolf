@@ -24,7 +24,7 @@ MonoBehaviour:
     ParentPath: Virtual Acoustics\Default Work Unit
     guid: 84d26166a411c94eb86975d6c225ff9b
     GuidInternal: 
-    m_lastTime: -8585588864558091010
+    m_lastTime: -8585588854728388268
     List: []
   AuxBusWwu:
   - PhysicalPath: Master-Mixer Hierarchy\Default Work Unit.wwu
@@ -38,7 +38,7 @@ MonoBehaviour:
     ParentPath: Master-Mixer Hierarchy\Default Work Unit
     guid: a3f17b30e30d854c8d5ab0bbd3d00d42
     GuidInternal: 
-    m_lastTime: -8585588864556785055
+    m_lastTime: -8585588854728488290
     List:
     - name: Master Audio Bus
       guid: d8a41415a61d2a41a17e75ca0c2149f3
@@ -66,8 +66,64 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: 27d1893c93ae55499ad02c34935af1e0
     GuidInternal: 
-    m_lastTime: -8585588864556970075
-    List: []
+    m_lastTime: -8585587043536625274
+    List:
+    - name: DayCycle
+      guid: bc075cfc31de414393ea76b6a8e3e228
+      id: 2769481441
+      PathAndIcons:
+      - ElementName: SoundBanks
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 27d1893c93ae55499ad02c34935af1e0
+      - ElementName: DayCycle
+        ObjectType: 7
+        guid: bc075cfc31de414393ea76b6a8e3e228
+      Path: SoundBanks\Default Work Unit\DayCycle
+    - name: NightCycle
+      guid: b037a8bc50705742875dacdb506127d8
+      id: 2276007709
+      PathAndIcons:
+      - ElementName: SoundBanks
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 27d1893c93ae55499ad02c34935af1e0
+      - ElementName: NightCycle
+        ObjectType: 7
+        guid: b037a8bc50705742875dacdb506127d8
+      Path: SoundBanks\Default Work Unit\NightCycle
+    - name: OneShots
+      guid: 5052989fac3c0b418fa0585425d47d38
+      id: 3150299886
+      PathAndIcons:
+      - ElementName: SoundBanks
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 27d1893c93ae55499ad02c34935af1e0
+      - ElementName: OneShots
+        ObjectType: 7
+        guid: 5052989fac3c0b418fa0585425d47d38
+      Path: SoundBanks\Default Work Unit\OneShots
+    - name: Voices
+      guid: 42bca3e5b572d943a4a72ae3ea06c34c
+      id: 3313685232
+      PathAndIcons:
+      - ElementName: SoundBanks
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 27d1893c93ae55499ad02c34935af1e0
+      - ElementName: Voices
+        ObjectType: 7
+        guid: 42bca3e5b572d943a4a72ae3ea06c34c
+      Path: SoundBanks\Default Work Unit\Voices
   EventWwu:
   - PhysicalPath: Events\Default Work Unit.wwu
     PathAndIcons:
@@ -80,7 +136,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: 36187f795aed7446a84c500d367dfcf3
     GuidInternal: 
-    m_lastTime: -8585588864557070082
+    m_lastTime: -8585588854728538304
     List: []
   RtpcWwu:
   - PhysicalPath: Game Parameters\Default Work Unit.wwu
@@ -94,7 +150,7 @@ MonoBehaviour:
     ParentPath: Game Parameters\Default Work Unit
     guid: cf20ea7f0cb26a4f822746d353e6ee18
     GuidInternal: 
-    m_lastTime: -8585588864556735009
+    m_lastTime: -8585588854728528299
     List: []
   StateWwu:
   - PhysicalPath: States\Default Work Unit.wwu
@@ -108,7 +164,7 @@ MonoBehaviour:
     ParentPath: States\Default Work Unit
     guid: 186fd31674af814990c999ca824ca044
     GuidInternal: 
-    m_lastTime: -8585588864556644928
+    m_lastTime: -8585588854728418274
     List: []
   SwitchWwu:
   - PhysicalPath: Switches\Default Work Unit.wwu
@@ -122,7 +178,7 @@ MonoBehaviour:
     ParentPath: Switches\Default Work Unit
     guid: e56b7d59a437994b91cd7b123398dc7a
     GuidInternal: 
-    m_lastTime: -8585588864557020038
+    m_lastTime: -8585588854728408275
     List: []
   TriggerWwu:
   - PhysicalPath: Triggers\Default Work Unit.wwu
@@ -136,10 +192,10 @@ MonoBehaviour:
     ParentPath: Triggers\Default Work Unit
     guid: f54903e9a1a7b44db70d17f2e72d3b05
     GuidInternal: 
-    m_lastTime: -8585588864557360343
+    m_lastTime: -8585588854728398269
     List: []
   ExpandedFileSystemItemIds: 
-  ExpandedWaapiItemIds: 
+  ExpandedWaapiItemIds: 0a0000000b000000
   AutoSyncSelection: 0
   autoPopulateEnabled: 1
   currentDataSource: 0

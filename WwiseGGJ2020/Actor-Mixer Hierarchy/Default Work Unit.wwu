@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{A81D3656-2325-46B3-9A64-828E3D72236B}" SchemaVersion="103">
 	<AudioObjects>
-		<WorkUnit Name="Default Work Unit" ID="{A81D3656-2325-46B3-9A64-828E3D72236B}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{A81D3656-2325-46B3-9A64-828E3D72236B}" PersistMode="Standalone">
+			<ChildrenList>
+				<Sound Name="Win_Day_Jingle" ID="{BFD29549-8400-47F5-BAE0-4D253E703434}" ShortID="130082436">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{CDCD3BA4-22DA-4D0F-B878-FE934CC7D525}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{307BF1A3-0DE3-4C85-8D5A-B0BBD3D00D42}"/>
+						</Reference>
+					</ReferenceList>
+					<ObjectLists/>
+				</Sound>
+			</ChildrenList>
+		</WorkUnit>
 	</AudioObjects>
 </WwiseDocument>
