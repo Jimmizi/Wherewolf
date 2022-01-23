@@ -1,6 +1,152 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" SchemaVersion="103">
 	<Events>
-		<WorkUnit Name="Default Work Unit" ID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" PersistMode="Standalone">
+			<ChildrenList>
+				<Event Name="DayAmbience" ID="{ADD96E5B-E900-4BAF-8714-261614D3ADA4}">
+					<ChildrenList>
+						<Action Name="" ID="{D71C995A-1476-49B8-AADF-D87A6D6E56ED}" ShortID="793572247">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="DayAmbience" ID="{BCDD79F9-E22E-48E4-AD81-227E9C7BB48D}" WorkUnitID="{A81D3656-2325-46B3-9A64-828E3D72236B}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="NightAmbience" ID="{736BAED1-44A6-4A25-9FE4-FE21FA75A128}">
+					<ChildrenList>
+						<Action Name="" ID="{799433BB-415D-4111-9EE0-F822D3B44C55}" ShortID="404263523">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="NightAmbience" ID="{8F048B3F-807A-4393-ADD3-653410BA89F6}" WorkUnitID="{A81D3656-2325-46B3-9A64-828E3D72236B}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Click" ID="{A7A6A7B7-68FA-4D55-8542-64B17A611A74}">
+					<ChildrenList>
+						<Action Name="" ID="{9538CEF9-2308-453D-9E36-DA2CCFFAFC1E}" ShortID="404264577">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="ClickPH" ID="{D0EBDFE8-81A6-4DFD-B03D-CF11CBBA89F2}" WorkUnitID="{A81D3656-2325-46B3-9A64-828E3D72236B}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Death" ID="{CEFE97EC-9591-4E7F-ABFB-D447225377F7}">
+					<ChildrenList>
+						<Action Name="" ID="{F4D2965C-6DE9-40D7-855C-CC8910D75E3B}" ShortID="12998027">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="DeathPH" ID="{748FBBF6-D19D-4742-86B5-C8D1EFDDED5B}" WorkUnitID="{A81D3656-2325-46B3-9A64-828E3D72236B}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Discovery" ID="{E6D689C1-F0C1-41F5-AC91-2A76E59D17A5}">
+					<ChildrenList>
+						<Action Name="" ID="{136F4573-5D77-428E-BD53-5217FCBC14AE}" ShortID="974643455">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="DiscoveryPH" ID="{7D34E0A2-AD08-4729-9027-F60988F33B14}" WorkUnitID="{A81D3656-2325-46B3-9A64-828E3D72236B}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="DoorOpen" ID="{E0E9DF4B-4B82-4BDD-B085-8A3D8867C5B3}">
+					<ChildrenList>
+						<Action Name="" ID="{CF4FA072-0CEB-460C-AB77-81F3D8DD17AD}" ShortID="761199002">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="DoorOpen" ID="{F38F6BAF-D9D9-4544-86F3-5632ECCD0179}" WorkUnitID="{A81D3656-2325-46B3-9A64-828E3D72236B}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="GameOver" ID="{C33449F5-E63A-4964-AF7B-CC7E99795733}">
+					<ChildrenList>
+						<Action Name="" ID="{A99E6FE3-1E59-4E3E-A5C2-B9DCB5E20E23}" ShortID="817785155">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="GameOverPH" ID="{FB124490-D104-4A5B-88A1-943C433193D0}" WorkUnitID="{A81D3656-2325-46B3-9A64-828E3D72236B}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="PositiveThingDay" ID="{17A2198D-E6F5-4433-B43A-6AC6DBB65E32}">
+					<ChildrenList>
+						<Action Name="" ID="{51070B44-8B87-4E58-B650-8B4BF1EE7F2C}" ShortID="676996290">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="PositiveThingDay" ID="{43C0E6A8-6452-4554-B470-EBB213C47EC6}" WorkUnitID="{A81D3656-2325-46B3-9A64-828E3D72236B}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="RiverFlow" ID="{E959CBFC-BCF6-40CD-9165-DDC4A2EC01B6}">
+					<ChildrenList>
+						<Action Name="" ID="{FCB0B1F6-202A-4C70-93BF-BDA3FF7A45BB}" ShortID="649559608">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="RiverFlow" ID="{C85096F7-162F-4282-9FD5-3E13BA0B22A0}" WorkUnitID="{A81D3656-2325-46B3-9A64-828E3D72236B}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="WinDay" ID="{769AC8D4-F574-4875-9464-91DF7EA02E41}">
+					<ChildrenList>
+						<Action Name="" ID="{77A09280-7FDB-4255-9CAD-3E64C8413D29}" ShortID="237695971">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="WinDay" ID="{F2110C49-23BD-49B1-B2B7-FF84A5A28234}" WorkUnitID="{A81D3656-2325-46B3-9A64-828E3D72236B}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="WinNight" ID="{E62EBE32-C832-4423-B7D5-DFBD8B9F80A3}">
+					<ChildrenList>
+						<Action Name="" ID="{EC146658-F3AA-462F-AF62-2CE6096F9444}" ShortID="455498781">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="WinNight" ID="{EDEBA769-31ED-4836-82B5-6CE289A7E713}" WorkUnitID="{A81D3656-2325-46B3-9A64-828E3D72236B}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="DayMusic" ID="{8F30BA2E-2CFE-44DB-A307-0044EF142F75}">
+					<ChildrenList>
+						<Action Name="" ID="{2F0E44C7-DA3E-4A25-BA02-537D0EAB3195}" ShortID="281343">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="DayMusic" ID="{B2F82A73-7A9B-47F1-BFDE-B086F87C6F7F}" WorkUnitID="{9277866B-E73D-4F74-B632-B6EF503A3632}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="NightMusic" ID="{99169D93-93FA-4FB5-B16D-9B9CD91A6107}">
+					<ChildrenList>
+						<Action Name="" ID="{D7443300-2415-4297-A207-5C2F21C8EF52}" ShortID="404499203">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="NightMusic" ID="{6ADE9F7E-4D99-4313-BD8E-A0459D935384}" WorkUnitID="{9277866B-E73D-4F74-B632-B6EF503A3632}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+			</ChildrenList>
+		</WorkUnit>
 	</Events>
 </WwiseDocument>

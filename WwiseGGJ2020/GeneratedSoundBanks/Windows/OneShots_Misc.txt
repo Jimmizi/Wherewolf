@@ -1,0 +1,16 @@
+Event	ID	Name			Wwise Object Path	Notes
+	779278001	Death			\Default Work Unit\Death	
+	1080363605	RiverFlow			\Default Work Unit\RiverFlow	
+	1404805401	DoorOpen			\Default Work Unit\DoorOpen	
+	1584507803	Click			\Default Work Unit\Click	
+	3663283413	Discovery			\Default Work Unit\Discovery	
+	4158285989	GameOver			\Default Work Unit\GameOver	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	264336220	RiverFlow	C:\Users\leoto\OneDrive\Documents\GitHub\GGJ2022\WwiseGGJ2020\.cache\Windows\SFX\RiverFlow_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\RiverFlow		9984144
+	268243322	DeathPH	C:\Users\leoto\OneDrive\Documents\GitHub\GGJ2022\WwiseGGJ2020\.cache\Windows\SFX\DeathPH_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\DeathPH		987572
+	316443751	ClickPH	C:\Users\leoto\OneDrive\Documents\GitHub\GGJ2022\WwiseGGJ2020\.cache\Windows\SFX\ClickPH_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\ClickPH		192144
+	351846115	GameOverPH	C:\Users\leoto\OneDrive\Documents\GitHub\GGJ2022\WwiseGGJ2020\.cache\Windows\SFX\GameOverPH_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\GameOverPH		1152144
+	838286607	DiscoveryPH	C:\Users\leoto\OneDrive\Documents\GitHub\GGJ2022\WwiseGGJ2020\.cache\Windows\SFX\DiscoveryPH_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\DiscoveryPH		801532
+	1061142557	DoorOpen	C:\Users\leoto\OneDrive\Documents\GitHub\GGJ2022\WwiseGGJ2020\.cache\Windows\SFX\DoorOpen_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\DoorOpen		300664
+

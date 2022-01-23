@@ -16,20 +16,130 @@
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 		</SoundBank>
-		<SoundBank Id="2276007709" Language="SFX" Hash="2775896564">
+		<SoundBank Id="2276007709" Language="SFX" Hash="733485923">
 			<ObjectPath>\SoundBanks\Default Work Unit\NightCycle</ObjectPath>
 			<ShortName>NightCycle</ShortName>
 			<Path>NightCycle.bnk</Path>
+			<IncludedEvents>
+				<Event Id="2993591201" Name="NightAmbience" ObjectPath="\Events\Default Work Unit\NightAmbience" DurationType="OneShot" DurationMin="52." DurationMax="52.">
+					<IncludedMemoryFiles>
+						<File Id="377469061" Language="SFX">
+							<ShortName>NightAmbiance.wav</ShortName>
+							<Path>SFX\NightAmbiance_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1030219198" Name="NightMusic" ObjectPath="\Events\Default Work Unit\NightMusic" DurationType="OneShot" DurationMin="108." DurationMax="108.">
+					<IncludedMemoryFiles>
+						<File Id="262542744" Language="SFX">
+							<ShortName>NightMusicPH.wav</ShortName>
+							<Path>SFX\NightMusicPH_D79FB2B7.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="4225174501" Name="WinNight" ObjectPath="\Events\Default Work Unit\WinNight" DurationType="OneShot" DurationMin="6." DurationMax="6.">
+					<IncludedMemoryFiles>
+						<File Id="238555111" Language="SFX">
+							<ShortName>WinNight.wav</ShortName>
+							<Path>SFX\WinNight_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+			</IncludedEvents>
 		</SoundBank>
-		<SoundBank Id="2769481441" Language="SFX" Hash="119993657">
+		<SoundBank Id="2769481441" Language="SFX" Hash="2936420101">
 			<ObjectPath>\SoundBanks\Default Work Unit\DayCycle</ObjectPath>
 			<ShortName>DayCycle</ShortName>
 			<Path>DayCycle.bnk</Path>
+			<IncludedEvents>
+				<Event Id="2285230397" Name="DayAmbience" ObjectPath="\Events\Default Work Unit\DayAmbience" DurationType="OneShot" DurationMin="52." DurationMax="52.">
+					<IncludedMemoryFiles>
+						<File Id="64093356" Language="SFX">
+							<ShortName>DayAmbience.wav</ShortName>
+							<Path>SFX\DayAmbience_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3231935906" Name="DayMusic" ObjectPath="\Events\Default Work Unit\DayMusic" DurationType="OneShot" DurationMin="64." DurationMax="64.">
+					<IncludedMemoryFiles>
+						<File Id="403956677" Language="SFX">
+							<ShortName>DayMusicPH.wav</ShortName>
+							<Path>SFX\DayMusicPH_D79FB2B7.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3244877202" Name="PositiveThingDay" ObjectPath="\Events\Default Work Unit\PositiveThingDay" DurationType="OneShot" DurationMin="3.5" DurationMax="3.5">
+					<IncludedMemoryFiles>
+						<File Id="6432356" Language="SFX">
+							<ShortName>PositiveThingDay.wav</ShortName>
+							<Path>SFX\PositiveThingDay_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2364012353" Name="WinDay" ObjectPath="\Events\Default Work Unit\WinDay" DurationType="OneShot" DurationMin="6.5" DurationMax="6.5">
+					<IncludedMemoryFiles>
+						<File Id="830455018" Language="SFX">
+							<ShortName>WinDay.wav</ShortName>
+							<Path>SFX\WinDay_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+			</IncludedEvents>
 		</SoundBank>
-		<SoundBank Id="3150299886" Language="SFX" Hash="2488354899">
-			<ObjectPath>\SoundBanks\Default Work Unit\OneShots</ObjectPath>
-			<ShortName>OneShots</ShortName>
-			<Path>OneShots.bnk</Path>
+		<SoundBank Id="2889100233" Language="SFX" Hash="4053247870">
+			<ObjectPath>\SoundBanks\Default Work Unit\OneShots_Misc</ObjectPath>
+			<ShortName>OneShots_Misc</ShortName>
+			<Path>OneShots_Misc.bnk</Path>
+			<IncludedEvents>
+				<Event Id="1584507803" Name="Click" ObjectPath="\Events\Default Work Unit\Click" DurationType="OneShot" DurationMin="1." DurationMax="1.">
+					<IncludedMemoryFiles>
+						<File Id="316443751" Language="SFX">
+							<ShortName>ClickPH.wav</ShortName>
+							<Path>SFX\ClickPH_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="779278001" Name="Death" ObjectPath="\Events\Default Work Unit\Death" DurationType="OneShot" DurationMin="5.142854" DurationMax="5.142854">
+					<IncludedMemoryFiles>
+						<File Id="268243322" Language="SFX">
+							<ShortName>DeathPH.wav</ShortName>
+							<Path>SFX\DeathPH_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3663283413" Name="Discovery" ObjectPath="\Events\Default Work Unit\Discovery" DurationType="OneShot" DurationMin="4.173896" DurationMax="4.173896">
+					<IncludedMemoryFiles>
+						<File Id="838286607" Language="SFX">
+							<ShortName>DiscoveryPH.wav</ShortName>
+							<Path>SFX\DiscoveryPH_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1404805401" Name="DoorOpen" ObjectPath="\Events\Default Work Unit\DoorOpen" DurationType="OneShot" DurationMin="1.565208" DurationMax="1.565208">
+					<IncludedMemoryFiles>
+						<File Id="1061142557" Language="SFX">
+							<ShortName>DoorOpen.wav</ShortName>
+							<Path>SFX\DoorOpen_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="4158285989" Name="GameOver" ObjectPath="\Events\Default Work Unit\GameOver" DurationType="OneShot" DurationMin="6." DurationMax="6.">
+					<IncludedMemoryFiles>
+						<File Id="351846115" Language="SFX">
+							<ShortName>GameOverPH.wav</ShortName>
+							<Path>SFX\GameOverPH_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1080363605" Name="RiverFlow" ObjectPath="\Events\Default Work Unit\RiverFlow" DurationType="OneShot" DurationMin="52." DurationMax="52.">
+					<IncludedMemoryFiles>
+						<File Id="264336220" Language="SFX">
+							<ShortName>RiverFlow.wav</ShortName>
+							<Path>SFX\RiverFlow_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+			</IncludedEvents>
 		</SoundBank>
 		<SoundBank Id="3313685232" Language="SFX" Hash="3826186805">
 			<ObjectPath>\SoundBanks\Default Work Unit\Voices</ObjectPath>

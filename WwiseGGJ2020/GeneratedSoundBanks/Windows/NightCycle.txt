@@ -1,0 +1,10 @@
+Event	ID	Name			Wwise Object Path	Notes
+	1030219198	NightMusic			\Default Work Unit\NightMusic	
+	2993591201	NightAmbience			\Default Work Unit\NightAmbience	
+	4225174501	WinNight			\Default Work Unit\WinNight	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	238555111	WinNight	C:\Users\leoto\OneDrive\Documents\GitHub\GGJ2022\WwiseGGJ2020\.cache\Windows\SFX\WinNight_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\WinNight		1152144
+	262542744	NightMusicPH	C:\Users\leoto\OneDrive\Documents\GitHub\GGJ2022\WwiseGGJ2020\.cache\Windows\SFX\NightMusicPH_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\NightMusic\NightMusicPH		19051344
+	377469061	NightAmbience	C:\Users\leoto\OneDrive\Documents\GitHub\GGJ2022\WwiseGGJ2020\.cache\Windows\SFX\NightAmbiance_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\NightAmbience		9984144
+

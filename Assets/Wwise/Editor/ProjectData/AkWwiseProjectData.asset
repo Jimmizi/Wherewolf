@@ -66,7 +66,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: 27d1893c93ae55499ad02c34935af1e0
     GuidInternal: 
-    m_lastTime: -8585587043536625274
+    m_lastTime: -8585587024044434919
     List:
     - name: DayCycle
       guid: bc075cfc31de414393ea76b6a8e3e228
@@ -96,9 +96,9 @@ MonoBehaviour:
         ObjectType: 7
         guid: b037a8bc50705742875dacdb506127d8
       Path: SoundBanks\Default Work Unit\NightCycle
-    - name: OneShots
+    - name: OneShots_Misc
       guid: 5052989fac3c0b418fa0585425d47d38
-      id: 3150299886
+      id: 2889100233
       PathAndIcons:
       - ElementName: SoundBanks
         ObjectType: 5
@@ -106,10 +106,10 @@ MonoBehaviour:
       - ElementName: Default Work Unit
         ObjectType: 12
         guid: 27d1893c93ae55499ad02c34935af1e0
-      - ElementName: OneShots
+      - ElementName: OneShots_Misc
         ObjectType: 7
         guid: 5052989fac3c0b418fa0585425d47d38
-      Path: SoundBanks\Default Work Unit\OneShots
+      Path: SoundBanks\Default Work Unit\OneShots_Misc
     - name: Voices
       guid: 42bca3e5b572d943a4a72ae3ea06c34c
       id: 3313685232
@@ -136,8 +136,229 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: 36187f795aed7446a84c500d367dfcf3
     GuidInternal: 
-    m_lastTime: -8585588854728538304
-    List: []
+    m_lastTime: -8585587024044294868
+    List:
+    - name: Click
+      guid: b7a7a6a7fa68554d854264b17a611a74
+      id: 1584507803
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 36187f795aed7446a84c500d367dfcf3
+      - ElementName: Click
+        ObjectType: 3
+        guid: b7a7a6a7fa68554d854264b17a611a74
+      Path: Events\Default Work Unit\Click
+      maxAttenuation: 0
+      maxDuration: 1
+      minDuration: 1
+    - name: DayAmbience
+      guid: 5b6ed9ad00e9af4b8714261614d3ada4
+      id: 2285230397
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 36187f795aed7446a84c500d367dfcf3
+      - ElementName: DayAmbience
+        ObjectType: 3
+        guid: 5b6ed9ad00e9af4b8714261614d3ada4
+      Path: Events\Default Work Unit\DayAmbience
+      maxAttenuation: 0
+      maxDuration: 52
+      minDuration: 52
+    - name: DayMusic
+      guid: 2eba308ffe2cdb44a3070044ef142f75
+      id: 3231935906
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 36187f795aed7446a84c500d367dfcf3
+      - ElementName: DayMusic
+        ObjectType: 3
+        guid: 2eba308ffe2cdb44a3070044ef142f75
+      Path: Events\Default Work Unit\DayMusic
+      maxAttenuation: 0
+      maxDuration: 64
+      minDuration: 64
+    - name: Death
+      guid: ec97fece91957f4eabfbd447225377f7
+      id: 779278001
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 36187f795aed7446a84c500d367dfcf3
+      - ElementName: Death
+        ObjectType: 3
+        guid: ec97fece91957f4eabfbd447225377f7
+      Path: Events\Default Work Unit\Death
+      maxAttenuation: 0
+      maxDuration: 5.142854
+      minDuration: 5.142854
+    - name: Discovery
+      guid: c189d6e6c1f0f541ac912a76e59d17a5
+      id: 3663283413
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 36187f795aed7446a84c500d367dfcf3
+      - ElementName: Discovery
+        ObjectType: 3
+        guid: c189d6e6c1f0f541ac912a76e59d17a5
+      Path: Events\Default Work Unit\Discovery
+      maxAttenuation: 0
+      maxDuration: 4.173896
+      minDuration: 4.173896
+    - name: DoorOpen
+      guid: 4bdfe9e0824bdd4bb0858a3d8867c5b3
+      id: 1404805401
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 36187f795aed7446a84c500d367dfcf3
+      - ElementName: DoorOpen
+        ObjectType: 3
+        guid: 4bdfe9e0824bdd4bb0858a3d8867c5b3
+      Path: Events\Default Work Unit\DoorOpen
+      maxAttenuation: 0
+      maxDuration: 1.565208
+      minDuration: 1.565208
+    - name: GameOver
+      guid: f54934c33ae66449af7bcc7e99795733
+      id: 4158285989
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 36187f795aed7446a84c500d367dfcf3
+      - ElementName: GameOver
+        ObjectType: 3
+        guid: f54934c33ae66449af7bcc7e99795733
+      Path: Events\Default Work Unit\GameOver
+      maxAttenuation: 0
+      maxDuration: 6
+      minDuration: 6
+    - name: NightAmbience
+      guid: d1ae6b73a644254a9fe4fe21fa75a128
+      id: 2993591201
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 36187f795aed7446a84c500d367dfcf3
+      - ElementName: NightAmbience
+        ObjectType: 3
+        guid: d1ae6b73a644254a9fe4fe21fa75a128
+      Path: Events\Default Work Unit\NightAmbience
+      maxAttenuation: 0
+      maxDuration: 52
+      minDuration: 52
+    - name: NightMusic
+      guid: 939d1699fa93b54fb16d9b9cd91a6107
+      id: 1030219198
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 36187f795aed7446a84c500d367dfcf3
+      - ElementName: NightMusic
+        ObjectType: 3
+        guid: 939d1699fa93b54fb16d9b9cd91a6107
+      Path: Events\Default Work Unit\NightMusic
+      maxAttenuation: 0
+      maxDuration: 108
+      minDuration: 108
+    - name: PositiveThingDay
+      guid: 8d19a217f5e63344b43a6ac6dbb65e32
+      id: 3244877202
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 36187f795aed7446a84c500d367dfcf3
+      - ElementName: PositiveThingDay
+        ObjectType: 3
+        guid: 8d19a217f5e63344b43a6ac6dbb65e32
+      Path: Events\Default Work Unit\PositiveThingDay
+      maxAttenuation: 0
+      maxDuration: 3.5
+      minDuration: 3.5
+    - name: RiverFlow
+      guid: fccb59e9f6bccd409165ddc4a2ec01b6
+      id: 1080363605
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 36187f795aed7446a84c500d367dfcf3
+      - ElementName: RiverFlow
+        ObjectType: 3
+        guid: fccb59e9f6bccd409165ddc4a2ec01b6
+      Path: Events\Default Work Unit\RiverFlow
+      maxAttenuation: 0
+      maxDuration: 52
+      minDuration: 52
+    - name: WinDay
+      guid: d4c89a7674f57548946491df7ea02e41
+      id: 2364012353
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 36187f795aed7446a84c500d367dfcf3
+      - ElementName: WinDay
+        ObjectType: 3
+        guid: d4c89a7674f57548946491df7ea02e41
+      Path: Events\Default Work Unit\WinDay
+      maxAttenuation: 0
+      maxDuration: 6.5
+      minDuration: 6.5
+    - name: WinNight
+      guid: 32be2ee632c82344b7d5dfbd8b9f80a3
+      id: 4225174501
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 36187f795aed7446a84c500d367dfcf3
+      - ElementName: WinNight
+        ObjectType: 3
+        guid: 32be2ee632c82344b7d5dfbd8b9f80a3
+      Path: Events\Default Work Unit\WinNight
+      maxAttenuation: 0
+      maxDuration: 6
+      minDuration: 6
   RtpcWwu:
   - PhysicalPath: Game Parameters\Default Work Unit.wwu
     PathAndIcons:
@@ -195,7 +416,7 @@ MonoBehaviour:
     m_lastTime: -8585588854728398269
     List: []
   ExpandedFileSystemItemIds: 
-  ExpandedWaapiItemIds: 0a0000000b000000
+  ExpandedWaapiItemIds: 06000000070000000a0000000b000000
   AutoSyncSelection: 0
   autoPopulateEnabled: 1
   currentDataSource: 0

@@ -4,12 +4,21 @@
 		<WorkUnit Name="Default Work Unit" ID="{3C89D127-AE93-4955-9AD0-2C34935AF1E0}" PersistMode="Standalone">
 			<ChildrenList>
 				<SoundBank Name="DayCycle" ID="{FC5C07BC-DE31-4341-93EA-76B6A8E3E228}">
-					<ObjectInclusionList/>
+					<ObjectInclusionList>
+						<ObjectRef Name="PositiveThingDay" ID="{17A2198D-E6F5-4433-B43A-6AC6DBB65E32}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="DayMusic" ID="{8F30BA2E-2CFE-44DB-A307-0044EF142F75}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="WinDay" ID="{769AC8D4-F574-4875-9464-91DF7EA02E41}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="DayAmbience" ID="{ADD96E5B-E900-4BAF-8714-261614D3ADA4}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
+					</ObjectInclusionList>
 					<ObjectExclusionList/>
 					<GameSyncExclusionList/>
 				</SoundBank>
 				<SoundBank Name="NightCycle" ID="{BCA837B0-7050-4257-875D-ACDB506127D8}">
-					<ObjectInclusionList/>
+					<ObjectInclusionList>
+						<ObjectRef Name="WinNight" ID="{E62EBE32-C832-4423-B7D5-DFBD8B9F80A3}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="NightAmbience" ID="{736BAED1-44A6-4A25-9FE4-FE21FA75A128}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="NightMusic" ID="{99169D93-93FA-4FB5-B16D-9B9CD91A6107}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
+					</ObjectInclusionList>
 					<ObjectExclusionList/>
 					<GameSyncExclusionList/>
 				</SoundBank>
@@ -18,8 +27,15 @@
 					<ObjectExclusionList/>
 					<GameSyncExclusionList/>
 				</SoundBank>
-				<SoundBank Name="OneShots" ID="{9F985250-3CAC-410B-8FA0-585425D47D38}">
-					<ObjectInclusionList/>
+				<SoundBank Name="OneShots_Misc" ID="{9F985250-3CAC-410B-8FA0-585425D47D38}">
+					<ObjectInclusionList>
+						<ObjectRef Name="RiverFlow" ID="{E959CBFC-BCF6-40CD-9165-DDC4A2EC01B6}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Discovery" ID="{E6D689C1-F0C1-41F5-AC91-2A76E59D17A5}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="GameOver" ID="{C33449F5-E63A-4964-AF7B-CC7E99795733}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="DoorOpen" ID="{E0E9DF4B-4B82-4BDD-B085-8A3D8867C5B3}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Click" ID="{A7A6A7B7-68FA-4D55-8542-64B17A611A74}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Death" ID="{CEFE97EC-9591-4E7F-ABFB-D447225377F7}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
+					</ObjectInclusionList>
 					<ObjectExclusionList/>
 					<GameSyncExclusionList/>
 				</SoundBank>

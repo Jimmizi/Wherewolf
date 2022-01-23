@@ -3,7 +3,7 @@
 	<AudioObjects>
 		<WorkUnit Name="Default Work Unit" ID="{A81D3656-2325-46B3-9A64-828E3D72236B}" PersistMode="Standalone">
 			<ChildrenList>
-				<Sound Name="Win_Day_Jingle" ID="{BFD29549-8400-47F5-BAE0-4D253E703434}" ShortID="130082436">
+				<Sound Name="DayAmbience" ID="{BCDD79F9-E22E-48E4-AD81-227E9C7BB48D}" ShortID="583251068">
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{CDCD3BA4-22DA-4D0F-B878-FE934CC7D525}"/>
@@ -12,7 +12,249 @@
 							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{307BF1A3-0DE3-4C85-8D5A-B0BBD3D00D42}"/>
 						</Reference>
 					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="DayAmbience" ID="{C0914FDA-BBDF-43AB-BAAE-820CBC188C2F}">
+							<Language>SFX</Language>
+							<AudioFile>DayAmbience.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="64093356"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
 					<ObjectLists/>
+					<ActiveSourceList>
+						<ActiveSource Name="DayAmbience" ID="{C0914FDA-BBDF-43AB-BAAE-820CBC188C2F}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="PositiveThingDay" ID="{43C0E6A8-6452-4554-B470-EBB213C47EC6}" ShortID="464932572">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{CDCD3BA4-22DA-4D0F-B878-FE934CC7D525}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{307BF1A3-0DE3-4C85-8D5A-B0BBD3D00D42}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="PositiveThingDay" ID="{89C9BE2C-3233-4606-8252-431ED0B89476}">
+							<Language>SFX</Language>
+							<AudioFile>PositiveThingDay.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="6432356"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ObjectLists/>
+					<ActiveSourceList>
+						<ActiveSource Name="PositiveThingDay" ID="{89C9BE2C-3233-4606-8252-431ED0B89476}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="WinDay" ID="{F2110C49-23BD-49B1-B2B7-FF84A5A28234}" ShortID="480232162">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{CDCD3BA4-22DA-4D0F-B878-FE934CC7D525}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{307BF1A3-0DE3-4C85-8D5A-B0BBD3D00D42}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="WinDay" ID="{12AE88BD-188B-4048-A118-D55461F706DB}">
+							<Language>SFX</Language>
+							<AudioFile>WinDay.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="830455018"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ObjectLists/>
+					<ActiveSourceList>
+						<ActiveSource Name="WinDay" ID="{12AE88BD-188B-4048-A118-D55461F706DB}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="NightAmbience" ID="{8F048B3F-807A-4393-ADD3-653410BA89F6}" ShortID="557540294">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{CDCD3BA4-22DA-4D0F-B878-FE934CC7D525}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{307BF1A3-0DE3-4C85-8D5A-B0BBD3D00D42}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="NightAmbiance" ID="{D876EDC7-02F5-47B4-A29C-DFE58CBF1BC8}">
+							<Language>SFX</Language>
+							<AudioFile>NightAmbiance.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="377469061"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ObjectLists/>
+					<ActiveSourceList>
+						<ActiveSource Name="NightAmbiance" ID="{D876EDC7-02F5-47B4-A29C-DFE58CBF1BC8}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="WinNight" ID="{EDEBA769-31ED-4836-82B5-6CE289A7E713}" ShortID="13334111">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{CDCD3BA4-22DA-4D0F-B878-FE934CC7D525}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{307BF1A3-0DE3-4C85-8D5A-B0BBD3D00D42}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="WinNight" ID="{629C8F86-55E4-446E-81F2-7EA83D156684}">
+							<Language>SFX</Language>
+							<AudioFile>WinNight.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="238555111"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ObjectLists/>
+					<ActiveSourceList>
+						<ActiveSource Name="WinNight" ID="{629C8F86-55E4-446E-81F2-7EA83D156684}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="ClickPH" ID="{D0EBDFE8-81A6-4DFD-B03D-CF11CBBA89F2}" ShortID="195754370">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{CDCD3BA4-22DA-4D0F-B878-FE934CC7D525}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{307BF1A3-0DE3-4C85-8D5A-B0BBD3D00D42}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="ClickPH" ID="{D185E220-A8EA-4DBA-9A37-9F1F115B5281}">
+							<Language>SFX</Language>
+							<AudioFile>ClickPH.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="316443751"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ObjectLists/>
+					<ActiveSourceList>
+						<ActiveSource Name="ClickPH" ID="{D185E220-A8EA-4DBA-9A37-9F1F115B5281}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="DeathPH" ID="{748FBBF6-D19D-4742-86B5-C8D1EFDDED5B}" ShortID="89453556">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{CDCD3BA4-22DA-4D0F-B878-FE934CC7D525}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{307BF1A3-0DE3-4C85-8D5A-B0BBD3D00D42}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="DeathPH" ID="{96C98FF0-EBF3-4072-9D94-0FDA2F772A74}">
+							<Language>SFX</Language>
+							<AudioFile>DeathPH.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="268243322"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ObjectLists/>
+					<ActiveSourceList>
+						<ActiveSource Name="DeathPH" ID="{96C98FF0-EBF3-4072-9D94-0FDA2F772A74}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="DiscoveryPH" ID="{7D34E0A2-AD08-4729-9027-F60988F33B14}" ShortID="931547117">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{CDCD3BA4-22DA-4D0F-B878-FE934CC7D525}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{307BF1A3-0DE3-4C85-8D5A-B0BBD3D00D42}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="DiscoveryPH" ID="{C38CE2E6-3A00-4E14-AE47-07A7E18C2F19}">
+							<Language>SFX</Language>
+							<AudioFile>DiscoveryPH.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="838286607"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ObjectLists/>
+					<ActiveSourceList>
+						<ActiveSource Name="DiscoveryPH" ID="{C38CE2E6-3A00-4E14-AE47-07A7E18C2F19}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="DoorOpen" ID="{F38F6BAF-D9D9-4544-86F3-5632ECCD0179}" ShortID="911467831">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{CDCD3BA4-22DA-4D0F-B878-FE934CC7D525}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{307BF1A3-0DE3-4C85-8D5A-B0BBD3D00D42}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="DoorOpen" ID="{1BC2D2AF-4FAC-4F1B-A47C-BAA36032F863}">
+							<Language>SFX</Language>
+							<AudioFile>DoorOpen.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="1061142557"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ObjectLists/>
+					<ActiveSourceList>
+						<ActiveSource Name="DoorOpen" ID="{1BC2D2AF-4FAC-4F1B-A47C-BAA36032F863}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="GameOverPH" ID="{FB124490-D104-4A5B-88A1-943C433193D0}" ShortID="1033602566">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{CDCD3BA4-22DA-4D0F-B878-FE934CC7D525}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{307BF1A3-0DE3-4C85-8D5A-B0BBD3D00D42}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="GameOverPH" ID="{715BBCE2-D621-4FBF-8C72-2F3BD0CFEE59}">
+							<Language>SFX</Language>
+							<AudioFile>GameOverPH.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="351846115"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ObjectLists/>
+					<ActiveSourceList>
+						<ActiveSource Name="GameOverPH" ID="{715BBCE2-D621-4FBF-8C72-2F3BD0CFEE59}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="RiverFlow" ID="{C85096F7-162F-4282-9FD5-3E13BA0B22A0}" ShortID="700025577">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{CDCD3BA4-22DA-4D0F-B878-FE934CC7D525}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{307BF1A3-0DE3-4C85-8D5A-B0BBD3D00D42}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="RiverFlow" ID="{E4EE9814-5380-452E-B66D-06CC130183FE}">
+							<Language>SFX</Language>
+							<AudioFile>RiverFlow.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="264336220"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ObjectLists/>
+					<ActiveSourceList>
+						<ActiveSource Name="RiverFlow" ID="{E4EE9814-5380-452E-B66D-06CC130183FE}" Platform="Linked"/>
+					</ActiveSourceList>
 				</Sound>
 			</ChildrenList>
 		</WorkUnit>
