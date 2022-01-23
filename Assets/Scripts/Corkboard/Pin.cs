@@ -6,14 +6,16 @@ using UnityEngine.EventSystems;
 public class Pin : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler, IDropHandler
 {
     [SerializeField]
-    StringRenderer stringPrefab;
+    PinString stringPrefab;
 
     [SerializeField]
     GameObject stringHolder;
 
-    StringRenderer stringObject;
+    PinString stringObject;
     RectTransform rectTransform;
-    bool stringAttached;
+
+    List<PinString> lineStarts = new List<PinString>();
+    List<PinString> lineEnds = new List<PinString>();
 
     // Start is called before the first frame update
     void Start()
@@ -24,26 +26,49 @@ public class Pin : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandl
     // Update is called once per frame
     void Update()
     {
+        if (rectTransform.hasChanged)
+        {
+            foreach(PinString pinString in lineStarts)
+            {
+                if (pinString)
+                {
+                    pinString.LineStart = rectTransform.position;
+                }
+            }
+
+            foreach (PinString pinString in lineEnds)
+            {
+                if (pinString)
+                {
+                    pinString.LineEnd = rectTransform.position;
+                }
+            }
+
+            rectTransform.hasChanged = false;
+        }    
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        stringObject = Instantiate<StringRenderer>(stringPrefab, stringHolder.transform);
+        stringObject = Instantiate<PinString>(stringPrefab, stringHolder.transform);
         stringObject.LineStart = rectTransform.position;
         stringObject.LineEnd = rectTransform.position;
-        stringAttached = false;
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        stringObject.LineEnd = eventData.position;
+        if (stringObject)
+        {
+            stringObject.LineEnd = eventData.position;
+        }
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        if (!stringAttached)
+        if (stringObject)
         {
-            Destroy(stringObject);
+            Destroy(stringObject.gameObject);
+            stringObject = null;
         }
     }
 
@@ -53,10 +78,34 @@ public class Pin : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandl
         {
             var otherPin = eventData.pointerDrag.GetComponent<Pin>();
             if (otherPin)
-            {
-                otherPin.stringAttached = true;
+            {                
                 otherPin.stringObject.LineEnd = rectTransform.position;
+                otherPin.lineStarts.Add(otherPin.stringObject);
+                lineEnds.Add(otherPin.stringObject);
+                otherPin.stringObject = null;
+
+                RemoveMissingStrings();
+                otherPin.RemoveMissingStrings();
             }
         }
     }
+
+    private void RemoveMissingStrings()
+    {
+        for (var i = lineStarts.Count - 1; i > -1; i--)
+        {
+            if (!lineStarts[i])
+            {
+                lineStarts.RemoveAt(i);
+            }
+        }
+
+        for (var i = lineEnds.Count - 1; i > -1; i--)
+        {
+            if (!lineEnds[i])
+            {
+                lineEnds.RemoveAt(i);
+            }
+        }
+    }    
 }
