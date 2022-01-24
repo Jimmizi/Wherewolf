@@ -8,4 +8,5 @@ public static class Service
     public static PopulationManager Population;
     public static ConfigManager Config;
     public static WerewolfGame Game;
+    public static ClueManager Clue;
 }

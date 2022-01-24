@@ -285,11 +285,18 @@ public class PopulationManager : MonoBehaviour
 
             vPos.y += iTextHeight;
 
+            bool bFoundCurrentTask = false;
+
             for (int i = 0; i < Math.Max(c.TaskSchedule.DayTasks.Count, c.TaskSchedule.NightTasks.Count); ++i)
             {
                 if (i < c.TaskSchedule.DayTasks.Count)
                 {
                     bool bIsActive = c.TaskSchedule.DayTasks[i] == c.CurrentTask;
+
+                    if(bIsActive)
+                    {
+                        bFoundCurrentTask = true;
+                    }
 
                     GUI.Label(new Rect(vPos.x + 16, vPos.y, iColumnWidth / 2, iTextBoxHeight),
                         string.Format("{0}{1}{2}", bIsActive ? "> " : "", c.TaskSchedule.DayTasks[i].Type.ToString(), bIsActive ? " <" : ""));
@@ -298,6 +305,11 @@ public class PopulationManager : MonoBehaviour
                 if (i < c.TaskSchedule.NightTasks.Count)
                 {
                     bool bIsActive = c.TaskSchedule.NightTasks[i] == c.CurrentTask;
+
+                    if (bIsActive)
+                    {
+                        bFoundCurrentTask = true;
+                    }
 
                     GUI.Label(new Rect(vPos.x + 16 + iColumnWidth / 2, vPos.y, iColumnWidth / 2, iTextBoxHeight),
                         string.Format("{0}{1}{2}", bIsActive ? "> " : "", c.TaskSchedule.NightTasks[i].Type.ToString(), bIsActive ? " <" : ""));
@@ -311,7 +323,9 @@ public class PopulationManager : MonoBehaviour
             if (!isSleeping)
             {
                 GUI.Label(new Rect(vPos.x + 16, vPos.y, iColumnWidth, iTextBoxHeight),
-                    string.Format("TaskTimer: {0}/{1}", (c.CurrentTask != null ? c.CurrentTask.Timer.ToString("0.0") : "-"),
+                    string.Format("{0}TaskTimer: {1}/{2}", 
+                    (bFoundCurrentTask ? "" : "(Deviated) "),
+                    (c.CurrentTask != null ? c.CurrentTask.Timer.ToString("0.0") : "-"),
                     (c.CurrentTask != null ? c.CurrentTask.Duration.ToString("0.0") : "-")));
             }
             else

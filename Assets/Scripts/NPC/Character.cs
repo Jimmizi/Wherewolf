@@ -109,10 +109,15 @@ public class Character
                 return;
             }
 
+            bool bDeviate = false;
+
             // We still have tasks left
             if (currentTaskIndex + 1 < t.Count)
             {
                 currentTaskIndex++;
+
+                // Give a small change for characters to deviate from their schedule, so that they're not 100% predictable.
+                bDeviate = UnityEngine.Random.Range(0.0f, 100.0f) < 5.0f;
             }
             // Otherwise loop to the start
             else
@@ -120,10 +125,18 @@ public class Character
                 currentTaskIndex = 0;
             }
 
-            Debug.Assert(currentTaskIndex < t.Count);
-            if (currentTaskIndex < t.Count)
+            if (!bDeviate)
             {
-                CurrentTask = t[currentTaskIndex];
+                Debug.Assert(currentTaskIndex < t.Count);
+                if (currentTaskIndex < t.Count)
+                {
+                    CurrentTask = t[currentTaskIndex];
+                }
+            }
+            else
+            {
+                // If deviating from the schedule, get a random task type that isn't what we would have picked next
+                CurrentTask = new Task(this, Task.GetRandomTaskType(t[currentTaskIndex].Type, Service.Game.TimeOfDay == WerewolfGame.TOD.Day));
             }
         }
 

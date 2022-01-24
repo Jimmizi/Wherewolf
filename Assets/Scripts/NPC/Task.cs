@@ -12,6 +12,8 @@ public class Task
         Work
     }
 
+    public static TaskType InvalidTaskType => (TaskType)(-1);
+
     public Task(Character owner, TaskType eType)
     {
         TaskOwner = owner;
@@ -43,6 +45,22 @@ public class Task
     public float Timer;
 
     public bool ShouldFinish => Duration > 0.0f && Timer >= Duration;
+
+    public static TaskType GetRandomTaskType(TaskType eExcludeType = (TaskType)(-1), bool bDayTask = true)
+    {
+        List<TaskType> eTaskTypes = new List<TaskType>();
+
+        eTaskTypes.Add(TaskType.WanderArea);
+        eTaskTypes.Add(TaskType.Idle);
+        eTaskTypes.Add(bDayTask ? TaskType.Work : TaskType.Sleep);
+
+        if (eExcludeType != InvalidTaskType)
+        {
+            eTaskTypes.Remove(eExcludeType);
+        }
+
+        return eTaskTypes[UnityEngine.Random.Range(0, eTaskTypes.Count)];
+    }
 
     void SetupWander()
     {
