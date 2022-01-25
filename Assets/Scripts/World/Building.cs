@@ -10,6 +10,8 @@ public class Building : MonoBehaviour
     public Character Owner = null;
     public bool IsHome = false;
 
+    public int Location;
+
     // Start is called before the first frame update
     void Start()
     {

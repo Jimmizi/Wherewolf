@@ -55,5 +55,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Building_Bank
       objectReference: {fileID: 0}
+    - target: {fileID: 7585494559910454558, guid: 5a67f8242e797a9479dc7a65fbb92cfe, type: 3}
+      propertyPath: BuildingType
+      value: 29
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5a67f8242e797a9479dc7a65fbb92cfe, type: 3}

@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class ClueManager : MonoBehaviour
 {
-    
+    public Character NextVictim;
+    public int NextVictimLocation;
 
     // Start is called before the first frame update
     void Awake()

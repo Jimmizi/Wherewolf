@@ -57,7 +57,6 @@ public class Emote
         Location_7,
         Location_8,
         Location_9,
-        Location_10,
 
         Occupation_Bank,
         Occupation_Hospital,
@@ -96,6 +95,10 @@ public class Emote
         Gossip_RelationshipFight,
         Gossip_RelationshipMarriage,
     }
+
+    public static int LocationMin => 0;
+    public static int LocationMax => 8;
+    public static EmoteSubType GetLocationEnum(int iLocation) => EmoteSubType.Location_1 + iLocation;
 
     public static EmoteSubType InvalidSubType => (EmoteSubType)(-1);
 

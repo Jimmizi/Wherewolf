@@ -19,8 +19,11 @@ public class Character
     public string Name;
     public SortedDictionary<Descriptor, List<Emote>> Descriptors = new SortedDictionary<Descriptor, List<Emote>>();
     public bool IsWerewolf;
+    public bool IsVictim;
     public bool IsAlive = true;
     public Schedule TaskSchedule = new Schedule();
+
+    public int Index;
 
     public Task CurrentTask;
     public Building Home;
@@ -92,6 +95,32 @@ public class Character
         return grabbedList;
     }
 
+    public bool CanBeKilledByWerewolf(WerewolfGame.TOD eTod, bool bSleepImmunity = true)
+    {
+        if(!IsAlive)
+        {
+            return false;
+        }
+
+        if(IsWerewolf)
+        {
+            return false;
+        }
+
+        if(eTod == WerewolfGame.TOD.Night && bSleepImmunity)
+        {
+            if(TaskSchedule?.NightTasks != null && TaskSchedule.NightTasks.Count > 0)
+            {
+                if(TaskSchedule.NightTasks[0].Type == Task.TaskType.Sleep)
+                {
+                    return false;
+                }
+            }
+        }
+
+        return true;
+    }
+
     // Private functions
 
     void GotoNextTask()
@@ -136,7 +165,7 @@ public class Character
             else
             {
                 // If deviating from the schedule, get a random task type that isn't what we would have picked next
-                CurrentTask = new Task(this, Task.GetRandomTaskType(t[currentTaskIndex].Type, Service.Game.TimeOfDay == WerewolfGame.TOD.Day));
+                CurrentTask = new Task(this, Task.GetRandomTaskType(t[currentTaskIndex].Type, Service.Game.CurrentTimeOfDay == WerewolfGame.TOD.Day));
             }
         }
 
@@ -151,31 +180,28 @@ public class Character
 
         if(CurrentTask == null)
         {
-            if(Service.Game.TimeOfDay == WerewolfGame.TOD.Day)
+            if(Service.Game.CurrentTimeOfDay == WerewolfGame.TOD.Day)
             {
                 TryGetFirstTask(ref TaskSchedule.DayTasks);
             }
-            else if (Service.Game.TimeOfDay == WerewolfGame.TOD.Night)
+            else if (Service.Game.CurrentTimeOfDay == WerewolfGame.TOD.Night)
             {
                 TryGetFirstTask(ref TaskSchedule.NightTasks);
             }
         }
         else
         {
-            if (Service.Game.TimeOfDay == WerewolfGame.TOD.Day)
+            if (Service.Game.CurrentTimeOfDay == WerewolfGame.TOD.Day)
             {
                 TryNextTask(ref TaskSchedule.DayTasks);
             }
-            else if (Service.Game.TimeOfDay == WerewolfGame.TOD.Night)
+            else if (Service.Game.CurrentTimeOfDay == WerewolfGame.TOD.Night)
             {
                 TryNextTask(ref TaskSchedule.NightTasks);
             }
         }
-    }
 
-    public void Start()
-    {
-        
+        CurrentTask.UpdatePosition();
     }
 
     public void Update()
@@ -204,5 +230,20 @@ public class Character
 
         CurrentTask = null;
         currentTaskIndex = 0;
+
+        // 20% chance of adding in a sleep for the current task, so that the 
+        //  character doesn't appear during this phase at all.
+        if (Service.Game.CurrentTimeOfDay == WerewolfGame.TOD.Day 
+            && !IsWerewolf 
+            && !IsVictim
+            && UnityEngine.Random.Range(0.0f, 100.0f) <= 20)
+        {
+            // Make sure we're not by chance putting loads of character to sleep
+            int iNumberThatWillSleep = Service.Population.GetNumberOfCharactersThatWillSleep(WerewolfGame.TOD.Day);
+            if(iNumberThatWillSleep < 7)
+            {
+                CurrentTask = new Task(this, Task.TaskType.Sleep);
+            }
+        }
     }
 }

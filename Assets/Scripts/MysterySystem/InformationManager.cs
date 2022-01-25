@@ -20,7 +20,6 @@ public class InformationManager : MonoBehaviour
     private List<string> availableNamePool = new List<string>();
     private List<string> inUseNamePool = new List<string>();
 
-
     // API Access
 
     public string GetRandomName()
@@ -38,8 +37,6 @@ public class InformationManager : MonoBehaviour
     {
         return EmoteMap[eType][UnityEngine.Random.Range(0, EmoteMap[eType].Count)];
     }
-
-
 
 
     public void Awake()
@@ -522,7 +519,7 @@ public class InformationManager : MonoBehaviour
             {
                 newEmote.Type = Emote.EmoteType.Color;
             }
-            else if (i >= (int)Emote.EmoteSubType.Location_1 && i <= (int)Emote.EmoteSubType.Location_10)
+            else if (i >= (int)Emote.EmoteSubType.Location_1 && i <= (int)Emote.EmoteSubType.Location_9)
             {
                 newEmote.Type = Emote.EmoteType.Location;
             }

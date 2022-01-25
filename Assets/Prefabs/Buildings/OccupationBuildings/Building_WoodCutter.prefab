@@ -56,8 +56,12 @@ PrefabInstance:
       value: Building_WoodCutter
       objectReference: {fileID: 0}
     - target: {fileID: 7585494559910454558, guid: 5a67f8242e797a9479dc7a65fbb92cfe, type: 3}
+      propertyPath: Location
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7585494559910454558, guid: 5a67f8242e797a9479dc7a65fbb92cfe, type: 3}
       propertyPath: BuildingType
-      value: 36
+      value: 35
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5a67f8242e797a9479dc7a65fbb92cfe, type: 3}

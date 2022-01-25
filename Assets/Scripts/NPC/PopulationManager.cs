@@ -13,8 +13,12 @@ public class PopulationManager : MonoBehaviour
     private Vector2 vScrollPosition = new Vector2();
     private Vector2 vScrollPositionForCounts = new Vector2();
     private Vector2 vScrollPositionForInfo = new Vector2();
-    private bool bShowDebug = false;
+#if UNITY_EDITOR
+    public bool bShowDebug = false;
+#endif
     private bool bDoneCharacterGeneration = false;
+
+    private Dictionary<int, List<int>> adjacentLocationMap = new Dictionary<int, List<int>>();
 
     // API
 
@@ -31,12 +35,8 @@ public class PopulationManager : MonoBehaviour
 
     void Start()
     {
+        GenerateAdjacentLocationData();
         InitialisePopulation();
-
-        foreach (var c in ActiveCharacters)
-        {
-            c.Start();
-        }
     }
 
     void Update()
@@ -44,9 +44,9 @@ public class PopulationManager : MonoBehaviour
 #if UNITY_EDITOR
         if(Input.GetKeyDown(KeyCode.F1))
         {
+            Service.PhaseSolve.bShowDebug = false;
             bShowDebug = !bShowDebug;
         }
-
         if(bShowDebug && Input.GetKeyDown(KeyCode.F5))
         {
             foreach(var c in ActiveCharacters)
@@ -62,7 +62,8 @@ public class PopulationManager : MonoBehaviour
         }
 #endif
 
-        if (CharacterCreationDone)
+        if (CharacterCreationDone
+            && Service.Game.CanUpdate)
         {
             foreach (var c in ActiveCharacters)
             {
@@ -71,6 +72,8 @@ public class PopulationManager : MonoBehaviour
         }
     }
 
+
+    #region DEBUG
 #if UNITY_EDITOR
 
     const int iTextHeight = 16;
@@ -87,14 +90,14 @@ public class PopulationManager : MonoBehaviour
             return; 
         }
 
-        GUI.Box(new Rect(15, 15, 1050, 700), "");
+        GUI.Box(new Rect(30, 30, 1050, 700), "");
         GUI.Label(new Rect(6, 0, 200, 24), "Population Debug");
 
         GUI.Label(new Rect(206, 0, 400, 24), "F5 - Reroll population");
 
         if (ActiveCharacters.Count > 0)
         {
-            vScrollPosition = GUI.BeginScrollView(new Rect(20, 20, 590, 690), vScrollPosition, new Rect(0, 0, 590, 2500));
+            vScrollPosition = GUI.BeginScrollView(new Rect(35, 35, 590, 690), vScrollPosition, new Rect(0, 0, 590, 2500));
             {
                 Vector2 vPosition = new Vector2(5, 5);
                 RenderCharacterDebug(ref vPosition, GetWerewolf(), werewolfIndex);
@@ -141,7 +144,7 @@ public class PopulationManager : MonoBehaviour
                 }
             }
 
-            vScrollPositionForCounts = GUI.BeginScrollView(new Rect(610, 20, 250, 690), vScrollPositionForCounts, new Rect(0, 0, 200, 1200));
+            vScrollPositionForCounts = GUI.BeginScrollView(new Rect(625, 35, 250, 690), vScrollPositionForCounts, new Rect(0, 0, 200, 1200));
             {
                 Vector2 vPosition = new Vector2(5, 5);
                 Character ww = GetWerewolf();
@@ -218,7 +221,7 @@ public class PopulationManager : MonoBehaviour
             }
             GUI.EndScrollView();
 
-            vScrollPositionForInfo = GUI.BeginScrollView(new Rect(860, 20, 190, 690), vScrollPositionForInfo, new Rect(0, 0, 200, 1200));
+            vScrollPositionForInfo = GUI.BeginScrollView(new Rect(875, 35, 190, 690), vScrollPositionForInfo, new Rect(0, 0, 200, 1200));
             {
                 Vector2 vPosition = new Vector2(5, 5);
 
@@ -236,7 +239,6 @@ public class PopulationManager : MonoBehaviour
             GUI.EndScrollView();
         }
     }
-
     private void RenderCharacterDebug(ref Vector2 vPos, Character c, int iIndex)
     {
         string MakeStringFromDescriptor(string sLabel, Character.Descriptor eType)
@@ -275,72 +277,74 @@ public class PopulationManager : MonoBehaviour
         GUI.Label(new Rect(vPos.x + 16, vPos.y, iTextBoxWidth, iTextBoxHeight), string.Format("Home: {0}", c.Home ? c.Home.name : "NULL"));
         vPos.y += iTextHeight;
 
-        if (!c.IsWerewolf)
+        // Tasks
+
+        GUI.contentColor = new Color(1.0f, 0.5f, 0.5f);
+        GUI.Label(new Rect(vPos.x + 16, vPos.y, iColumnWidth / 2, iTextBoxHeight), "Day Tasks");
+        GUI.Label(new Rect(vPos.x + 16 + iColumnWidth / 2, vPos.y, iColumnWidth / 2, iTextBoxHeight), "Night Tasks");
+
+        GUI.contentColor = new Color(0.75f, 0.5f, 0.5f);
+
+        vPos.y += iTextHeight;
+
+        bool bFoundCurrentTask = false;
+
+        for (int i = 0; i < Math.Max(c.TaskSchedule.DayTasks.Count, c.TaskSchedule.NightTasks.Count); ++i)
         {
-            GUI.contentColor = new Color(1.0f, 0.5f, 0.5f);
-            GUI.Label(new Rect(vPos.x + 16, vPos.y, iColumnWidth / 2, iTextBoxHeight), "Day Tasks");
-            GUI.Label(new Rect(vPos.x + 16 + iColumnWidth / 2, vPos.y, iColumnWidth / 2, iTextBoxHeight), "Night Tasks");
-
-            GUI.contentColor = new Color(0.75f, 0.5f, 0.5f);
-
-            vPos.y += iTextHeight;
-
-            bool bFoundCurrentTask = false;
-
-            for (int i = 0; i < Math.Max(c.TaskSchedule.DayTasks.Count, c.TaskSchedule.NightTasks.Count); ++i)
+            if (i < c.TaskSchedule.DayTasks.Count)
             {
-                if (i < c.TaskSchedule.DayTasks.Count)
+                bool bIsActive = c.TaskSchedule.DayTasks[i] == c.CurrentTask;
+
+                if(bIsActive)
                 {
-                    bool bIsActive = c.TaskSchedule.DayTasks[i] == c.CurrentTask;
-
-                    if(bIsActive)
-                    {
-                        bFoundCurrentTask = true;
-                    }
-
-                    GUI.Label(new Rect(vPos.x + 16, vPos.y, iColumnWidth / 2, iTextBoxHeight),
-                        string.Format("{0}{1}{2}", bIsActive ? "> " : "", c.TaskSchedule.DayTasks[i].Type.ToString(), bIsActive ? " <" : ""));
+                    bFoundCurrentTask = true;
                 }
 
-                if (i < c.TaskSchedule.NightTasks.Count)
+                GUI.Label(new Rect(vPos.x + 16, vPos.y, iColumnWidth / 2, iTextBoxHeight),
+                    string.Format("{0}{1}{2}", bIsActive ? "> " : "", c.TaskSchedule.DayTasks[i].Type.ToString(), bIsActive ? " <" : ""));
+            }
+
+            if (i < c.TaskSchedule.NightTasks.Count)
+            {
+                bool bIsActive = c.TaskSchedule.NightTasks[i] == c.CurrentTask;
+
+                if (bIsActive)
                 {
-                    bool bIsActive = c.TaskSchedule.NightTasks[i] == c.CurrentTask;
-
-                    if (bIsActive)
-                    {
-                        bFoundCurrentTask = true;
-                    }
-
-                    GUI.Label(new Rect(vPos.x + 16 + iColumnWidth / 2, vPos.y, iColumnWidth / 2, iTextBoxHeight),
-                        string.Format("{0}{1}{2}", bIsActive ? "> " : "", c.TaskSchedule.NightTasks[i].Type.ToString(), bIsActive ? " <" : ""));
+                    bFoundCurrentTask = true;
                 }
 
-                vPos.y += iTextHeight;
+                GUI.Label(new Rect(vPos.x + 16 + iColumnWidth / 2, vPos.y, iColumnWidth / 2, iTextBoxHeight),
+                    string.Format("{0}{1}{2}", bIsActive ? "> " : "", c.TaskSchedule.NightTasks[i].Type.ToString(), bIsActive ? " <" : ""));
             }
 
-            bool isSleeping = c.CurrentTask != null && c.CurrentTask.Type == Task.TaskType.Sleep;
-
-            if (!isSleeping)
-            {
-                GUI.Label(new Rect(vPos.x + 16, vPos.y, iColumnWidth, iTextBoxHeight),
-                    string.Format("{0}TaskTimer: {1}/{2}", 
-                    (bFoundCurrentTask ? "" : "(Deviated) "),
-                    (c.CurrentTask != null ? c.CurrentTask.Timer.ToString("0.0") : "-"),
-                    (c.CurrentTask != null ? c.CurrentTask.Duration.ToString("0.0") : "-")));
-            }
-            else
-            {
-                GUI.Label(new Rect(vPos.x + 16, vPos.y, iColumnWidth, iTextBoxHeight), "Doin a sleep");
-            }
             vPos.y += iTextHeight;
-
-            GUI.contentColor = Color.white;
         }
+
+        bool isSleeping = c.CurrentTask != null && c.CurrentTask.Type == Task.TaskType.Sleep;
+
+        if (!isSleeping)
+        {
+            GUI.Label(new Rect(vPos.x + 16, vPos.y, iColumnWidth, iTextBoxHeight),
+                string.Format("{0}TaskTimer: {1}/{2}", 
+                (bFoundCurrentTask ? "" : "(Deviated) "),
+                (c.CurrentTask != null ? c.CurrentTask.Timer.ToString("0.0") : "-"),
+                (c.CurrentTask != null ? c.CurrentTask.Duration.ToString("0.0") : "-")));
+        }
+        else
+        {
+            GUI.Label(new Rect(vPos.x + 16, vPos.y, iColumnWidth, iTextBoxHeight), "Doin a sleep");
+        }
+        vPos.y += iTextHeight;
+
+        GUI.contentColor = Color.white;
 
         vPos.y += iPaddingBetweenCharacters;
     }
-#endif
 
+#endif
+    #endregion
+
+    #region Population Init
     IEnumerator InitialisePopulationStaggered()
     {
         int iNumberOfCharactersToMake = 20;
@@ -359,6 +363,7 @@ public class PopulationManager : MonoBehaviour
         for (int i = 0; i < iNumberOfCharactersToMake - 1; ++i)
         {
             Character characterAdded = AddCharacter(descriptorsToMatch);
+            characterAdded.Index = i + 1;
             yield return new WaitForSeconds(0.04f);
 
             // First character made copies two, and then passes one onto the next character made
@@ -470,7 +475,7 @@ public class PopulationManager : MonoBehaviour
         Debug.Assert(iCurrentHomeGiveIndex == ActiveCharacters.Count, "Not all characters have a home, only " + iCurrentHomeGiveIndex + " characters do.");
 
         // Give the NPCs schedules to follow
-        foreach(var c in ActiveCharacters)
+        foreach (var c in ActiveCharacters)
         {
             if(!c.IsWerewolf)
             {
@@ -571,6 +576,8 @@ public class PopulationManager : MonoBehaviour
         // Between 1 and 3 steps to a schedule. If they have a job, have at least 2 minimum
         int iScheduleSteps = UnityEngine.Random.Range(bHasOccupation ? 2 : 1, 4);
 
+        int iNumberImmediatelySleeping = 0;
+
         bool bHasAddedJobTask = false;
         for(int i = 0; i < iScheduleSteps; ++i)
         {
@@ -587,6 +594,12 @@ public class PopulationManager : MonoBehaviour
             {
                 var iRandTask = UnityEngine.Random.Range(0, 3);
 
+                // Fail-safe so that we don't just get a lot of characters immediately going to bed at night
+                if(i == 0 && !bIsDaySchedule && iNumberImmediatelySleeping >= 5)
+                {
+                    iRandTask = 0;
+                }
+
                 if (iRandTask == 2) // Work/Sleep
                 {
                     if (bIsDaySchedule)
@@ -600,6 +613,11 @@ public class PopulationManager : MonoBehaviour
                     else
                     {
                         schedule.Add(new Task(c, Task.TaskType.Sleep));
+
+                        if(i == 0)
+                        {
+                            iNumberImmediatelySleeping++;
+                        }
                         
                         // If a sleep task is given, always end the schedule on this no matter how long the schedule should be
                         break;
@@ -616,8 +634,82 @@ public class PopulationManager : MonoBehaviour
             }
         }
 
+        foreach(var t in schedule)
+        {
+            t.UpdatePosition();
+        }
+
         return schedule;
     }
+
+    void GenerateAdjacentLocationData()
+    {
+        //  Locations as follows
+        //  _______________________
+        // |       |       |       |
+        // |   1(0)|   2(1)|   3(2)|
+        // |       |       |       |
+        // |-----------------------|
+        // |       |       |       |
+        // |   4(3)|   5(4)|   6(5)|
+        // |       |       |       |
+        // |-----------------------|
+        // |       |       |       |
+        // |   7(6)|   8(7)|   9(8)|
+        // |       |       |       |
+        //  -----------------------
+
+        adjacentLocationMap.Clear();
+
+        for(int i = 0; i < 10; ++i)
+        {
+            adjacentLocationMap.Add(i, new List<int>());
+        }
+
+        // Location 1(0)
+        adjacentLocationMap[0].Add(1);
+        adjacentLocationMap[0].Add(4);
+
+        // Location 2(1)
+        adjacentLocationMap[1].Add(0);
+        adjacentLocationMap[1].Add(2);
+        adjacentLocationMap[1].Add(4);
+
+        // Location 3(2)
+        adjacentLocationMap[2].Add(1);
+        adjacentLocationMap[2].Add(5);
+
+        // Location 4(3)
+        adjacentLocationMap[3].Add(0);
+        adjacentLocationMap[3].Add(4);
+        adjacentLocationMap[3].Add(6);
+
+        // Location 5(4)
+        adjacentLocationMap[4].Add(1);
+        adjacentLocationMap[4].Add(3);
+        adjacentLocationMap[4].Add(5);
+        adjacentLocationMap[4].Add(7);
+
+        // Location 6(5)
+        adjacentLocationMap[5].Add(2);
+        adjacentLocationMap[5].Add(4);
+        adjacentLocationMap[5].Add(8);
+
+        // Location 7(6)
+        adjacentLocationMap[6].Add(3);
+        adjacentLocationMap[6].Add(7);
+
+        // Location 8(7)
+        adjacentLocationMap[7].Add(4);
+        adjacentLocationMap[7].Add(6);
+        adjacentLocationMap[7].Add(8);
+
+        // Location 9(8)
+        adjacentLocationMap[8].Add(5);
+        adjacentLocationMap[8].Add(7);
+    }
+
+    #endregion
 
     public Vector3 GetHomePosition(Character c)
     {
@@ -629,10 +721,27 @@ public class PopulationManager : MonoBehaviour
         Debug.LogError("Failed to find home for " + c.Name);
         return Vector3.zero;
     }
-
-    public Vector3 GetWorkPosition(Character c)
+    public int GetHomeLocation(Character c)
     {
+        if(c.Home)
+        {
+            return c.Home.Location;
+        }
+
+        Debug.LogError("Failed to find home for " + c.Name);
+        return 0;
+    }
+    public void GetWorkPositionAndLocation(Character c, out Vector3 vPosition, out int iLocation)
+    {
+        vPosition = Vector3.zero;
+        iLocation = -1;
+
         Emote.EmoteSubType eBuildingType = c.GetWorkType();
+
+        if(eBuildingType == Emote.InvalidSubType)
+        {
+            return;
+        }
 
 #if UNITY_EDITOR
         bool bValidType = false;
@@ -653,12 +762,52 @@ public class PopulationManager : MonoBehaviour
         {
             if(building.BuildingType == eBuildingType)
             {
-                return building.UseBuildingPosition;
+                vPosition = building.UseBuildingPosition;
+                iLocation = building.Location;
+            }
+        }
+    }
+
+    public int GetNumberOfCharactersThatWillSleep(WerewolfGame.TOD eTod)
+    {
+        int iNumberToSleep = 0;
+
+        foreach(var c in ActiveCharacters)
+        {
+            if(!c.IsAlive)
+            {
+                continue;
+            }
+
+            if(eTod == WerewolfGame.TOD.Day)
+            {
+                foreach(var t in c.TaskSchedule.DayTasks)
+                {
+                    if(t.Type == Task.TaskType.Sleep)
+                    {
+                        iNumberToSleep++;
+                    }
+                }
+            }
+            else if (eTod == WerewolfGame.TOD.Night)
+            {
+                foreach (var t in c.TaskSchedule.NightTasks)
+                {
+                    if (t.Type == Task.TaskType.Sleep)
+                    {
+                        iNumberToSleep++;
+                    }
+                }
             }
         }
 
-        Debug.LogError("Failed to find building of type " + eBuildingType.ToString() + " in the scene.");
-        return Vector3.zero;
+        return iNumberToSleep;
     }
 
+
+    public int GetRandomAdjacentLocation(int iLoc)
+    {
+        // See GenerateAdjacentLocationData() for location map
+        return adjacentLocationMap[iLoc][UnityEngine.Random.Range(0, adjacentLocationMap[iLoc].Count)];
+    }
 }

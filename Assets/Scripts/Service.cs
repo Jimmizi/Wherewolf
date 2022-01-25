@@ -9,4 +9,5 @@ public static class Service
     public static ConfigManager Config;
     public static WerewolfGame Game;
     public static ClueManager Clue;
+    public static PhaseSolver PhaseSolve;
 }

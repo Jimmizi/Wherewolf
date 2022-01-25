@@ -14,7 +14,7 @@ public class Task
 
     public static TaskType InvalidTaskType => (TaskType)(-1);
 
-    public Task(Character owner, TaskType eType)
+    public Task(Character owner, TaskType eType, int iLoc = -1)
     {
         TaskOwner = owner;
         Type = eType;
@@ -35,12 +35,15 @@ public class Task
                 SetupWork();
                 break;
         }
+
+        UpdatePosition();
     }
 
     public Character TaskOwner;
 
     public TaskType Type;
     public Vector3 Position;
+    public int Location = -1;
     public float Duration;
     public float Timer;
 
@@ -62,28 +65,62 @@ public class Task
         return eTaskTypes[UnityEngine.Random.Range(0, eTaskTypes.Count)];
     }
 
-    void SetupWander()
+    public void CalculateWanderDuration()
     {
         Duration = UnityEngine.Random.Range(Service.Config.WanderRandomTimeMin, Service.Config.WanderRandomTimeMax);
-        // Position = FindWanderPosition(location)
+    }
+
+    public void CalculateIdleDuration()
+    {
+        Duration = UnityEngine.Random.Range(Service.Config.IdleRandomTimeMin, Service.Config.IdleRandomTimeMax);
+    }
+
+    public void CalculateWorkDuration()
+    {
+        Duration = UnityEngine.Random.Range(Service.Config.WorkRandomTimeMin, Service.Config.WorkRandomTimeMax);
+    }
+
+    public static int GetRandomLocation() => UnityEngine.Random.Range(Emote.LocationMin, Emote.LocationMax + 1);
+
+    public void UpdatePosition()
+    {
+        if(Location == -1 || Location < Emote.LocationMin || Location > Emote.LocationMax)
+        {
+            Location = GetRandomLocation();
+        }
+
+        // TODO
+        switch (Type)
+        {
+            case TaskType.WanderArea:
+                // Position = FindWanderPosition(location)
+                break;
+            case TaskType.Idle:
+                // Position = FindPositionInLocation(location)
+                break;
+        }
+    }
+
+    void SetupWander()
+    {
+        
     }
 
     void SetupIdle()
     {
-        Duration = UnityEngine.Random.Range(Service.Config.IdleRandomTimeMin, Service.Config.IdleRandomTimeMax);
-        // Position = FindPositionInLocation(location)
+        
     }
 
     void SetupSleep()
     {
         Duration = -1.0f; // Sleeps the rest of the night
         Position = Service.Population.GetHomePosition(TaskOwner);
+        Location = Service.Population.GetHomeLocation(TaskOwner);
     }
     
     void SetupWork()
     {
-        Duration = UnityEngine.Random.Range(Service.Config.WorkRandomTimeMin, Service.Config.WorkRandomTimeMax);
-        Position = Service.Population.GetWorkPosition(TaskOwner);
+        Service.Population.GetWorkPositionAndLocation(TaskOwner, out Position, out Location);
     }
 
     public void Update()
