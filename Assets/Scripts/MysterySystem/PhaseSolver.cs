@@ -74,6 +74,16 @@ public class PhaseSolver : MonoBehaviour
         return null;
     }
 
+    public void TryKillOffCurrentVictim()
+    {
+        if(CurrentPhase != null && CurrentPhase.Victim != null)
+        {
+            CurrentPhase.Victim.IsAlive = false;
+            CurrentPhase.Victim.IsVictim = false;
+            CurrentPhase.Victim.DeathAnnounced = false;
+        }
+    }
+
     // Private functions
 
     IEnumerator GeneratePhase(WerewolfGame.TOD eTod)
@@ -85,17 +95,22 @@ public class PhaseSolver : MonoBehaviour
             PhaseHistory.Add(Service.Game.CurrentDay, new List<Phase>());
         }
 
+        bool bShouldGenerateVictim = ShouldGenerateVictim();
+
         PhaseHistory[Service.Game.CurrentDay].Add(new Phase(eTod));
         CurrentPhase = PhaseHistory[Service.Game.CurrentDay][PhaseHistory[Service.Game.CurrentDay].Count - 1];
         
 
         // 1) Werewolf finds a character to kill
-        if (ShouldGenerateVictim())
+        if (bShouldGenerateVictim)
         {
             Character victim = GetBestCharacterForVictim(eTod);
             int iLocation = GetBestLocationForVictimDeath(eTod, victim);
 
             victim.IsVictim = true;
+            victim.DeathTimeOfDay = eTod;
+            victim.DeathDay = Service.Game.CurrentDay;
+
             CurrentPhase.Victim = victim;
 
             GenerateWerewolfAndVictimTasks(eTod, victim, iLocation);
@@ -168,17 +183,16 @@ public class PhaseSolver : MonoBehaviour
                 return false;
         }
 
-        // If we have a current phase (meaning the last phase)
-        if(CurrentPhase != null)
+        // If the last phase was daytime (this is now going to be the night time)
+        if (CurrentPhase != null && CurrentPhase.TimeOfDay == WerewolfGame.TOD.Day)
         {
-            // If the last phase was daytime and it already generated a victim, then don't
-            if(CurrentPhase.Victim != null && CurrentPhase.TimeOfDay == WerewolfGame.TOD.Day)
-            {
-                return false;
-            }
+            // If the day time didn't produce a victim, do it now
+            return CurrentPhase.Victim == null;
         }
 
-        return true;
+        // Otherwise it's either the first day time, or a new day in which case we have a random chance of striking in the day time
+        //  If it fails here, we will generate during the night above
+        return UnityEngine.Random.Range(0.0f, 100.0f) < 50.0f;
     }
 
     Character GetBestCharacterForVictim(WerewolfGame.TOD eTod)
@@ -365,6 +379,7 @@ public class PhaseSolver : MonoBehaviour
     const int iButtonHeight = 28;
     const int iTextBoxHeight = 24;
     Phase currentPhaseDebugging;
+    int iCurrentDayDebugging;
 
     WerewolfGame.TOD lastDebugGeneratedTod = WerewolfGame.TOD.Night;
 
@@ -414,24 +429,25 @@ public class PhaseSolver : MonoBehaviour
             Vector2 vPosition = new Vector2(5, 5);
 
             // Selecting the current phase
-            if (currentPhaseDebugging != null && currentPhaseDebugging == CurrentPhase)
-            {
-                GUI.Box(new Rect(vPosition.x + 50 - 2, vPosition.y - 2, 104, iTextBoxHeight + 4), "", selectedStyle);
-            }
-            if (CurrentPhase != null)
-            {
-                GUI.Label(new Rect(vPosition.x, vPosition.y, 50, iTextBoxHeight), "Curr:");
-                if (GUI.Button(new Rect(vPosition.x + 50, vPosition.y, 100, iTextBoxHeight), string.Format("Day {0}:{1}", Service.Game.CurrentDay, CurrentPhase?.TimeOfDay.ToString() ?? "")))
-                {
-                    currentPhaseDebugging = CurrentPhase;
+            //if (currentPhaseDebugging != null && currentPhaseDebugging == CurrentPhase)
+            //{
+            //    GUI.Box(new Rect(vPosition.x + 50 - 2, vPosition.y - 2, 104, iTextBoxHeight + 4), "", selectedStyle);
+            //}
+            //if (CurrentPhase != null)
+            //{
+            //    GUI.Label(new Rect(vPosition.x, vPosition.y, 50, iTextBoxHeight), "Curr:");
+            //    if (GUI.Button(new Rect(vPosition.x + 50, vPosition.y, 100, iTextBoxHeight), string.Format("Day {0}:{1}", Service.Game.CurrentDay, CurrentPhase?.TimeOfDay.ToString() ?? "")))
+            //    {
+            //        currentPhaseDebugging = CurrentPhase;
 
-                    if (CurrentCharacterSeenListSelected != null && !currentPhaseDebugging.CharacterSeenMap.ContainsKey(CurrentCharacterSeenListSelected))
-                    {
-                        CurrentCharacterSeenListSelected = null;
-                    }
-                }
-            }
-            vPosition.y += iButtonHeight;
+            //        if (CurrentCharacterSeenListSelected != null && !currentPhaseDebugging.CharacterSeenMap.ContainsKey(CurrentCharacterSeenListSelected))
+            //        {
+            //            CurrentCharacterSeenListSelected = null;
+            //        }
+            //    }
+            //}
+            //vPosition.y += iButtonHeight;
+
             vPosition.y += (PhaseHistory.Count * iButtonHeight);
 
             foreach(var entry in PhaseHistory)
@@ -448,6 +464,7 @@ public class PhaseSolver : MonoBehaviour
                     if (GUI.Button(new Rect(vPosition.x + iAdditionalX, vPosition.y, 50, iTextBoxHeight), p.TimeOfDay.ToString()))
                     {
                         currentPhaseDebugging = p;
+                        iCurrentDayDebugging = entry.Key;
                         if (CurrentCharacterSeenListSelected != null && !currentPhaseDebugging.CharacterSeenMap.ContainsKey(CurrentCharacterSeenListSelected))
                         {
                             CurrentCharacterSeenListSelected = null;
@@ -541,17 +558,17 @@ public class PhaseSolver : MonoBehaviour
                         vPosition.y += iTextHeight;
                     }
                 }
-            }
-            // General info 2
-            {
-                Vector2 vPosition = new Vector2(850, 40);
 
-                Character ww = Service.Population.GetWerewolf();
+                vPosition.y += iTextHeight;
+                GUI.Label(new Rect(vPosition.x, vPosition.y, 200, iTextBoxHeight), "---------------");
+                vPosition.y += iTextHeight * 2;
+
                 Character charToKill = null;
 
-                foreach(var c in Service.Population.ActiveCharacters)
+                foreach (var c in Service.Population.ActiveCharacters)
                 {
-                    if(c.IsVictim)
+                    if (c.DeathTimeOfDay == currentPhaseDebugging.TimeOfDay
+                        && c.DeathDay == iCurrentDayDebugging)
                     {
                         charToKill = c;
                         break;
@@ -577,7 +594,7 @@ public class PhaseSolver : MonoBehaviour
                     GUI.contentColor = new Color(1.0f, 0.5f, 0.5f);
                     GUI.Label(new Rect(vPosition.x, vPosition.y, 200, iTextBoxHeight), string.Format("[{0}] {1} is victim!", charToKill.Index, charToKill.Name));
                     vPosition.y += iTextHeight;
-                    
+
                     if (currentPhaseDebugging.CharacterTasks.ContainsKey(charToKill))
                     {
                         foreach (var t in currentPhaseDebugging.CharacterTasks[charToKill])
@@ -589,7 +606,96 @@ public class PhaseSolver : MonoBehaviour
 
                     GUI.contentColor = Color.white;
                 }
-                //size 200
+            }
+            // General info 2
+            {
+                Vector2 vPosition = new Vector2(850, 40);
+
+                Character ww = Service.Population.GetWerewolf();
+                List<Character> inactiveCharacters = new List<Character>();
+
+                GUI.Label(new Rect(vPosition.x, vPosition.y, 200, iTextBoxHeight), "Active Characters:");
+                vPosition.y += iTextHeight;
+                foreach (var c in Service.Population.ActiveCharacters)
+                {
+                    if(!c.IsAlive)
+                    {
+                        inactiveCharacters.Add(c);
+                        continue;
+                    }
+
+                    if (currentPhaseDebugging.TimeOfDay == WerewolfGame.TOD.Day)
+                    {
+                        if(c.CurrentTask != null && c.CurrentTask.Type == Task.TaskType.Sleep)
+                        {
+                            inactiveCharacters.Add(c);
+                            continue;
+                        }
+                    }
+                    else
+                    {
+                        if (c.TaskSchedule.NightTasks.Count > 0)
+                        {
+                            if(c.TaskSchedule.NightTasks[0].Type == Task.TaskType.Sleep)
+                            {
+                                inactiveCharacters.Add(c);
+                                continue;
+                            }
+                        }
+                    }
+
+                    GUI.Label(new Rect(vPosition.x, vPosition.y, 200, iTextBoxHeight), string.Format("[{0}] {1}", c.Index, c.Name));
+                    vPosition.y += iTextHeight;
+                }
+
+                vPosition.y += iTextHeight;
+                GUI.Label(new Rect(vPosition.x, vPosition.y, 200, iTextBoxHeight), "Inactive Characters:");
+                vPosition.y += iTextHeight;
+                foreach (var c in inactiveCharacters)
+                {
+                    if(!c.IsAlive)
+                    {
+                        continue;
+                    }
+
+                    GUI.Label(new Rect(vPosition.x, vPosition.y, 200, iTextBoxHeight), string.Format("[{0}] {1}", c.Index, c.Name));
+                    vPosition.y += iTextHeight;
+                }
+
+                vPosition.y += iTextHeight;
+                GUI.Label(new Rect(vPosition.x, vPosition.y, 200, iTextBoxHeight), "Dead Characters:");
+                vPosition.y += iTextHeight;
+                foreach (var c in inactiveCharacters)
+                {
+                    if (c.IsAlive)
+                    {
+                        continue;
+                    }
+
+                    if(c.DeathDay > iCurrentDayDebugging)
+                    {
+                        continue;
+                    }
+
+                    if(c.DeathDay == iCurrentDayDebugging)
+                    {
+                        // If they died in the day, show them in the night phase as dead
+                        if(c.DeathTimeOfDay == WerewolfGame.TOD.Day
+                            && currentPhaseDebugging.TimeOfDay == WerewolfGame.TOD.Day)
+                        {
+                            continue;
+                        }
+
+                        // if they died at night, don't show until you select a further day
+                        if (c.DeathTimeOfDay == WerewolfGame.TOD.Night)
+                        {
+                            continue;
+                        }
+                    }
+
+                    GUI.Label(new Rect(vPosition.x, vPosition.y, 200, iTextBoxHeight), string.Format("[{0}] {1}", c.Index, c.Name));
+                    vPosition.y += iTextHeight;
+                }
             }
         }
     }

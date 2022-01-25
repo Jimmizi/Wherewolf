@@ -358,7 +358,7 @@ public class PopulationManager : MonoBehaviour
 
         // First generate the werewolf
         AddCharacter(null, isWerewolf: true);
-        yield return new WaitForSeconds(0.04f);
+        yield return new WaitForSeconds(0.02f);
 
         Character ww = GetWerewolf();
         var descriptorsToMatch = ww.GetRandomDescriptors(2);
@@ -369,7 +369,7 @@ public class PopulationManager : MonoBehaviour
         {
             Character characterAdded = AddCharacter(descriptorsToMatch);
             characterAdded.Index = i + 1;
-            yield return new WaitForSeconds(0.04f);
+            yield return new WaitForSeconds(0.02f);
 
             // First character made copies two, and then passes one onto the next character made
             if(i == 0)
@@ -411,11 +411,15 @@ public class PopulationManager : MonoBehaviour
             else if(iNumberOfMatches < 8)
             {
                 // If we're late into the character creation, and there is a low number of matches, make sure some matches get made
-                bool bEmergencyCopyDescriptors = (i > 13 && iNumberOfMatches < 7);
+                bool bEmergencyCopyDescriptors = (i > 13 && iNumberOfMatches < 7 && UnityEngine.Random.Range(0, 101) < 75);
 
                 // From here on, randomly copy 1 or 2 descriptors on a 33% chance to do so
 
-                if (UnityEngine.Random.Range(0, 101) < 33 || bEmergencyCopyDescriptors)
+                if(bEmergencyCopyDescriptors)
+                {
+                    descriptorsToMatch = ww.GetRandomDescriptors(1);
+                }
+                else if (UnityEngine.Random.Range(0, 101) < 33)
                 {
                     var randomDescriptorsAmount = UnityEngine.Random.Range(1, 3);
                     descriptorsToMatch = characterAdded.GetRandomDescriptors(randomDescriptorsAmount);
@@ -603,6 +607,12 @@ public class PopulationManager : MonoBehaviour
                 if(i == 0 && !bIsDaySchedule && iNumberImmediatelySleeping >= 5)
                 {
                     iRandTask = 0;
+                }
+
+                if(iRandTask == 2 && bIsDaySchedule && !bHasOccupation)
+                {
+                    // If they don't have an occupation, randomise between idle and wander
+                    iRandTask = UnityEngine.Random.Range(0, 2);
                 }
 
                 if (iRandTask == 2) // Work/Sleep

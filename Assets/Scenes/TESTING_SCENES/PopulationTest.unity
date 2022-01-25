@@ -446,7 +446,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 632284306, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
       propertyPath: CurrentDay
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 632284306, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
       propertyPath: DisplayDebug
@@ -455,6 +455,10 @@ PrefabInstance:
     - target: {fileID: 632284306, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
       propertyPath: CurrentTimeOfDay
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 632284306, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: TimeTransitionDuration
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4957857799237703561, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
       propertyPath: m_Name

@@ -55,7 +55,7 @@ public class WerewolfGame : MonoBehaviour
     public SubState CurrentSubState = SubState.Start;
 
     public TOD CurrentTimeOfDay = TOD.Day;
-    public int CurrentDay = 1;
+    public int CurrentDay = 0;
     public bool IsGamePaused = true;
 
     [SerializeField]
@@ -229,7 +229,17 @@ public class WerewolfGame : MonoBehaviour
         {
             case SubState.Start:
                 {
+                    // If there is a victim to kill, try and do so
+                    Service.PhaseSolve.TryKillOffCurrentVictim();
+
                     CurrentTimeOfDay = CurrentState == GameState.TransitionToDay ? TOD.Day : TOD.Night;
+
+                    // (To day from night, increment the day counter)
+                    if(CurrentState == GameState.TransitionToDay)
+                    {
+                        CurrentDay++;
+                    }
+
                     CurrentSubState++;
                     break;
                 }
@@ -316,7 +326,7 @@ public class WerewolfGame : MonoBehaviour
         {
             case SubState.Start:
                 {
-
+                    CurrentSubState = SubState.Finish;
                     break;
                 }
             case SubState.Update:
@@ -338,7 +348,8 @@ public class WerewolfGame : MonoBehaviour
         {
             case SubState.Start:
                 {
-
+                    canCurrentStateBeProgressed = true;
+                    CurrentSubState++;
                     break;
                 }
             case SubState.Update:
@@ -360,7 +371,7 @@ public class WerewolfGame : MonoBehaviour
         {
             case SubState.Start:
                 {
-
+                    CurrentSubState = SubState.Finish;
                     break;
                 }
             case SubState.Update:
@@ -435,37 +446,41 @@ public class WerewolfGame : MonoBehaviour
             }
         }
 
-        switch (CurrentState)
+        if (bProgressFromFinish)
         {
-            case GameState.GeneratePopulation:
-            case GameState.IntroStorySegment:
-            case GameState.TransitionToDay:
-            case GameState.VictimFoundAnnouncement:
-            case GameState.PhaseGenerationDay:
-            case GameState.ClueGenerationDay:
-            case GameState.PlayerInvestigateDay:
-            case GameState.TransitionToNight:
-            case GameState.PhaseGenerationNight:
-            case GameState.ClueGenerationNight:
-            case GameState.PlayerInvestigateNight:
-                NextState = CurrentState + 1;
-                break;
+            switch (CurrentState)
+            {
+                case GameState.GeneratePopulation:
+                case GameState.IntroStorySegment:
+                case GameState.TransitionToDay:
+                case GameState.VictimFoundAnnouncement:
+                case GameState.PhaseGenerationDay:
+                case GameState.ClueGenerationDay:
+                case GameState.PlayerInvestigateDay:
+                case GameState.TransitionToNight:
+                case GameState.PhaseGenerationNight:
+                case GameState.ClueGenerationNight:
+                case GameState.PlayerInvestigateNight:
+                    NextState = CurrentState + 1;
+                    break;
 
-            case GameState.PlayerInformationReview:
-                NextState = GameState.TransitionToDay;
-                break;
+                case GameState.PlayerInformationReview:
+                    NextState = GameState.TransitionToDay;
+                    break;
 
-            case GameState.PlayerChoseToStake:
-                NextState = CurrentState + 1;
-                break;
+                case GameState.PlayerChoseToStake:
+                    NextState = CurrentState + 1;
+                    break;
 
-            case GameState.GameSummary:
-                break;
+                case GameState.GameSummary:
+                    break;
+            }
+
+            canCurrentStateBeProgressed = false;
+            fStateTimer = 0.0f;
         }
 
         CurrentSubState = bProgressFromFinish ? SubState.Start : SubState.Finish;
-        canCurrentStateBeProgressed = false;
-        fStateTimer = 0.0f;
     }
 
     
