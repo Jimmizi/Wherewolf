@@ -95,8 +95,9 @@ public class PhaseSolver : MonoBehaviour
             PhaseHistory.Add(Service.Game.CurrentDay, new List<Phase>());
         }
 
-        bool bShouldGenerateVictim = ShouldGenerateVictim();
-
+        bool bJustMurderedNpc = CurrentPhase != null && CurrentPhase.Victim != null;
+        bool bShouldGenerateVictim = !bJustMurderedNpc && ShouldGenerateVictim();
+       
         PhaseHistory[Service.Game.CurrentDay].Add(new Phase(eTod));
         CurrentPhase = PhaseHistory[Service.Game.CurrentDay][PhaseHistory[Service.Game.CurrentDay].Count - 1];
         
@@ -114,6 +115,20 @@ public class PhaseSolver : MonoBehaviour
             CurrentPhase.Victim = victim;
 
             GenerateWerewolfAndVictimTasks(eTod, victim, iLocation);
+        }
+        else if(bJustMurderedNpc && Service.Config.WerewolfDisappearsAfterMurder)
+        {
+            Character ww = Service.Population.GetWerewolf();
+            ww.TaskSchedule.Clear();
+
+            if(eTod == WerewolfGame.TOD.Day)
+            {
+                ww.TaskSchedule.DayTasks.Add(new Task(ww, Task.TaskType.Sleep));
+            }
+            else if (eTod == WerewolfGame.TOD.Night)
+            {
+                ww.TaskSchedule.NightTasks.Add(new Task(ww, Task.TaskType.Sleep));
+            }
         }
         else
         {

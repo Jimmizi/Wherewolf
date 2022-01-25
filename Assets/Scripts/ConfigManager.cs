@@ -22,6 +22,10 @@ public class ConfigManager : MonoBehaviour
     [SerializeField]
     public float WorkRandomTimeMax = 120.0f;
 
+    // To give the player an extra hint, have the werewolf "sleep" the phase after killing a victim.
+    [SerializeField]
+    public bool WerewolfDisappearsAfterMurder = true;
+
     // Start is called before the first frame update
     void Awake()
     {

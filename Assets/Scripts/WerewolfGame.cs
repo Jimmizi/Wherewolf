@@ -248,6 +248,11 @@ public class WerewolfGame : MonoBehaviour
                     if(fStateTimer >= TimeTransitionDuration)
                     {
                         CurrentSubState++;
+
+                        foreach (var c in Service.Population.ActiveCharacters)
+                        {
+                            c.OnTimeOfDayPhaseShift();
+                        }
                     }
                     break;
                 }
