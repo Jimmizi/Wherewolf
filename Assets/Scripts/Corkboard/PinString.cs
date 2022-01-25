@@ -7,6 +7,8 @@ public class PinString : MonoBehaviour
     RectTransform rectTransform;
     Vector2 start;
     Vector2 end;
+    public Pin PinStart { get; set; }
+    public Pin PinEnd { get; set; }
 
     const float destroyDistance = 5.0f;
 
@@ -43,6 +45,12 @@ public class PinString : MonoBehaviour
             float distance = GetDistanceToPoint(Input.mousePosition);
             if (distance < destroyDistance)
             {
+                if (PinStart && PinEnd)
+                {
+                    PinStart.RemoveConnection(PinEnd);
+                    PinEnd.RemoveConnection(PinStart);
+                }
+
                 Destroy(gameObject);
             }
         }

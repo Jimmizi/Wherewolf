@@ -17,10 +17,58 @@ public class Pin : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandl
     List<PinString> lineStarts = new List<PinString>();
     List<PinString> lineEnds = new List<PinString>();
 
+    [SerializeField]
+    private int pinId = -1;
+    public int PinId
+    {
+        get => pinId;
+        set
+        {
+            if (pinId != -1)
+            {
+                if (pinsById.ContainsKey(pinId))
+                {
+                    pinsById.Remove(pinId);
+                }
+            }
+            
+            pinId = value;
+
+            if (pinId != -1)
+            {
+                Pin existingPin;
+                if (pinsById.TryGetValue(pinId, out existingPin))
+                {
+                    if (existingPin)
+                    {
+                        existingPin.pinId = -1;
+                    }
+                }
+                pinsById[pinId] = this;
+            }
+        }
+    }
+
+    public List<int> connectedIds = new List<int>();
+    public List<int> ConnectedIds
+    {
+        get { return connectedIds; }
+        set
+        { 
+            foreach (int pinId in value)
+            {
+                AddConnection(pinId, null);
+            }
+        }
+    }
+
+    private static Dictionary<int, Pin> pinsById;
+
     // Start is called before the first frame update
     void Start()
     {
         rectTransform = GetComponent<RectTransform>();
+        PinId = pinId; // update the pin map
     }
 
     // Update is called once per frame
@@ -78,12 +126,13 @@ public class Pin : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandl
         {
             var otherPin = eventData.pointerDrag.GetComponent<Pin>();
             if (otherPin)
-            {                
-                otherPin.stringObject.LineEnd = rectTransform.position;
-                otherPin.lineStarts.Add(otherPin.stringObject);
-                lineEnds.Add(otherPin.stringObject);
-                otherPin.stringObject = null;
+            {
+                if (!otherPin.AddConnection(this, otherPin.stringObject))
+                {
+                    Destroy(otherPin.stringObject.gameObject);
+                }
 
+                otherPin.stringObject = null;
                 RemoveMissingStrings();
                 otherPin.RemoveMissingStrings();
             }
@@ -107,5 +156,60 @@ public class Pin : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandl
                 lineEnds.RemoveAt(i);
             }
         }
-    }    
+    }
+
+    private bool AddConnection(int pinId, PinString pinString)
+    {
+        Pin otherPin;
+        if (pinsById.TryGetValue(pinId, out otherPin) && otherPin)
+        {
+            return AddConnection(otherPin, pinString);
+        }
+        else
+        {
+            connectedIds.Add(pinId);
+        }
+
+        return false;
+    }
+
+    private bool AddConnection( Pin pin, PinString pinString )
+    {
+        if (!pin || connectedIds.Contains(pin.pinId))
+        {
+            return false;
+        }
+
+        connectedIds.Add(pin.pinId);
+        
+        if (!pin.connectedIds.Contains(pinId))
+        {
+            pin.connectedIds.Add(pinId);
+        }
+
+        if (!pinString)
+        {
+            stringObject = Instantiate<PinString>(stringPrefab, stringHolder.transform);
+        }
+
+        pinString.LineStart = rectTransform.position;
+        pinString.LineEnd = pin.rectTransform.position;
+
+        pinString.PinStart = this;
+        pinString.PinEnd = pin;
+
+        lineStarts.Add(pinString);
+        pin.lineEnds.Add(pinString);
+        return true;
+    }
+
+    public bool RemoveConnection( Pin pin )
+    {
+        if (pin)
+        {
+            return connectedIds.Remove(pin.pinId);
+        }
+
+        return false;
+    }
 }
