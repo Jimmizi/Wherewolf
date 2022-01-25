@@ -18,6 +18,7 @@ public class Task
     {
         TaskOwner = owner;
         Type = eType;
+        Location = iLoc;
 
         // Setup the tasks
         switch (eType)

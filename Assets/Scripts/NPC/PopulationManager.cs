@@ -33,37 +33,42 @@ public class PopulationManager : MonoBehaviour
         Service.Population = this;
     }
 
-    void Start()
+    public void Init()
     {
+        Debug.Assert(ActiveCharacters.Count == 0, "Already have characters before init?!");
+
         GenerateAdjacentLocationData();
         InitialisePopulation();
     }
 
     void Update()
     {
+        #region DEBUG
 #if UNITY_EDITOR
         if(Input.GetKeyDown(KeyCode.F1))
         {
             Service.PhaseSolve.bShowDebug = false;
+            Service.Game.DisplayDebug = false;
             bShowDebug = !bShowDebug;
         }
-        if(bShowDebug && Input.GetKeyDown(KeyCode.F5))
-        {
-            foreach(var c in ActiveCharacters)
-            {
-                c.Home.Owner = null;
-                c.Home = null;
-            }
+        //if(bShowDebug && Input.GetKeyDown(KeyCode.F5))
+        //{
+        //    foreach(var c in ActiveCharacters)
+        //    {
+        //        c.Home.Owner = null;
+        //        c.Home = null;
+        //    }
 
-            ActiveCharacters.Clear();
-            subTypeNumberCounts.Clear();
-            werewolfIndex = -1;
-            InitialisePopulation();
-        }
+        //    ActiveCharacters.Clear();
+        //    subTypeNumberCounts.Clear();
+        //    werewolfIndex = -1;
+        //    InitialisePopulation();
+        //}
 #endif
+        #endregion
 
         if (CharacterCreationDone
-            && Service.Game.CanUpdate)
+            && Service.Game.CanUpdatePopulation())
         {
             foreach (var c in ActiveCharacters)
             {
@@ -93,7 +98,7 @@ public class PopulationManager : MonoBehaviour
         GUI.Box(new Rect(30, 30, 1050, 700), "");
         GUI.Label(new Rect(6, 0, 200, 24), "Population Debug");
 
-        GUI.Label(new Rect(206, 0, 400, 24), "F5 - Reroll population");
+       // GUI.Label(new Rect(206, 0, 400, 24), "F5 - Reroll population");
 
         if (ActiveCharacters.Count > 0)
         {
@@ -326,7 +331,7 @@ public class PopulationManager : MonoBehaviour
         {
             GUI.Label(new Rect(vPos.x + 16, vPos.y, iColumnWidth, iTextBoxHeight),
                 string.Format("{0}TaskTimer: {1}/{2}", 
-                (bFoundCurrentTask ? "" : "(Deviated) "),
+                (bFoundCurrentTask || c.CurrentTask == null ? "" : "(Deviated) "),
                 (c.CurrentTask != null ? c.CurrentTask.Timer.ToString("0.0") : "-"),
                 (c.CurrentTask != null ? c.CurrentTask.Duration.ToString("0.0") : "-")));
         }
@@ -353,7 +358,7 @@ public class PopulationManager : MonoBehaviour
 
         // First generate the werewolf
         AddCharacter(null, isWerewolf: true);
-        yield return new WaitForSeconds(0.04f);
+        yield return new WaitForSeconds(0.02f);
 
         Character ww = GetWerewolf();
         var descriptorsToMatch = ww.GetRandomDescriptors(2);
@@ -364,7 +369,7 @@ public class PopulationManager : MonoBehaviour
         {
             Character characterAdded = AddCharacter(descriptorsToMatch);
             characterAdded.Index = i + 1;
-            yield return new WaitForSeconds(0.04f);
+            yield return new WaitForSeconds(0.02f);
 
             // First character made copies two, and then passes one onto the next character made
             if(i == 0)
@@ -406,11 +411,15 @@ public class PopulationManager : MonoBehaviour
             else if(iNumberOfMatches < 8)
             {
                 // If we're late into the character creation, and there is a low number of matches, make sure some matches get made
-                bool bEmergencyCopyDescriptors = (i > 13 && iNumberOfMatches < 7);
+                bool bEmergencyCopyDescriptors = (i > 13 && iNumberOfMatches < 7 && UnityEngine.Random.Range(0, 101) < 75);
 
                 // From here on, randomly copy 1 or 2 descriptors on a 33% chance to do so
 
-                if (UnityEngine.Random.Range(0, 101) < 33 || bEmergencyCopyDescriptors)
+                if(bEmergencyCopyDescriptors)
+                {
+                    descriptorsToMatch = ww.GetRandomDescriptors(1);
+                }
+                else if (UnityEngine.Random.Range(0, 101) < 33)
                 {
                     var randomDescriptorsAmount = UnityEngine.Random.Range(1, 3);
                     descriptorsToMatch = characterAdded.GetRandomDescriptors(randomDescriptorsAmount);
@@ -598,6 +607,12 @@ public class PopulationManager : MonoBehaviour
                 if(i == 0 && !bIsDaySchedule && iNumberImmediatelySleeping >= 5)
                 {
                     iRandTask = 0;
+                }
+
+                if(iRandTask == 2 && bIsDaySchedule && !bHasOccupation)
+                {
+                    // If they don't have an occupation, randomise between idle and wander
+                    iRandTask = UnityEngine.Random.Range(0, 2);
                 }
 
                 if (iRandTask == 2) // Work/Sleep

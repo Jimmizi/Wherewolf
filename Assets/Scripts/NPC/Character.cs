@@ -21,7 +21,11 @@ public class Character
     public bool IsWerewolf;
     public bool IsVictim;
     public bool IsAlive = true;
+    public bool DeathAnnounced = false;
     public Schedule TaskSchedule = new Schedule();
+
+    public WerewolfGame.TOD DeathTimeOfDay;
+    public int DeathDay;
 
     public int Index;
 
@@ -201,7 +205,7 @@ public class Character
             }
         }
 
-        CurrentTask.UpdatePosition();
+        CurrentTask? .UpdatePosition();
     }
 
     public void Update()
@@ -236,7 +240,7 @@ public class Character
         if (Service.Game.CurrentTimeOfDay == WerewolfGame.TOD.Day 
             && !IsWerewolf 
             && !IsVictim
-            && UnityEngine.Random.Range(0.0f, 100.0f) <= 20)
+            && UnityEngine.Random.Range(0.0f, 100.0f) <= 20.0f)
         {
             // Make sure we're not by chance putting loads of character to sleep
             int iNumberThatWillSleep = Service.Population.GetNumberOfCharactersThatWillSleep(WerewolfGame.TOD.Day);
