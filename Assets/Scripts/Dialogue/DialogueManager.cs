@@ -44,7 +44,7 @@ public class DialogueManager : MonoBehaviour {
         testConversation.Dialogues = new List<Dialogue> {
             new Dialogue() {
                 Speaker = "NPC",
-                Sentence = new Sentence() {Text = "This is the first dialogue."},
+                Sentence = new Sentence() {Text = "This is the first <link=\"1\">dialogue</link>."},
                 Choices = new List<Choice> {
                     new Choice() {Name = "Ask about B", DialogueIndex = 1}
                 }
