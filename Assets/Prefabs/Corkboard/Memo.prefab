@@ -247,6 +247,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stringPrefab: {fileID: 4418751648885739289, guid: bc828fe502d22ca4caf759d75e645f1d, type: 3}
   stringHolder: {fileID: 0}
+  pinId: -1
+  connectedIds: 
 --- !u!1 &7037644188498621325
 GameObject:
   m_ObjectHideFlags: 0
@@ -261,6 +263,7 @@ GameObject:
   - component: {fileID: 7037644188498621323}
   - component: {fileID: 7037644188498621318}
   - component: {fileID: 7037644188498621319}
+  - component: {fileID: 824337718127794735}
   m_Layer: 5
   m_Name: Memo
   m_TagString: Untagged
@@ -377,3 +380,17 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &824337718127794735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7037644188498621325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9199890ad841d047ab671851e1268d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pin: {fileID: 3967788362575428571}
+  note: {fileID: 129533688}

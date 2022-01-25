@@ -666,6 +666,10 @@ PrefabInstance:
       value: "Megan said \nSharon ate a pickle"
       objectReference: {fileID: 0}
     - target: {fileID: 3967788362575428571, guid: 9b2108f776b76424ba39d64c6f685e40, type: 3}
+      propertyPath: pinId
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3967788362575428571, guid: 9b2108f776b76424ba39d64c6f685e40, type: 3}
       propertyPath: stringHolder
       value: 
       objectReference: {fileID: 78078661}
@@ -783,6 +787,10 @@ PrefabInstance:
         and never came back'
       objectReference: {fileID: 0}
     - target: {fileID: 3967788362575428571, guid: 9b2108f776b76424ba39d64c6f685e40, type: 3}
+      propertyPath: pinId
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3967788362575428571, guid: 9b2108f776b76424ba39d64c6f685e40, type: 3}
       propertyPath: stringHolder
       value: 
       objectReference: {fileID: 78078661}
@@ -883,6 +891,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1206736142}
     m_Modifications:
+    - target: {fileID: 3967788362575428571, guid: 9b2108f776b76424ba39d64c6f685e40, type: 3}
+      propertyPath: pinId
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3967788362575428571, guid: 9b2108f776b76424ba39d64c6f685e40, type: 3}
       propertyPath: stringHolder
       value: 
