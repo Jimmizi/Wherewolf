@@ -21,6 +21,7 @@ public class Character
     public bool IsWerewolf;
     public bool IsVictim;
     public bool IsAlive = true;
+    public bool DeathAnnounced = false;
     public Schedule TaskSchedule = new Schedule();
 
     public int Index;

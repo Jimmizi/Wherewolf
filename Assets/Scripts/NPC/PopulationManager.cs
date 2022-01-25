@@ -33,37 +33,42 @@ public class PopulationManager : MonoBehaviour
         Service.Population = this;
     }
 
-    void Start()
+    public void Init()
     {
+        Debug.Assert(ActiveCharacters.Count == 0, "Already have characters before init?!");
+
         GenerateAdjacentLocationData();
         InitialisePopulation();
     }
 
     void Update()
     {
+        #region DEBUG
 #if UNITY_EDITOR
         if(Input.GetKeyDown(KeyCode.F1))
         {
             Service.PhaseSolve.bShowDebug = false;
+            Service.Game.DisplayDebug = false;
             bShowDebug = !bShowDebug;
         }
-        if(bShowDebug && Input.GetKeyDown(KeyCode.F5))
-        {
-            foreach(var c in ActiveCharacters)
-            {
-                c.Home.Owner = null;
-                c.Home = null;
-            }
+        //if(bShowDebug && Input.GetKeyDown(KeyCode.F5))
+        //{
+        //    foreach(var c in ActiveCharacters)
+        //    {
+        //        c.Home.Owner = null;
+        //        c.Home = null;
+        //    }
 
-            ActiveCharacters.Clear();
-            subTypeNumberCounts.Clear();
-            werewolfIndex = -1;
-            InitialisePopulation();
-        }
+        //    ActiveCharacters.Clear();
+        //    subTypeNumberCounts.Clear();
+        //    werewolfIndex = -1;
+        //    InitialisePopulation();
+        //}
 #endif
+        #endregion
 
         if (CharacterCreationDone
-            && Service.Game.CanUpdate)
+            && Service.Game.CanUpdatePopulation())
         {
             foreach (var c in ActiveCharacters)
             {
@@ -93,7 +98,7 @@ public class PopulationManager : MonoBehaviour
         GUI.Box(new Rect(30, 30, 1050, 700), "");
         GUI.Label(new Rect(6, 0, 200, 24), "Population Debug");
 
-        GUI.Label(new Rect(206, 0, 400, 24), "F5 - Reroll population");
+       // GUI.Label(new Rect(206, 0, 400, 24), "F5 - Reroll population");
 
         if (ActiveCharacters.Count > 0)
         {
@@ -326,7 +331,7 @@ public class PopulationManager : MonoBehaviour
         {
             GUI.Label(new Rect(vPos.x + 16, vPos.y, iColumnWidth, iTextBoxHeight),
                 string.Format("{0}TaskTimer: {1}/{2}", 
-                (bFoundCurrentTask ? "" : "(Deviated) "),
+                (bFoundCurrentTask || c.CurrentTask == null ? "" : "(Deviated) "),
                 (c.CurrentTask != null ? c.CurrentTask.Timer.ToString("0.0") : "-"),
                 (c.CurrentTask != null ? c.CurrentTask.Duration.ToString("0.0") : "-")));
         }

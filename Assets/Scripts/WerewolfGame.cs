@@ -7,8 +7,7 @@ public class WerewolfGame : MonoBehaviour
     public enum TOD
     {
         Day,
-        Night,
-        EndOfNight
+        Night
     }
 
     public enum GameState
@@ -35,16 +34,57 @@ public class WerewolfGame : MonoBehaviour
         GameSummary,                // End of game screen, with results on win/lose and statistics
     }
 
+    public static GameState InvalidState => (GameState)(-1);
+
+    public enum SubState
+    {
+        Start,
+        Update,
+        Finish
+    }
+
+    // public vars
+
 #if UNITY_EDITOR
-    public bool DebugGoToNextPhase;
-    public bool DebugStartNextPhase;
+    public bool DisplayDebug = true;
 #endif
 
-    public TOD CurrentTimeOfDay = TOD.EndOfNight;
+    public GameState CurrentState = GameState.GeneratePopulation;
+    private GameState NextState = InvalidState;
+
+    public SubState CurrentSubState = SubState.Start;
+
+    public TOD CurrentTimeOfDay = TOD.Day;
     public int CurrentDay = 1;
     public bool IsGamePaused = true;
 
-    public bool CanUpdate => !IsGamePaused;
+    [SerializeField]
+    public float TimeTransitionDuration = 5.0f;
+
+    // Private vars
+
+    private float fStateTimer = 0.0f;
+    private bool canCurrentStateBeProgressed = false;
+
+    public bool CanUpdatePopulation()
+    {
+        if(IsGamePaused)
+        {
+            return false;
+        }
+
+        if(CurrentState != GameState.PlayerInvestigateDay && CurrentState != GameState.PlayerInvestigateNight)
+        {
+            return false;
+        }
+
+        if(CurrentSubState != SubState.Update)
+        {
+            return false;
+        }
+
+        return true;
+    }
 
     void Awake()
     {
@@ -52,54 +92,383 @@ public class WerewolfGame : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
-        
-
+        #region DEBUG
 #if UNITY_EDITOR
-        if(DebugGoToNextPhase)
+        if (Input.GetKeyDown(KeyCode.F3))
         {
-            DebugGoToNextPhase = false;
-
-            GoToNextPhase();
+            Service.PhaseSolve.bShowDebug = false;
+            Service.Population.bShowDebug = false;
+            DisplayDebug = !DisplayDebug;
         }
-        if(DebugStartNextPhase)
+
+        if (DisplayDebug && Input.GetKeyDown(KeyCode.F5))
         {
-            IsGamePaused = false;
+            ProgressGameFromExternal();
+        }
+        if (DisplayDebug && Input.GetKeyDown(KeyCode.F6))
+        {
+            IsGamePaused = !IsGamePaused;
         }
 #endif
+        #endregion
+
+        if (IsGamePaused)
+        {
+            return;
+        }
+
+        fStateTimer += Time.deltaTime;
+
+        switch (CurrentState)
+        {
+            case GameState.GeneratePopulation:
+                ProcessStateGeneratePopulation();
+                break;
+            case GameState.IntroStorySegment:
+                ProcessStateIntroStorySegment();
+                break;
+
+            case GameState.TransitionToDay:
+            case GameState.TransitionToNight:
+                ProcessTimeTransitionState();
+                break;
+
+            case GameState.VictimFoundAnnouncement:
+                ProcessVictimFoundAnnouncement();
+                break;
+
+            case GameState.PhaseGenerationDay:
+            case GameState.PhaseGenerationNight:
+                ProcessStatePhaseGeneration();
+                break;
+
+            case GameState.ClueGenerationDay:
+            case GameState.ClueGenerationNight:
+                ProcessStateClueGeneration();
+                break;
+
+            case GameState.PlayerInvestigateDay:
+            case GameState.PlayerInvestigateNight:
+                ProcessStatePlayerInvestigate();
+                break;
+            
+            case GameState.PlayerInformationReview:
+                ProcessStatePlayerInformationReview();
+                break;
+
+            case GameState.PlayerChoseToStake:
+                ProcessStatePlayerChoseToStake();
+                break;
+
+            case GameState.GameSummary:
+                ProcessStateGameSummary();
+                break;
+        }
+
+        if(CurrentSubState == SubState.Finish)
+        {
+            // This means we're naturally progressing, rather than something external pushing us through
+            if (NextState == InvalidState)
+            {
+                ProgressGame(true);
+            }
+
+            CurrentState = NextState;
+            NextState = InvalidState;
+        }
     }
 
-    void GoToNextPhase()
+    void ProcessStateGeneratePopulation()
     {
-        if (CurrentTimeOfDay == TOD.Day)
+        switch (CurrentSubState)
         {
-            CurrentTimeOfDay = TOD.Night;
-            ShowPhaseShiftAnimation(TOD.Day, TOD.Night);
-        }
-        else if (CurrentTimeOfDay == TOD.Night)
-        {
-            CurrentTimeOfDay = TOD.EndOfNight;
-        }
-        else if (CurrentTimeOfDay == TOD.EndOfNight)
-        {
-            CurrentTimeOfDay = TOD.Day;
-            ShowPhaseShiftAnimation(TOD.Night, TOD.Day);
-        }
-
-        IsGamePaused = true;
-
-        if (CurrentTimeOfDay != TOD.EndOfNight)
-        { 
-            ProcessPhaseShiftOnAllCharacters(); 
+            case SubState.Start:
+                {
+                    Service.Population.Init();
+                    CurrentSubState++;
+                    break;
+                }
+            case SubState.Update:
+                {
+                    if(Service.Population.CharacterCreationDone)
+                    {
+                        CurrentSubState++;
+                    }
+                    break;
+                }
         }
     }
+
+    void ProcessStateIntroStorySegment()
+    {
+        switch (CurrentSubState)
+        {
+            case SubState.Start:
+                {
+                    CurrentSubState = SubState.Finish;
+                    break;
+                }
+            case SubState.Update:
+                {
+
+                    break;
+                }
+            case SubState.Finish:
+                {
+
+                    break;
+                }
+        }
+    }
+
+    void ProcessTimeTransitionState()
+    {
+        switch (CurrentSubState)
+        {
+            case SubState.Start:
+                {
+                    CurrentTimeOfDay = CurrentState == GameState.TransitionToDay ? TOD.Day : TOD.Night;
+                    CurrentSubState++;
+                    break;
+                }
+            case SubState.Update:
+                {
+                    if(fStateTimer >= TimeTransitionDuration)
+                    {
+                        CurrentSubState++;
+                    }
+                    break;
+                }
+            case SubState.Finish:
+                {
+
+                    break;
+                }
+        }
+    }
+
+    void ProcessVictimFoundAnnouncement()
+    {
+        switch (CurrentSubState)
+        {
+            case SubState.Start:
+                {
+                    Character v = Service.PhaseSolve.GetVictimFromDay(CurrentDay - 1);
+                    if (v != null)
+                    {
+                        // Setup announcement
+
+                        CurrentSubState = SubState.Finish; // Don't actually finish when we have a way to announce
+                    }
+                    else
+                    {
+                        CurrentSubState = SubState.Finish;
+                    }
+
+                    break;
+                }
+            case SubState.Update:
+                {
+
+                    break;
+                }
+            case SubState.Finish:
+                {
+
+                    break;
+                }
+        }
+    }
+
+    void ProcessStatePhaseGeneration()
+    {
+        switch (CurrentSubState)
+        {
+            case SubState.Start:
+                {
+                    if(Service.PhaseSolve.CanGeneratePhase())
+                    {
+                        Service.PhaseSolve.StartPhaseGeneration();
+                        CurrentSubState++;
+                    }
+                    else
+                    {
+                        // TODO: Go to fail screen?
+                    }
+                    break;
+                }
+            case SubState.Update:
+                {
+                    if(!Service.PhaseSolve.IsGeneratingAPhase)
+                    {
+                        CurrentSubState++;
+                    }
+                    break;
+                }
+        }
+    }
+
+    void ProcessStateClueGeneration()
+    {
+        switch (CurrentSubState)
+        {
+            case SubState.Start:
+                {
+
+                    break;
+                }
+            case SubState.Update:
+                {
+
+                    break;
+                }
+            case SubState.Finish:
+                {
+
+                    break;
+                }
+        }
+    }
+
+    void ProcessStatePlayerInvestigate()
+    {
+        switch (CurrentSubState)
+        {
+            case SubState.Start:
+                {
+
+                    break;
+                }
+            case SubState.Update:
+                {
+
+                    break;
+                }
+            case SubState.Finish:
+                {
+
+                    break;
+                }
+        }
+    }
+
+    void ProcessStatePlayerInformationReview()
+    {
+        switch (CurrentSubState)
+        {
+            case SubState.Start:
+                {
+
+                    break;
+                }
+            case SubState.Update:
+                {
+
+                    break;
+                }
+            case SubState.Finish:
+                {
+
+                    break;
+                }
+        }
+    }
+
+    void ProcessStatePlayerChoseToStake()
+    {
+        switch (CurrentSubState)
+        {
+            case SubState.Start:
+                {
+
+                    break;
+                }
+            case SubState.Update:
+                {
+
+                    break;
+                }
+            case SubState.Finish:
+                {
+
+                    break;
+                }
+        }
+    }
+
+    void ProcessStateGameSummary()
+    {
+        switch (CurrentSubState)
+        {
+            case SubState.Start:
+                {
+
+                    break;
+                }
+            case SubState.Update:
+                {
+
+                    break;
+                }
+            case SubState.Finish:
+                {
+
+                    break;
+                }
+        }
+
+    }
+
+    public void ProgressGameFromExternal()
+    {
+        ProgressGame();
+    }
+    void ProgressGame(bool bProgressFromFinish = false)
+    {
+        if (!bProgressFromFinish)
+        {
+            if (!canCurrentStateBeProgressed)
+            {
+                return;
+            }
+        }
+
+        switch (CurrentState)
+        {
+            case GameState.GeneratePopulation:
+            case GameState.IntroStorySegment:
+            case GameState.TransitionToDay:
+            case GameState.VictimFoundAnnouncement:
+            case GameState.PhaseGenerationDay:
+            case GameState.ClueGenerationDay:
+            case GameState.PlayerInvestigateDay:
+            case GameState.TransitionToNight:
+            case GameState.PhaseGenerationNight:
+            case GameState.ClueGenerationNight:
+            case GameState.PlayerInvestigateNight:
+                NextState = CurrentState + 1;
+                break;
+
+            case GameState.PlayerInformationReview:
+                NextState = GameState.TransitionToDay;
+                break;
+
+            case GameState.PlayerChoseToStake:
+                NextState = CurrentState + 1;
+                break;
+
+            case GameState.GameSummary:
+                break;
+        }
+
+        CurrentSubState = bProgressFromFinish ? SubState.Start : SubState.Finish;
+        canCurrentStateBeProgressed = false;
+        fStateTimer = 0.0f;
+    }
+
+    
 
     void ShowPhaseShiftAnimation(TOD eFrom, TOD eTo)
     {
@@ -119,4 +488,31 @@ public class WerewolfGame : MonoBehaviour
         }
     }
 
+    #region DEBUG
+#if UNITY_EDITOR
+    private void OnGUI()
+    {
+        if (!DisplayDebug && !Service.PhaseSolve.bShowDebug && !Service.Population.bShowDebug)
+        {
+            GUI.Label(new Rect(5, 5, 200, 24), "F1 - Population Debug");
+            GUI.Label(new Rect(5, 22, 200, 24), "F2 - PhaseSolver Debug");
+            GUI.Label(new Rect(5, 39, 200, 24), "F3 - GameManager Debug");
+        }
+
+        if (!DisplayDebug)
+        {
+            return;
+        }
+
+        GUI.Label(new Rect(6, 5, 200, 24), "F5 - Step game forward.");
+        GUI.Label(new Rect(6, 22, 300, 24), string.Format("F6 - Pause/Unpause{0}", IsGamePaused ? " (Currently Paused)" : ""));
+        GUI.Label(new Rect(410, 5, 400, 24), string.Format("{0} ({1}) : {2} - Day {3}, {4}", 
+            CurrentState.ToString(),
+            fStateTimer.ToString("0.0"),
+            CurrentSubState.ToString(), 
+            CurrentDay, 
+            CurrentTimeOfDay.ToString()));
+    }
+#endif
+    #endregion
 }
