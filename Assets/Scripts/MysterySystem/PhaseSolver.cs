@@ -9,6 +9,8 @@ public class PhaseSolver : MonoBehaviour
     public Phase CurrentPhase;
     public bool IsGeneratingAPhase;
 
+    private int iLastPlaceSomeoneWasMurdered = -1;
+
 #if UNITY_EDITOR
     public bool bShowDebug = false;
     bool firstTimeGeneratingPhase = true;
@@ -97,10 +99,28 @@ public class PhaseSolver : MonoBehaviour
 
         bool bJustMurderedNpc = CurrentPhase != null && CurrentPhase.Victim != null;
         bool bShouldGenerateVictim = !bJustMurderedNpc && ShouldGenerateVictim();
-       
+        Character ww = Service.Population.GetWerewolf();
+
         PhaseHistory[Service.Game.CurrentDay].Add(new Phase(eTod));
         CurrentPhase = PhaseHistory[Service.Game.CurrentDay][PhaseHistory[Service.Game.CurrentDay].Count - 1];
-        
+
+        bool bWerewolfReemergeAfterHiding = false;
+        if(eTod == WerewolfGame.TOD.Day)
+        {
+            // Since it's now day, check last nights tasks
+            if(ww.TaskSchedule.NightTasks.Count == 1 && ww.TaskSchedule.NightTasks[0].Type == Task.TaskType.Sleep)
+            {
+                bWerewolfReemergeAfterHiding = true;
+            }
+        }
+        else if (eTod == WerewolfGame.TOD.Night)
+        {
+            // Since it's now night, check last days tasks
+            if (ww.TaskSchedule.DayTasks.Count == 1 && ww.TaskSchedule.DayTasks[0].Type == Task.TaskType.Sleep)
+            {
+                bWerewolfReemergeAfterHiding = true;
+            }
+        }
 
         // 1) Werewolf finds a character to kill
         if (bShouldGenerateVictim)
@@ -111,14 +131,15 @@ public class PhaseSolver : MonoBehaviour
             victim.IsVictim = true;
             victim.DeathTimeOfDay = eTod;
             victim.DeathDay = Service.Game.CurrentDay;
+            victim.DeathLocation = iLocation;
 
             CurrentPhase.Victim = victim;
 
             GenerateWerewolfAndVictimTasks(eTod, victim, iLocation);
+            iLastPlaceSomeoneWasMurdered = iLocation;
         }
         else if(bJustMurderedNpc && Service.Config.WerewolfDisappearsAfterMurder)
         {
-            Character ww = Service.Population.GetWerewolf();
             ww.TaskSchedule.Clear();
 
             if(eTod == WerewolfGame.TOD.Day)
@@ -132,7 +153,8 @@ public class PhaseSolver : MonoBehaviour
         }
         else
         {
-            GenerateWerewolfAndVictimTasks(eTod);
+            GenerateWerewolfAndVictimTasks(eTod, 
+                iWerewolfLastMurderLoc: bWerewolfReemergeAfterHiding ? iLastPlaceSomeoneWasMurdered : -1);
         }
 
         // Yield for about a frame (a frame at 60fps is 0.016666)
@@ -280,7 +302,7 @@ public class PhaseSolver : MonoBehaviour
 
         return iLocationFromTasks;
     }
-    void GenerateWerewolfAndVictimTasks(WerewolfGame.TOD eTod, Character victim = null, int iLocation = -1)
+    void GenerateWerewolfAndVictimTasks(WerewolfGame.TOD eTod, Character victim = null, int iLocation = -1, int iWerewolfLastMurderLoc = -1)
     {
         // When victim is null, we just get the werewolf to wander about
         // otherwise we have a victim and can task them both up together, for the werewolf to essentially follow the character
@@ -319,7 +341,15 @@ public class PhaseSolver : MonoBehaviour
                 : eSecondTaskType;
         }
 
-        AddTask(eFirstTaskType, iLocation > -1 ? Service.Population.GetRandomAdjacentLocation(iLocation) : -1);
+        int iFirstTaskLocation = iLocation > -1 ? Service.Population.GetRandomAdjacentLocation(iLocation) : -1;
+
+        // Have the werewolf re-emerge the phase after hiding after a murder at the place where they did the murder
+        if(victim == null && iWerewolfLastMurderLoc != -1)
+        {
+            iFirstTaskLocation = iWerewolfLastMurderLoc;
+        }
+
+        AddTask(eFirstTaskType, iFirstTaskLocation);
         AddTask(eSecondTaskType, iLocation);
     }
 
