@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7067810448438259302
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7203961232433088268}
+  - component: {fileID: 6324620271232472032}
+  m_Layer: 0
+  m_Name: CharacterGenerator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7203961232433088268
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7067810448438259302}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1501.8422, y: 635.1758, z: -708.8623}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6324620271232472032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7067810448438259302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a896672b3cba3452783988cf69f5e4cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BaseSprites:
+  - {fileID: -2926083719925882210, guid: 525805dcde76b4435894b9a19fa526af, type: 3}
+  EarsSprites:
+  - {fileID: -9110637738016182130, guid: 525805dcde76b4435894b9a19fa526af, type: 3}
+  - {fileID: 1022078377882442576, guid: 525805dcde76b4435894b9a19fa526af, type: 3}
+  EyesSprites:
+  - {fileID: 1848185058029507687, guid: 525805dcde76b4435894b9a19fa526af, type: 3}
+  - {fileID: 7300622840773467567, guid: 525805dcde76b4435894b9a19fa526af, type: 3}
+  - {fileID: 2889118329964772921, guid: 525805dcde76b4435894b9a19fa526af, type: 3}
+  NoseSprites:
+  - {fileID: -2224237862052902312, guid: 525805dcde76b4435894b9a19fa526af, type: 3}
+  - {fileID: -7841804409123472223, guid: 525805dcde76b4435894b9a19fa526af, type: 3}
+  - {fileID: -1349585722652427655, guid: 525805dcde76b4435894b9a19fa526af, type: 3}
+  MouthSprites:
+  - {fileID: 6571823868928293799, guid: 525805dcde76b4435894b9a19fa526af, type: 3}
+  - {fileID: 9106787833027268348, guid: 525805dcde76b4435894b9a19fa526af, type: 3}
+  - {fileID: 8081683643205035771, guid: 525805dcde76b4435894b9a19fa526af, type: 3}
