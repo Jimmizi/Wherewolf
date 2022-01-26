@@ -38,6 +38,22 @@ public class InformationManager : MonoBehaviour
         return EmoteMap[eType][UnityEngine.Random.Range(0, EmoteMap[eType].Count)];
     }
 
+    public Emote GetCharacterEmote(Character c)
+    {
+        int iIndex = Service.Population.ActiveCharacters.IndexOf(c);
+        if(iIndex >= 0 && iIndex < Service.Population.ActiveCharacters.Count)
+        {
+            return GetCharacterEmote(iIndex);
+        }
+
+        return null;
+    }
+
+    public Emote GetCharacterEmote(int iIndex)
+    {
+        Debug.Assert(iIndex >= 0 && iIndex <= 19);
+        return EmoteMap[Emote.EmoteType.CharacterHeadshot][iIndex];
+    }
 
     public void Awake()
     {
@@ -539,13 +555,17 @@ public class InformationManager : MonoBehaviour
             {
                 newEmote.Type = Emote.EmoteType.Clothing;
             }
-            else if (i >= (int)Emote.EmoteSubType.Specific_Footsteps && i <= (int)Emote.EmoteSubType.Specific_AccidentFall)
+            else if (i >= (int)Emote.EmoteSubType.Specific_Footsteps && i <= (int)Emote.EmoteSubType.Specific_Eyes)
             {
                 newEmote.Type = Emote.EmoteType.Specific;
             }
             else if (i >= (int)Emote.EmoteSubType.Gossip_RelationshipKiss && i <= (int)Emote.EmoteSubType.Gossip_RelationshipMarriage)
             {
                 newEmote.Type = Emote.EmoteType.Gossip;
+            }
+            else if (i >= (int)Emote.EmoteSubType.CharacterHeadshot_1 && i <= (int)Emote.EmoteSubType.CharacterHeadshot_20)
+            {
+                newEmote.Type = Emote.EmoteType.CharacterHeadshot;
             }
 
             // SubType

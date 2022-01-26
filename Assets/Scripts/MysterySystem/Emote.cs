@@ -20,9 +20,11 @@ public class Emote
         Clothing,
         Condition,
         Specific,
-        Gossip
+        Gossip,
+        CharacterHeadshot,
     }
 
+    // If adding to this, update AddDefaultEmotes() in InformationManager.cs
     public enum EmoteSubType
     {
         HairStyle_Long,
@@ -90,10 +92,31 @@ public class Emote
         Specific_Footsteps,
         Specific_AccidentKnife,
         Specific_AccidentFall,
+        Specific_Eyes,
 
         Gossip_RelationshipKiss,
         Gossip_RelationshipFight,
         Gossip_RelationshipMarriage,
+
+        CharacterHeadshot_1,
+        CharacterHeadshot_2,
+        CharacterHeadshot_3,
+        CharacterHeadshot_4,
+        CharacterHeadshot_5,
+        CharacterHeadshot_6,
+        CharacterHeadshot_7,
+        CharacterHeadshot_8,
+        CharacterHeadshot_9,
+        CharacterHeadshot_10,
+        CharacterHeadshot_12,
+        CharacterHeadshot_13,
+        CharacterHeadshot_14,
+        CharacterHeadshot_15,
+        CharacterHeadshot_16,
+        CharacterHeadshot_17,
+        CharacterHeadshot_18,
+        CharacterHeadshot_19,
+        CharacterHeadshot_20,
     }
 
     public static int LocationMin => 0;
