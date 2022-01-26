@@ -191,7 +191,21 @@ public class PhaseSolver : MonoBehaviour
             yield return new WaitForSeconds(0.02f);
         }
 
-        // 4) Done
+        // 4) Calculate what characters they saw passing by (only if that character isn't present in the character seen map
+
+        foreach (var c in Service.Population.ActiveCharacters)
+        {
+            if (!c.IsAlive)
+            {
+                continue;
+            }
+
+            CurrentPhase.CharacterSawPassingByMap.Add(c, CalculateSawCharactersPassingByDuringPhase(eTod, c));
+
+            yield return new WaitForSeconds(0.02f);
+        }
+
+        // 5) Done
 
         IsGeneratingAPhase = false;
         
@@ -379,7 +393,6 @@ public class PhaseSolver : MonoBehaviour
     List<Character> CalculateSeenCharactersDuringPhase(WerewolfGame.TOD eTod, Character character)
     {
         List<Character> otherCharactersSawDuringThisPhase = new List<Character>();
-
         List<int> iLocationsIn = new List<int>();
 
         foreach(var t in (eTod == WerewolfGame.TOD.Day? character.TaskSchedule.DayTasks : character.TaskSchedule.NightTasks))
@@ -402,6 +415,11 @@ public class PhaseSolver : MonoBehaviour
                     continue;
                 }
 
+                if (!c.IsAlive)
+                {
+                    continue;
+                }
+
                 foreach (var t in (eTod == WerewolfGame.TOD.Day ? c.TaskSchedule.DayTasks : c.TaskSchedule.NightTasks))
                 {
                     if(t.Type != Task.TaskType.Sleep && iLocationsIn.Contains(t.Location))
@@ -414,6 +432,49 @@ public class PhaseSolver : MonoBehaviour
         }
 
         return otherCharactersSawDuringThisPhase;
+    }
+
+    List<Character> CalculateSawCharactersPassingByDuringPhase(WerewolfGame.TOD eTod, Character character)
+    {
+        List<Character> otherCharactersSawPassByDuringPhase = new List<Character>();
+
+        List<int> iLocationsIn = new List<int>();
+        foreach (var t in (eTod == WerewolfGame.TOD.Day ? character.TaskSchedule.DayTasks : character.TaskSchedule.NightTasks))
+        {
+            // Wouldn't be able to see other people when sleeping
+            if (t.Type != Task.TaskType.Sleep)
+            {
+                iLocationsIn.Add(t.Location);
+            }
+        }
+
+        foreach (var c in Service.Population.ActiveCharacters)
+        {
+            if (c == character)
+            {
+                continue;
+            }
+
+            if (!c.IsAlive)
+            {
+                continue;
+            }
+
+            // If we've fully seen this character in a location already, no need to generate passing by records
+            //  as knowing what location they're in is stronger evidence then only knowing they passed by
+            if(CurrentPhase.CharacterSeenMap[character].Contains(c))
+            {
+                continue;
+            }
+
+            if (c.WillTravelThroughLocationDuringTasks(eTod, iLocationsIn))
+            {
+                otherCharactersSawPassByDuringPhase.Add(c);
+                break;
+            }
+        }
+
+        return otherCharactersSawPassByDuringPhase;
     }
 
 
@@ -560,6 +621,22 @@ public class PhaseSolver : MonoBehaviour
                     vPosition.y += iTextHeight;
 
                     foreach (var c in currentPhaseDebugging.CharacterSeenMap[CurrentCharacterSeenListSelected])
+                    {
+                        if (c.IsWerewolf)
+                        {
+                            GUI.contentColor = new Color(1.0f, 0.5f, 0.5f);
+                        }
+
+                        GUI.Label(new Rect(vPosition.x, vPosition.y, 200, iTextBoxHeight), string.Format("[{0}] {1}", c.Index, c.Name));
+                        vPosition.y += iTextHeight;
+                        GUI.contentColor = Color.white;
+                    }
+
+                    vPosition.y += iTextHeight;
+                    GUI.Label(new Rect(vPosition.x, vPosition.y, 200, iTextBoxHeight), "and saw these passing by:");
+                    vPosition.y += iTextHeight;
+
+                    foreach (var c in currentPhaseDebugging.CharacterSawPassingByMap[CurrentCharacterSeenListSelected])
                     {
                         if (c.IsWerewolf)
                         {

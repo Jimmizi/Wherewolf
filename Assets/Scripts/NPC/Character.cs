@@ -126,6 +126,57 @@ public class Character
         return true;
     }
 
+    public bool WillTravelThroughLocationDuringTasks(WerewolfGame.TOD eTod, List<int> iLocations)
+    {
+        List<Task> taskList = eTod == WerewolfGame.TOD.Day
+            ? TaskSchedule.DayTasks
+            : TaskSchedule.NightTasks;
+
+        if(taskList == null)
+        {
+            return false;
+        }
+
+        if(taskList.Count <= 1)
+        {
+            return false;
+        }
+
+        for(int i = 0; i < taskList.Count - 1; ++i)
+        {
+            int thisTaskLocation = taskList[i].Location;
+            int nextTaskLocation = taskList[i + 1].Location;
+
+            // No travel
+            if(thisTaskLocation == nextTaskLocation)
+            {
+                continue;
+            }
+
+            // Make sure they're valid locations
+            if(thisTaskLocation >= 0 && nextTaskLocation >= 0
+                && thisTaskLocation <= Emote.LocationMax && nextTaskLocation <= Emote.LocationMax)
+            {
+                List<int> pathTaken = Service.Population.GetPathBetweenLocations(thisTaskLocation, nextTaskLocation);
+                if(pathTaken.Count == 0)
+                {
+                    continue;
+                }
+
+                // If any part of the characters task would take them through the passed in location, return true
+                foreach (var iLoc in iLocations)
+                {
+                    if(pathTaken.Contains(iLoc))
+                    {
+                        return true;
+                    }
+                }
+            }
+        }
+
+        return false;
+    }
+
     // Private functions
 
     void GotoNextTask()

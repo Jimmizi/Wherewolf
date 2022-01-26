@@ -822,7 +822,163 @@ public class PopulationManager : MonoBehaviour
 
     public int GetRandomAdjacentLocation(int iLoc)
     {
+        //  Locations as follows
+        //  _______________________
+        // |       |       |       |
+        // |   1(0)|   2(1)|   3(2)|
+        // |       |       |       |
+        // |-----------------------|
+        // |       |       |       |
+        // |   4(3)|   5(4)|   6(5)|
+        // |       |       |       |
+        // |-----------------------|
+        // |       |       |       |
+        // |   7(6)|   8(7)|   9(8)|
+        // |       |       |       |
+        //  -----------------------
+
         // See GenerateAdjacentLocationData() for location map
         return adjacentLocationMap[iLoc][UnityEngine.Random.Range(0, adjacentLocationMap[iLoc].Count)];
+    }
+
+    // Get a traveled through path between two different locations
+    public List<int> GetPathBetweenLocations(int iLocA, int iLocB)
+    {
+        // These are hardcoded in order to not need to store paths taken for phases (simplify all the data a bit)
+
+        //  Locations as follows
+        //  _______________________
+        // |       |       |       |
+        // |   1(0)|   2(1)|   3(2)|
+        // |       |       |       |
+        // |-----------------------|
+        // |       |       |       |
+        // |   4(3)|   5(4)|   6(5)|
+        // |       |       |       |
+        // |-----------------------|
+        // |       |       |       |
+        // |   7(6)|   8(7)|   9(8)|
+        // |       |       |       |
+        //  -----------------------
+
+
+        List<int> pathTraveled = new List<int>();
+
+        switch (iLocA)
+        {
+            case 0:
+                {
+                    switch (iLocB)
+                    {
+                        case 2: pathTraveled.Add(1); break;
+                        case 4: pathTraveled.Add(1); break;
+                        case 5: pathTraveled.Add(1); pathTraveled.Add(2); break;
+                        case 6: pathTraveled.Add(3); break;
+                        case 7: pathTraveled.Add(1); pathTraveled.Add(4); break;
+                        case 8: pathTraveled.Add(1); pathTraveled.Add(4); pathTraveled.Add(5); break;
+                    }
+                    break;
+                }
+            case 1:
+                {
+                    switch (iLocB)
+                    {
+                        case 3: pathTraveled.Add(0); break;
+                        case 5: pathTraveled.Add(2); break;
+                        case 6: pathTraveled.Add(0); pathTraveled.Add(3); break;
+                        case 7: pathTraveled.Add(4); break;
+                        case 8: pathTraveled.Add(2); pathTraveled.Add(5); break;
+                    }
+                    break;
+                }
+            case 2:
+                {
+                    switch (iLocB)
+                    {
+                        case 0: pathTraveled.Add(1); break;
+                        case 3: pathTraveled.Add(1); pathTraveled.Add(0); break;
+                        case 4: pathTraveled.Add(1); break;
+                        case 6: pathTraveled.Add(1); pathTraveled.Add(4); pathTraveled.Add(3); break;
+                        case 7: pathTraveled.Add(1); pathTraveled.Add(4); break;
+                        case 8: pathTraveled.Add(5); break;
+                    }
+                    break;
+                }
+            case 3:
+                {
+                    switch (iLocB)
+                    {
+                        case 1: pathTraveled.Add(0); break;
+                        case 2: pathTraveled.Add(0); pathTraveled.Add(1); break;
+                        case 5: pathTraveled.Add(4); break;
+                        case 7: pathTraveled.Add(4); break;
+                        case 8: pathTraveled.Add(4); pathTraveled.Add(5); break;
+                    }
+                    break;
+                }
+            case 4:
+                {
+                    switch (iLocB)
+                    {
+                        case 0: pathTraveled.Add(1); break;
+                        case 2: pathTraveled.Add(1); break;
+                        case 6: pathTraveled.Add(3); break;
+                        case 8: pathTraveled.Add(5); break;
+                    }
+                    break;
+                }
+            case 5:
+                {
+                    switch (iLocB)
+                    {
+                        case 0: pathTraveled.Add(2); pathTraveled.Add(1); break;
+                        case 1: pathTraveled.Add(2); break;
+                        case 3: pathTraveled.Add(4); break;
+                        case 6: pathTraveled.Add(4); pathTraveled.Add(3); break;
+                        case 7: pathTraveled.Add(4); break;
+                    }
+                    break;
+                }
+            case 6:
+                {
+                    switch (iLocB)
+                    {
+                        case 0: pathTraveled.Add(3); break;
+                        case 1: pathTraveled.Add(3); pathTraveled.Add(0); break;
+                        case 2: pathTraveled.Add(3); pathTraveled.Add(4); pathTraveled.Add(1); break;
+                        case 4: pathTraveled.Add(3); break;
+                        case 5: pathTraveled.Add(3); pathTraveled.Add(4); break;
+                        case 8: pathTraveled.Add(7); break;
+                    }
+                    break;
+                }
+            case 7:
+                {
+                    switch (iLocB)
+                    {
+                        case 0: pathTraveled.Add(4); pathTraveled.Add(1); break;
+                        case 1: pathTraveled.Add(4); break;
+                        case 2: pathTraveled.Add(4); pathTraveled.Add(5); break;
+                        case 3: pathTraveled.Add(6); break;
+                        case 5: pathTraveled.Add(8); break;
+                    }
+                    break;
+                }
+            case 8:
+                {
+                    switch (iLocB)
+                    {
+                        case 0: pathTraveled.Add(5); pathTraveled.Add(4); pathTraveled.Add(1); break;
+                        case 1: pathTraveled.Add(5); pathTraveled.Add(2); break;
+                        case 2: pathTraveled.Add(5); break;
+                        case 3: pathTraveled.Add(5); pathTraveled.Add(4); break;
+                        case 4: pathTraveled.Add(7); break;
+                        case 6: pathTraveled.Add(7); break;
+                    }
+                    break;
+                }
+        }
+
+        return pathTraveled;
     }
 }

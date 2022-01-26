@@ -8,6 +8,7 @@ public class Phase
     public Character Victim = null;
 
     public Dictionary<Character, List<Character>> CharacterSeenMap = new Dictionary<Character, List<Character>>();
+    public Dictionary<Character, List<Character>> CharacterSawPassingByMap = new Dictionary<Character, List<Character>>();
     public Dictionary<Character, List<Task>> CharacterTasks = new Dictionary<Character, List<Task>>();
 
     public Phase(Phase other)
