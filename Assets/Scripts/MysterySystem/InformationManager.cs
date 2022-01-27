@@ -555,7 +555,7 @@ public class InformationManager : MonoBehaviour
             {
                 newEmote.Type = Emote.EmoteType.Clothing;
             }
-            else if (i >= (int)Emote.EmoteSubType.Specific_Footsteps && i <= (int)Emote.EmoteSubType.Specific_Eyes)
+            else if (i >= (int)Emote.EmoteSubType.Specific_Footsteps && i <= (int)Emote.EmoteSubType.Specific_Werewolf)
             {
                 newEmote.Type = Emote.EmoteType.Specific;
             }
@@ -566,6 +566,10 @@ public class InformationManager : MonoBehaviour
             else if (i >= (int)Emote.EmoteSubType.CharacterHeadshot_1 && i <= (int)Emote.EmoteSubType.CharacterHeadshot_20)
             {
                 newEmote.Type = Emote.EmoteType.CharacterHeadshot;
+            }
+            else if (i >= (int)Emote.EmoteSubType.Opinion_Love && i <= (int)Emote.EmoteSubType.Opinion_Hate)
+            {
+                newEmote.Type = Emote.EmoteType.Opinion;
             }
 
             // SubType
