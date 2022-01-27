@@ -27,7 +27,7 @@ public class ClueObject
             case ClueType.SawPassingBy:             return 25.0f;
             case ClueType.SawAtWork:                return 70.0f;
             case ClueType.CommentFacialFeatures:    return 25.0f;
-            case ClueType.CommentClothing:          return 25.0f;
+            case ClueType.CommentClothing:          return 40.0f;
             case ClueType.CommentGossip:            return 25.0f;
             case ClueType.VisualFromGhost:          return 100.0f;
         }
@@ -202,10 +202,20 @@ public class ClueObject
 
     void GenerateCommentClothingEmotes()
     {
-        // Should be: "CharacterHeadshot" "Clothing" "Random: Approves/Disapproves"
+        // Should be: "CharacterHeadshot" "Optional: Condition" "Clothing" "Random: Approves/Disapproves"
         AddEmote(RelatesToCharacter.GetHeadshotEmoteSubType());
 
-        List<Emote> clothing = RelatesToCharacter.GetDescriptors(Character.Descriptor.Clothing);
+        List<Emote> clothing = new List<Emote>();
+        
+        if(RelatesToCharacter.CurrentClothingCondition != null)
+        {
+            clothing.Add(RelatesToCharacter.CurrentClothingCondition);
+        }
+        foreach(var e in RelatesToCharacter.GetDescriptors(Character.Descriptor.Clothing))
+        {
+            clothing.Add(e);
+        }
+        
         foreach (var emote in clothing)
         {
             AddEmote(emote.SubType);

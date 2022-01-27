@@ -34,6 +34,19 @@ public class InformationManager : MonoBehaviour
         return name;
     }
 
+    public Emote GetRandomNonBloodyConditionEmote()
+    {
+        int iRandomIndex = UnityEngine.Random.Range(0, EmoteMapByType[Emote.EmoteType.Condition].Count);
+        
+        // Bloody types become Clean
+        if(EmoteMapByType[Emote.EmoteType.Condition][iRandomIndex].SubType == Emote.EmoteSubType.Condition_Bloody)
+        {
+            iRandomIndex++;
+        }
+
+        return EmoteMapByType[Emote.EmoteType.Condition][iRandomIndex];
+    }
+
     public Emote GetRandomEmoteOfType(Emote.EmoteType eType)
     {
         return EmoteMapByType[eType][UnityEngine.Random.Range(0, EmoteMapByType[eType].Count)];

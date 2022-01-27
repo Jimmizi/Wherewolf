@@ -193,6 +193,19 @@ public class PhaseSolver : MonoBehaviour
             {
                 ww.TaskSchedule.NightTasks.Add(new Task(ww, Task.TaskType.Sleep));
             }
+
+            if (UnityEngine.Random.Range(0.0f, 100.0f) < Service.Config.ChanceForWerewolfClothesToBeBloodyOrDamagedAfterKill)
+            {
+                bool bloodyChance = UnityEngine.Random.Range(0.0f, 100.0f) < 40.0f;
+
+                if (Service.Game.CurrentDay <= Service.Config.NumberOfDaysBeforeWerewolfClothesCanBeBloody)
+                {
+                    bloodyChance = false;
+                }
+
+                Emote.EmoteSubType eSubType = bloodyChance ? Emote.EmoteSubType.Condition_Bloody : Emote.EmoteSubType.Condition_Torn;
+                ww.CurrentClothingCondition = Service.InfoManager.EmoteMapBySubType[eSubType];
+            }
         }
         else
         {
@@ -219,9 +232,29 @@ public class PhaseSolver : MonoBehaviour
             yield return new WaitForSeconds(0.02f);
         }
 
-        // 3) Then we calculate what characters everyone would have seen throughout the day
+        // 3 randomise clothes condition
 
-        foreach(var c in Service.Population.ActiveCharacters)
+        foreach (var c in Service.Population.ActiveCharacters)
+        {
+            if (!c.IsAlive || c.IsWerewolf)
+            {
+                continue;
+            }
+
+            // Clear any left over from last phase
+            c.CurrentClothingCondition = null;
+
+            if (UnityEngine.Random.Range(0.0f, 100.0f) < Service.Config.ChanceForCharacterSpecialClothingCondition)
+            {
+                c.CurrentClothingCondition = Service.InfoManager.GetRandomNonBloodyConditionEmote();
+            }
+
+            yield return new WaitForSeconds(0.02f);
+        }
+
+        // 4) Then we calculate what characters everyone would have seen throughout the day
+
+        foreach (var c in Service.Population.ActiveCharacters)
         {
             if (!c.IsAlive)
             {
@@ -236,7 +269,7 @@ public class PhaseSolver : MonoBehaviour
             yield return new WaitForSeconds(0.02f);
         }
 
-        // 4) Calculate what characters they saw passing by (only if that character isn't present in the character seen map
+        // 5) Calculate what characters they saw passing by (only if that character isn't present in the character seen map
 
         foreach (var c in Service.Population.ActiveCharacters)
         {
@@ -250,7 +283,7 @@ public class PhaseSolver : MonoBehaviour
             yield return new WaitForSeconds(0.02f);
         }
 
-        // 5) Done
+        // 6) Done
 
         IsGeneratingAPhase = false;
         
@@ -727,58 +760,60 @@ public class PhaseSolver : MonoBehaviour
                     GUI.Label(new Rect(vPosition.x, vPosition.y, 200, iTextBoxHeight), "Can give these clues:");
                     vPosition.y += iTextHeight;
 
-                    foreach(var clue in currentPhaseDebugging.CharacterCluesToGive[CurrentCharacterSelected])
+                    if (currentPhaseDebugging.CharacterCluesToGive.ContainsKey(CurrentCharacterSelected))
                     {
-                        // Type
-                        GUI.contentColor = Color.yellow;
-                        GUI.Label(new Rect(vPosition.x, vPosition.y, 150, iTextBoxHeight), clue.Type.ToString());
-
-                        // True/false
-                        GUI.contentColor = clue.IsTruth ? new Color(0.1f, 0.8f, 0.1f) : new Color(0.8f, 0.1f, 0.1f);
-                        GUI.Label(new Rect(vPosition.x + 200, vPosition.y, 150, iTextBoxHeight), 
-                            string.Format("({0})", clue.IsTruth ? "Is the truth" : "Is a lie"));
-
-                        vPosition.y += iTextHeight;
-                        GUI.contentColor = Color.white;
-
-                        // Extra info
-                        if(clue.RelatesToCharacter.IsWerewolf)
+                        foreach (var clue in currentPhaseDebugging.CharacterCluesToGive[CurrentCharacterSelected])
                         {
-                            GUI.contentColor = new Color(1.0f, 0.5f, 0.5f);
-                        }
-                        GUI.Label(new Rect(vPosition.x, vPosition.y, 200, iTextBoxHeight), 
-                            string.Format("Subject: [{0}] {1}", clue.RelatesToCharacter.Index, clue.RelatesToCharacter.Name));
-                        GUI.contentColor = Color.white;
+                            // Type
+                            GUI.contentColor = Color.yellow;
+                            GUI.Label(new Rect(vPosition.x, vPosition.y, 150, iTextBoxHeight), clue.Type.ToString());
 
-                        GUI.Label(new Rect(vPosition.x + 200, vPosition.y, 200, iTextBoxHeight),
-                             string.Format("LocSeenIn: {0}", clue.LocationSeenIn));
+                            // True/false
+                            GUI.contentColor = clue.IsTruth ? new Color(0.1f, 0.8f, 0.1f) : new Color(0.8f, 0.1f, 0.1f);
+                            GUI.Label(new Rect(vPosition.x + 200, vPosition.y, 150, iTextBoxHeight),
+                                string.Format("({0})", clue.IsTruth ? "Is the truth" : "Is a lie"));
 
-                        vPosition.y += iTextHeight;
-
-                        if(clue.Type == ClueObject.ClueType.VisualFromGhost)
-                        {
-                            GUI.Label(new Rect(vPosition.x, vPosition.y, 350, iTextBoxHeight),
-                                string.Format("Ghost Descriptor Type: {0}", clue.GhostGivenClueType.ToString()));
                             vPosition.y += iTextHeight;
-                        }
+                            GUI.contentColor = Color.white;
 
-                        if (clue.Emotes.Count > 0)
-                        {
-                            GUI.Label(new Rect(vPosition.x, vPosition.y, 200, iTextBoxHeight), "Emotes string:");
-                            vPosition.y += iTextHeight;
-
-                            GUI.contentColor = new Color(0.2f, 0.7f, 1.0f);
-                            foreach (var emote in clue.Emotes)
+                            // Extra info
+                            if (clue.RelatesToCharacter.IsWerewolf)
                             {
-                                GUI.Label(new Rect(vPosition.x, vPosition.y, 300, iTextBoxHeight), emote.SubType.ToString());
+                                GUI.contentColor = new Color(1.0f, 0.5f, 0.5f);
+                            }
+                            GUI.Label(new Rect(vPosition.x, vPosition.y, 200, iTextBoxHeight),
+                                string.Format("Subject: [{0}] {1}", clue.RelatesToCharacter.Index, clue.RelatesToCharacter.Name));
+                            GUI.contentColor = Color.white;
+
+                            GUI.Label(new Rect(vPosition.x + 200, vPosition.y, 200, iTextBoxHeight),
+                                 string.Format("LocSeenIn: {0}", clue.LocationSeenIn));
+
+                            vPosition.y += iTextHeight;
+
+                            if (clue.Type == ClueObject.ClueType.VisualFromGhost)
+                            {
+                                GUI.Label(new Rect(vPosition.x, vPosition.y, 350, iTextBoxHeight),
+                                    string.Format("Ghost Descriptor Type: {0}", clue.GhostGivenClueType.ToString()));
                                 vPosition.y += iTextHeight;
                             }
-                            GUI.contentColor = Color.white;
+
+                            if (clue.Emotes.Count > 0)
+                            {
+                                GUI.Label(new Rect(vPosition.x, vPosition.y, 200, iTextBoxHeight), "Emotes string:");
+                                vPosition.y += iTextHeight;
+
+                                GUI.contentColor = new Color(0.2f, 0.7f, 1.0f);
+                                foreach (var emote in clue.Emotes)
+                                {
+                                    GUI.Label(new Rect(vPosition.x, vPosition.y, 300, iTextBoxHeight), emote.SubType.ToString());
+                                    vPosition.y += iTextHeight;
+                                }
+                                GUI.contentColor = Color.white;
+                            }
+
+                            vPosition.y += iTextHeight;
                         }
-
-                        vPosition.y += iTextHeight;
                     }
-
                 }
             }
             GUI.EndScrollView();

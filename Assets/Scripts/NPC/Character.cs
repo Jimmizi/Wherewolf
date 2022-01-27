@@ -26,6 +26,8 @@ public class Character
     public bool HasGeneratedGhostClues = false;
     public Schedule TaskSchedule = new Schedule();
 
+    public Emote CurrentClothingCondition = null;
+
     // Pointer towards the last list of clues the character was able to give
     public List<ClueObject> LastClueGroup;
 

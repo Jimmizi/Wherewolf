@@ -69,6 +69,15 @@ public class ConfigManager : MonoBehaviour
     [SerializeField]
     public float ChanceToAddApprovalDisapprovalAtClueEnd = 50.0f;
 
+    [SerializeField]
+    public float ChanceForWerewolfClothesToBeBloodyOrDamagedAfterKill = 50.0f;
+
+    [SerializeField]
+    public float ChanceForCharacterSpecialClothingCondition = 20.0f;
+
+    [SerializeField]
+    public int NumberOfDaysBeforeWerewolfClothesCanBeBloody = 5;
+
     // Start is called before the first frame update
     void Awake()
     {

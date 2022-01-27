@@ -413,7 +413,21 @@ public class ClueManager : MonoBehaviour
 
         foreach (var c in charactersSeen)
         {
-            vWeights.Add(c.Item1.IsWerewolf ? fWerewolfWeight : fAverageWeight);
+            float weight = c.Item1.IsWerewolf ? fWerewolfWeight : fAverageWeight;
+
+            if (c.Item1.CurrentClothingCondition != null)
+            {
+                if (c.Item1.CurrentClothingCondition.SubType == Emote.EmoteSubType.Condition_Bloody)
+                {
+                    weight *= 2;
+                }
+                else if (c.Item1.CurrentClothingCondition.SubType == Emote.EmoteSubType.Condition_Torn)
+                {
+                    weight *= 1.5f;
+                }
+            }
+
+            vWeights.Add(weight);
         }
 
         int iIndexToUse = Randomiser.GetRandomIndexFromWeights(vWeights);
