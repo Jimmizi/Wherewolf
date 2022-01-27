@@ -448,10 +448,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Manager
       objectReference: {fileID: 0}
-    - target: {fileID: 4957857799237703561, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4957857799237703567, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -496,30 +492,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6546185642195876980, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
-      propertyPath: StartDayEvent.WwiseObjectReference
-      value: 
-      objectReference: {fileID: 11400000, guid: 2ccca8417d5b939448bca1ac37662d1b, type: 2}
-    - target: {fileID: 6546185642195876980, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
-      propertyPath: StartNightEvent.WwiseObjectReference
-      value: 
-      objectReference: {fileID: 11400000, guid: df41243385b4cd845abe3f321be4c646, type: 2}
-    - target: {fileID: 6546185642195876980, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
-      propertyPath: MusicEvents.Array.data[1].WwiseObjectReference
-      value: 
-      objectReference: {fileID: 11400000, guid: 874ae94172d417247b664059d9055f01, type: 2}
-    - target: {fileID: 6546185642195876980, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
-      propertyPath: MusicEvents.Array.data[2].WwiseObjectReference
-      value: 
-      objectReference: {fileID: 11400000, guid: 05e07d33c7139e34cb63bf7315df95dd, type: 2}
-    - target: {fileID: 6546185642195876980, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
-      propertyPath: MusicEvents.Array.data[3].WwiseObjectReference
-      value: 
-      objectReference: {fileID: 11400000, guid: 86bdd4b2b3ab04e40bb9121215dc481a, type: 2}
-    - target: {fileID: 6546185642195876980, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
-      propertyPath: MusicEvents.Array.data[4].WwiseObjectReference
-      value: 
-      objectReference: {fileID: 11400000, guid: 5e2c63a0fb143e84e919e1dd5ac861e4, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
 --- !u!1001 &611616529
