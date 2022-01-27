@@ -872,6 +872,8 @@ public class PopulationManager : MonoBehaviour
             c.Descriptors[Character.Descriptor.Clothing].Add(Service.InfoManager.GetRandomEmoteOfType(Emote.EmoteType.Clothing));
         }
 
+        c.Age = UnityEngine.Random.Range(16, 71);
+
         return c;
     }
 

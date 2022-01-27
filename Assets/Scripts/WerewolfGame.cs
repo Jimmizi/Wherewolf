@@ -49,6 +49,12 @@ public class WerewolfGame : MonoBehaviour
     public bool DisplayDebug = true;
 #endif
 
+    [SerializeField]
+    public SceneField WinScene;
+
+    [SerializeField]
+    public SceneField LoseScene;
+
     public GameState CurrentState = GameState.GeneratePopulation;
     private GameState NextState = InvalidState;
 
@@ -182,6 +188,8 @@ public class WerewolfGame : MonoBehaviour
         }
     }
 
+    #region State processing
+
     void ProcessStateGeneratePopulation()
     {
         switch (CurrentSubState)
@@ -202,7 +210,6 @@ public class WerewolfGame : MonoBehaviour
                 }
         }
     }
-
     void ProcessStateIntroStorySegment()
     {
         switch (CurrentSubState)
@@ -224,7 +231,6 @@ public class WerewolfGame : MonoBehaviour
                 }
         }
     }
-
     void ProcessTimeTransitionState()
     {
         switch (CurrentSubState)
@@ -265,7 +271,6 @@ public class WerewolfGame : MonoBehaviour
                 }
         }
     }
-
     void ProcessVictimFoundAnnouncement()
     {
         switch (CurrentSubState)
@@ -298,7 +303,6 @@ public class WerewolfGame : MonoBehaviour
                 }
         }
     }
-
     void ProcessStatePhaseGeneration()
     {
         switch (CurrentSubState)
@@ -326,7 +330,6 @@ public class WerewolfGame : MonoBehaviour
                 }
         }
     }
-
     void ProcessStateClueGeneration()
     {
         switch (CurrentSubState)
@@ -352,7 +355,6 @@ public class WerewolfGame : MonoBehaviour
                 }
         }
     }
-
     void ProcessStatePlayerInvestigate()
     {
         switch (CurrentSubState)
@@ -375,7 +377,6 @@ public class WerewolfGame : MonoBehaviour
                 }
         }
     }
-
     void ProcessStatePlayerInformationReview()
     {
         switch (CurrentSubState)
@@ -397,14 +398,14 @@ public class WerewolfGame : MonoBehaviour
                 }
         }
     }
-
     void ProcessStatePlayerChoseToStake()
     {
         switch (CurrentSubState)
         {
             case SubState.Start:
                 {
-
+                    // Perhaps start a character animation?
+                    // Scene change?
                     break;
                 }
             case SubState.Update:
@@ -419,7 +420,6 @@ public class WerewolfGame : MonoBehaviour
                 }
         }
     }
-
     void ProcessStateGameSummary()
     {
         switch (CurrentSubState)
@@ -442,6 +442,8 @@ public class WerewolfGame : MonoBehaviour
         }
 
     }
+
+    #endregion
 
     public void ProgressGameFromExternal()
     {
@@ -495,27 +497,24 @@ public class WerewolfGame : MonoBehaviour
     }
 
     
-
-    void ShowPhaseShiftAnimation(TOD eFrom, TOD eTo)
+    public void ProcessPlayerActionStakeCharacter(Character c)
     {
-
-    }
-
-    void BeginPhase()
-    {
-
-    }
-
-    void ProcessPhaseShiftOnAllCharacters()
-    {
-        foreach(var c in Service.Population.ActiveCharacters)
+        if(CurrentState != GameState.PlayerChoseToStake)
         {
-            c.OnTimeOfDayPhaseShift();
+            CurrentSubState = SubState.Finish;
+            NextState = GameState.PlayerChoseToStake;
+
+            c.ChosenForStakeTarget = true;
         }
     }
 
+
     #region DEBUG
 #if UNITY_EDITOR
+
+    Vector2 vStakeSelectionScrollPosition = new Vector2();
+    bool chosenToStake = false;
+
     private void OnGUI()
     {
         if (!DisplayDebug && !Service.PhaseSolve.bShowDebug && !Service.Population.bShowDebug)
@@ -538,6 +537,37 @@ public class WerewolfGame : MonoBehaviour
             CurrentSubState.ToString(), 
             CurrentDay, 
             CurrentTimeOfDay.ToString()));
+
+        float fHeight = Screen.height - 80;
+
+        GUI.Box(new Rect(10, 40, 600, fHeight), "");
+
+        // Choose to stake a character
+        vStakeSelectionScrollPosition = GUI.BeginScrollView(new Rect(15, 45, 200, fHeight - 10), vStakeSelectionScrollPosition, new Rect(0, 0, 190, 1000));
+        {
+            if (!chosenToStake)
+            {
+                Vector2 vPosition = new Vector2(5, 5);
+                GUI.Label(new Rect(vPosition.x, vPosition.y, 200, 24), "Select a character to stake");
+                vPosition.y += 16;
+
+                foreach (var c in Service.Population.ActiveCharacters)
+                {
+                    if (!c.IsAlive)
+                    {
+                        continue;
+                    }
+
+                    if (GUI.Button(new Rect(vPosition.x, vPosition.y, 140, 24), string.Format("[{0}] {1}", c.Index, c.Name)))
+                    {
+                        ProcessPlayerActionStakeCharacter(c);
+                        chosenToStake = true;
+                    }
+                    vPosition.y += 28;
+                }
+            }
+        }
+        GUI.EndScrollView();
     }
 #endif
     #endregion

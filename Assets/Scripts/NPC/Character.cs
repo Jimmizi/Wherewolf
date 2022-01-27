@@ -24,6 +24,7 @@ public class Character
     public bool IsAlive = true;
     public bool DeathAnnounced = false;
     public bool HasGeneratedGhostClues = false;
+    public bool ChosenForStakeTarget = false;
     public Schedule TaskSchedule = new Schedule();
 
     public Emote CurrentClothingCondition = null;
@@ -34,6 +35,7 @@ public class Character
     public WerewolfGame.TOD DeathTimeOfDay;
     public int DeathDay;
     public int DeathLocation = -1;
+    public int Age;
 
     public int Index;
 
