@@ -9,6 +9,7 @@ public class DragAndDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler
     private RectTransform _rectTransform;
     private Image _image;
     private Canvas _canvas;
+    private Memo _memo;
 
     private RectTransform rectTransform
     {
@@ -46,12 +47,29 @@ public class DragAndDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler
         }
     }
 
+    private Memo memo
+    {
+        get
+        {
+            if (!_memo)
+            {
+                _memo = GetComponent<Memo>();
+            }
+            return _memo;
+        }
+    }
+
     private static int currentSortOrder=1;
 
     public void OnPointerDown(PointerEventData eventData)
     {
         currentSortOrder++;
         canvas.sortingOrder = currentSortOrder;
+
+        if (memo)
+        {
+            memo.Highlighted = false;
+        }
     }
 
     public void OnBeginDrag(PointerEventData eventData)
