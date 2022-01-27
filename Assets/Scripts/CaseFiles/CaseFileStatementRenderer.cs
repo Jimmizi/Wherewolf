@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CaseFileStatementRenderer : MonoBehaviour {
-    
-    public GameObject PagePrefab;
-    public GameObject StatementPrefab;
 
-    private void GenerateFile() {
-        
+    public EmoteTextRenderer EmoteTextRenderer;
+
+    public void Render(List<Emote> emotes) {
+        if (EmoteTextRenderer != null) {
+            EmoteTextRenderer.Render(emotes);
+        }        
     }
 }

@@ -11,6 +11,7 @@ public struct MemoData
     public Vector2 position;
     public Vector2 size;
     public List<int> connectedIds;
+    public bool highlighted;
 }
 
 public class Memo : MonoBehaviour
@@ -20,6 +21,9 @@ public class Memo : MonoBehaviour
 
     [SerializeField]
     private Text note;
+
+    [SerializeField]
+    private GameObject highlight;
 
     RectTransform _rectTransform;
     private RectTransform rectTransform
@@ -45,7 +49,8 @@ public class Memo : MonoBehaviour
                 connectedIds = pin ? pin.ConnectedIds : new List<int>(),
                 message = note ? note.text : "",
                 position = rectTransform ? rectTransform.anchoredPosition : Vector2.zero,
-                size = rectTransform ? rectTransform.sizeDelta : new Vector2(300, 256)
+                size = rectTransform ? rectTransform.sizeDelta : new Vector2(300, 256),
+                highlighted = highlight ? highlight.activeSelf : false,
             };
         }
 
@@ -64,9 +69,20 @@ public class Memo : MonoBehaviour
                 rectTransform.anchoredPosition = value.position;
                 rectTransform.sizeDelta = value.size;
             }
+
+            if (highlight)
+            {
+                highlight.SetActive(value.highlighted);
+            }
         }
 
-    }    
+    }
+
+    public bool Highlighted
+    {
+        get { return highlight ? highlight.activeSelf : false; }
+        set { if (highlight) { highlight.SetActive(value); } }
+    }
 
     public void Destroy()
     {
