@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a167f57e38ba664f888244e2763bb5b, type: 3}
   m_Name: ADD96E5B-E900-4BAF-8714-261614D3ADA4
   m_EditorClassIdentifier: 
-  objectName: DayAmbience
-  id: 2285230397
+  objectName: AmbienceDay
+  id: 345316221
   guid: ADD96E5B-E900-4BAF-8714-261614D3ADA4

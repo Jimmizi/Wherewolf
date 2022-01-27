@@ -254,10 +254,15 @@ public class WerewolfGame : MonoBehaviour
 
                     CurrentTimeOfDay = CurrentState == GameState.TransitionToDay ? TOD.Day : TOD.Night;
 
-                    // (To day from night, increment the day counter)
+                    // (Night -> Day, increment the day counter)
                     if(CurrentState == GameState.TransitionToDay)
                     {
                         CurrentDay++;
+                        Service.Audio.StartDay();
+                    }
+                    else
+                    {
+                        Service.Audio.StartNight();
                     }
 
                     CurrentSubState++;

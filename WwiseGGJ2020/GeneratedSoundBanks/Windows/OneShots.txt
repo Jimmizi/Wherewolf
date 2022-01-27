@@ -7,12 +7,12 @@ Event	ID	Name			Wwise Object Path	Notes
 	4104216053	PaperCrumple			\Default Work Unit\PaperCrumple	
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
-	28494958	PaperMove	C:\Users\leoto\OneDrive\Documents\GitHub\GGJ2022\WwiseGGJ2020\.cache\Windows\SFX\PaperMove_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\PaperMove		216144
-	210370676	Click2	C:\Users\leoto\OneDrive\Documents\GitHub\GGJ2022\WwiseGGJ2020\.cache\Windows\SFX\Click2_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\ClickRandom\Click2		96144
-	210981840	Click3	C:\Users\leoto\OneDrive\Documents\GitHub\GGJ2022\WwiseGGJ2020\.cache\Windows\SFX\Click3_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\ClickRandom\Click3		96144
-	506268763	PaperCrumple	C:\Users\leoto\OneDrive\Documents\GitHub\GGJ2022\WwiseGGJ2020\.cache\Windows\SFX\PaperCrumple_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\PaperCrumple		216144
-	775427740	WolfHowl	C:\Users\leoto\OneDrive\Documents\GitHub\GGJ2022\WwiseGGJ2020\.cache\Windows\SFX\WolfHowl_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\WolfHowl		1440144
-	891565495	RoosterCrow	C:\Users\leoto\OneDrive\Documents\GitHub\GGJ2022\WwiseGGJ2020\.cache\Windows\SFX\RoosterCrow_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\RoosterCrow		624144
-	995369837	Click	C:\Users\leoto\OneDrive\Documents\GitHub\GGJ2022\WwiseGGJ2020\.cache\Windows\SFX\Click_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\ClickRandom\Click		192144
-	1061142557	DoorOpen	C:\Users\leoto\OneDrive\Documents\GitHub\GGJ2022\WwiseGGJ2020\.cache\Windows\SFX\DoorOpen_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\DoorOpen		300664
+	28494958	PaperMove	C:\Users\jaket\Documents\GitHub\GGJ2022\WwiseGGJ2020\.cache\Windows\SFX\PaperMove_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\PaperMove		216144
+	210370676	Click2	C:\Users\jaket\Documents\GitHub\GGJ2022\WwiseGGJ2020\.cache\Windows\SFX\Click2_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\ClickRandom\Click2		96144
+	210981840	Click3	C:\Users\jaket\Documents\GitHub\GGJ2022\WwiseGGJ2020\.cache\Windows\SFX\Click3_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\ClickRandom\Click3		96144
+	506268763	PaperCrumple	C:\Users\jaket\Documents\GitHub\GGJ2022\WwiseGGJ2020\.cache\Windows\SFX\PaperCrumple_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\PaperCrumple		216144
+	775427740	WolfHowl	C:\Users\jaket\Documents\GitHub\GGJ2022\WwiseGGJ2020\.cache\Windows\SFX\WolfHowl_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\WolfHowl		1440144
+	891565495	RoosterCrow	C:\Users\jaket\Documents\GitHub\GGJ2022\WwiseGGJ2020\.cache\Windows\SFX\RoosterCrow_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\RoosterCrow		624144
+	995369837	Click	C:\Users\jaket\Documents\GitHub\GGJ2022\WwiseGGJ2020\.cache\Windows\SFX\Click_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\ClickRandom\Click		192144
+	1061142557	DoorOpen	C:\Users\jaket\Documents\GitHub\GGJ2022\WwiseGGJ2020\.cache\Windows\SFX\DoorOpen_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\DoorOpen		300664
 
