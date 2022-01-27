@@ -503,6 +503,124 @@ public class PopulationManager : MonoBehaviour
 
         yield return new WaitForSeconds(0.02f);
 
+        // Make a map of matching descriptors
+
+        for (int t = 0; t < Character.DescriptorMax; ++t)
+        {
+            var desc = (Character.Descriptor)t;
+            MatchingDescriptorMap.Add(desc, new List<Character>());
+        }
+
+        foreach (var c in ActiveCharacters)
+        {
+            if (c == ww)
+            {
+                continue;
+            }
+
+            for (int t = 0; t < Character.DescriptorMax; ++t)
+            {
+                var desc = (Character.Descriptor)t;
+
+                if (c.DoDescriptorsMatch(ref ww, desc))
+                {
+                    MatchingDescriptorMap[desc].Add(c);
+                }
+            }
+        }
+
+        // If any descriptor category (apart from occupation) is unique, we will give a random npc that isn't 
+        //  already matching in some aspect with the werewolf the descriptors needed to match
+        //  Do this to ensure that ghosts can give direct clues that don't single out the werewolf and make it too easy
+        for (int t = 0; t < Character.DescriptorMax; ++t)
+        {
+            var desc = (Character.Descriptor)t;
+
+            if(desc == Character.Descriptor.Occupation)
+            {
+                continue;
+            }
+
+            if(MatchingDescriptorMap[desc].Count > 0)
+            {
+                Debug.Log("Werewolf shares descriptor " + desc.ToString() + " with others.");
+                continue;
+            }
+
+            Debug.Log("Werewolf has unique descriptor " + desc.ToString());
+
+            // Now Desc is a descriptor that is unique to the werewolf
+
+            List<Character> charactersThatDontShareDescriptors = new List<Character>();
+
+            // Find a character that doesn't already share something with the werewolf
+            foreach (var c in ActiveCharacters)
+            {
+                if(c == ww)
+                {
+                    continue;
+                }
+
+                bool bSharesADescriptor = false;
+
+                for (int d = 0; d < Character.DescriptorMax; ++d)
+                {
+                    var descriptor = (Character.Descriptor)d;
+                    if(MatchingDescriptorMap[descriptor].Contains(c))
+                    {
+                        bSharesADescriptor = true;
+                        break;
+                    }
+                }
+
+                if(!bSharesADescriptor)
+                {
+                    charactersThatDontShareDescriptors.Add(c);
+                }
+            }
+
+            // If somehow every character shares a descriptor, just find the first one that doesn't share what we need to copy to them
+            if(charactersThatDontShareDescriptors.Count == 0)
+            {
+                foreach (var c in ActiveCharacters)
+                {
+                    if (c == ww)
+                    {
+                        continue;
+                    }
+
+                    if(!MatchingDescriptorMap[desc].Contains(c))
+                    {
+                        charactersThatDontShareDescriptors.Add(c);
+                        break;
+                    }
+                }
+            }
+
+            if(charactersThatDontShareDescriptors.Count == 0)
+            {
+                Debug.LogError("Needed to copy ww descriptor " + desc.ToString() + " but couldn't find eligible character.");
+                continue;
+            }
+
+            // we have a list of characters that don't share a descriptor with the werewolf, pick one of them
+            //  to copy the unique descriptor of the werewolf that we found
+            Character charToCopyDescriptorTo =
+                charactersThatDontShareDescriptors.Count == 1
+                ? charactersThatDontShareDescriptors[0]
+                : charactersThatDontShareDescriptors[UnityEngine.Random.Range(0, charactersThatDontShareDescriptors.Count)];
+
+            Debug.Log("Copied unique ww descriptor " + desc.ToString() + " to " + charToCopyDescriptorTo.Name);
+
+            charToCopyDescriptorTo.Descriptors[desc].Clear();
+            charToCopyDescriptorTo.Descriptors[desc] = ww.Descriptors[desc];
+
+            // Then update the matching descriptor map
+            MatchingDescriptorMap[desc].Add(charToCopyDescriptorTo);
+        }
+
+
+
         // Randomise up the order in which we give the homes out
         List<int> randomGiveHomeOrder = new List<int>();
         while(randomGiveHomeOrder.Count < iNumberOfCharactersToMake)
@@ -558,30 +676,6 @@ public class PopulationManager : MonoBehaviour
         }
 
         yield return new WaitForSeconds(0.02f);
-
-        for (int t = 0; t < Character.DescriptorMax; ++t)
-        {
-            var desc = (Character.Descriptor)t;
-            MatchingDescriptorMap.Add(desc, new List<Character>());
-        }
-
-        foreach(var c in ActiveCharacters)
-        {
-            if (c == ww)
-            {
-                continue;
-            }
-
-            for (int t = 0; t < Character.DescriptorMax; ++t)
-            {
-                var desc = (Character.Descriptor)t;
-
-                if (c.DoDescriptorsMatch(ref ww, desc))
-                {
-                    MatchingDescriptorMap[desc].Add(c);
-                }
-            }
-        }
 
         bDoneCharacterGeneration = true;
     }

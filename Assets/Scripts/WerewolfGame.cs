@@ -305,7 +305,7 @@ public class WerewolfGame : MonoBehaviour
         {
             case SubState.Start:
                 {
-                    if(Service.PhaseSolve.CanGeneratePhase())
+                    if (Service.PhaseSolve.CanGeneratePhase())
                     {
                         Service.PhaseSolve.StartPhaseGeneration();
                         CurrentSubState++;
