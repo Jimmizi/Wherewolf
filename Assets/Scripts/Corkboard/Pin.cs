@@ -64,10 +64,13 @@ public class Pin : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandl
     {
         get { return connectedIds; }
         set
-        { 
-            foreach (int pinId in value)
+        {
+            if (value != null)
             {
-                AddConnection(pinId, null);
+                foreach (int pinId in value)
+                {
+                    AddConnection(pinId, null);
+                }
             }
         }
     }

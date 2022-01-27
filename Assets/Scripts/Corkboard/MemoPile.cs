@@ -11,7 +11,12 @@ public class MemoPile : MonoBehaviour, IDropHandler, IBeginDragHandler, IDragHan
     [SerializeField]
     Transform memoHolder;
 
+    [SerializeField]
+    bool createNew = true;
+
     List<MemoData> memos = new List<MemoData>();
+
+    static int baseNewId = 2000;
 
     RectTransform _rectTransform;
     private RectTransform rectTransform
@@ -48,16 +53,31 @@ public class MemoPile : MonoBehaviour, IDropHandler, IBeginDragHandler, IDragHan
     {
         if (memos.Count <= 0)
         {
-            return;
-        }
+            if (createNew)
+            {
+                Memo newMemo = Instantiate(memoPrefab, memoHolder);
+                MemoData memoData = new MemoData();
+                memoData.position = rectTransform.anchoredPosition;
+                memoData.size = new Vector2(300, 256);
+                memoData.highlighted = false;
+                memoData.editable = true;
+                memoData.memoId = baseNewId;
+                baseNewId++;
 
-        Memo newMemo = Instantiate(memoPrefab, memoHolder);
-        MemoData memoData = memos[memos.Count - 1];
-        memoData.position = rectTransform.anchoredPosition;
-        newMemo.Data = memoData;
-        memos.RemoveAt(memos.Count - 1);
-        
-        eventData.pointerDrag = newMemo.gameObject;
+                newMemo.Data = memoData;
+                eventData.pointerDrag = newMemo.gameObject;
+            }
+        }
+        else
+        {
+            Memo newMemo = Instantiate(memoPrefab, memoHolder);
+            MemoData memoData = memos[memos.Count - 1];
+            memoData.position = rectTransform.anchoredPosition;
+            newMemo.Data = memoData;
+            memos.RemoveAt(memos.Count - 1);
+
+            eventData.pointerDrag = newMemo.gameObject;
+        }
     }
 
     // Start is called before the first frame update

@@ -12,6 +12,7 @@ public struct MemoData
     public Vector2 size;
     public List<int> connectedIds;
     public bool highlighted;
+    public bool editable;
 }
 
 public class Memo : MonoBehaviour
@@ -20,7 +21,7 @@ public class Memo : MonoBehaviour
     private Pin pin;
 
     [SerializeField]
-    private Text note;
+    private InputField note;
 
     [SerializeField]
     private GameObject highlight;
@@ -51,6 +52,7 @@ public class Memo : MonoBehaviour
                 position = rectTransform ? rectTransform.anchoredPosition : Vector2.zero,
                 size = rectTransform ? rectTransform.sizeDelta : new Vector2(300, 256),
                 highlighted = highlight ? highlight.activeSelf : false,
+                editable = note ? note.interactable : false,
             };
         }
 
@@ -62,7 +64,16 @@ public class Memo : MonoBehaviour
                 pin.ConnectedIds = value.connectedIds;
             }
 
-            if (note) { note.text = value.message; }
+            if (note)
+            {
+                note.text = value.message;
+                note.interactable = value.editable;
+                var texts = note.GetComponentsInChildren<Text>();
+                foreach (Text text in texts)
+                {
+                    text.raycastTarget = value.editable;
+                }
+            }
 
             if (rectTransform)
             {

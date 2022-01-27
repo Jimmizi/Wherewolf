@@ -416,6 +416,10 @@ PrefabInstance:
       propertyPath: stringHolder
       value: 
       objectReference: {fileID: 78078661}
+    - target: {fileID: 4221392423941343098, guid: 9b2108f776b76424ba39d64c6f685e40, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7037644188498621321, guid: 9b2108f776b76424ba39d64c6f685e40, type: 3}
       propertyPath: m_CullTransparentMesh
       value: 1
@@ -507,6 +511,14 @@ PrefabInstance:
     - target: {fileID: 7037644188498621325, guid: 9b2108f776b76424ba39d64c6f685e40, type: 3}
       propertyPath: m_Name
       value: Memo (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7540228744462018961, guid: 9b2108f776b76424ba39d64c6f685e40, type: 3}
+      propertyPath: m_Text
+      value: Aron said Megan is a liar
+      objectReference: {fileID: 0}
+    - target: {fileID: 7731492747045023141, guid: 9b2108f776b76424ba39d64c6f685e40, type: 3}
+      propertyPath: m_Text
+      value: Aron said Megan is a liar
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b2108f776b76424ba39d64c6f685e40, type: 3}
@@ -647,6 +659,10 @@ PrefabInstance:
       propertyPath: stringHolder
       value: 
       objectReference: {fileID: 78078661}
+    - target: {fileID: 4221392423941343098, guid: 9b2108f776b76424ba39d64c6f685e40, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7037644188498621321, guid: 9b2108f776b76424ba39d64c6f685e40, type: 3}
       propertyPath: m_CullTransparentMesh
       value: 1
@@ -717,11 +733,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7037644188498621322, guid: 9b2108f776b76424ba39d64c6f685e40, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 237
+      value: 307
       objectReference: {fileID: 0}
     - target: {fileID: 7037644188498621322, guid: 9b2108f776b76424ba39d64c6f685e40, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -108
+      value: -16
       objectReference: {fileID: 0}
     - target: {fileID: 7037644188498621322, guid: 9b2108f776b76424ba39d64c6f685e40, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -738,6 +754,14 @@ PrefabInstance:
     - target: {fileID: 7037644188498621325, guid: 9b2108f776b76424ba39d64c6f685e40, type: 3}
       propertyPath: m_Name
       value: Memo (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7540228744462018961, guid: 9b2108f776b76424ba39d64c6f685e40, type: 3}
+      propertyPath: m_Text
+      value: Megan has  a pickle alergy
+      objectReference: {fileID: 0}
+    - target: {fileID: 7731492747045023141, guid: 9b2108f776b76424ba39d64c6f685e40, type: 3}
+      propertyPath: m_Text
+      value: Megan has  a pickle alergy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b2108f776b76424ba39d64c6f685e40, type: 3}
@@ -928,6 +952,10 @@ PrefabInstance:
       propertyPath: stringHolder
       value: 
       objectReference: {fileID: 78078661}
+    - target: {fileID: 4221392423941343098, guid: 9b2108f776b76424ba39d64c6f685e40, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7037644188498621322, guid: 9b2108f776b76424ba39d64c6f685e40, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -994,11 +1022,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7037644188498621322, guid: 9b2108f776b76424ba39d64c6f685e40, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 456
+      value: 539
       objectReference: {fileID: 0}
     - target: {fileID: 7037644188498621322, guid: 9b2108f776b76424ba39d64c6f685e40, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 242
+      value: 308
       objectReference: {fileID: 0}
     - target: {fileID: 7037644188498621322, guid: 9b2108f776b76424ba39d64c6f685e40, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1015,6 +1043,14 @@ PrefabInstance:
     - target: {fileID: 7037644188498621325, guid: 9b2108f776b76424ba39d64c6f685e40, type: 3}
       propertyPath: m_Name
       value: Memo (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7540228744462018961, guid: 9b2108f776b76424ba39d64c6f685e40, type: 3}
+      propertyPath: m_Text
+      value: Megan said  Sharon ate a pickle
+      objectReference: {fileID: 0}
+    - target: {fileID: 7731492747045023141, guid: 9b2108f776b76424ba39d64c6f685e40, type: 3}
+      propertyPath: m_Text
+      value: Megan said  Sharon ate a pickle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b2108f776b76424ba39d64c6f685e40, type: 3}
@@ -1049,6 +1085,10 @@ PrefabInstance:
       propertyPath: stringHolder
       value: 
       objectReference: {fileID: 78078661}
+    - target: {fileID: 4221392423941343098, guid: 9b2108f776b76424ba39d64c6f685e40, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7037644188498621321, guid: 9b2108f776b76424ba39d64c6f685e40, type: 3}
       propertyPath: m_CullTransparentMesh
       value: 1
@@ -1141,6 +1181,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Memo (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 7540228744462018961, guid: 9b2108f776b76424ba39d64c6f685e40, type: 3}
+      propertyPath: m_Text
+      value: Aron wrote the note on the fridge
+      objectReference: {fileID: 0}
+    - target: {fileID: 7731492747045023141, guid: 9b2108f776b76424ba39d64c6f685e40, type: 3}
+      propertyPath: m_Text
+      value: Aron wrote the note on the fridge
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b2108f776b76424ba39d64c6f685e40, type: 3}
 --- !u!224 &1979753727 stripped
@@ -1169,6 +1217,10 @@ PrefabInstance:
       propertyPath: stringHolder
       value: 
       objectReference: {fileID: 78078661}
+    - target: {fileID: 4221392423941343098, guid: 9b2108f776b76424ba39d64c6f685e40, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7037644188498621321, guid: 9b2108f776b76424ba39d64c6f685e40, type: 3}
       propertyPath: m_CullTransparentMesh
       value: 1
@@ -1261,6 +1313,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Memo (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 7540228744462018961, guid: 9b2108f776b76424ba39d64c6f685e40, type: 3}
+      propertyPath: m_Text
+      value: Sharon went out and never came back
+      objectReference: {fileID: 0}
+    - target: {fileID: 7731492747045023141, guid: 9b2108f776b76424ba39d64c6f685e40, type: 3}
+      propertyPath: m_Text
+      value: Sharon went out and never came back
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b2108f776b76424ba39d64c6f685e40, type: 3}
 --- !u!1001 &7037644189656546622
@@ -1284,6 +1344,10 @@ PrefabInstance:
       propertyPath: stringHolder
       value: 
       objectReference: {fileID: 78078661}
+    - target: {fileID: 4221392423941343098, guid: 9b2108f776b76424ba39d64c6f685e40, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7037644188498621322, guid: 9b2108f776b76424ba39d64c6f685e40, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1372,6 +1436,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Memo
       objectReference: {fileID: 0}
+    - target: {fileID: 7540228744462018961, guid: 9b2108f776b76424ba39d64c6f685e40, type: 3}
+      propertyPath: m_Text
+      value: Found note on the fridge <i>"don't touch the pickles"</i>
+      objectReference: {fileID: 0}
+    - target: {fileID: 7731492747045023141, guid: 9b2108f776b76424ba39d64c6f685e40, type: 3}
+      propertyPath: m_Text
+      value: Found note on the fridge <i>"don't touch the pickles"</i>
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b2108f776b76424ba39d64c6f685e40, type: 3}
 --- !u!1001 &8553847844771456019
@@ -1395,7 +1467,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1228540084421605224, guid: 4ea92a6162bceb7438109f62841b7f8a, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1228540084421605224, guid: 4ea92a6162bceb7438109f62841b7f8a, type: 3}
       propertyPath: m_AnchorMax.x
