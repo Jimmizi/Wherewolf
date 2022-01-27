@@ -1,13 +1,16 @@
 using UnityEngine;
+using UnityEngine.UI;
 
-public class CharacterRenderer : BaseCharacterRenderer {
-    public SpriteRenderer BaseSpriteRenderer;
-    public SpriteRenderer EarsSpriteRenderer;
-    public SpriteRenderer EyesSpriteRenderer;
-    public SpriteRenderer NoseSpriteRenderer;
-    public SpriteRenderer MouthSpriteRenderer;
+public class CharacterUIRenderer : BaseCharacterRenderer {
+    public Image BaseSpriteRenderer;
+    public Image EarsSpriteRenderer;
+    public Image EyesSpriteRenderer;
+    public Image NoseSpriteRenderer;
+    public Image MouthSpriteRenderer;
     
     protected override void Assemble() {
+        if (CharacterGenerator.Instance == null) return;
+        
         CharacterGenerator generator = CharacterGenerator.Instance;
 
         if (BaseSpriteRenderer != null && generator.BaseSprites != null) {
@@ -37,8 +40,10 @@ public class CharacterRenderer : BaseCharacterRenderer {
     }
     
     public void Start() {
-        _characterAttributes = CharacterGenerator.Instance.Generate();
-        Assemble();
+        if (CharacterGenerator.Instance != null) {
+            _characterAttributes = CharacterGenerator.Instance.Generate();
+            Assemble();
+        }
     }
     
 }

@@ -9,43 +9,42 @@ public class CaseFilePageRenderer : MonoBehaviour, IDragHandler, IBeginDragHandl
     public RectTransform Content;
 
     private float _contentSize;
-    private List<RectTransform> _statements;
+    private List<RectTransform> _sections;
     
     private Vector2 _lastMousePosition;
 
     private void Awake() {
-        _statements = new List<RectTransform>();
+        _sections = new List<RectTransform>();
         _contentSize = 0f;
     }
 
-    public void AddStatement(RectTransform statement) {
-        _statements.Add(statement);
-        statement.SetParent(Content, false);
+    public void AddSection(RectTransform section) {
+        _sections.Add(section);
+        section.SetParent(Content, false);
         /* TODO: Add dynamic spacing, as set in VerticalLayoutGroup */
-        _contentSize += statement.rect.height + 20f;
+        _contentSize += section.rect.height + 20f;
     }
 
-    public bool TryAddStatement(RectTransform statement) {
-        statement.SetParent(Content, false);
+    public bool TryAddSection(RectTransform section) {
+        section.SetParent(Content, false);
         /* TODO: Add dynamic spacing, as set in VerticalLayoutGroup */
-        _contentSize += statement.rect.height + 20f;
+        _contentSize += section.rect.height + 20f;
 
         if (SpaceLeft() <= 0f) {
-            _contentSize -= statement.rect.height;
+            _contentSize -= section.rect.height;
             return false;
         }
         
-        _statements.Add(statement);
+        _sections.Add(section);
         return true;
     }
 
     public float SpaceLeft() {
         return Content.rect.height - _contentSize;
-        //if (_statements.Count == 0) return Content.rect.height;
-        //return Content.rect.height - _statements.Last().rect.yMax;
+        //if (_sections.Count == 0) return Content.rect.height;
+        //return Content.rect.height - _sections.Last().rect.yMax;
     }
-
-
+    
     public void OnBeginDrag(PointerEventData eventData) {
         _lastMousePosition = eventData.position;
     }
@@ -66,7 +65,7 @@ public class CaseFilePageRenderer : MonoBehaviour, IDragHandler, IBeginDragHandl
     }
 
     public void OnEndDrag(PointerEventData eventData) {
-        //Implement your funtionlity here
+        // Does nothing.
     }
 
     private bool IsRectTransformInsideSreen(RectTransform rectTransform) {

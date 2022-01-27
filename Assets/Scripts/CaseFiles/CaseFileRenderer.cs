@@ -4,6 +4,8 @@ using UnityEngine;
 public class CaseFileRenderer : MonoBehaviour {
     
     public GameObject PagePrefab;
+    
+    public GameObject CharacterAttributesPrefab;
     public GameObject StatementPrefab;
 
     private List<CaseFilePageRenderer> _pages;
@@ -18,32 +20,49 @@ public class CaseFileRenderer : MonoBehaviour {
         "This is a third statement.",
         "This is a third statement.",
         "This is a third statement.",
+        "This is a third statement.",
+        "This is a third statement.",
+        "This is a third statement.",
+        "This is a third statement.",
     };
 
     private CaseFilePageRenderer NewPage() {
         if (PagePrefab == null) return null;
 
-        GameObject gameObject = Instantiate(PagePrefab, transform);
+        GameObject gameObject = Instantiate(PagePrefab); //, transform);
         
         /* Apply random rotation */
-        gameObject.transform.Rotate(Vector3.forward, Random.Range(-0.2f, 0.2f));
+        gameObject.transform.Rotate(Vector3.forward, Random.Range(-4f, 4f));
         
-        return gameObject.GetComponent<CaseFilePageRenderer>();
+        CaseFilePageRenderer pageRenderer = gameObject.GetComponent<CaseFilePageRenderer>();
+        _pages.Add(pageRenderer);
+        
+        return pageRenderer;
     }
     
     private void GenerateFile() {
         CaseFilePageRenderer currentPage = NewPage();
         
+        /* Render attributes at the top of the first page. */
+        GameObject attributesObject = Instantiate(CharacterAttributesPrefab);
+        RectTransform attributesRectTransform = attributesObject.GetComponent<RectTransform>();
+        
+        currentPage.AddSection(attributesRectTransform);
+        
+        /* Render statements on succesive pages. */
         foreach (string statement in _statements) {
             GameObject statementObject = Instantiate(StatementPrefab);
             RectTransform statementRectTransform = statementObject.GetComponent<RectTransform>();
 
-            if (!currentPage.TryAddStatement(statementRectTransform)) {
-                _pages.Add(currentPage);
+            if (!currentPage.TryAddSection(statementRectTransform)) {
                 currentPage = NewPage();
-                currentPage.AddStatement(statementRectTransform);
+                currentPage.AddSection(statementRectTransform);
             }
-        }    
+        }
+        
+        for (int i = _pages.Count - 1; i >= 0; i--) {
+            _pages[i].transform.SetParent(transform, false);
+        }
     }
 
     private void Start() {
