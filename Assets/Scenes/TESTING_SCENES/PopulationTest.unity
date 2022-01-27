@@ -444,6 +444,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 767909974167610532, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: data.WwiseObjectReference
+      value: 
+      objectReference: {fileID: 11400000, guid: d862e114e87255d49b2c91bc85c35c5b, type: 2}
+    - target: {fileID: 4329341484135077153, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: data.WwiseObjectReference
+      value: 
+      objectReference: {fileID: 11400000, guid: 4ed6a9e4d5ee5434fba659896273eedb, type: 2}
     - target: {fileID: 4957857799237703561, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
       propertyPath: m_Name
       value: Manager
@@ -492,6 +500,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6088672158101187789, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: data.WwiseObjectReference
+      value: 
+      objectReference: {fileID: 11400000, guid: 6921b003ee88afd469f775863998534d, type: 2}
+    - target: {fileID: 6110012845812571646, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: data.WwiseObjectReference
+      value: 
+      objectReference: {fileID: 11400000, guid: aa7b7e02ba65d3c44aa44b9d65d9727b, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
 --- !u!1001 &611616529

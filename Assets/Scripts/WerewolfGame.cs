@@ -378,6 +378,8 @@ public class WerewolfGame : MonoBehaviour
         {
             case SubState.Start:
                 {
+                    Service.Audio.PlayRoosterCrow();
+
                     canCurrentStateBeProgressed = true;
                     CurrentSubState++;
                     break;
