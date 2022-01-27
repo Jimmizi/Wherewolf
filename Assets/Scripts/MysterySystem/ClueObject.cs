@@ -128,6 +128,7 @@ public class ClueObject
                 Debug.Assert(Emote.IsLocationValid(LocationSeenIn));
                 break;
             case ClueType.SawAtWork:
+                Debug.Assert(LocationSeenIn == -1);
                 break;
             case ClueType.CommentFacialFeatures:
                 break;
@@ -176,12 +177,13 @@ public class ClueObject
 
         Emote.EmoteSubType eWorkType = RelatesToCharacter.GetWorkType();
 
-        Debug.Assert(eWorkType != Emote.InvalidSubType, 
-            string.Format("Found invalid work type for {0}. How did we get to generating a clue for this?", RelatesToCharacter.Name));
+        //Debug.Assert(eWorkType != Emote.InvalidSubType, 
+        //    string.Format("Found invalid work type for {0}. How did we get to generating a clue for this?", RelatesToCharacter.Name));
 
-        // If the above happens during release, pretend that this is a lie given
+        // If the work type is invalid, likely is a lie
         if(eWorkType == Emote.InvalidSubType)
         {
+            Debug.Log(string.Format("Created fake work for [{0}] {1}", RelatesToCharacter.Index, RelatesToCharacter.Name));
             eWorkType = Service.InfoManager.GetRandomEmoteOfType(Emote.EmoteType.Occupation).SubType;
             IsTruth = false;
         }

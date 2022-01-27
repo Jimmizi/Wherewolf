@@ -214,13 +214,21 @@ public class PhaseSolver : MonoBehaviour
         }
 
         // Yield for about a frame (a frame at 60fps is 0.016666)
-        yield return new WaitForSeconds(0.02f);
+
+#if UNITY_EDITOR
+        if (Service.Config.DebugYieldInGeneration)
+        {
+            yield return new WaitForSeconds(0.02f);
+        }
+#else
+                yield return new WaitForSeconds(0.02f);
+#endif
 
         // 2) Next up, we randomise locations for characters doing idles and wanders
         //  By randomise we either give them a completely random location if they don't already have one
         //  but if they do have one, we just alter it to move to an adjacent tile
 
-        foreach(var c in Service.Population.ActiveCharacters)
+        foreach (var c in Service.Population.ActiveCharacters)
         {
             if(!c.IsAlive || c.IsWerewolf || c.IsVictim)
             {
@@ -229,7 +237,15 @@ public class PhaseSolver : MonoBehaviour
 
             RandomiseCharacterTaskLocations(eTod, c);
 
-            yield return new WaitForSeconds(0.02f);
+
+#if UNITY_EDITOR
+            if (Service.Config.DebugYieldInGeneration)
+            {
+                yield return new WaitForSeconds(0.02f);
+            }
+#else
+                yield return new WaitForSeconds(0.02f);
+#endif
         }
 
         // 3 randomise clothes condition
@@ -249,7 +265,15 @@ public class PhaseSolver : MonoBehaviour
                 c.CurrentClothingCondition = Service.InfoManager.GetRandomNonBloodyConditionEmote();
             }
 
-            yield return new WaitForSeconds(0.02f);
+
+#if UNITY_EDITOR
+            if (Service.Config.DebugYieldInGeneration)
+            {
+                yield return new WaitForSeconds(0.02f);
+            }
+#else
+                yield return new WaitForSeconds(0.02f);
+#endif
         }
 
         // 4) Then we calculate what characters everyone would have seen throughout the day
@@ -266,7 +290,15 @@ public class PhaseSolver : MonoBehaviour
             CurrentPhase.CharacterTasks.Add(c, new List<Task>());
             CurrentPhase.CharacterTasks[c].AddRange(eTod == WerewolfGame.TOD.Day ? c.TaskSchedule.DayTasks : c.TaskSchedule.NightTasks);
 
-            yield return new WaitForSeconds(0.02f);
+
+#if UNITY_EDITOR
+            if (Service.Config.DebugYieldInGeneration)
+            {
+                yield return new WaitForSeconds(0.02f);
+            }
+#else
+                yield return new WaitForSeconds(0.02f);
+#endif
         }
 
         // 5) Calculate what characters they saw passing by (only if that character isn't present in the character seen map
@@ -280,7 +312,15 @@ public class PhaseSolver : MonoBehaviour
 
             CurrentPhase.CharacterSawPassingByMap.Add(c, CalculateSawCharactersPassingByDuringPhase(eTod, c));
 
-            yield return new WaitForSeconds(0.02f);
+
+#if UNITY_EDITOR
+            if (Service.Config.DebugYieldInGeneration)
+            {
+                yield return new WaitForSeconds(0.02f);
+            }
+#else
+                yield return new WaitForSeconds(0.02f);
+#endif
         }
 
         // 6) Done

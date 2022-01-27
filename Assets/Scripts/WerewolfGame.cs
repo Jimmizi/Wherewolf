@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class WerewolfGame : MonoBehaviour
 {
@@ -31,7 +32,8 @@ public class WerewolfGame : MonoBehaviour
         // /\ End of game loop /\
 
         PlayerChoseToStake,         // Scene change to the player having chosen to stake a towns-person
-        GameSummary,                // End of game screen, with results on win/lose and statistics
+        GameSummaryWon,             // End of game screen, with results on win/lose and statistics
+        GameSummaryLoss,            // End of game screen, with results on win/lose and statistics
     }
 
     public static GameState InvalidState => (GameState)(-1);
@@ -63,6 +65,7 @@ public class WerewolfGame : MonoBehaviour
     public TOD CurrentTimeOfDay = TOD.Day;
     public int CurrentDay = 0;
     public bool IsGamePaused = false;
+    public bool HasTriggeredStakeAction = false;
 
     public int GetLastDay => ConfigManager.NumberOfDaysBeforeGameFailure;
 
@@ -97,6 +100,7 @@ public class WerewolfGame : MonoBehaviour
     void Awake()
     {
         Service.Game = this;
+        DontDestroyOnLoad(this.gameObject);
     }
 
     // Start is called before the first frame update
@@ -170,7 +174,8 @@ public class WerewolfGame : MonoBehaviour
                 ProcessStatePlayerChoseToStake();
                 break;
 
-            case GameState.GameSummary:
+            case GameState.GameSummaryWon:
+            case GameState.GameSummaryLoss:
                 ProcessStateGameSummary();
                 break;
         }
@@ -182,6 +187,13 @@ public class WerewolfGame : MonoBehaviour
             {
                 ProgressGame(true);
             }
+            else
+            {
+                CurrentSubState = SubState.Start;
+            }
+
+            canCurrentStateBeProgressed = false;
+            fStateTimer = 0.0f;
 
             CurrentState = NextState;
             NextState = InvalidState;
@@ -367,7 +379,11 @@ public class WerewolfGame : MonoBehaviour
                 }
             case SubState.Update:
                 {
-
+                    if(HasTriggeredStakeAction)
+                    {
+                        NextState = GameState.PlayerChoseToStake;
+                        CurrentSubState++;
+                    }
                     break;
                 }
             case SubState.Finish:
@@ -406,6 +422,27 @@ public class WerewolfGame : MonoBehaviour
                 {
                     // Perhaps start a character animation?
                     // Scene change?
+
+                    foreach(var c in Service.Population.ActiveCharacters)
+                    {
+                        if(c.ChosenForStakeTarget)
+                        {
+                            if(c.IsWerewolf)
+                            {
+                                Debug.Log("Successfully staked the werewolf.");
+                                CurrentState = GameState.GameSummaryWon;
+                                SceneManager.LoadScene(WinScene.SceneName);
+                                //
+                            }
+                            else
+                            {
+                                Debug.Log("Accidently staked a civilian.");
+                                CurrentState = GameState.GameSummaryLoss;
+                                SceneManager.LoadScene(LoseScene.SceneName);
+                            }
+                        }
+                    }
+
                     break;
                 }
             case SubState.Update:
@@ -482,15 +519,12 @@ public class WerewolfGame : MonoBehaviour
                     break;
 
                 case GameState.PlayerChoseToStake:
-                    NextState = CurrentState + 1;
                     break;
 
-                case GameState.GameSummary:
+                case GameState.GameSummaryWon:
+                case GameState.GameSummaryLoss:
                     break;
             }
-
-            canCurrentStateBeProgressed = false;
-            fStateTimer = 0.0f;
         }
 
         CurrentSubState = bProgressFromFinish ? SubState.Start : SubState.Finish;
@@ -501,10 +535,8 @@ public class WerewolfGame : MonoBehaviour
     {
         if(CurrentState != GameState.PlayerChoseToStake)
         {
-            CurrentSubState = SubState.Finish;
-            NextState = GameState.PlayerChoseToStake;
-
             c.ChosenForStakeTarget = true;
+            HasTriggeredStakeAction = true;
         }
     }
 

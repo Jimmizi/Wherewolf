@@ -9,6 +9,10 @@ public class ConfigManager : MonoBehaviour
 
     public const int NumberOfCharactersToGenerate = 20;
 
+#if UNITY_EDITOR
+    public bool DebugYieldInGeneration = false;
+#endif
+
     [SerializeField]
     public int CharacterHasOccupationChance = 50;
 

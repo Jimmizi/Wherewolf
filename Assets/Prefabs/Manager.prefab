@@ -121,6 +121,7 @@ MonoBehaviour:
   CurrentTimeOfDay: 0
   CurrentDay: 0
   IsGamePaused: 0
+  HasTriggeredStakeAction: 0
   TimeTransitionDuration: 1
 --- !u!114 &7202421594343879778
 MonoBehaviour:

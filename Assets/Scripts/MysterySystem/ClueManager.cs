@@ -80,27 +80,74 @@ public class ClueManager : MonoBehaviour
 
                 // 1) Generate saw in location clue
                 GenerateSawInLocationClue(currentPhase, c, bShouldGenerateALie);
-                yield return new WaitForSeconds(0.02f);
 
+#if UNITY_EDITOR
+                if(Service.Config.DebugYieldInGeneration)
+                {
+                    yield return new WaitForSeconds(0.02f);
+                }
+#else
+                yield return new WaitForSeconds(0.02f);
+#endif
                 // 2) Generate saw passing by clue
                 GenerateSawPassingByClue(currentPhase, c, bShouldGenerateALie);
+
+#if UNITY_EDITOR
+                if (Service.Config.DebugYieldInGeneration)
+                {
+                    yield return new WaitForSeconds(0.02f);
+                }
+#else
                 yield return new WaitForSeconds(0.02f);
+#endif
 
                 // 3) Generate saw at work clue
                 GenerateSawAtWorkClue(currentPhase, c, bShouldGenerateALie);
+
+#if UNITY_EDITOR
+                if (Service.Config.DebugYieldInGeneration)
+                {
+                    yield return new WaitForSeconds(0.02f);
+                }
+#else
                 yield return new WaitForSeconds(0.02f);
+#endif
 
                 // 4) Generate comment on facial features clue
                 GenerateCommentFacialClue(currentPhase, c, bShouldGenerateALie);
+
+#if UNITY_EDITOR
+                if (Service.Config.DebugYieldInGeneration)
+                {
+                    yield return new WaitForSeconds(0.02f);
+                }
+#else
                 yield return new WaitForSeconds(0.02f);
+#endif
 
                 // 5) Generate comment on clothing clue
                 GenerateCommentClothingClue(currentPhase, c, bShouldGenerateALie);
+
+#if UNITY_EDITOR
+                if (Service.Config.DebugYieldInGeneration)
+                {
+                    yield return new WaitForSeconds(0.02f);
+                }
+#else
                 yield return new WaitForSeconds(0.02f);
+#endif
 
                 // 6) Generate gossip clue
                 GenerateGossipClue(currentPhase, c);
+
+#if UNITY_EDITOR
+                if (Service.Config.DebugYieldInGeneration)
+                {
+                    yield return new WaitForSeconds(0.02f);
+                }
+#else
                 yield return new WaitForSeconds(0.02f);
+#endif
             }
             // Ghosts do not generate normal clues, only a "VisualFromGhost" clue
             else
@@ -116,16 +163,32 @@ public class ClueManager : MonoBehaviour
 
                 // 1) Generate ghost visual clue
                 GenerateGhostVisualClue(currentPhase, c, bShouldGenerateALie);
+
+#if UNITY_EDITOR
+                if (Service.Config.DebugYieldInGeneration)
+                {
+                    yield return new WaitForSeconds(0.02f);
+                }
+#else
                 yield return new WaitForSeconds(0.02f);
+#endif
             }
 
             // Generate emotes for all clues given
-            foreach(var clue in currentPhase.CharacterCluesToGive[c])
+            foreach (var clue in currentPhase.CharacterCluesToGive[c])
             {
                 clue.Generate();
             }
 
-            yield return new WaitForSeconds(0.02f);
+
+#if UNITY_EDITOR
+            if (Service.Config.DebugYieldInGeneration)
+            {
+                yield return new WaitForSeconds(0.02f);
+            }
+#else
+                yield return new WaitForSeconds(0.02f);
+#endif
         }
 
         IsGeneratingClues = false;
@@ -149,6 +212,9 @@ public class ClueManager : MonoBehaviour
                 LocationSeenIn = Task.GetRandomLocation(),
                 IsTruth = false
             };
+
+            Debug.Log(string.Format("[{0}] {1} generating saw in location lie about [{2}] {3}",
+                character.Index, character.Name, lyingClue.RelatesToCharacter.Index, lyingClue.RelatesToCharacter.Name));
 
             currentPhase.CharacterCluesToGive[character].Add(lyingClue);
             return;
@@ -221,6 +287,9 @@ public class ClueManager : MonoBehaviour
                 IsTruth = false
             };
 
+            Debug.Log(string.Format("[{0}] {1} generating saw passing by lie about [{2}] {3}",
+                character.Index, character.Name, lyingClue.RelatesToCharacter.Index, lyingClue.RelatesToCharacter.Name));
+
             currentPhase.CharacterCluesToGive[character].Add(lyingClue);
             return;
         }
@@ -273,9 +342,12 @@ public class ClueManager : MonoBehaviour
             {
                 GivenByCharacter = character,
                 RelatesToCharacter = Service.Population.GetRandomCharacter(bIgnoreWerewolf: true, ignoreCharacters: new List<Character>() { character }),
-                LocationSeenIn = Task.GetRandomLocation(),
+                LocationSeenIn = -1,
                 IsTruth = false
             };
+
+            Debug.Log(string.Format("[{0}] {1} generating seen at work lie about [{2}] {3}", 
+                character.Index, character.Name, lyingClue.RelatesToCharacter.Index, lyingClue.RelatesToCharacter.Name));
 
             currentPhase.CharacterCluesToGive[character].Add(lyingClue);
             return;
@@ -307,16 +379,14 @@ public class ClueManager : MonoBehaviour
 
         int iIndexToUse = UnityEngine.Random.Range(0, charactersSeen.Count);
         Character toGenerateClueFrom = charactersSeen[iIndexToUse].Item1;
-        int iLocationSeenIn = charactersSeen[iIndexToUse].Item2;
 
         Debug.Assert(toGenerateClueFrom != null);
-        Debug.Assert(Emote.IsLocationValid(iLocationSeenIn));
 
         ClueObject clue = new ClueObject(ClueObject.ClueType.SawAtWork)
         {
             GivenByCharacter = character,
             RelatesToCharacter = toGenerateClueFrom,
-            LocationSeenIn = iLocationSeenIn
+            LocationSeenIn = -1
         };
 
         currentPhase.CharacterCluesToGive[character].Add(clue);
@@ -338,6 +408,9 @@ public class ClueManager : MonoBehaviour
                 LocationSeenIn = Task.GetRandomLocation(),
                 IsTruth = false
             };
+
+            Debug.Log(string.Format("[{0}] {1} generating comment facial features lie about [{2}] {3}",
+                character.Index, character.Name, lyingClue.RelatesToCharacter.Index, lyingClue.RelatesToCharacter.Name));
 
             currentPhase.CharacterCluesToGive[character].Add(lyingClue);
             return;
@@ -394,6 +467,9 @@ public class ClueManager : MonoBehaviour
                 LocationSeenIn = Task.GetRandomLocation(),
                 IsTruth = false
             };
+
+            Debug.Log(string.Format("[{0}] {1} generating comment clothing lie about [{2}] {3}",
+                character.Index, character.Name, lyingClue.RelatesToCharacter.Index, lyingClue.RelatesToCharacter.Name));
 
             currentPhase.CharacterCluesToGive[character].Add(lyingClue);
             return;
@@ -495,6 +571,9 @@ public class ClueManager : MonoBehaviour
                 GhostGivenClueType = Character.GetRandomDescriptorType(new List<Character.Descriptor>() { Character.Descriptor.Occupation }),
                 IsTruth = false
             };
+
+            Debug.Log(string.Format("Ghost [{0}] {1} generating visual clue lie about werewolf [{2}] {3}",
+                character.Index, character.Name, lyingClue.RelatesToCharacter.Index, lyingClue.RelatesToCharacter.Name));
 
             currentPhase.CharacterCluesToGive[character].Add(lyingClue);
             ghostGeneratedClues.Add(lyingClue);

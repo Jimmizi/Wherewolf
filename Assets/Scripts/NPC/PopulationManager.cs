@@ -486,7 +486,15 @@ public class PopulationManager : MonoBehaviour
 
         // First generate the werewolf
         AddCharacter(null, isWerewolf: true);
-        yield return new WaitForSeconds(0.02f);
+
+#if UNITY_EDITOR
+        if (Service.Config.DebugYieldInGeneration)
+        {
+            yield return new WaitForSeconds(0.02f);
+        }
+#else
+                yield return new WaitForSeconds(0.02f);
+#endif
 
         Character ww = GetWerewolf();
         var descriptorsToMatch = ww.GetRandomDescriptors(2);
@@ -497,10 +505,18 @@ public class PopulationManager : MonoBehaviour
         {
             Character characterAdded = AddCharacter(descriptorsToMatch);
             characterAdded.Index = i + 1;
-            yield return new WaitForSeconds(0.02f);
+
+#if UNITY_EDITOR
+            if (Service.Config.DebugYieldInGeneration)
+            {
+                yield return new WaitForSeconds(0.02f);
+            }
+#else
+                yield return new WaitForSeconds(0.02f);
+#endif
 
             // First character made copies two, and then passes one onto the next character made
-            if(i == 0)
+            if (i == 0)
             {
                 var werewolfDescriptors = descriptorsToMatch;
 
@@ -573,7 +589,15 @@ public class PopulationManager : MonoBehaviour
             }
         }
 
-        yield return new WaitForSeconds(0.02f);
+
+#if UNITY_EDITOR
+        if (Service.Config.DebugYieldInGeneration)
+        {
+            yield return new WaitForSeconds(0.02f);
+        }
+#else
+                yield return new WaitForSeconds(0.02f);
+#endif
         #endregion
 
         #region Making Descriptors Non-Unique
@@ -693,8 +717,16 @@ public class PopulationManager : MonoBehaviour
             // Then update the matching descriptor map
             MatchingDescriptorMap[desc].Add(charToCopyDescriptorTo);
         }
-        
-        yield return new WaitForSeconds(0.02f);
+
+
+#if UNITY_EDITOR
+        if (Service.Config.DebugYieldInGeneration)
+        {
+            yield return new WaitForSeconds(0.02f);
+        }
+#else
+                yield return new WaitForSeconds(0.02f);
+#endif
         #endregion
 
         #region Giving homes to characters
@@ -710,7 +742,15 @@ public class PopulationManager : MonoBehaviour
             }
         }
 
-        yield return new WaitForSeconds(0.02f);
+
+#if UNITY_EDITOR
+        if (Service.Config.DebugYieldInGeneration)
+        {
+            yield return new WaitForSeconds(0.02f);
+        }
+#else
+                yield return new WaitForSeconds(0.02f);
+#endif
 
         // Give the homes out
         int iCurrentHomeGiveIndex = 0;
@@ -737,7 +777,15 @@ public class PopulationManager : MonoBehaviour
             building.Owner = c;
         }
 
-        yield return new WaitForSeconds(0.02f);
+
+#if UNITY_EDITOR
+        if (Service.Config.DebugYieldInGeneration)
+        {
+            yield return new WaitForSeconds(0.02f);
+        }
+#else
+                yield return new WaitForSeconds(0.02f);
+#endif
 
         Debug.Assert(iCurrentHomeGiveIndex == ActiveCharacters.Count, "Not all characters have a home, only " + iCurrentHomeGiveIndex + " characters do.");
 
@@ -757,13 +805,21 @@ public class PopulationManager : MonoBehaviour
             }
         }
 
-        yield return new WaitForSeconds(0.02f);
+
+#if UNITY_EDITOR
+        if (Service.Config.DebugYieldInGeneration)
+        {
+            yield return new WaitForSeconds(0.02f);
+        }
+#else
+                yield return new WaitForSeconds(0.02f);
+#endif
         #endregion
 
         #region Generating an opinion map
 
         // Generate opinions - characters might add an opinion emote sometimes in clues as flavour
-        
+
         foreach (var c in ActiveCharacters)
         {
             CharacterOpinionMap.Add(c, new Dictionary<Character, Emote.EmoteSubType>());
@@ -786,7 +842,15 @@ public class PopulationManager : MonoBehaviour
                 CharacterOpinionMap[c].Add(other, eOpinion);
             }
 
-            yield return new WaitForSeconds(0.02f);
+
+#if UNITY_EDITOR
+            if (Service.Config.DebugYieldInGeneration)
+            {
+                yield return new WaitForSeconds(0.02f);
+            }
+#else
+                yield return new WaitForSeconds(0.02f);
+#endif
         }
 
         #endregion
