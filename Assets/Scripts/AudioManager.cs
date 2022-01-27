@@ -4,10 +4,17 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
+#if UNITY_EDITOR
+    public bool DebugDisableAudio;
+#endif
+
     [SerializeField]
     AK.Wwise.Event StartDayEvent;
     public void StartDay()
     {
+#if UNITY_EDITOR
+        if (DebugDisableAudio) return;
+#endif
         StartDayEvent.Post(gameObject);
     }
 
@@ -15,6 +22,9 @@ public class AudioManager : MonoBehaviour
     AK.Wwise.Event StartNightEvent;
     public void StartNight()
     {
+#if UNITY_EDITOR
+        if (DebugDisableAudio) return;
+#endif
         StartNightEvent.Post(gameObject);
     }
 
@@ -22,6 +32,9 @@ public class AudioManager : MonoBehaviour
     AK.Wwise.Event UIClickEvent;
     public void PlayUIClick()
     {
+#if UNITY_EDITOR
+        if (DebugDisableAudio) return;
+#endif
         UIClickEvent.Post(gameObject);
     }
 
@@ -29,6 +42,9 @@ public class AudioManager : MonoBehaviour
     AK.Wwise.Event DiscoveryDayEvent;
     public void PlayDiscoveryDay()
     {
+#if UNITY_EDITOR
+        if (DebugDisableAudio) return;
+#endif
         DiscoveryDayEvent.Post(gameObject);
     }
 
@@ -36,6 +52,9 @@ public class AudioManager : MonoBehaviour
     AK.Wwise.Event DiscoveryNightEvent;
     public void PlayDiscoveryNight()
     {
+#if UNITY_EDITOR
+        if (DebugDisableAudio) return;
+#endif
         DiscoveryNightEvent.Post(gameObject);
     }
 
@@ -43,6 +62,9 @@ public class AudioManager : MonoBehaviour
     AK.Wwise.Event GameOverDayEvent;
     public void PlayGameOverDay()
     {
+#if UNITY_EDITOR
+        if (DebugDisableAudio) return;
+#endif
         GameOverDayEvent.Post(gameObject);
     }
 
@@ -50,6 +72,9 @@ public class AudioManager : MonoBehaviour
     AK.Wwise.Event GameOverNightEvent;
     public void PlayGameOverNight()
     {
+#if UNITY_EDITOR
+        if (DebugDisableAudio) return;
+#endif
         GameOverNightEvent.Post(gameObject);
     }
 
@@ -57,6 +82,9 @@ public class AudioManager : MonoBehaviour
     AK.Wwise.Event PaperCrumpleEvent;
     public void PlayPaperCrumple()
     {
+#if UNITY_EDITOR
+        if (DebugDisableAudio) return;
+#endif
         PaperCrumpleEvent.Post(gameObject);
     }
 
@@ -64,6 +92,9 @@ public class AudioManager : MonoBehaviour
     AK.Wwise.Event PaperMoveEvent;
     public void PlayPaperMove()
     {
+#if UNITY_EDITOR
+        if (DebugDisableAudio) return;
+#endif
         PaperMoveEvent.Post(gameObject);
     }
 
@@ -71,6 +102,9 @@ public class AudioManager : MonoBehaviour
     AK.Wwise.Event RoosterCrowEvent;
     public void PlayRoosterCrow()
     {
+#if UNITY_EDITOR
+        if (DebugDisableAudio) return;
+#endif
         RoosterCrowEvent.Post(gameObject);
     }
 
@@ -78,6 +112,9 @@ public class AudioManager : MonoBehaviour
     AK.Wwise.Event SpeechEvent;
     public void PlaySpeech()
     {
+#if UNITY_EDITOR
+        if (DebugDisableAudio) return;
+#endif
         SpeechEvent.Post(gameObject);
     }
 
@@ -85,6 +122,9 @@ public class AudioManager : MonoBehaviour
     AK.Wwise.Event WinDayEvent;
     public void PlayWinDay()
     {
+#if UNITY_EDITOR
+        if (DebugDisableAudio) return;
+#endif
         WinDayEvent.Post(gameObject);
     }
 
@@ -92,6 +132,9 @@ public class AudioManager : MonoBehaviour
     AK.Wwise.Event WinNightEvent;
     public void PlayWinNight()
     {
+#if UNITY_EDITOR
+        if (DebugDisableAudio) return;
+#endif
         WinNightEvent.Post(gameObject);
     }
 
@@ -99,6 +142,9 @@ public class AudioManager : MonoBehaviour
     AK.Wwise.Event WolfHowlEvent;
     public void PlayWolfHowl()
     {
+#if UNITY_EDITOR
+        if (DebugDisableAudio) return;
+#endif
         WolfHowlEvent.Post(gameObject);
     }
 

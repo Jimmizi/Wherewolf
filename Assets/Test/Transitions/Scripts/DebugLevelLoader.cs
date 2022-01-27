@@ -22,10 +22,34 @@ public class DebugLevelLoader : MonoBehaviour
     public List<Texture2D> GradientTextures;
     public int GradientIndexToUse;
 
+    
+    public void BlendOut()
+    {
+
+        if (IsReadyForFadeOutTransition())
+        {
+            TransitionAnimator.SetTrigger("StartLevel");
+        }
+    }
+    public void BlendIn()
+    {
+        if (IsReadyForFadeInTransition())
+        {
+            TransitionAnimator.SetTrigger("EndLevel");
+        }
+    }
+
     private static Texture2D sm_TextureToUse;
+
+    private void Awake()
+    {
+        Service.Transition = this;
+    }
 
     void Start()
     {
+        TransitionImage?.gameObject.SetActive(true);
+
         if (!sm_TextureToUse && GradientTextures.Count > 0 && GradientIndexToUse < GradientTextures.Count)
         {
             int iIndex = GradientIndexToUse >= 0 ? GradientIndexToUse : UnityEngine.Random.Range(0, GradientTextures.Count);
@@ -41,32 +65,32 @@ public class DebugLevelLoader : MonoBehaviour
             }
 
             TransitionImage.material.SetFloat("Cutoff", ShaderBlendedInCutoff);
-            StartCoroutine(BlendOutLevelShader());
+            // StartCoroutine(BlendOutLevelShader());
         }
     }
 
     void Update()
     {
 
-        if (TransitionAnimator)
-        {
-            if (Input.GetKeyDown(KeyCode.Space) && IsReadyForFadeOutTransition())
-            {
-                TransitionAnimator.SetTrigger("StartLevel");
-            }
+        //if (TransitionAnimator)
+        //{
+        //    if (Input.GetKeyDown(KeyCode.Space) && IsReadyForFadeOutTransition())
+        //    {
+        //        TransitionAnimator.SetTrigger("StartLevel");
+        //    }
 
-            if (Input.GetKeyDown(KeyCode.Space) && IsReadyForFadeInTransition())
-            {
-                StartCoroutine(LoadLevel());
-            }
-        }
-        else if(TransitionImage)
-        {
-            if (Input.GetKeyDown(KeyCode.Space) && TransitionImage.material.GetFloat("Cutoff") >= ShaderBlendedOutCutoff)
-            {
-                StartCoroutine(BlendInLevelShader());
-            }
-        }
+        //    if (Input.GetKeyDown(KeyCode.Space) && IsReadyForFadeInTransition())
+        //    {
+        //        StartCoroutine(LoadLevel());
+        //    }
+        //}
+        //else if(TransitionImage)
+        //{
+        //    if (Input.GetKeyDown(KeyCode.Space) && TransitionImage.material.GetFloat("Cutoff") >= ShaderBlendedOutCutoff)
+        //    {
+        //        StartCoroutine(BlendInLevelShader());
+        //    }
+        //}
     }
 
     IEnumerator LoadLevel()
@@ -74,7 +98,7 @@ public class DebugLevelLoader : MonoBehaviour
         TransitionAnimator.SetTrigger("EndLevel");
         yield return new WaitForSeconds(TransitionLength);
 
-        SceneManager.LoadScene(TargetScene.name);
+        //SceneManager.LoadScene(TargetScene.name);
 
         yield return null;
     }
@@ -110,7 +134,7 @@ public class DebugLevelLoader : MonoBehaviour
             yield return null;
         }
 
-        SceneManager.LoadScene(TargetScene.name);
+       // SceneManager.LoadScene(TargetScene.name);
 
         yield return null;
     }
