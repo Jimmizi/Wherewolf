@@ -19,24 +19,51 @@ public class DebugLevelLoader : MonoBehaviour
     public float ShaderBlendedInCutoff;
     public float ShaderBlendedOutCutoff;
 
+    public bool AutoBlendOut = false;
+    private bool GoToSceneWhenBlendedIn = false;
+
     public List<Texture2D> GradientTextures;
     public int GradientIndexToUse;
 
-    
+    // Is the transition graphic not present
+    public bool IsBlendedOut()
+    {
+        return IsReadyForFadeInTransition();
+    }
+
+    // Is the transition graphic covering the screen
+    public bool IsBlendedIn()
+    {
+        return IsReadyForFadeOutTransition();
+    }
+
+    // Start removing the transition graphic
     public void BlendOut()
     {
-
         if (IsReadyForFadeOutTransition())
         {
             TransitionAnimator.SetTrigger("StartLevel");
         }
     }
+
+    // Start bringing in the transition graphic
     public void BlendIn()
     {
         if (IsReadyForFadeInTransition())
         {
             TransitionAnimator.SetTrigger("EndLevel");
         }
+    }
+
+    public void SetGoToSceneWhenBlendedIn()
+    {
+        
+        GoToSceneWhenBlendedIn = true;
+    }
+
+    public void PlayClickSound()
+    {
+        AkSoundEngine.PostEvent("Click", this.gameObject);
     }
 
     private static Texture2D sm_TextureToUse;
@@ -67,10 +94,23 @@ public class DebugLevelLoader : MonoBehaviour
             TransitionImage.material.SetFloat("Cutoff", ShaderBlendedInCutoff);
             // StartCoroutine(BlendOutLevelShader());
         }
+
+        if (AutoBlendOut)
+        {
+            BlendOut();
+        }
     }
 
     void Update()
     {
+        if(GoToSceneWhenBlendedIn)
+        {
+            if(IsReadyForFadeOutTransition())
+            {
+                SceneManager.LoadScene(TargetScene.name);
+                GoToSceneWhenBlendedIn = false;
+            }
+        }
 
         //if (TransitionAnimator)
         //{
