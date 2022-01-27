@@ -29,6 +29,9 @@ TextureImporter:
   - first:
       213: 8081683643205035771
     second: NPCBase_11
+  - first:
+      213: -1080122055839052550
+    second: NPCBase_12
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -365,6 +368,27 @@ TextureImporter:
       bones: []
       spriteID: bf622547478e72070800000000000000
       internalID: 8081683643205035771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NPCBase_12
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 260
+        width: 347
+        height: 314
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: afc06a386b2a201f0800000000000000
+      internalID: -1080122055839052550
       vertices: []
       indices: 
       edges: []

@@ -53,7 +53,21 @@ public class CaseFileRenderer : MonoBehaviour {
         foreach (string statement in _statements) {
             GameObject statementObject = Instantiate(StatementPrefab);
             RectTransform statementRectTransform = statementObject.GetComponent<RectTransform>();
+            CaseFileStatementRenderer statementRenderer = statementObject.GetComponent<CaseFileStatementRenderer>();
 
+            if (statementRenderer != null) {
+                List<Emote> emotes = new List<Emote> {
+                    new Emote((Emote.EmoteSubType) Random.Range(0, 50)),
+                    new Emote((Emote.EmoteSubType) Random.Range(0, 50)),
+                    new Emote((Emote.EmoteSubType) Random.Range(0, 50)),
+                    new Emote((Emote.EmoteSubType) Random.Range(0, 50)),
+                    new Emote((Emote.EmoteSubType) Random.Range(0, 50)),
+                    new Emote((Emote.EmoteSubType) Random.Range(0, 50))
+                };
+                
+                statementRenderer.Render(emotes);
+            }
+            
             if (!currentPage.TryAddSection(statementRectTransform)) {
                 currentPage = NewPage();
                 currentPage.AddSection(statementRectTransform);
