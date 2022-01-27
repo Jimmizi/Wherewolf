@@ -5,6 +5,7 @@ using UnityEngine;
 /// <summary>
 /// A clue is a container of multiple emotes that form a clue given to the player
 /// </summary>
+[System.Serializable]
 public class ClueObject
 {
     public enum ClueType

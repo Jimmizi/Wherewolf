@@ -62,7 +62,7 @@ public class WerewolfGame : MonoBehaviour
 
     public TOD CurrentTimeOfDay = TOD.Day;
     public int CurrentDay = 0;
-    public bool IsGamePaused = true;
+    public bool IsGamePaused = false;
 
     public int GetLastDay => ConfigManager.NumberOfDaysBeforeGameFailure;
 

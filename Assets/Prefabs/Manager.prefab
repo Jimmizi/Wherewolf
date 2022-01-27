@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 632284306}
   - component: {fileID: 7202421594343879778}
   - component: {fileID: 7870538848843495612}
+  - component: {fileID: 1368094422669586880}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -62,6 +63,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde3ecf4db00d1c4a892d5503158c666, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  iNumberOfCharactersDead: 0
+  bShowDebug: 0
 --- !u!114 &4957857799237703565
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81,6 +84,19 @@ MonoBehaviour:
   IdleRandomTimeMax: 15
   WorkRandomTimeMin: 5
   WorkRandomTimeMax: 15
+  WerewolfDisappearsAfterMurder: 1
+  GhostLieChance: 40
+  GhostLieChanceFalloff: 10
+  GhostLieChanceFalloffPerDay: 1
+  CharacterLieChance: 0
+  WerewolfLieChance: 20
+  AllowLateGameUniqueIdentifiersFromGhosts: 1
+  NumberOfDeathsToClassifyLateGame: 6
+  ChanceToAddOpinionOfCharacterAtClueEnd: 33
+  ChanceToAddApprovalDisapprovalAtClueEnd: 50
+  ChanceForWerewolfClothesToBeBloodyOrDamagedAfterKill: 50
+  ChanceForCharacterSpecialClothingCondition: 20
+  NumberOfDaysBeforeWerewolfClothesCanBeBloody: 5
 --- !u!114 &632284306
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -93,11 +109,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ced30f6677b812747b8e994b58077a24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DebugGoToNextPhase: 0
-  DebugStartNextPhase: 0
-  CurrentTimeOfDay: 2
+  DisplayDebug: 1
+  WinScene:
+    sceneAsset: {fileID: 102900000, guid: e5022d2682d232347b1f52ac93609f61, type: 3}
+    sceneName: Scenes/WinScene
+  LoseScene:
+    sceneAsset: {fileID: 102900000, guid: 89af56e24a781de48b26da5581c1472d, type: 3}
+    sceneName: Scenes/LoseScene
+  CurrentState: 0
+  CurrentSubState: 0
+  CurrentTimeOfDay: 0
   CurrentDay: 0
-  IsGamePaused: 1
+  IsGamePaused: 0
+  TimeTransitionDuration: 1
 --- !u!114 &7202421594343879778
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -110,6 +134,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8b4d66f648022d49a8c9a8f7df25fdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsGeneratingAPhase: 0
+  bShowDebug: 0
 --- !u!114 &7870538848843495612
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -122,4 +148,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7883d3d819fa6f42b386172946ad7ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NextVictimLocation: 0
+  IsGeneratingClues: 0
+--- !u!114 &1368094422669586880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4957857799237703561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8946eff7da3441b4ea7b43747b95eb71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollectedClues: []
+  DebugGrabSomeClues: 0

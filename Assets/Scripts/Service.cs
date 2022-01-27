@@ -10,4 +10,5 @@ public static class Service
     public static WerewolfGame Game;
     public static ClueManager Clue;
     public static PhaseSolver PhaseSolve;
+    public static PlayerManager Player;
 }
