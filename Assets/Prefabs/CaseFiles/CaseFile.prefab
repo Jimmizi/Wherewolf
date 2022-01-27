@@ -58,4 +58,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PagePrefab: {fileID: 1650397998355301312, guid: 17d77eeaa3bcc42fbabb247bf5ec76d7, type: 3}
+  CharacterAttributesPrefab: {fileID: 8533080401097342364, guid: 90a1cf52a64004f14b8ef6656d10ac97, type: 3}
   StatementPrefab: {fileID: 8533080401097342364, guid: 1c80eaa4267a84a9b84f270eca0dab6f, type: 3}
