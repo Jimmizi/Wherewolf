@@ -66,7 +66,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: 27d1893c93ae55499ad02c34935af1e0
     GuidInternal: 
-    m_lastTime: -8585586338114014828
+    m_lastTime: -8585582875057556557
     List:
     - name: DayCycle
       guid: bc075cfc31de414393ea76b6a8e3e228
@@ -82,6 +82,20 @@ MonoBehaviour:
         ObjectType: 7
         guid: bc075cfc31de414393ea76b6a8e3e228
       Path: SoundBanks\Default Work Unit\DayCycle
+    - name: Misc
+      guid: 5400415292cfc048843071b28c03b880
+      id: 3062523257
+      PathAndIcons:
+      - ElementName: SoundBanks
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 27d1893c93ae55499ad02c34935af1e0
+      - ElementName: Misc
+        ObjectType: 7
+        guid: 5400415292cfc048843071b28c03b880
+      Path: SoundBanks\Default Work Unit\Misc
     - name: NightCycle
       guid: b037a8bc50705742875dacdb506127d8
       id: 2276007709
@@ -96,9 +110,9 @@ MonoBehaviour:
         ObjectType: 7
         guid: b037a8bc50705742875dacdb506127d8
       Path: SoundBanks\Default Work Unit\NightCycle
-    - name: OneShots_Misc
+    - name: OneShots
       guid: 5052989fac3c0b418fa0585425d47d38
-      id: 2889100233
+      id: 3150299886
       PathAndIcons:
       - ElementName: SoundBanks
         ObjectType: 5
@@ -106,10 +120,10 @@ MonoBehaviour:
       - ElementName: Default Work Unit
         ObjectType: 12
         guid: 27d1893c93ae55499ad02c34935af1e0
-      - ElementName: OneShots_Misc
+      - ElementName: OneShots
         ObjectType: 7
         guid: 5052989fac3c0b418fa0585425d47d38
-      Path: SoundBanks\Default Work Unit\OneShots_Misc
+      Path: SoundBanks\Default Work Unit\OneShots
     - name: Voices
       guid: 42bca3e5b572d943a4a72ae3ea06c34c
       id: 3313685232
@@ -136,8 +150,42 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: 36187f795aed7446a84c500d367dfcf3
     GuidInternal: 
-    m_lastTime: -8585586338127304283
+    m_lastTime: -8585582869390560547
     List:
+    - name: AmbienceDay
+      guid: 5b6ed9ad00e9af4b8714261614d3ada4
+      id: 345316221
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 36187f795aed7446a84c500d367dfcf3
+      - ElementName: AmbienceDay
+        ObjectType: 3
+        guid: 5b6ed9ad00e9af4b8714261614d3ada4
+      Path: Events\Default Work Unit\AmbienceDay
+      maxAttenuation: 0
+      maxDuration: 52
+      minDuration: 52
+    - name: AmbienceNight
+      guid: d1ae6b73a644254a9fe4fe21fa75a128
+      id: 192791793
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 36187f795aed7446a84c500d367dfcf3
+      - ElementName: AmbienceNight
+        ObjectType: 3
+        guid: d1ae6b73a644254a9fe4fe21fa75a128
+      Path: Events\Default Work Unit\AmbienceNight
+      maxAttenuation: 0
+      maxDuration: 69.8125
+      minDuration: 69.8125
     - name: Click
       guid: b7a7a6a7fa68554d854264b17a611a74
       id: 1584507803
@@ -155,9 +203,9 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 1
       minDuration: 1
-    - name: DayAmbience
-      guid: 5b6ed9ad00e9af4b8714261614d3ada4
-      id: 2285230397
+    - name: CreekFlow
+      guid: fccb59e9f6bccd409165ddc4a2ec01b6
+      id: 2144316923
       PathAndIcons:
       - ElementName: Events
         ObjectType: 5
@@ -165,16 +213,16 @@ MonoBehaviour:
       - ElementName: Default Work Unit
         ObjectType: 12
         guid: 36187f795aed7446a84c500d367dfcf3
-      - ElementName: DayAmbience
+      - ElementName: CreekFlow
         ObjectType: 3
-        guid: 5b6ed9ad00e9af4b8714261614d3ada4
-      Path: Events\Default Work Unit\DayAmbience
+        guid: fccb59e9f6bccd409165ddc4a2ec01b6
+      Path: Events\Default Work Unit\CreekFlow
       maxAttenuation: 0
-      maxDuration: 52
-      minDuration: 52
-    - name: DayMusic
-      guid: 2eba308ffe2cdb44a3070044ef142f75
-      id: 3231935906
+      maxDuration: 0
+      minDuration: 0
+    - name: DiscoveryDay
+      guid: 8d19a217f5e63344b43a6ac6dbb65e32
+      id: 2538410761
       PathAndIcons:
       - ElementName: Events
         ObjectType: 5
@@ -182,16 +230,16 @@ MonoBehaviour:
       - ElementName: Default Work Unit
         ObjectType: 12
         guid: 36187f795aed7446a84c500d367dfcf3
-      - ElementName: DayMusic
+      - ElementName: DiscoveryDay
         ObjectType: 3
-        guid: 2eba308ffe2cdb44a3070044ef142f75
-      Path: Events\Default Work Unit\DayMusic
+        guid: 8d19a217f5e63344b43a6ac6dbb65e32
+      Path: Events\Default Work Unit\DiscoveryDay
       maxAttenuation: 0
-      maxDuration: 64
-      minDuration: 64
-    - name: Discovery
-      guid: c189d6e6c1f0f541ac912a76e59d17a5
-      id: 3663283413
+      maxDuration: 3.5
+      minDuration: 3.5
+    - name: DiscoveryNight
+      guid: 1800a0b75074684cbfe04f085ebca65d
+      id: 199733517
       PathAndIcons:
       - ElementName: Events
         ObjectType: 5
@@ -199,10 +247,10 @@ MonoBehaviour:
       - ElementName: Default Work Unit
         ObjectType: 12
         guid: 36187f795aed7446a84c500d367dfcf3
-      - ElementName: Discovery
+      - ElementName: DiscoveryNight
         ObjectType: 3
-        guid: c189d6e6c1f0f541ac912a76e59d17a5
-      Path: Events\Default Work Unit\Discovery
+        guid: 1800a0b75074684cbfe04f085ebca65d
+      Path: Events\Default Work Unit\DiscoveryNight
       maxAttenuation: 0
       maxDuration: 4.173896
       minDuration: 4.173896
@@ -223,9 +271,9 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 1.565208
       minDuration: 1.565208
-    - name: GameOver
-      guid: f54934c33ae66449af7bcc7e99795733
-      id: 4158285989
+    - name: GameOverDay
+      guid: 2f6e80e44a14254b8df5c89ff84fc53a
+      id: 1437283993
       PathAndIcons:
       - ElementName: Events
         ObjectType: 5
@@ -233,16 +281,16 @@ MonoBehaviour:
       - ElementName: Default Work Unit
         ObjectType: 12
         guid: 36187f795aed7446a84c500d367dfcf3
-      - ElementName: GameOver
+      - ElementName: GameOverDay
         ObjectType: 3
-        guid: f54934c33ae66449af7bcc7e99795733
-      Path: Events\Default Work Unit\GameOver
+        guid: 2f6e80e44a14254b8df5c89ff84fc53a
+      Path: Events\Default Work Unit\GameOverDay
       maxAttenuation: 0
       maxDuration: 5
       minDuration: 5
-    - name: NightAmbience
-      guid: d1ae6b73a644254a9fe4fe21fa75a128
-      id: 2993591201
+    - name: GameOverNight
+      guid: f54934c33ae66449af7bcc7e99795733
+      id: 1268350941
       PathAndIcons:
       - ElementName: Events
         ObjectType: 5
@@ -250,16 +298,16 @@ MonoBehaviour:
       - ElementName: Default Work Unit
         ObjectType: 12
         guid: 36187f795aed7446a84c500d367dfcf3
-      - ElementName: NightAmbience
+      - ElementName: GameOverNight
         ObjectType: 3
-        guid: d1ae6b73a644254a9fe4fe21fa75a128
-      Path: Events\Default Work Unit\NightAmbience
+        guid: f54934c33ae66449af7bcc7e99795733
+      Path: Events\Default Work Unit\GameOverNight
       maxAttenuation: 0
-      maxDuration: 52
-      minDuration: 52
-    - name: NightMusic
-      guid: 939d1699fa93b54fb16d9b9cd91a6107
-      id: 1030219198
+      maxDuration: 5
+      minDuration: 5
+    - name: MusicDay
+      guid: 2eba308ffe2cdb44a3070044ef142f75
+      id: 3155631888
       PathAndIcons:
       - ElementName: Events
         ObjectType: 5
@@ -267,16 +315,33 @@ MonoBehaviour:
       - ElementName: Default Work Unit
         ObjectType: 12
         guid: 36187f795aed7446a84c500d367dfcf3
-      - ElementName: NightMusic
+      - ElementName: MusicDay
+        ObjectType: 3
+        guid: 2eba308ffe2cdb44a3070044ef142f75
+      Path: Events\Default Work Unit\MusicDay
+      maxAttenuation: 0
+      maxDuration: 64
+      minDuration: 64
+    - name: MusicNight
+      guid: 939d1699fa93b54fb16d9b9cd91a6107
+      id: 3028680700
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 36187f795aed7446a84c500d367dfcf3
+      - ElementName: MusicNight
         ObjectType: 3
         guid: 939d1699fa93b54fb16d9b9cd91a6107
-      Path: Events\Default Work Unit\NightMusic
+      Path: Events\Default Work Unit\MusicNight
       maxAttenuation: 0
-      maxDuration: 108
-      minDuration: 108
-    - name: PositiveThingDay
-      guid: 8d19a217f5e63344b43a6ac6dbb65e32
-      id: 3244877202
+      maxDuration: 69.818184
+      minDuration: 69.818184
+    - name: PaperCrumple
+      guid: e2c9cfb3d6e4f84998aa0637065ea312
+      id: 4104216053
       PathAndIcons:
       - ElementName: Events
         ObjectType: 5
@@ -284,16 +349,16 @@ MonoBehaviour:
       - ElementName: Default Work Unit
         ObjectType: 12
         guid: 36187f795aed7446a84c500d367dfcf3
-      - ElementName: PositiveThingDay
+      - ElementName: PaperCrumple
         ObjectType: 3
-        guid: 8d19a217f5e63344b43a6ac6dbb65e32
-      Path: Events\Default Work Unit\PositiveThingDay
+        guid: e2c9cfb3d6e4f84998aa0637065ea312
+      Path: Events\Default Work Unit\PaperCrumple
       maxAttenuation: 0
-      maxDuration: 3.5
-      minDuration: 3.5
-    - name: RiverFlow
-      guid: fccb59e9f6bccd409165ddc4a2ec01b6
-      id: 1080363605
+      maxDuration: 1.125
+      minDuration: 1.125
+    - name: PaperMove
+      guid: e435754edb319e469c2094d04ee76551
+      id: 1711514198
       PathAndIcons:
       - ElementName: Events
         ObjectType: 5
@@ -301,13 +366,98 @@ MonoBehaviour:
       - ElementName: Default Work Unit
         ObjectType: 12
         guid: 36187f795aed7446a84c500d367dfcf3
-      - ElementName: RiverFlow
+      - ElementName: PaperMove
         ObjectType: 3
-        guid: fccb59e9f6bccd409165ddc4a2ec01b6
-      Path: Events\Default Work Unit\RiverFlow
+        guid: e435754edb319e469c2094d04ee76551
+      Path: Events\Default Work Unit\PaperMove
       maxAttenuation: 0
-      maxDuration: 52
-      minDuration: 52
+      maxDuration: 1.125
+      minDuration: 1.125
+    - name: RoosterCrow
+      guid: 641c97437299ce43be5ece66ba08238f
+      id: 3527080122
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 36187f795aed7446a84c500d367dfcf3
+      - ElementName: RoosterCrow
+        ObjectType: 3
+        guid: 641c97437299ce43be5ece66ba08238f
+      Path: Events\Default Work Unit\RoosterCrow
+      maxAttenuation: 0
+      maxDuration: 3.25
+      minDuration: 3.25
+    - name: Set_Voice_Volume_New_Random_Container
+      guid: 2d0188eb2815a540b4f6285a31c1924d
+      id: 4165638452
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 36187f795aed7446a84c500d367dfcf3
+      - ElementName: Set_Voice_Volume_New_Random_Container
+        ObjectType: 3
+        guid: 2d0188eb2815a540b4f6285a31c1924d
+      Path: Events\Default Work Unit\Set_Voice_Volume_New_Random_Container
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Speech
+      guid: 4bc04484ebc14c45801d7a0d8d55830d
+      id: 4245458931
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 36187f795aed7446a84c500d367dfcf3
+      - ElementName: Speech
+        ObjectType: 3
+        guid: 4bc04484ebc14c45801d7a0d8d55830d
+      Path: Events\Default Work Unit\Speech
+      maxAttenuation: 0
+      maxDuration: 4.263077
+      minDuration: 1.409321
+    - name: StartTheDay
+      guid: 1dc886f903898540b733652fee0b61ce
+      id: 2972317186
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 36187f795aed7446a84c500d367dfcf3
+      - ElementName: StartTheDay
+        ObjectType: 3
+        guid: 1dc886f903898540b733652fee0b61ce
+      Path: Events\Default Work Unit\StartTheDay
+      maxAttenuation: 0
+      maxDuration: 65
+      minDuration: 65
+    - name: StartTheNight
+      guid: e723e9e9fae27945b52628ffc96f3cbe
+      id: 3670738982
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 36187f795aed7446a84c500d367dfcf3
+      - ElementName: StartTheNight
+        ObjectType: 3
+        guid: e723e9e9fae27945b52628ffc96f3cbe
+      Path: Events\Default Work Unit\StartTheNight
+      maxAttenuation: 0
+      maxDuration: 70.818184
+      minDuration: 70.818184
     - name: WinDay
       guid: d4c89a7674f57548946491df7ea02e41
       id: 2364012353
@@ -340,8 +490,25 @@ MonoBehaviour:
         guid: 32be2ee632c82344b7d5dfbd8b9f80a3
       Path: Events\Default Work Unit\WinNight
       maxAttenuation: 0
-      maxDuration: 6
-      minDuration: 6
+      maxDuration: -1
+      minDuration: -1
+    - name: WolfHowl
+      guid: a9ff5fe4ac95414bb95d93da931373df
+      id: 1145185631
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 36187f795aed7446a84c500d367dfcf3
+      - ElementName: WolfHowl
+        ObjectType: 3
+        guid: a9ff5fe4ac95414bb95d93da931373df
+      Path: Events\Default Work Unit\WolfHowl
+      maxAttenuation: 0
+      maxDuration: 7.5
+      minDuration: 7.5
   RtpcWwu:
   - PhysicalPath: Game Parameters\Default Work Unit.wwu
     PathAndIcons:
@@ -399,7 +566,7 @@ MonoBehaviour:
     m_lastTime: -8585588864557360343
     List: []
   ExpandedFileSystemItemIds: 
-  ExpandedWaapiItemIds: 
+  ExpandedWaapiItemIds: 0500000007000000080000001c0000001d0000001e0000001f00000020000000
   AutoSyncSelection: 0
   autoPopulateEnabled: 1
   currentDataSource: 0

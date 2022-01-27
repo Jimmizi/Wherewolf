@@ -11,4 +11,5 @@ public static class Service
     public static ClueManager Clue;
     public static PhaseSolver PhaseSolve;
     public static PlayerManager Player;
+    public static AudioManager Audio;
 }

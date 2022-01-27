@@ -5,6 +5,7 @@
 			<ChildrenList>
 				<SoundBank Name="DayCycle" ID="{FC5C07BC-DE31-4341-93EA-76B6A8E3E228}">
 					<ObjectInclusionList>
+						<ObjectRef Name="StartTheDay" ID="{F986C81D-8903-4085-B733-652FEE0B61CE}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="DiscoveryDay" ID="{17A2198D-E6F5-4433-B43A-6AC6DBB65E32}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="MusicDay" ID="{8F30BA2E-2CFE-44DB-A307-0044EF142F75}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="WinDay" ID="{769AC8D4-F574-4875-9464-91DF7EA02E41}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
@@ -16,6 +17,7 @@
 				</SoundBank>
 				<SoundBank Name="NightCycle" ID="{BCA837B0-7050-4257-875D-ACDB506127D8}">
 					<ObjectInclusionList>
+						<ObjectRef Name="StartTheNight" ID="{E9E923E7-E2FA-4579-B526-28FFC96F3CBE}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="GameOverNight" ID="{C33449F5-E63A-4964-AF7B-CC7E99795733}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="AmbienceNight" ID="{736BAED1-44A6-4A25-9FE4-FE21FA75A128}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="DiscoveryNight" ID="{B7A00018-7450-4C68-BFE0-4F085EBCA65D}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>

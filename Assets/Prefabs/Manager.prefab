@@ -16,6 +16,12 @@ GameObject:
   - component: {fileID: 7202421594343879778}
   - component: {fileID: 7870538848843495612}
   - component: {fileID: 1368094422669586880}
+  - component: {fileID: 6546185642195876980}
+  - component: {fileID: 2868963963725791734}
+  - component: {fileID: 6110012845812571646}
+  - component: {fileID: 4329341484135077153}
+  - component: {fileID: 6088672158101187789}
+  - component: {fileID: 767909974167610532}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -77,6 +83,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dde6160b284df8d47ad45794569a4faa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DebugYieldInGeneration: 0
   CharacterHasOccupationChance: 50
   WanderRandomTimeMin: 5
   WanderRandomTimeMax: 15
@@ -122,7 +129,7 @@ MonoBehaviour:
   CurrentDay: 0
   IsGamePaused: 0
   HasTriggeredStakeAction: 0
-  TimeTransitionDuration: 1
+  TimeTransitionDuration: 5
 --- !u!114 &7202421594343879778
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,3 +171,191 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CollectedClues: []
   DebugGrabSomeClues: 0
+--- !u!114 &6546185642195876980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4957857799237703561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63ddea758dd4fe74f91048202e08f763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StartDayEvent:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 2ccca8417d5b939448bca1ac37662d1b, type: 2}
+  StartNightEvent:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: df41243385b4cd845abe3f321be4c646, type: 2}
+  UIClickEvent:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 55c1b4c1b297642448e40bd405450f28, type: 2}
+  DiscoveryDayEvent:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 501ab282b7fa002468931d73a24b7371, type: 2}
+  DiscoveryNightEvent:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 882b820921458014fa75db7247c35fb5, type: 2}
+  GameOverDayEvent:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 8f2b7f2043c71a040b3e7525fb94a9b9, type: 2}
+  GameOverNightEvent:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 882b820921458014fa75db7247c35fb5, type: 2}
+  PaperCrumpleEvent:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: f27d05862c0717840a4ac82c5d6c78b1, type: 2}
+  PaperMoveEvent:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 7c62bd0792bbf7f4fad0f505f1e1e46f, type: 2}
+  RoosterCrowEvent:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: a583c2b4e83247e49bb7441964d87bdc, type: 2}
+  SpeechEvent:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 807bc33c47d46e349bc67d38af81118e, type: 2}
+  WinDayEvent:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: b3c113fa79c8baf42b68db1c45293ef5, type: 2}
+  WinNightEvent:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 83f4d3f59ed9f824696de82ee062eedf, type: 2}
+  WolfHowlEvent:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 18a69ae98b4eca742a94f118e7a1099d, type: 2}
+--- !u!114 &2868963963725791734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4957857799237703561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9af8826a8610b0419cc9cf1a6acac83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerList: f7e1664c
+  useOtherObject: 0
+  data:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 224a580a7c7c11c43bed4440ddca2e99, type: 2}
+  decodeBank: 0
+  loadAsynchronous: 0
+  saveDecodedBank: 0
+  unloadTriggerList: 958ca0ea
+  bankNameInternal: 
+  valueGuidInternal: 
+--- !u!114 &6110012845812571646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4957857799237703561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9af8826a8610b0419cc9cf1a6acac83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerList: f7e1664c
+  useOtherObject: 0
+  data:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: aa7b7e02ba65d3c44aa44b9d65d9727b, type: 2}
+  decodeBank: 0
+  loadAsynchronous: 0
+  saveDecodedBank: 0
+  unloadTriggerList: 958ca0ea
+  bankNameInternal: 
+  valueGuidInternal: 
+--- !u!114 &4329341484135077153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4957857799237703561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9af8826a8610b0419cc9cf1a6acac83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerList: f7e1664c
+  useOtherObject: 0
+  data:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 4ed6a9e4d5ee5434fba659896273eedb, type: 2}
+  decodeBank: 0
+  loadAsynchronous: 0
+  saveDecodedBank: 0
+  unloadTriggerList: 958ca0ea
+  bankNameInternal: 
+  valueGuidInternal: 
+--- !u!114 &6088672158101187789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4957857799237703561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9af8826a8610b0419cc9cf1a6acac83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerList: f7e1664c
+  useOtherObject: 0
+  data:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 6921b003ee88afd469f775863998534d, type: 2}
+  decodeBank: 0
+  loadAsynchronous: 0
+  saveDecodedBank: 0
+  unloadTriggerList: 958ca0ea
+  bankNameInternal: 
+  valueGuidInternal: 
+--- !u!114 &767909974167610532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4957857799237703561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9af8826a8610b0419cc9cf1a6acac83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerList: f7e1664c
+  useOtherObject: 0
+  data:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: d862e114e87255d49b2c91bc85c35c5b, type: 2}
+  decodeBank: 0
+  loadAsynchronous: 0
+  saveDecodedBank: 0
+  unloadTriggerList: 958ca0ea
+  bankNameInternal: 
+  valueGuidInternal: 
