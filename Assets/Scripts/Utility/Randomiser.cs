@@ -26,4 +26,16 @@ public class Randomiser
 
         return 0;
     }
+
+    public static List<int> GetRandomCharacterProcessingOrder()
+    {
+        List<int> vIndices = new List<int>();
+        for(int i = 0; i < ConfigManager.NumberOfCharactersToGenerate; ++i)
+        {
+            vIndices.Add(i);
+        }
+
+        vIndices.Shuffle();
+        return vIndices;
+    }
 }

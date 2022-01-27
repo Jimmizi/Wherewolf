@@ -7,6 +7,8 @@ public class ConfigManager : MonoBehaviour
     // Last day of the game
     public const int NumberOfDaysBeforeGameFailure = 20;
 
+    public const int NumberOfCharactersToGenerate = 20;
+
     [SerializeField]
     public int CharacterHasOccupationChance = 50;
 
@@ -60,6 +62,12 @@ public class ConfigManager : MonoBehaviour
     //  being in the end phase of the game (10 victims will be generated over the course of the game).
     [SerializeField]
     public int NumberOfDeathsToClassifyLateGame = 6;
+
+    [SerializeField]
+    public float ChanceToAddOpinionOfCharacterAtClueEnd = 33.0f;
+
+    [SerializeField]
+    public float ChanceToAddApprovalDisapprovalAtClueEnd = 50.0f;
 
     // Start is called before the first frame update
     void Awake()

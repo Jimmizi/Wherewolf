@@ -333,9 +333,6 @@ public class WerewolfGame : MonoBehaviour
         {
             case SubState.Start:
                 {
-                    CurrentSubState = SubState.Finish;
-                    return;
-
                     Service.Clue.GenerateCluesForCurrentPhase();
                     CurrentSubState++;
                     break;

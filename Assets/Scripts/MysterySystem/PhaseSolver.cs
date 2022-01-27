@@ -33,6 +33,46 @@ public class PhaseSolver : MonoBehaviour
             Service.Game.DisplayDebug = false;
             bShowDebug = !bShowDebug;
         }
+        if(bShowDebug)
+        {
+            if (CurrentCharacterSelected != null)
+            {
+                if (Input.GetKeyDown(KeyCode.UpArrow))
+                {
+                    Character lastLoopCharacter = null;
+                    foreach (var c in currentPhaseDebugging.CharacterSeenMap)
+                    {
+                        if (CurrentCharacterSelected == c.Key)
+                        {
+                            if (lastLoopCharacter != null)
+                            {
+                                CurrentCharacterSelected = lastLoopCharacter;
+                            }
+                            break;
+                        }
+
+                        lastLoopCharacter = c.Key;
+                    }
+                }
+                if (Input.GetKeyDown(KeyCode.DownArrow))
+                {
+                    bool bNextLoopAssigns = false;
+                    foreach (var c in currentPhaseDebugging.CharacterSeenMap)
+                    {
+                        if (bNextLoopAssigns)
+                        {
+                            CurrentCharacterSelected = c.Key;
+                            break;
+                        }
+
+                        if (CurrentCharacterSelected == c.Key)
+                        {
+                            bNextLoopAssigns = true;
+                        }
+                    }
+                }
+            }
+        }
         //if (Input.GetKeyDown(KeyCode.F5) && bShowDebug && !IsGeneratingAPhase)
         //{
         //    if (Service.Population.CharacterCreationDone)
@@ -501,6 +541,7 @@ public class PhaseSolver : MonoBehaviour
     const int iButtonHeight = 28;
     const int iTextBoxHeight = 24;
     Phase currentPhaseDebugging;
+    Character CurrentCharacterSelected;
     int iCurrentDayDebugging;
 
     WerewolfGame.TOD lastDebugGeneratedTod = WerewolfGame.TOD.Night;
@@ -508,7 +549,7 @@ public class PhaseSolver : MonoBehaviour
     Vector2 vScrollPositionHistory = new Vector2();
     Vector2 vCharacterPickerPosition = new Vector2();
     Vector2 vPickedCharacterDetailsPosition = new Vector2();
-    Character CurrentCharacterSeenListSelected;
+    
     GUIStyle selectedStyle = null;
 
     private Texture2D MakeTex(int width, int height, Color col)
@@ -537,7 +578,9 @@ public class PhaseSolver : MonoBehaviour
             selectedStyle.normal.background = MakeTex(2, 2, new Color(1f, 1f, 0f, 0.5f));
         }
 
-        GUI.Box(new Rect(30, 30, 1050, 700), "");
+        float fDebugHeight = Screen.height - 60;
+
+        GUI.Box(new Rect(30, 30, 1250, fDebugHeight + 10), "");
         GUI.Label(new Rect(6, 0, 500, 24), "Phase Debug");
         //GUI.Label(new Rect(206, 0, 800, 24), string.Format("F5 - Debug generate phase{0}", IsGeneratingAPhase ? " (Currently generating)" : ""));
 
@@ -546,7 +589,7 @@ public class PhaseSolver : MonoBehaviour
         // Panel for who saw who
 
         // Phase history picker
-        vScrollPositionHistory = GUI.BeginScrollView(new Rect(35, 35, 190, 690), vScrollPositionHistory, new Rect(0, 0, 170, 1500));
+        vScrollPositionHistory = GUI.BeginScrollView(new Rect(35, 35, 190, fDebugHeight), vScrollPositionHistory, new Rect(0, 0, 170, 1500));
         {
             Vector2 vPosition = new Vector2(5, 5);
 
@@ -587,9 +630,9 @@ public class PhaseSolver : MonoBehaviour
                     {
                         currentPhaseDebugging = p;
                         iCurrentDayDebugging = entry.Key;
-                        if (CurrentCharacterSeenListSelected != null && !currentPhaseDebugging.CharacterSeenMap.ContainsKey(CurrentCharacterSeenListSelected))
+                        if (CurrentCharacterSelected != null && !currentPhaseDebugging.CharacterSeenMap.ContainsKey(CurrentCharacterSelected))
                         {
-                            CurrentCharacterSeenListSelected = null;
+                            CurrentCharacterSelected = null;
                         }
                     }
 
@@ -608,35 +651,35 @@ public class PhaseSolver : MonoBehaviour
         else
         {
             // Selected phase details
-            vCharacterPickerPosition = GUI.BeginScrollView(new Rect(225, 35, 160, 690), vCharacterPickerPosition, new Rect(0, 0, 150, 1000));
+            vCharacterPickerPosition = GUI.BeginScrollView(new Rect(225, 35, 160, fDebugHeight), vCharacterPickerPosition, new Rect(0, 0, 150, 1000));
             {
                 Vector2 vPosition = new Vector2(5, 5);
 
                 foreach(var c in currentPhaseDebugging.CharacterSeenMap)
                 {
-                    if (CurrentCharacterSeenListSelected != null && CurrentCharacterSeenListSelected == c.Key)
+                    if (CurrentCharacterSelected != null && CurrentCharacterSelected == c.Key)
                     {
                         GUI.Box(new Rect(vPosition.x - 2, vPosition.y - 2, 144, iTextBoxHeight + 4), "", selectedStyle);
                     }
                     if (GUI.Button(new Rect(vPosition.x, vPosition.y, 140, iTextBoxHeight), string.Format("[{0}] {1}", c.Key.Index, c.Key.Name)))
                     {
-                        CurrentCharacterSeenListSelected = c.Key;
+                        CurrentCharacterSelected = c.Key;
                     }
                     vPosition.y += iButtonHeight;
                 }
             }
             GUI.EndScrollView();
 
-            vPickedCharacterDetailsPosition = GUI.BeginScrollView(new Rect(425, 35, 200, 690), vPickedCharacterDetailsPosition, new Rect(0, 0, 200, 2500));
+            vPickedCharacterDetailsPosition = GUI.BeginScrollView(new Rect(425, 35, 400, fDebugHeight), vPickedCharacterDetailsPosition, new Rect(0, 0, 500, 2500));
             {
-                if (CurrentCharacterSeenListSelected != null)
+                if (CurrentCharacterSelected != null)
                 {
                     Vector2 vPosition = new Vector2(5, 5);
 
-                    GUI.Label(new Rect(vPosition.x, vPosition.y, 200, iTextBoxHeight), string.Format("This phase, {0} saw:", CurrentCharacterSeenListSelected.Name));
+                    GUI.Label(new Rect(vPosition.x, vPosition.y, 200, iTextBoxHeight), string.Format("This phase, {0} saw:", CurrentCharacterSelected.Name));
                     vPosition.y += iTextHeight;
 
-                    foreach (var c in currentPhaseDebugging.CharacterSeenMap[CurrentCharacterSeenListSelected])
+                    foreach (var c in currentPhaseDebugging.CharacterSeenMap[CurrentCharacterSelected])
                     {
                         if (c.Item1.IsWerewolf)
                         {
@@ -652,7 +695,7 @@ public class PhaseSolver : MonoBehaviour
                     GUI.Label(new Rect(vPosition.x, vPosition.y, 200, iTextBoxHeight), "and saw these passing by:");
                     vPosition.y += iTextHeight;
 
-                    foreach (var c in currentPhaseDebugging.CharacterSawPassingByMap[CurrentCharacterSeenListSelected])
+                    foreach (var c in currentPhaseDebugging.CharacterSawPassingByMap[CurrentCharacterSelected])
                     {
                         if (c.Item1.IsWerewolf)
                         {
@@ -665,12 +708,12 @@ public class PhaseSolver : MonoBehaviour
                     }
 
                     vPosition.y += iTextHeight * 2;
-                    GUI.Label(new Rect(vPosition.x, vPosition.y, 200, iTextBoxHeight), string.Format("This phase, {0} did:", CurrentCharacterSeenListSelected.Name));
+                    GUI.Label(new Rect(vPosition.x, vPosition.y, 200, iTextBoxHeight), string.Format("This phase, {0} did:", CurrentCharacterSelected.Name));
                     vPosition.y += iTextHeight;
 
-                    if (currentPhaseDebugging.CharacterTasks.ContainsKey(CurrentCharacterSeenListSelected))
+                    if (currentPhaseDebugging.CharacterTasks.ContainsKey(CurrentCharacterSelected))
                     {
-                        foreach (var t in currentPhaseDebugging.CharacterTasks[CurrentCharacterSeenListSelected])
+                        foreach (var t in currentPhaseDebugging.CharacterTasks[CurrentCharacterSelected])
                         {
                             GUI.Label(new Rect(vPosition.x, vPosition.y, 200, iTextBoxHeight), string.Format("{0} at Loc {1}", t.Type.ToString(), t.Location));
                             vPosition.y += iTextHeight;
@@ -681,14 +724,68 @@ public class PhaseSolver : MonoBehaviour
                     GUI.Label(new Rect(vPosition.x, vPosition.y, 200, iTextBoxHeight), "---------------");
                     vPosition.y += iTextHeight * 2;
 
-                    // TODO ADD CLUES
+                    GUI.Label(new Rect(vPosition.x, vPosition.y, 200, iTextBoxHeight), "Can give these clues:");
+                    vPosition.y += iTextHeight;
+
+                    foreach(var clue in currentPhaseDebugging.CharacterCluesToGive[CurrentCharacterSelected])
+                    {
+                        // Type
+                        GUI.contentColor = Color.yellow;
+                        GUI.Label(new Rect(vPosition.x, vPosition.y, 150, iTextBoxHeight), clue.Type.ToString());
+
+                        // True/false
+                        GUI.contentColor = clue.IsTruth ? new Color(0.1f, 0.8f, 0.1f) : new Color(0.8f, 0.1f, 0.1f);
+                        GUI.Label(new Rect(vPosition.x + 200, vPosition.y, 150, iTextBoxHeight), 
+                            string.Format("({0})", clue.IsTruth ? "Is the truth" : "Is a lie"));
+
+                        vPosition.y += iTextHeight;
+                        GUI.contentColor = Color.white;
+
+                        // Extra info
+                        if(clue.RelatesToCharacter.IsWerewolf)
+                        {
+                            GUI.contentColor = new Color(1.0f, 0.5f, 0.5f);
+                        }
+                        GUI.Label(new Rect(vPosition.x, vPosition.y, 200, iTextBoxHeight), 
+                            string.Format("Subject: [{0}] {1}", clue.RelatesToCharacter.Index, clue.RelatesToCharacter.Name));
+                        GUI.contentColor = Color.white;
+
+                        GUI.Label(new Rect(vPosition.x + 200, vPosition.y, 200, iTextBoxHeight),
+                             string.Format("LocSeenIn: {0}", clue.LocationSeenIn));
+
+                        vPosition.y += iTextHeight;
+
+                        if(clue.Type == ClueObject.ClueType.VisualFromGhost)
+                        {
+                            GUI.Label(new Rect(vPosition.x, vPosition.y, 350, iTextBoxHeight),
+                                string.Format("Ghost Descriptor Type: {0}", clue.GhostGivenClueType.ToString()));
+                            vPosition.y += iTextHeight;
+                        }
+
+                        if (clue.Emotes.Count > 0)
+                        {
+                            GUI.Label(new Rect(vPosition.x, vPosition.y, 200, iTextBoxHeight), "Emotes string:");
+                            vPosition.y += iTextHeight;
+
+                            GUI.contentColor = new Color(0.2f, 0.7f, 1.0f);
+                            foreach (var emote in clue.Emotes)
+                            {
+                                GUI.Label(new Rect(vPosition.x, vPosition.y, 300, iTextBoxHeight), emote.SubType.ToString());
+                                vPosition.y += iTextHeight;
+                            }
+                            GUI.contentColor = Color.white;
+                        }
+
+                        vPosition.y += iTextHeight;
+                    }
+
                 }
             }
             GUI.EndScrollView();
 
             // General info
             {
-                Vector2 vPosition = new Vector2(640, 40);
+                Vector2 vPosition = new Vector2(840, 40);
                 Character ww = Service.Population.GetWerewolf();
 
                 GUI.Label(new Rect(vPosition.x, vPosition.y, 200, iTextBoxHeight), string.Format("Who saw {0}?", ww.Name));
@@ -756,7 +853,7 @@ public class PhaseSolver : MonoBehaviour
             }
             // General info 2
             {
-                Vector2 vPosition = new Vector2(850, 40);
+                Vector2 vPosition = new Vector2(1050, 40);
 
                 Character ww = Service.Population.GetWerewolf();
                 List<Character> inactiveCharacters = new List<Character>();

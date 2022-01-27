@@ -6,7 +6,13 @@ using UnityEngine;
 public class PopulationManager : MonoBehaviour
 {
     // Public vars
+
+    // Actual list of characters in the population
     public List<Character> ActiveCharacters = new List<Character>();
+
+    // Map of what characters think of other characters (randomised basically)
+    public Dictionary<Character, Dictionary<Character, Emote.EmoteSubType>> CharacterOpinionMap = new Dictionary<Character, Dictionary<Character, Emote.EmoteSubType>>();
+    
     public int iNumberOfCharactersDead = 0;
 
     // Private vars
@@ -42,6 +48,22 @@ public class PopulationManager : MonoBehaviour
     }
 
     public bool CharacterCreationDone => bDoneCharacterGeneration;
+
+    public Emote.EmoteSubType GetCharactersOpinionOf(Character from, Character of)
+    {
+        Debug.Assert(from != of);
+        if(from == of)
+        {
+            return Emote.InvalidSubType;
+        }
+
+        if(!CharacterOpinionMap[from].ContainsKey(of))
+        {
+            return Emote.InvalidSubType;
+        }
+
+        return CharacterOpinionMap[from][of];
+    }
 
     // Internal Functions
 
@@ -112,14 +134,16 @@ public class PopulationManager : MonoBehaviour
             return; 
         }
 
-        GUI.Box(new Rect(30, 30, 1050, 700), "");
+        float fDebugHeight = Screen.height - 60;
+
+        GUI.Box(new Rect(30, 30, 1150, fDebugHeight + 10), "");
         GUI.Label(new Rect(6, 0, 200, 24), "Population Debug");
 
        // GUI.Label(new Rect(206, 0, 400, 24), "F5 - Reroll population");
 
         if (ActiveCharacters.Count > 0)
         {
-            vScrollPosition = GUI.BeginScrollView(new Rect(35, 35, 590, 690), vScrollPosition, new Rect(0, 0, 590, 2500));
+            vScrollPosition = GUI.BeginScrollView(new Rect(35, 35, 590, fDebugHeight), vScrollPosition, new Rect(0, 0, 590, 2500));
             {
                 Vector2 vPosition = new Vector2(5, 5);
                 RenderCharacterDebug(ref vPosition, GetWerewolf(), werewolfIndex);
@@ -166,7 +190,7 @@ public class PopulationManager : MonoBehaviour
                 }
             }
 
-            vScrollPositionForCounts = GUI.BeginScrollView(new Rect(625, 35, 250, 690), vScrollPositionForCounts, new Rect(0, 0, 200, 1200));
+            vScrollPositionForCounts = GUI.BeginScrollView(new Rect(625, 35, 250, fDebugHeight), vScrollPositionForCounts, new Rect(0, 0, 200, 1200));
             {
                 Vector2 vPosition = new Vector2(5, 5);
                 Character ww = GetWerewolf();
@@ -244,6 +268,18 @@ public class PopulationManager : MonoBehaviour
                         }
                     }
 
+                    int iNumAlive = 0;
+                    foreach (var c in ActiveCharacters)
+                    {
+                        if (c.IsAlive && !c.IsWerewolf)
+                        {
+                            iNumAlive++;
+                        }
+                    }
+
+                    GUI.Label(new Rect(vPosition.x, vPosition.y, 150, iTextBoxHeight), string.Format("Num Alive: {0}", iNumAlive));
+                    vPosition.y += iTextHeight*2;
+
                     foreach (var matchingCharacters in matchList.Value)
                     {
                         if(!matchingCharacters.IsAlive)
@@ -281,20 +317,55 @@ public class PopulationManager : MonoBehaviour
             }
             GUI.EndScrollView();
 
-            vScrollPositionForInfo = GUI.BeginScrollView(new Rect(875, 35, 190, 690), vScrollPositionForInfo, new Rect(0, 0, 200, 1200));
+            vScrollPositionForInfo = GUI.BeginScrollView(new Rect(875, 35, 300, fDebugHeight), vScrollPositionForInfo, new Rect(0, 0, 300, 10000));
             {
                 Vector2 vPosition = new Vector2(5, 5);
 
-                int iNumAlive = 0;
-                foreach(var c in ActiveCharacters)
+                foreach(var opinionMap in CharacterOpinionMap)
                 {
-                    if(c.IsAlive && !c.IsWerewolf)
-                    {
-                        iNumAlive++;
-                    }
-                }
+                    Character thisCharacter = opinionMap.Key;
 
-                GUI.Label(new Rect(vPosition.x, vPosition.y, 150, iTextBoxHeight), string.Format("Num Alive: {0}", iNumAlive));
+                    GUI.Label(new Rect(vPosition.x, vPosition.y, 300, iTextBoxHeight), string.Format("[{0}] {1} Opinions:", thisCharacter.Index, thisCharacter.Name));
+                    vPosition.y += iTextHeight;
+
+                    foreach(var charOpinion in opinionMap.Value)
+                    {
+                        string sOpinion = "";
+
+                        Color textColor = Color.white;
+
+                        switch(charOpinion.Value)
+                        {
+                            case Emote.EmoteSubType.Opinion_Love:
+                                sOpinion = string.Format("Loves [{0}] {1}", charOpinion.Key.Index, charOpinion.Key.Name);
+                                textColor = new Color(1f, 0.752f, 0.796f);
+                                break;
+                            case Emote.EmoteSubType.Opinion_Like:
+                                sOpinion = string.Format("Likes [{0}] {1}", charOpinion.Key.Index, charOpinion.Key.Name);
+                                textColor = new Color(0.196f, 0.803f, 0.196f);
+                                break;
+                            case Emote.EmoteSubType.Opinion_Neutral:
+                                sOpinion = string.Format("Neutral to [{0}] {1}", charOpinion.Key.Index, charOpinion.Key.Name);
+                                textColor = new Color(0.960f, 0.960f, 0.862f);
+                                break;
+                            case Emote.EmoteSubType.Opinion_Dislike:
+                                sOpinion = string.Format("Dislikes [{0}] {1}", charOpinion.Key.Index, charOpinion.Key.Name);
+                                textColor = new Color(1f, 0.627f, 0.478f);
+                                break;
+                            case Emote.EmoteSubType.Opinion_Hate:
+                                sOpinion = string.Format("Hates [{0}] {1}", charOpinion.Key.Index, charOpinion.Key.Name);
+                                textColor = new Color(0.698f, 0.133f, 0.133f);
+                                break;
+                        }
+
+                        GUI.contentColor = textColor;
+                        GUI.Label(new Rect(vPosition.x + 15, vPosition.y, 300, iTextBoxHeight), sOpinion);
+                        vPosition.y += iTextHeight;
+                        GUI.contentColor = Color.white;
+                    }
+
+                    vPosition.y += iTextHeight;
+                }
             }
             GUI.EndScrollView();
         }
@@ -407,7 +478,8 @@ public class PopulationManager : MonoBehaviour
     #region Population Init
     IEnumerator InitialisePopulationStaggered()
     {
-        int iNumberOfCharactersToMake = 20;
+        #region Create Characters
+        int iNumberOfCharactersToMake = ConfigManager.NumberOfCharactersToGenerate;
 
         iNumberOfCharactersDead = 0;
         bDoneCharacterGeneration = false;
@@ -502,6 +574,9 @@ public class PopulationManager : MonoBehaviour
         }
 
         yield return new WaitForSeconds(0.02f);
+        #endregion
+
+        #region Making Descriptors Non-Unique
 
         // Make a map of matching descriptors
 
@@ -618,8 +693,11 @@ public class PopulationManager : MonoBehaviour
             // Then update the matching descriptor map
             MatchingDescriptorMap[desc].Add(charToCopyDescriptorTo);
         }
+        
+        yield return new WaitForSeconds(0.02f);
+        #endregion
 
-
+        #region Giving homes to characters
 
         // Randomise up the order in which we give the homes out
         List<int> randomGiveHomeOrder = new List<int>();
@@ -663,6 +741,10 @@ public class PopulationManager : MonoBehaviour
 
         Debug.Assert(iCurrentHomeGiveIndex == ActiveCharacters.Count, "Not all characters have a home, only " + iCurrentHomeGiveIndex + " characters do.");
 
+        #endregion
+
+        #region Giving characters schedules
+
         // Give the NPCs schedules to follow
         foreach (var c in ActiveCharacters)
         {
@@ -676,6 +758,40 @@ public class PopulationManager : MonoBehaviour
         }
 
         yield return new WaitForSeconds(0.02f);
+        #endregion
+
+        #region Generating an opinion map
+
+        // Generate opinions - characters might add an opinion emote sometimes in clues as flavour
+        
+        foreach (var c in ActiveCharacters)
+        {
+            CharacterOpinionMap.Add(c, new Dictionary<Character, Emote.EmoteSubType>());
+
+            foreach(var other in ActiveCharacters)
+            {
+                if(c == other)
+                {
+                    continue;
+                }
+
+                Emote.EmoteSubType eOpinion = Emote.GetRandomWeightedOpinion(c.IsWerewolf);
+
+                if(other.IsWerewolf && eOpinion == Emote.EmoteSubType.Opinion_Love)
+                {
+                    // Demote love opinions of the werewolf to like
+                    eOpinion++;
+                }
+
+                CharacterOpinionMap[c].Add(other, eOpinion);
+            }
+
+            yield return new WaitForSeconds(0.02f);
+        }
+
+        #endregion
+
+        Service.InfoManager.RenameCharacterEmotes();
 
         bDoneCharacterGeneration = true;
     }
@@ -942,7 +1058,7 @@ public class PopulationManager : MonoBehaviour
 
 #if UNITY_EDITOR
         bool bValidType = false;
-        foreach(var emote in Service.InfoManager.EmoteMap[Emote.EmoteType.Occupation])
+        foreach(var emote in Service.InfoManager.EmoteMapByType[Emote.EmoteType.Occupation])
         {
             if(emote.SubType == eBuildingType)
             {

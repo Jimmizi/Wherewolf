@@ -48,7 +48,7 @@ public class ClueObject
     public float Weight = 0.0f;
 
     // The list of emotes to form the sentence.
-    public List<Emote> Emotes;
+    public List<Emote> Emotes = new List<Emote>();
 
     public Character GivenByCharacter;
     public Character RelatesToCharacter;
@@ -80,22 +80,36 @@ public class ClueObject
         switch (Type)
         {
             case ClueType.SawInLocation:
+                GenerateSawInLocationEmotes();
                 break;
             case ClueType.SawPassingBy:
+                GenerateSawPassingByEmotes();
                 break;
             case ClueType.SawAtWork:
+                GenerateSawAtWorkEmotes();
                 break;
             case ClueType.CommentFacialFeatures:
+                GenerateCommentFacialFeaturesEmotes();
                 break;
             case ClueType.CommentClothing:
+                GenerateCommentClothingEmotes();
                 break;
             case ClueType.CommentGossip:
+                GenerateCommentGossipEmotes();
                 break;
             case ClueType.VisualFromGhost:
-                Debug.Assert(GhostGivenClueType != Character.Descriptor.Occupation);
+                GenerateVisualFromGhostEmotes();
                 break;
         }
 
+        // Randomly add on the opinion they have of this character to all emotes
+        if (Type != ClueType.VisualFromGhost
+            && UnityEngine.Random.Range(0, 100.0f) < Service.Config.ChanceToAddOpinionOfCharacterAtClueEnd)
+        {
+            // Add on: "Opinion" "CharacterHeadshot"
+            AddEmote(Service.Population.GetCharactersOpinionOf(GivenByCharacter, RelatesToCharacter));
+            AddEmote(RelatesToCharacter.GetHeadshotEmoteSubType());
+        }
     }
 
 #if UNITY_EDITOR
@@ -121,8 +135,109 @@ public class ClueObject
             case ClueType.CommentGossip:
                 break;
             case ClueType.VisualFromGhost:
+                Debug.Assert(GhostGivenClueType != Character.Descriptor.Occupation);
                 break;
         }
     }
 #endif
+
+    void AddEmote(Emote.EmoteSubType eSubType)
+    {
+        Debug.Assert(eSubType != Emote.InvalidSubType);
+        if (eSubType != Emote.InvalidSubType)
+        {
+            Emotes.Add(Service.InfoManager.EmoteMapBySubType[eSubType]);
+        }
+    }
+
+    void GenerateSawInLocationEmotes()
+    {
+        // Should be: "Eyes" "CharacterHeadshot" "Location"
+        AddEmote(Emote.EmoteSubType.Specific_Eyes);
+        AddEmote(RelatesToCharacter.GetHeadshotEmoteSubType());
+        AddEmote(Emote.GetLocationEnum(LocationSeenIn));
+    }
+
+    void GenerateSawPassingByEmotes()
+    {
+        // Should be: "Eyes" "CharacterHeadshot" "Footsteps" "Location"
+        AddEmote(Emote.EmoteSubType.Specific_Eyes);
+        AddEmote(RelatesToCharacter.GetHeadshotEmoteSubType());
+        AddEmote(Emote.EmoteSubType.Specific_Footsteps);
+        AddEmote(Emote.GetLocationEnum(LocationSeenIn));
+    }
+
+    void GenerateSawAtWorkEmotes()
+    {
+        // Should be: "Eyes" "CharacterHeadshot" "Occupation"
+        AddEmote(Emote.EmoteSubType.Specific_Eyes);
+        AddEmote(RelatesToCharacter.GetHeadshotEmoteSubType());
+
+        Emote.EmoteSubType eWorkType = RelatesToCharacter.GetWorkType();
+
+        Debug.Assert(eWorkType != Emote.InvalidSubType, 
+            string.Format("Found invalid work type for {0}. How did we get to generating a clue for this?", RelatesToCharacter.Name));
+
+        // If the above happens during release, pretend that this is a lie given
+        if(eWorkType == Emote.InvalidSubType)
+        {
+            eWorkType = Service.InfoManager.GetRandomEmoteOfType(Emote.EmoteType.Occupation).SubType;
+            IsTruth = false;
+        }
+
+        AddEmote(eWorkType);
+    }
+
+    void GenerateCommentFacialFeaturesEmotes()
+    {
+        // Should be: "CharacterHeadshot" "Facial" "Random: Approves/Disapproves"
+        AddEmote(RelatesToCharacter.GetHeadshotEmoteSubType());
+        AddEmote(RelatesToCharacter.GetFacialFeatureType());
+
+        if(UnityEngine.Random.Range(0.0f, 100.0f) < Service.Config.ChanceToAddApprovalDisapprovalAtClueEnd)
+        {
+            AddEmote(Emote.GetRandomWeightedApprovalDisapproval(GivenByCharacter, RelatesToCharacter));
+        }
+    }
+
+    void GenerateCommentClothingEmotes()
+    {
+        // Should be: "CharacterHeadshot" "Clothing" "Random: Approves/Disapproves"
+        AddEmote(RelatesToCharacter.GetHeadshotEmoteSubType());
+
+        List<Emote> clothing = RelatesToCharacter.GetDescriptors(Character.Descriptor.Clothing);
+        foreach (var emote in clothing)
+        {
+            AddEmote(emote.SubType);
+        }
+
+        if (UnityEngine.Random.Range(0.0f, 100.0f) < Service.Config.ChanceToAddApprovalDisapprovalAtClueEnd)
+        {
+            AddEmote(Emote.GetRandomWeightedApprovalDisapproval(GivenByCharacter, RelatesToCharacter));
+        }
+    }
+
+    void GenerateCommentGossipEmotes()
+    {
+        // Should be: "CharacterHeadshot" "Gossip" "Random: Approves/Disapproves"
+        AddEmote(RelatesToCharacter.GetHeadshotEmoteSubType());
+        AddEmote(Service.InfoManager.GetRandomEmoteOfType(Emote.EmoteType.Gossip).SubType);
+
+        if (UnityEngine.Random.Range(0.0f, 100.0f) < Service.Config.ChanceToAddApprovalDisapprovalAtClueEnd)
+        {
+            AddEmote(Emote.GetRandomWeightedApprovalDisapproval(GivenByCharacter, RelatesToCharacter));
+        }
+    }
+
+    void GenerateVisualFromGhostEmotes()
+    {
+        // Should be: "CharacterHeadshot" "Hair/Facial/Clothing"
+        AddEmote(RelatesToCharacter.GetHeadshotEmoteSubType());
+
+        List<Emote> descriptors = RelatesToCharacter.GetDescriptors(GhostGivenClueType);
+        foreach(var emote in descriptors)
+        {
+            AddEmote(emote.SubType);
+        }
+    }
 }

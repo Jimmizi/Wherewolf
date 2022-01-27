@@ -25,6 +25,8 @@ public class ClueManager : MonoBehaviour
     private List<ClueObject> ghostGeneratedClues = new List<ClueObject>();
     private int iNumberOfGhostLiesGiven = 0;
 
+    private int iNumReportingWerewolfLocation = 0;
+
     void Awake()
     {
         Service.Clue = this;
@@ -43,12 +45,21 @@ public class ClueManager : MonoBehaviour
     {
         // Characters try to generate a clue of each type and then will give out a clue depending on random weights
 
-        foreach (var c in Service.Population.ActiveCharacters)
+        iNumReportingWerewolfLocation = 0;
+
+        // Randomly process character clues so that we don't bias any chance or sequence based logic to the 
+        //  characters at the front of the list (iNumReportingWerewolfLocation)
+        List<int> vRandomProcessingOrder = Randomiser.GetRandomCharacterProcessingOrder();
+
+        //foreach (var c in Service.Population.ActiveCharacters)
+        foreach(var index in vRandomProcessingOrder)
         {
+            var c = Service.Population.ActiveCharacters[index];
+
             // If dead don't generate any clues (unless we need to generate their first set of ghost clues
             //  Ghost clues are a one off generation that happens the first time after they died. They will
             //  then keep these clues until the player speaks to them.
-            if(!c.IsAlive && c.HasGeneratedGhostClues)
+            if (!c.IsAlive && c.HasGeneratedGhostClues)
             {
                 continue;
             }
@@ -151,7 +162,16 @@ public class ClueManager : MonoBehaviour
         List<Tuple<Character, int>> charactersSeen = currentPhase.CharacterSeenMap[character];
 
         float fAverageWeight = 100.0f / charactersSeen.Count;
-        float fWerewolfWeight = fAverageWeight * 2;
+        float fWerewolfWeight = fAverageWeight;
+
+        if(iNumReportingWerewolfLocation == 0)
+        {
+            fWerewolfWeight *= 8;
+        }
+        else if (iNumReportingWerewolfLocation == 1)
+        {
+            fWerewolfWeight *= 4;
+        }
 
         List<float> vWeights = new List<float>();
 
@@ -161,6 +181,12 @@ public class ClueManager : MonoBehaviour
         }
 
         int iIndexToUse = Randomiser.GetRandomIndexFromWeights(vWeights);
+
+        if(iIndexToUse == 0)
+        {
+            iNumReportingWerewolfLocation++;
+        }
+
         Character toGenerateClueFrom = charactersSeen[iIndexToUse].Item1;
         int iLocationSeenIn = charactersSeen[iIndexToUse].Item2;
 
@@ -261,7 +287,7 @@ public class ClueManager : MonoBehaviour
         }
 
         List<Tuple<Character, int>> charactersSeen = new List<Tuple<Character, int>>();
-        charactersSeen = currentPhase.CharacterSeenMap[character];
+        charactersSeen.Copy(currentPhase.CharacterSeenMap[character]);
 
         // Go through and remove characters that don't have occupations
         for (int i = charactersSeen.Count-1; i >= 0; --i)

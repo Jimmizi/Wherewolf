@@ -15,7 +15,8 @@ public class InformationManager : MonoBehaviour
 
     // Runtime variables
 
-    public SortedDictionary<Emote.EmoteType, List<Emote>> EmoteMap = new SortedDictionary<Emote.EmoteType, List<Emote>>();
+    public SortedDictionary<Emote.EmoteType, List<Emote>> EmoteMapByType = new SortedDictionary<Emote.EmoteType, List<Emote>>();
+    public Dictionary<Emote.EmoteSubType, Emote> EmoteMapBySubType = new Dictionary<Emote.EmoteSubType, Emote>();
 
     private List<string> availableNamePool = new List<string>();
     private List<string> inUseNamePool = new List<string>();
@@ -35,7 +36,7 @@ public class InformationManager : MonoBehaviour
 
     public Emote GetRandomEmoteOfType(Emote.EmoteType eType)
     {
-        return EmoteMap[eType][UnityEngine.Random.Range(0, EmoteMap[eType].Count)];
+        return EmoteMapByType[eType][UnityEngine.Random.Range(0, EmoteMapByType[eType].Count)];
     }
 
     public Emote GetCharacterEmote(Character c)
@@ -52,7 +53,7 @@ public class InformationManager : MonoBehaviour
     public Emote GetCharacterEmote(int iIndex)
     {
         Debug.Assert(iIndex >= 0 && iIndex <= 19);
-        return EmoteMap[Emote.EmoteType.CharacterHeadshot][iIndex];
+        return EmoteMapByType[Emote.EmoteType.CharacterHeadshot][iIndex];
     }
 
     public void Awake()
@@ -83,6 +84,19 @@ public class InformationManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void RenameCharacterEmotes()
+    {
+        foreach(var e in emoteList)
+        {
+            if(e.Type == Emote.EmoteType.CharacterHeadshot)
+            {
+                int iCharacterIndex = (int)e.SubType - (int)Emote.EmoteSubType.CharacterHeadshot_1;
+                e.Name = Service.Population.ActiveCharacters[iCharacterIndex].Name;
+                e.Description = string.Format("Indicates that the emotes preceeding or following this relate to {0}.", e.Name);
+            }
+        }
     }
 
     void AddDefaultNames()
@@ -492,90 +506,76 @@ public class InformationManager : MonoBehaviour
     {
         foreach (var emote in emoteList)
         {
-            if (!EmoteMap.ContainsKey(emote.Type))
+            if (!EmoteMapByType.ContainsKey(emote.Type))
             {
-                EmoteMap.Add(emote.Type, new List<Emote>());
+                EmoteMapByType.Add(emote.Type, new List<Emote>());
             }
 
-            EmoteMap[emote.Type].Add(emote);
+            EmoteMapByType[emote.Type].Add(emote);
+
+            EmoteMapBySubType.Add(emote.SubType, emote);
         }
     }
 
 #if DEBUG
     void AddDefaultEmotes()
     {
-        for (int i = 0; i <= (int)Emote.EmoteSubType.Gossip_RelationshipMarriage; ++i)
+        for (int i = 0; i <= (int)Emote.GetLastSubType; ++i)
         {
-            Emote.EmoteSubType eType = (Emote.EmoteSubType)i;
-            string sType = eType.ToString();
+            Emote.EmoteSubType eSubType = (Emote.EmoteSubType)i;
+            string sSubType = eSubType.ToString();
 
-            Emote newEmote = new Emote();
+            Emote newEmote = new Emote(eSubType);
 
             // Name
-            newEmote.Name = sType.Substring(sType.IndexOf('_') + 1);
-            for(int c = 0; c < newEmote.Name.Length; ++c)
+            if (newEmote.Type != Emote.EmoteType.CharacterHeadshot
+                && newEmote.Type != Emote.EmoteType.Location)
             {
-                if(c > 0 && char.IsUpper(newEmote.Name[c]))
+                newEmote.Name = sSubType.Substring(sSubType.IndexOf('_') + 1);
+                for (int c = 0; c < newEmote.Name.Length; ++c)
                 {
-                    newEmote.Name = newEmote.Name.Insert(c, " ");
-                    c++;
+                    if (c > 0 && char.IsUpper(newEmote.Name[c]))
+                    {
+                        newEmote.Name = newEmote.Name.Insert(c, " ");
+                        c++;
+                    }
                 }
             }
+            else if(newEmote.Type == Emote.EmoteType.Location)
+            {
+                switch(eSubType)
+                {
+                    case Emote.EmoteSubType.Location_1: newEmote.Name = "North West"; break;
+                    case Emote.EmoteSubType.Location_2: newEmote.Name = "North"; break;
+                    case Emote.EmoteSubType.Location_3: newEmote.Name = "North East"; break;
+                    case Emote.EmoteSubType.Location_4: newEmote.Name = "West"; break;
+                    case Emote.EmoteSubType.Location_5: newEmote.Name = "Central"; break;
+                    case Emote.EmoteSubType.Location_6: newEmote.Name = "East"; break;
+                    case Emote.EmoteSubType.Location_7: newEmote.Name = "South West"; break;
+                    case Emote.EmoteSubType.Location_8: newEmote.Name = "South"; break;
+                    case Emote.EmoteSubType.Location_9: newEmote.Name = "South East"; break;
+                }
 
-            // Type
-            if (i <= (int)Emote.EmoteSubType.HairStyle_Bald)
-            {
-                newEmote.Type = Emote.EmoteType.HairStyle;
+                if (eSubType != Emote.EmoteSubType.Location_5)
+                {
+                    newEmote.Description = string.Format("This location is {0} of the town, relative to the center.", newEmote.Name);
+                }
+                else
+                {
+                    newEmote.Description = string.Format("This location is in the center of town.");
+                }
             }
-            else if (i >= (int)Emote.EmoteSubType.Facial_Ugly && i <= (int)Emote.EmoteSubType.Facial_BigEars)
-            {
-                newEmote.Type = Emote.EmoteType.FacialFeature;
-            }
-            else if (i >= (int)Emote.EmoteSubType.Color_Brown && i <= (int)Emote.EmoteSubType.Color_Purple)
-            {
-                newEmote.Type = Emote.EmoteType.Color;
-            }
-            else if (i >= (int)Emote.EmoteSubType.Location_1 && i <= (int)Emote.EmoteSubType.Location_9)
-            {
-                newEmote.Type = Emote.EmoteType.Location;
-            }
-            else if (i >= (int)Emote.EmoteSubType.Occupation_Bank && i <= (int)Emote.EmoteSubType.Occupation_GeneralStore)
-            {
-                newEmote.Type = Emote.EmoteType.Occupation;
-            }
-            else if (i >= (int)Emote.EmoteSubType.TimeOfDay_Day && i <= (int)Emote.EmoteSubType.TimeOfDay_Night)
-            {
-                newEmote.Type = Emote.EmoteType.TimeOfDay;
-            }
-            else if (i >= (int)Emote.EmoteSubType.Condition_Dirty && i <= (int)Emote.EmoteSubType.Condition_Torn)
-            {
-                newEmote.Type = Emote.EmoteType.Condition;
-            }
-            else if (i >= (int)Emote.EmoteSubType.Clothing_Shirt && i <= (int)Emote.EmoteSubType.Clothing_Gloves)
-            {
-                newEmote.Type = Emote.EmoteType.Clothing;
-            }
-            else if (i >= (int)Emote.EmoteSubType.Specific_Footsteps && i <= (int)Emote.EmoteSubType.Specific_Werewolf)
-            {
-                newEmote.Type = Emote.EmoteType.Specific;
-            }
-            else if (i >= (int)Emote.EmoteSubType.Gossip_RelationshipKiss && i <= (int)Emote.EmoteSubType.Gossip_RelationshipMarriage)
-            {
-                newEmote.Type = Emote.EmoteType.Gossip;
-            }
-            else if (i >= (int)Emote.EmoteSubType.CharacterHeadshot_1 && i <= (int)Emote.EmoteSubType.CharacterHeadshot_20)
-            {
-                newEmote.Type = Emote.EmoteType.CharacterHeadshot;
-            }
-            else if (i >= (int)Emote.EmoteSubType.Opinion_Love && i <= (int)Emote.EmoteSubType.Opinion_Hate)
-            {
-                newEmote.Type = Emote.EmoteType.Opinion;
-            }
+            //{
+            //    newEmote.Name = sSubType;
+            //    int iUnderscoreIndex = newEmote.Name.IndexOf('_');
+            //    if(iUnderscoreIndex >= 0 && iUnderscoreIndex < newEmote.Name.Length)
+            //    {
+            //        newEmote.Name = newEmote.Name.Remove(iUnderscoreIndex, 1);
+            //        newEmote.Name = newEmote.Name.Insert(iUnderscoreIndex, " ");
+            //    }
+            //}
 
-            // SubType
-            newEmote.SubType = (Emote.EmoteSubType)i;
-
-            var spr = Resources.Load<Sprite>("Emotes/" + sType);
+            var spr = Resources.Load<Sprite>("Emotes/" + sSubType);
             if(spr != null)
             {
                 newEmote.EmoteImage = spr;

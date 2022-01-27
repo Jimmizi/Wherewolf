@@ -55,6 +55,35 @@ public class Character
         return Descriptors[Descriptor.Occupation][0].SubType;
     }
 
+    public Emote.EmoteSubType GetFacialFeatureType()
+    {
+        if (Descriptors[Descriptor.Facial].Count == 0)
+        {
+            Debug.LogError(string.Format("[{0}] {1} doesn't have a facial feature descriptor.", Index, Name));
+            return Emote.InvalidSubType;
+        }
+
+        // Shouldn't be more than one facial feature
+        Debug.Assert(Descriptors[Descriptor.Facial].Count == 1);
+
+        return Descriptors[Descriptor.Facial][0].SubType;
+    }
+
+
+    public int GetWorkLocation()
+    {
+        Vector3 vDummyPos;
+        int iWorkLocation = -1;
+
+        Service.Population.GetWorkPositionAndLocation(this, out vDummyPos, out iWorkLocation);
+        return iWorkLocation;
+    }
+
+    public Emote.EmoteSubType GetHeadshotEmoteSubType()
+    {
+        return Emote.EmoteSubType.CharacterHeadshot_1 + Index;
+    }
+
     public int GetALocationCurrentlyIn()
     {
         List<int> iLocationList = new List<int>();
