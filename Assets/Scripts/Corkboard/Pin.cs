@@ -8,11 +8,21 @@ public class Pin : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandl
     [SerializeField]
     PinString stringPrefab;
 
-    [SerializeField]
-    GameObject stringHolder;
-
     PinString stringObject;
-    RectTransform rectTransform;
+
+    RectTransform _rectTransform;
+    private RectTransform rectTransform
+    {
+        get
+        {
+            if (!_rectTransform)
+            {
+                _rectTransform = GetComponent<RectTransform>();
+            }
+
+            return _rectTransform;
+        }
+    }
 
     List<PinString> lineStarts = new List<PinString>();
     List<PinString> lineEnds = new List<PinString>();
@@ -39,7 +49,7 @@ public class Pin : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandl
                 Pin existingPin;
                 if (pinsById.TryGetValue(pinId, out existingPin))
                 {
-                    if (existingPin)
+                    if (existingPin != this)
                     {
                         existingPin.pinId = -1;
                     }
@@ -62,12 +72,11 @@ public class Pin : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandl
         }
     }
 
-    private static Dictionary<int, Pin> pinsById;
+    private static Dictionary<int, Pin> pinsById = new Dictionary<int, Pin>();
 
     // Start is called before the first frame update
     void Start()
-    {
-        rectTransform = GetComponent<RectTransform>();
+    {        
         PinId = pinId; // update the pin map
     }
 
@@ -98,7 +107,7 @@ public class Pin : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandl
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        stringObject = Instantiate<PinString>(stringPrefab, stringHolder.transform);
+        stringObject = Instantiate<PinString>(stringPrefab, StringHolder.instance.transform);
         stringObject.LineStart = rectTransform.position;
         stringObject.LineEnd = rectTransform.position;
     }
@@ -189,7 +198,7 @@ public class Pin : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandl
 
         if (!pinString)
         {
-            stringObject = Instantiate<PinString>(stringPrefab, stringHolder.transform);
+            pinString = Instantiate<PinString>(stringPrefab, StringHolder.instance.transform);
         }
 
         pinString.LineStart = rectTransform.position;
@@ -211,5 +220,24 @@ public class Pin : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandl
         }
 
         return false;
+    }
+
+    public void DestroyStrings()
+    {
+        foreach (var lineStart in lineStarts)
+        {
+            if (lineStart)
+            {
+                Destroy(lineStart.gameObject);
+            }
+        }
+
+        foreach (var lineEnd in lineEnds)
+        {
+            if (lineEnd)
+            {
+                Destroy(lineEnd.gameObject);
+            }
+        }
     }
 }
