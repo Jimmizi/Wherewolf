@@ -6,25 +6,47 @@ using UnityEngine.UI;
 
 public class DragAndDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
-    private RectTransform rectTransform;
-    private Image image;
-    private Canvas canvas;
+    private RectTransform _rectTransform;
+    private Image _image;
+    private Canvas _canvas;
+
+    private RectTransform rectTransform
+    {
+        get
+        {
+            if (!_rectTransform)
+            {
+                _rectTransform = GetComponent<RectTransform>();
+            }
+            return _rectTransform;
+        }
+    }
+
+    private Image image
+    {
+        get
+        {
+            if (!_image)
+            {
+                _image = GetComponent<Image>();
+            }
+            return _image;
+        }
+    }
+
+    private Canvas canvas
+    {
+        get
+        {
+            if (!_canvas)
+            {
+                _canvas = GetComponent<Canvas>();
+            }
+            return _canvas;
+        }
+    }
 
     private static int currentSortOrder=1;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        rectTransform = GetComponent<RectTransform>();
-        image = GetComponent<Image>();
-        canvas = GetComponent<Canvas>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void OnPointerDown(PointerEventData eventData)
     {

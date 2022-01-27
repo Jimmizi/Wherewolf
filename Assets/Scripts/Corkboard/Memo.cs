@@ -21,9 +21,21 @@ public class Memo : MonoBehaviour
     [SerializeField]
     private Text note;
 
-    RectTransform rectTransform;
+    RectTransform _rectTransform;
+    private RectTransform rectTransform
+    {
+        get
+        {
+            if (!_rectTransform)
+            {
+                _rectTransform = GetComponent<RectTransform>();
+            }
 
-    MemoData Data
+            return _rectTransform;
+        }
+    }
+
+    public MemoData Data
     {
         get
         {
@@ -54,17 +66,15 @@ public class Memo : MonoBehaviour
             }
         }
 
-    }
+    }    
 
-    // Start is called before the first frame update
-    void Start()
+    public void Destroy()
     {
-        rectTransform = GetComponent<RectTransform>();
-    }
+        if (pin)
+        {
+            pin.DestroyStrings();
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+        Destroy(gameObject);
+    }    
 }
