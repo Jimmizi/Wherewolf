@@ -7,6 +7,7 @@ public class PopulationManager : MonoBehaviour
 {
     // Public vars
     public List<Character> ActiveCharacters = new List<Character>();
+    public int iNumberOfCharactersDead = 0;
 
     // Private vars
     private int werewolfIndex = -1;
@@ -20,10 +21,26 @@ public class PopulationManager : MonoBehaviour
 
     private Dictionary<int, List<int>> adjacentLocationMap = new Dictionary<int, List<int>>();
 
+    public Dictionary<Character.Descriptor, List<Character>> MatchingDescriptorMap = new Dictionary<Character.Descriptor, List<Character>>();
+
     // API
 
     // Get the character for the werewolf
     public Character GetWerewolf() => werewolfIndex > -1 ? ActiveCharacters[werewolfIndex] : null;
+
+    public Character GetNextVictim()
+    {
+        foreach(var c in ActiveCharacters)
+        {
+            if (c.IsVictim)
+            {
+                return c;
+            }
+        }
+
+        return null;
+    }
+
     public bool CharacterCreationDone => bDoneCharacterGeneration;
 
     // Internal Functions
@@ -155,53 +172,91 @@ public class PopulationManager : MonoBehaviour
                 Character ww = GetWerewolf();
 
                 float fHeaderPosition = vPosition.y;
-                vPosition.y += iTextHeight;
+                vPosition.y += iTextHeight*2;
 
                 int iNumMatches = 0;
 
                 // Show which elements of other characters match against the werewolf
-                for (int i = 0; i < ActiveCharacters.Count; ++i)
+                //for (int i = 0; i < ActiveCharacters.Count; ++i)
+                //{
+                //    if (i == werewolfIndex)
+                //    {
+                //        continue;
+                //    }
+
+                //    Character c = ActiveCharacters[i];
+
+                //    if (!c.IsAlive)
+                //    {
+                //        continue;
+                //    }
+
+                //    float fNamePosition = vPosition.y;
+                //    vPosition.y += iTextHeight;
+
+                //    bool bAnyMatch = false;
+
+                //    for (int t = 0; t < Character.DescriptorMax; ++t)
+                //    {
+                //        var desc = (Character.Descriptor)t;
+
+                //        if (c.DoDescriptorsMatch(ref ww, desc))
+                //        {
+                //            iNumMatches++;
+                //            bAnyMatch = true;
+
+                //            GUI.Label(new Rect(vPosition.x + 15, vPosition.y, 225, iTextBoxHeight), string.Format("Matching {0}", desc.ToString()));
+                //            vPosition.y += iTextHeight;
+                //        }
+                //    }
+
+                //    if (bAnyMatch)
+                //    {
+                //        GUI.Label(new Rect(vPosition.x, fNamePosition, 240, iTextBoxHeight), string.Format("[{0}] {1}", i, c.Name));
+                //        vPosition.y += iTextHeight;
+                //    }
+                //    else
+                //    {
+                //        vPosition.y = fNamePosition;
+                //    }
+                //}
+
+                foreach (var matchList in MatchingDescriptorMap)
                 {
-                    if(i == werewolfIndex)
+                    if (matchList.Value.Count > 0)
                     {
-                        continue;
-                    }
-
-                    Character c = ActiveCharacters[i];
-
-                    if(!c.IsAlive)
-                    {
-                        continue;
-                    }
-
-                    float fNamePosition = vPosition.y;
-                    vPosition.y += iTextHeight;
-
-                    bool bAnyMatch = false;
-
-                    for (int t = 0; t < Character.DescriptorMax; ++t)
-                    {
-                        var desc = (Character.Descriptor)t;
-
-                        if (c.DoDescriptorsMatch(ref ww, desc))
+                        bool bAnyAlive = false;
+                        foreach(var ch in matchList.Value)
                         {
-                            iNumMatches++;
-                            bAnyMatch = true;
+                            if(!ch.IsAlive)
+                            {
+                                continue;
+                            }
 
-                            GUI.Label(new Rect(vPosition.x + 15, vPosition.y, 225, iTextBoxHeight), string.Format("Matching {0}", desc.ToString()));
+                            bAnyAlive = true;
+                            break;
+                        }
+
+                        if (bAnyAlive)
+                        {
+                            GUI.Label(new Rect(vPosition.x, vPosition.y, 225, iTextBoxHeight), string.Format("Matching {0}:", matchList.Key.ToString()));
                             vPosition.y += iTextHeight;
                         }
                     }
 
-                    if (bAnyMatch)
+                    foreach (var matchingCharacters in matchList.Value)
                     {
-                        GUI.Label(new Rect(vPosition.x, fNamePosition, 240, iTextBoxHeight), string.Format("[{0}] {1}", i, c.Name));
+                        if(!matchingCharacters.IsAlive)
+                        {
+                            continue;
+                        }
+
+                        GUI.Label(new Rect(vPosition.x + 15, vPosition.y, 240, iTextBoxHeight), string.Format("[{0}] {1}", matchingCharacters.Index, matchingCharacters.Name));
                         vPosition.y += iTextHeight;
+                        iNumMatches++;
                     }
-                    else
-                    {
-                        vPosition.y = fNamePosition;
-                    }
+
+                    vPosition.y += iTextHeight;
                 }
 
                 GUI.Label(new Rect(vPosition.x, fHeaderPosition, 250, iTextBoxHeight), string.Format("(Alive) {0} Matches to Werewolf", iNumMatches));
@@ -354,6 +409,7 @@ public class PopulationManager : MonoBehaviour
     {
         int iNumberOfCharactersToMake = 20;
 
+        iNumberOfCharactersDead = 0;
         bDoneCharacterGeneration = false;
 
         // First generate the werewolf
@@ -445,6 +501,8 @@ public class PopulationManager : MonoBehaviour
             }
         }
 
+        yield return new WaitForSeconds(0.02f);
+
         // Randomise up the order in which we give the homes out
         List<int> randomGiveHomeOrder = new List<int>();
         while(randomGiveHomeOrder.Count < iNumberOfCharactersToMake)
@@ -455,6 +513,8 @@ public class PopulationManager : MonoBehaviour
                 randomGiveHomeOrder.Add(index);
             }
         }
+
+        yield return new WaitForSeconds(0.02f);
 
         // Give the homes out
         int iCurrentHomeGiveIndex = 0;
@@ -481,6 +541,8 @@ public class PopulationManager : MonoBehaviour
             building.Owner = c;
         }
 
+        yield return new WaitForSeconds(0.02f);
+
         Debug.Assert(iCurrentHomeGiveIndex == ActiveCharacters.Count, "Not all characters have a home, only " + iCurrentHomeGiveIndex + " characters do.");
 
         // Give the NPCs schedules to follow
@@ -492,6 +554,32 @@ public class PopulationManager : MonoBehaviour
 
                 c.TaskSchedule.DayTasks = GenerateSchedule(c, true);
                 c.TaskSchedule.NightTasks = GenerateSchedule(c, false);
+            }
+        }
+
+        yield return new WaitForSeconds(0.02f);
+
+        for (int t = 0; t < Character.DescriptorMax; ++t)
+        {
+            var desc = (Character.Descriptor)t;
+            MatchingDescriptorMap.Add(desc, new List<Character>());
+        }
+
+        foreach(var c in ActiveCharacters)
+        {
+            if (c == ww)
+            {
+                continue;
+            }
+
+            for (int t = 0; t < Character.DescriptorMax; ++t)
+            {
+                var desc = (Character.Descriptor)t;
+
+                if (c.DoDescriptorsMatch(ref ww, desc))
+                {
+                    MatchingDescriptorMap[desc].Add(c);
+                }
             }
         }
 
@@ -819,8 +907,41 @@ public class PopulationManager : MonoBehaviour
         return iNumberToSleep;
     }
 
+    public Character GetRandomCharacter(bool bMustBeAlive = true, bool bIgnoreWerewolf = false, List<Character> ignoreCharacters = null)
+    {
+        List<Character> randomCharacter = new List<Character>();
 
-    public int GetRandomAdjacentLocation(int iLoc)
+        foreach(var c in ActiveCharacters)
+        {
+            if(!c.IsAlive && bMustBeAlive)
+            {
+                continue;
+            }
+
+            if(c.IsWerewolf && bIgnoreWerewolf)
+            {
+                continue;
+            }
+
+            if(ignoreCharacters != null && ignoreCharacters.Contains(c))
+            {
+                continue;
+            }
+
+            randomCharacter.Add(c);
+        }
+
+        if(randomCharacter.Count == 0)
+        {
+            // Is possible, but shouldn't really be
+            Debug.LogError("Didn't manage to find a random character?");
+            return null;
+        }
+
+        return randomCharacter[UnityEngine.Random.Range(0, randomCharacter.Count)];
+    }
+
+    public int GetRandomAdjacentLocation(int iLoc, bool bAllowPickingSameLocation = false)
     {
         //  Locations as follows
         //  _______________________
@@ -836,6 +957,15 @@ public class PopulationManager : MonoBehaviour
         // |   7(6)|   8(7)|   9(8)|
         // |       |       |       |
         //  -----------------------
+
+        if(bAllowPickingSameLocation)
+        {
+            // Give an equally distributed chance to just return the passed in location
+            if(UnityEngine.Random.Range(0.0f, 100.0f) < 100.0f / (adjacentLocationMap[iLoc].Count + 1))
+            {
+                return iLoc;
+            }
+        }
 
         // See GenerateAdjacentLocationData() for location map
         return adjacentLocationMap[iLoc][UnityEngine.Random.Range(0, adjacentLocationMap[iLoc].Count)];

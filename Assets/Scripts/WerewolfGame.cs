@@ -58,6 +58,8 @@ public class WerewolfGame : MonoBehaviour
     public int CurrentDay = 0;
     public bool IsGamePaused = true;
 
+    public int GetLastDay => ConfigManager.NumberOfDaysBeforeGameFailure;
+
     [SerializeField]
     public float TimeTransitionDuration = 5.0f;
 
@@ -332,11 +334,18 @@ public class WerewolfGame : MonoBehaviour
             case SubState.Start:
                 {
                     CurrentSubState = SubState.Finish;
+                    return;
+
+                    Service.Clue.GenerateCluesForCurrentPhase();
+                    CurrentSubState++;
                     break;
                 }
             case SubState.Update:
                 {
-
+                    if(!Service.Clue.IsGeneratingClues)
+                    {
+                        CurrentSubState++;
+                    }
                     break;
                 }
             case SubState.Finish:

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -83,6 +84,8 @@ public class PhaseSolver : MonoBehaviour
             CurrentPhase.Victim.IsAlive = false;
             CurrentPhase.Victim.IsVictim = false;
             CurrentPhase.Victim.DeathAnnounced = false;
+
+            Service.Population.iNumberOfCharactersDead++;
         }
     }
 
@@ -161,6 +164,8 @@ public class PhaseSolver : MonoBehaviour
         yield return new WaitForSeconds(0.02f);
 
         // 2) Next up, we randomise locations for characters doing idles and wanders
+        //  By randomise we either give them a completely random location if they don't already have one
+        //  but if they do have one, we just alter it to move to an adjacent tile
 
         foreach(var c in Service.Population.ActiveCharacters)
         {
@@ -371,17 +376,17 @@ public class PhaseSolver : MonoBehaviour
     {
         void RandomiseTaskLocations(List<Task> tasks)
         {
-            foreach(var t in tasks)
+            foreach (var t in tasks)
             {
-                // Generally (75% chance) to not randomise a task (create a sense of characters sticking to areas)
-                if(UnityEngine.Random.Range(0.0f, 100.0f) < 75.0f)
+                // Generally do not randomise a task (create a sense of characters sticking to areas)
+                if (UnityEngine.Random.Range(0.0f, 100.0f) < 60.0f)
                 {
                     continue;
                 }
 
                 if(t.Type == Task.TaskType.WanderArea || t.Type == Task.TaskType.Idle)
                 {
-                    t.Location = Task.GetRandomLocation();
+                    t.Location = Service.Population.GetRandomAdjacentLocation(t.Location, true);
                     t.UpdatePosition();
                 }
             }
@@ -390,9 +395,9 @@ public class PhaseSolver : MonoBehaviour
         RandomiseTaskLocations(eTod == WerewolfGame.TOD.Day ? c.TaskSchedule.DayTasks : c.TaskSchedule.NightTasks);
     }
 
-    List<Character> CalculateSeenCharactersDuringPhase(WerewolfGame.TOD eTod, Character character)
+    List<Tuple<Character, int>> CalculateSeenCharactersDuringPhase(WerewolfGame.TOD eTod, Character character)
     {
-        List<Character> otherCharactersSawDuringThisPhase = new List<Character>();
+        List<Tuple<Character, int>> otherCharactersSawDuringThisPhase = new List<Tuple<Character, int>>();
         List<int> iLocationsIn = new List<int>();
 
         foreach(var t in (eTod == WerewolfGame.TOD.Day? character.TaskSchedule.DayTasks : character.TaskSchedule.NightTasks))
@@ -424,7 +429,7 @@ public class PhaseSolver : MonoBehaviour
                 {
                     if(t.Type != Task.TaskType.Sleep && iLocationsIn.Contains(t.Location))
                     {
-                        otherCharactersSawDuringThisPhase.Add(c);
+                        otherCharactersSawDuringThisPhase.Add(new Tuple<Character, int>(c, t.Location));
                         break;
                     }
                 }
@@ -434,9 +439,9 @@ public class PhaseSolver : MonoBehaviour
         return otherCharactersSawDuringThisPhase;
     }
 
-    List<Character> CalculateSawCharactersPassingByDuringPhase(WerewolfGame.TOD eTod, Character character)
+    List<Tuple<Character, int>> CalculateSawCharactersPassingByDuringPhase(WerewolfGame.TOD eTod, Character character)
     {
-        List<Character> otherCharactersSawPassByDuringPhase = new List<Character>();
+        List<Tuple<Character, int>> otherCharactersSawPassByDuringPhase = new List<Tuple<Character, int>>();
 
         List<int> iLocationsIn = new List<int>();
         foreach (var t in (eTod == WerewolfGame.TOD.Day ? character.TaskSchedule.DayTasks : character.TaskSchedule.NightTasks))
@@ -460,16 +465,27 @@ public class PhaseSolver : MonoBehaviour
                 continue;
             }
 
+            bool bAlreadySeen = false;
+            foreach(var charSeen in CurrentPhase.CharacterSeenMap[character])
+            {
+                if(charSeen.Item1 == c)
+                {
+                    bAlreadySeen = true;
+                    break;
+                }
+            }
+
             // If we've fully seen this character in a location already, no need to generate passing by records
             //  as knowing what location they're in is stronger evidence then only knowing they passed by
-            if(CurrentPhase.CharacterSeenMap[character].Contains(c))
+            if(bAlreadySeen)
             {
                 continue;
             }
 
-            if (c.WillTravelThroughLocationDuringTasks(eTod, iLocationsIn))
+            int iLocSeenIn = 0;
+            if (c.WillTravelThroughLocationDuringTasks(eTod, iLocationsIn, out iLocSeenIn))
             {
-                otherCharactersSawPassByDuringPhase.Add(c);
+                otherCharactersSawPassByDuringPhase.Add(new Tuple<Character, int>(c, iLocSeenIn));
                 break;
             }
         }
@@ -611,7 +627,7 @@ public class PhaseSolver : MonoBehaviour
             }
             GUI.EndScrollView();
 
-            vPickedCharacterDetailsPosition = GUI.BeginScrollView(new Rect(425, 35, 200, 690), vPickedCharacterDetailsPosition, new Rect(0, 0, 200, 1500));
+            vPickedCharacterDetailsPosition = GUI.BeginScrollView(new Rect(425, 35, 200, 690), vPickedCharacterDetailsPosition, new Rect(0, 0, 200, 2500));
             {
                 if (CurrentCharacterSeenListSelected != null)
                 {
@@ -622,12 +638,12 @@ public class PhaseSolver : MonoBehaviour
 
                     foreach (var c in currentPhaseDebugging.CharacterSeenMap[CurrentCharacterSeenListSelected])
                     {
-                        if (c.IsWerewolf)
+                        if (c.Item1.IsWerewolf)
                         {
                             GUI.contentColor = new Color(1.0f, 0.5f, 0.5f);
                         }
 
-                        GUI.Label(new Rect(vPosition.x, vPosition.y, 200, iTextBoxHeight), string.Format("[{0}] {1}", c.Index, c.Name));
+                        GUI.Label(new Rect(vPosition.x, vPosition.y, 200, iTextBoxHeight), string.Format("[{0}] {1} in Loc {2}", c.Item1.Index, c.Item1.Name, c.Item2));
                         vPosition.y += iTextHeight;
                         GUI.contentColor = Color.white;
                     }
@@ -638,12 +654,12 @@ public class PhaseSolver : MonoBehaviour
 
                     foreach (var c in currentPhaseDebugging.CharacterSawPassingByMap[CurrentCharacterSeenListSelected])
                     {
-                        if (c.IsWerewolf)
+                        if (c.Item1.IsWerewolf)
                         {
                             GUI.contentColor = new Color(1.0f, 0.5f, 0.5f);
                         }
 
-                        GUI.Label(new Rect(vPosition.x, vPosition.y, 200, iTextBoxHeight), string.Format("[{0}] {1}", c.Index, c.Name));
+                        GUI.Label(new Rect(vPosition.x, vPosition.y, 200, iTextBoxHeight), string.Format("[{0}] {1} in Loc {2}", c.Item1.Index, c.Item1.Name, c.Item2));
                         vPosition.y += iTextHeight;
                         GUI.contentColor = Color.white;
                     }
@@ -660,6 +676,12 @@ public class PhaseSolver : MonoBehaviour
                             vPosition.y += iTextHeight;
                         }
                     }
+
+                    vPosition.y += iTextHeight;
+                    GUI.Label(new Rect(vPosition.x, vPosition.y, 200, iTextBoxHeight), "---------------");
+                    vPosition.y += iTextHeight * 2;
+
+                    // TODO ADD CLUES
                 }
             }
             GUI.EndScrollView();
@@ -674,10 +696,13 @@ public class PhaseSolver : MonoBehaviour
 
                 foreach(var c in currentPhaseDebugging.CharacterSeenMap)
                 {
-                    if(c.Value.Contains(ww))
+                    foreach(var tup in c.Value)
                     {
-                        GUI.Label(new Rect(vPosition.x, vPosition.y, 200, iTextBoxHeight), string.Format("[{0}] {1}", c.Key.Index, c.Key.Name));
-                        vPosition.y += iTextHeight;
+                        if(tup.Item1 == ww)
+                        {
+                            GUI.Label(new Rect(vPosition.x, vPosition.y, 200, iTextBoxHeight), string.Format("[{0}] {1}", c.Key.Index, c.Key.Name));
+                            vPosition.y += iTextHeight;
+                        }
                     }
                 }
 
@@ -822,10 +847,6 @@ public class PhaseSolver : MonoBehaviour
         }
     }
 
-    void RenderPhase(Phase p)
-    {
-
-    }
 #endif
 #endregion
 }

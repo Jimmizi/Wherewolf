@@ -13,6 +13,7 @@ public class Character
     }
 
     public static int DescriptorMax => (int)Descriptor.Clothing + 1;
+    public static Descriptor InvalidDescriptor => (Descriptor)(-1);
 
     // Vars
 
@@ -22,7 +23,11 @@ public class Character
     public bool IsVictim;
     public bool IsAlive = true;
     public bool DeathAnnounced = false;
+    public bool HasGeneratedGhostClues = false;
     public Schedule TaskSchedule = new Schedule();
+
+    // Pointer towards the last list of clues the character was able to give
+    public List<ClueObject> LastClueGroup;
 
     public WerewolfGame.TOD DeathTimeOfDay;
     public int DeathDay;
@@ -48,6 +53,43 @@ public class Character
         Debug.Assert(Descriptors[Descriptor.Occupation].Count == 1);
 
         return Descriptors[Descriptor.Occupation][0].SubType;
+    }
+
+    public int GetALocationCurrentlyIn()
+    {
+        List<int> iLocationList = new List<int>();
+
+        if(Service.Game.CurrentTimeOfDay == WerewolfGame.TOD.Day)
+        {
+            foreach(var t in TaskSchedule.DayTasks)
+            {
+                if(Emote.IsLocationValid(t.Location))
+                {
+                    iLocationList.Add(t.Location);
+                }
+            }
+        }
+        else if (Service.Game.CurrentTimeOfDay == WerewolfGame.TOD.Night)
+        {
+            foreach (var t in TaskSchedule.NightTasks)
+            {
+                if (Emote.IsLocationValid(t.Location))
+                {
+                    iLocationList.Add(t.Location);
+                }
+            }
+        }
+
+        if(iLocationList.Count == 0)
+        {
+            return -1;
+        }
+        else if(iLocationList.Count == 1)
+        {
+            return iLocationList[0];
+        }
+
+        return iLocationList[UnityEngine.Random.Range(0, iLocationList.Count)];
     }
 
     public List<Emote> GetDescriptors(Descriptor eType)
@@ -79,16 +121,84 @@ public class Character
         return true;
     }
 
-    public SortedDictionary<Descriptor, List<Emote>> GetRandomDescriptors(int iCount)
+    public static List<Descriptor> GetAllDescriptorsInAList()
     {
-        Debug.Assert(iCount <= DescriptorMax);
+        List<Descriptor> descriptorTypes = new List<Descriptor>()
+            { Descriptor.Hair, Descriptor.Facial, Descriptor.Occupation, Descriptor.Clothing };
 
+        return descriptorTypes;
+    }
+
+    public static Descriptor GetRandomDescriptorType(List<Descriptor> excludeTypes = null)
+    {
+        List<Descriptor> descriptorTypes = GetAllDescriptorsInAList();
+
+        if (excludeTypes != null)
+        {
+            foreach(var et in excludeTypes)
+            {
+                if(descriptorTypes.Contains(et))
+                {
+                    descriptorTypes.Remove(et);
+                }
+            }
+        }
+
+        if(descriptorTypes.Count == 0)
+        {
+            Debug.LogWarning("Why call this will all type excluded?");
+            return InvalidDescriptor;
+        }
+        else if(descriptorTypes.Count == 1)
+        {
+            return descriptorTypes[0];
+        }
+
+        return descriptorTypes[UnityEngine.Random.Range(0, descriptorTypes.Count)];
+    }
+
+    public SortedDictionary<Descriptor, List<Emote>> GetRandomDescriptors(int iCount, List<Descriptor> getOfType = null)
+    {
         var grabbedList = new SortedDictionary<Descriptor, List<Emote>>();
+
+        // If we only have one get of type, you should just call GetDescriptors
+        Debug.Assert(getOfType == null || getOfType.Count > 1);
+        if(getOfType != null && getOfType.Count == 1)
+        {
+            grabbedList.Add(getOfType[0], GetDescriptors(getOfType[0]));
+            return grabbedList;
+        }
+
+        if(iCount > DescriptorMax)
+        {
+            Debug.LogError("DoDescriptorsMatch: Trying to grab more (" + iCount + ") descriptors than there are types.");
+            iCount = DescriptorMax;
+        }
+
+        // If we only want to include a certain amount of types that is under how many we want to grab, we 
+        //  would enter an infinite loop - so just clear them for release
+        if(getOfType != null && getOfType.Count < iCount)
+        {
+#if UNITY_EDITOR
+            string sGetOfTypes = "";
+            foreach(var t in getOfType)
+            {
+                sGetOfTypes += t.ToString() + ",";
+            }
+            Debug.LogError("DoDescriptorsMatch: Too many grabs (" + iCount + ") for too few inclusion types (" + getOfType.Count + ").");
+#endif
+            getOfType = null;
+        }
 
         while(grabbedList.Count < iCount)
         {
             var iRandIndex = UnityEngine.Random.Range(0, DescriptorMax);
             var desc = (Descriptor)iRandIndex;
+
+            if(getOfType != null && !getOfType.Contains(desc))
+            {
+                continue;
+            }
 
             if (!grabbedList.ContainsKey(desc))
             {
@@ -126,8 +236,10 @@ public class Character
         return true;
     }
 
-    public bool WillTravelThroughLocationDuringTasks(WerewolfGame.TOD eTod, List<int> iLocations)
+    public bool WillTravelThroughLocationDuringTasks(WerewolfGame.TOD eTod, List<int> iLocations, out int iLocSeenIn)
     {
+        iLocSeenIn = 0;
+
         List<Task> taskList = eTod == WerewolfGame.TOD.Day
             ? TaskSchedule.DayTasks
             : TaskSchedule.NightTasks;
@@ -168,6 +280,7 @@ public class Character
                 {
                     if(pathTaken.Contains(iLoc))
                     {
+                        iLocSeenIn = iLoc;
                         return true;
                     }
                 }

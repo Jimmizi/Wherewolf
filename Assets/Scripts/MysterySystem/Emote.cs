@@ -22,6 +22,7 @@ public class Emote
         Specific,
         Gossip,
         CharacterHeadshot,
+        Opinion,
     }
 
     // If adding to this, update AddDefaultEmotes() in InformationManager.cs
@@ -93,6 +94,7 @@ public class Emote
         Specific_AccidentKnife,
         Specific_AccidentFall,
         Specific_Eyes,
+        Specific_Werewolf,
 
         Gossip_RelationshipKiss,
         Gossip_RelationshipFight,
@@ -117,11 +119,21 @@ public class Emote
         CharacterHeadshot_18,
         CharacterHeadshot_19,
         CharacterHeadshot_20,
+
+        Opinion_Love,
+        Opinion_Like,
+        Opinion_Neutral,
+        Opinion_Dislike,
+        Opinion_Hate,
     }
 
     public static int LocationMin => 0;
     public static int LocationMax => 8;
     public static EmoteSubType GetLocationEnum(int iLocation) => EmoteSubType.Location_1 + iLocation;
+    public static bool IsLocationValid(int iLoc)
+    {
+        return iLoc >= LocationMin && iLoc <= LocationMax;
+    }
 
     public static EmoteSubType InvalidSubType => (EmoteSubType)(-1);
 
