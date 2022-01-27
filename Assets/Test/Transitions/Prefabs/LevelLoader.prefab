@@ -1758,8 +1758,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0ebe4cb851620b4f8db107ff5aa7124, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TransitionAnimator: {fileID: 0}
-  TransitionImage: {fileID: 3177424981633088559}
+  TransitionAnimator: {fileID: 5885775732578873169}
+  TransitionImage: {fileID: 1004411616642035605}
   TargetScene: {fileID: 102900000, guid: e0891bcc7da631e46903b6dc28334c4a, type: 3}
   TransitionLength: 1
   TransitionSpeed: 1
@@ -1781,9 +1781,7 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 07c1cd5b1c02c5645b3497c9b87268c3, type: 3}
   - {fileID: 2800000, guid: f241cd32ddebee5498b7ae945c517915, type: 3}
   - {fileID: 2800000, guid: 5675fb99eaefa3a45a056ec772d8c508, type: 3}
-  - {fileID: 2800000, guid: 21f8f41ad9628dc45b4bb918c940393c, type: 3}
-  - {fileID: 2800000, guid: 66f2a63e0e772d54493a363af1eb46d3, type: 3}
-  GradientIndexToUse: -1
+  GradientIndexToUse: 1
 --- !u!1 &3739941575703776604
 GameObject:
   m_ObjectHideFlags: 0
@@ -2010,7 +2008,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4898713552510757803
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2111,7 +2109,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &5953937948380989792
 RectTransform:
   m_ObjectHideFlags: 0

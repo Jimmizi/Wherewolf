@@ -20,7 +20,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - TransitionTex:
-        m_Texture: {fileID: 2800000, guid: 15b5173c1c60c2746ba0005e31cee508, type: 3}
+        m_Texture: {fileID: 2800000, guid: e8a4875ce0337da4d96878b214155014, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
@@ -73,7 +73,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - Cutoff: 1.2037321
+    - Cutoff: 1.2107886
     - EdgeSmoothing: 0.15
     - _BumpScale: 1
     - _Cutoff: 0.5

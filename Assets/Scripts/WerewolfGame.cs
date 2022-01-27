@@ -133,6 +133,8 @@ public class WerewolfGame : MonoBehaviour
 
         fStateTimer += Time.deltaTime;
 
+        SubState previousSubState = CurrentSubState;
+
         switch (CurrentState)
         {
             case GameState.GeneratePopulation:
@@ -180,7 +182,8 @@ public class WerewolfGame : MonoBehaviour
                 break;
         }
 
-        if(CurrentSubState == SubState.Finish)
+        // Check against previously to allow processing of Finish states for a frame
+        if(CurrentSubState == SubState.Finish && previousSubState == CurrentSubState)
         {
             // This means we're naturally progressing, rather than something external pushing us through
             if (NextState == InvalidState)
@@ -249,6 +252,8 @@ public class WerewolfGame : MonoBehaviour
         {
             case SubState.Start:
                 {
+                    Service.Transition.BlendIn();
+
                     // If there is a victim to kill, try and do so
                     Service.PhaseSolve.TryKillOffCurrentVictim();
 
@@ -283,7 +288,12 @@ public class WerewolfGame : MonoBehaviour
                 }
             case SubState.Finish:
                 {
+                    if (CurrentTimeOfDay == TOD.Day)
+                    {
+                        Service.Audio.PlayRoosterCrow();
+                    }
 
+                    Service.Transition.BlendOut();
                     break;
                 }
         }
@@ -378,8 +388,6 @@ public class WerewolfGame : MonoBehaviour
         {
             case SubState.Start:
                 {
-                    Service.Audio.PlayRoosterCrow();
-
                     canCurrentStateBeProgressed = true;
                     CurrentSubState++;
                     break;
