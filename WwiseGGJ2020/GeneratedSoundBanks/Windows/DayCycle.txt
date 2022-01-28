@@ -8,9 +8,9 @@ Event	ID	Name			Wwise Object Path	Notes
 	3155631888	MusicDay			\Default Work Unit\MusicDay	
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
-	6432356	DiscoveryDay	C:\Users\jaket\Documents\GitHub\GGJ2022\WwiseGGJ2020\.cache\Windows\SFX\PositiveThingDay_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\DiscoveryDay		672144
-	206137001	GameOverDay	C:\Users\jaket\Documents\GitHub\GGJ2022\WwiseGGJ2020\.cache\Windows\SFX\GameOverDay_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\GameOverDay		960144
-	221210545	AmbienceDay	C:\Users\jaket\Documents\GitHub\GGJ2022\WwiseGGJ2020\.cache\Windows\SFX\AmbienceDay_D79FB2B7.wem		\Actor-Mixer Hierarchy\Default Work Unit\AmbienceDay		9984144
-	403956677	DayMusicPH	C:\Users\jaket\Documents\GitHub\GGJ2022\WwiseGGJ2020\.cache\Windows\SFX\DayMusicPH_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\MusicDayLoop\MusicDay\DayMusicPH		12288144
-	830455018	WinDay	C:\Users\jaket\Documents\GitHub\GGJ2022\WwiseGGJ2020\.cache\Windows\SFX\WinDay_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\WinDay		1248144
+	6432356	DiscoveryDay	C:\Users\leoto\OneDrive\Documents\GitHub\GGJ2022\WwiseGGJ2020\.cache\Windows\SFX\PositiveThingDay_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\DiscoveryDay		672144
+	206137001	GameOverDay	C:\Users\leoto\OneDrive\Documents\GitHub\GGJ2022\WwiseGGJ2020\.cache\Windows\SFX\GameOverDay_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\GameOverDay		960144
+	221210545	AmbienceDay	C:\Users\leoto\OneDrive\Documents\GitHub\GGJ2022\WwiseGGJ2020\.cache\Windows\SFX\AmbienceDay_D79FB2B7.wem		\Actor-Mixer Hierarchy\Default Work Unit\AmbienceDay		9984144
+	403956677	DayMusicPH	C:\Users\leoto\OneDrive\Documents\GitHub\GGJ2022\WwiseGGJ2020\.cache\Windows\SFX\DayMusicPH_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\MusicDayLoop\MusicDay\DayMusicPH		12288144
+	830455018	WinDay	C:\Users\leoto\OneDrive\Documents\GitHub\GGJ2022\WwiseGGJ2020\.cache\Windows\SFX\WinDay_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\WinDay		1248144
 

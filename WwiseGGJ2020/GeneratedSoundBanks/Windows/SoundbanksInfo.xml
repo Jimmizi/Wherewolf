@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="12" SoundbankVersion="140">
 	<RootPaths>
-		<ProjectRoot>C:\Users\jaket\Documents\GitHub\GGJ2022\WwiseGGJ2020\</ProjectRoot>
-		<SourceFilesRoot>C:\Users\jaket\Documents\GitHub\GGJ2022\WwiseGGJ2020\.cache\Windows\</SourceFilesRoot>
-		<SoundBanksRoot>C:\Users\jaket\Documents\GitHub\GGJ2022\WwiseGGJ2020\GeneratedSoundBanks\Windows\</SoundBanksRoot>
+		<ProjectRoot>C:\Users\leoto\OneDrive\Documents\GitHub\GGJ2022\WwiseGGJ2020\</ProjectRoot>
+		<SourceFilesRoot>C:\Users\leoto\OneDrive\Documents\GitHub\GGJ2022\WwiseGGJ2020\.cache\Windows\</SourceFilesRoot>
+		<SoundBanksRoot>C:\Users\leoto\OneDrive\Documents\GitHub\GGJ2022\WwiseGGJ2020\GeneratedSoundBanks\Windows\</SoundBanksRoot>
 		<ExternalSourcesInputFile></ExternalSourcesInputFile>
-		<ExternalSourcesOutputRoot>C:\Users\jaket\Documents\GitHub\GGJ2022\WwiseGGJ2020\GeneratedSoundBanks\Windows</ExternalSourcesOutputRoot>
+		<ExternalSourcesOutputRoot>C:\Users\leoto\OneDrive\Documents\GitHub\GGJ2022\WwiseGGJ2020\GeneratedSoundBanks\Windows</ExternalSourcesOutputRoot>
 	</RootPaths>
 	<DialogueEvents/>
 	<StreamedFiles/>
@@ -19,7 +19,7 @@
 				<GameParameter Id="4179668880" Name="master_volume" ObjectPath="\Game Parameters\Default Work Unit\master_volume"/>
 			</GameParameters>
 		</SoundBank>
-		<SoundBank Id="2276007709" Language="SFX" Hash="1762013701">
+		<SoundBank Id="2276007709" Language="SFX" Hash="3603879819">
 			<ObjectPath>\SoundBanks\Default Work Unit\NightCycle</ObjectPath>
 			<ShortName>NightCycle</ShortName>
 			<Path>NightCycle.bnk</Path>
@@ -71,7 +71,7 @@
 				</Event>
 			</IncludedEvents>
 		</SoundBank>
-		<SoundBank Id="2769481441" Language="SFX" Hash="1850992844">
+		<SoundBank Id="2769481441" Language="SFX" Hash="2803150784">
 			<ObjectPath>\SoundBanks\Default Work Unit\DayCycle</ObjectPath>
 			<ShortName>DayCycle</ShortName>
 			<Path>DayCycle.bnk</Path>
@@ -131,7 +131,7 @@
 				</Event>
 			</IncludedEvents>
 		</SoundBank>
-		<SoundBank Id="3062523257" Language="SFX" Hash="2252024199">
+		<SoundBank Id="3062523257" Language="SFX" Hash="1161438855">
 			<ObjectPath>\SoundBanks\Default Work Unit\Misc</ObjectPath>
 			<ShortName>Misc</ShortName>
 			<Path>Misc.bnk</Path>
@@ -146,7 +146,7 @@
 				</Event>
 			</IncludedEvents>
 		</SoundBank>
-		<SoundBank Id="3150299886" Language="SFX" Hash="624102342">
+		<SoundBank Id="3150299886" Language="SFX" Hash="3115725571">
 			<ObjectPath>\SoundBanks\Default Work Unit\OneShots</ObjectPath>
 			<ShortName>OneShots</ShortName>
 			<Path>OneShots.bnk</Path>
@@ -209,7 +209,7 @@
 				</Event>
 			</IncludedEvents>
 		</SoundBank>
-		<SoundBank Id="3313685232" Language="SFX" Hash="2865779011">
+		<SoundBank Id="3313685232" Language="SFX" Hash="618332901">
 			<ObjectPath>\SoundBanks\Default Work Unit\Voices</ObjectPath>
 			<ShortName>Voices</ShortName>
 			<Path>Voices.bnk</Path>

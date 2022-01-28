@@ -10,6 +10,12 @@
 								<Value>1</Value>
 							</ValueList>
 						</Property>
+						<Property Name="Tempo" Type="Real64" Value="110"/>
+						<Property Name="UseMaxSoundPerInstance" Type="bool">
+							<ValueList>
+								<Value>True</Value>
+							</ValueList>
+						</Property>
 					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
@@ -22,7 +28,7 @@
 					<ChildrenList>
 						<MusicSegment Name="MusicNight" ID="{6ADE9F7E-4D99-4313-BD8E-A0459D935384}" ShortID="495152067">
 							<PropertyList>
-								<Property Name="EndPosition" Type="Real64" Value="108000"/>
+								<Property Name="EndPosition" Type="Real64" Value="79972.6829268293"/>
 								<Property Name="MaxSoundPerInstance" Type="int16">
 									<ValueList>
 										<Value>1</Value>
@@ -133,6 +139,7 @@
 							<ChildrenList>
 								<MusicPlaylistItem Name="" ID="{FC507DFA-2D66-4740-94CD-02BF073E97BC}" ShortID="112305470">
 									<PropertyList>
+										<Property Name="LoopCount" Type="int16" Value="0"/>
 										<Property Name="PlaylistItemType" Type="int16" Value="1"/>
 									</PropertyList>
 									<SegmentRef Name="MusicNight" ID="{6ADE9F7E-4D99-4313-BD8E-A0459D935384}"/>
@@ -146,6 +153,11 @@
 						<Property Name="MaxSoundPerInstance" Type="int16">
 							<ValueList>
 								<Value>1</Value>
+							</ValueList>
+						</Property>
+						<Property Name="UseMaxSoundPerInstance" Type="bool">
+							<ValueList>
+								<Value>True</Value>
 							</ValueList>
 						</Property>
 					</PropertyList>
@@ -259,6 +271,9 @@
 					<ObjectLists/>
 					<Playlist>
 						<MusicPlaylistItem Name="" ID="{836663C5-BA3C-4547-A313-122BE912CFAD}" ShortID="650719157">
+							<PropertyList>
+								<Property Name="LoopCount" Type="int16" Value="0"/>
+							</PropertyList>
 							<ChildrenList>
 								<MusicPlaylistItem Name="" ID="{9702BF62-1B66-4387-ACA8-32B660A7EF48}" ShortID="266032805">
 									<PropertyList>
