@@ -1,26 +1,40 @@
-using System;
-using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
-public class EmoteRenderer : MonoBehaviour {
+public class EmoteRenderer : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler {
     public Image Image;
+    
+    [SerializeField] private Emote _emote;
 
     public Emote Emote {
-        get; private set;
+        get => _emote;
+        set {
+            _emote = value;
+            SetSprite(_emote.SubType);
+        }
     }
 
     private void SetSprite(Emote.EmoteSubType type) {
         Image.sprite = EmoteLibrary.Instance.FindSprite(type);
     }
-    
+
     public void Start() {
-        SetSprite((Emote.EmoteSubType) Random.Range(0, 10));
+        SetEmote(new Emote((Emote.EmoteSubType) Random.Range(0, 10)));
     }
 
     public void SetEmote(Emote emote) {
-        Emote = emote;
+        _emote = emote;
         SetSprite(emote.SubType);
+    }
+
+    public void OnPointerEnter(PointerEventData eventData) {
+        TooltipManager.Instance.ShowEmoteTooltip(Emote, transform.position);
+    }
+
+    public void OnPointerExit(PointerEventData eventData) {
+        TooltipManager.Instance.HideActiveTooltip();
     }
 }
