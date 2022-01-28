@@ -14,6 +14,6 @@ public static class Service
     public static AudioManager Audio;
     public static DebugLevelLoader Transition;
 
-    public static float MusicVolume = 1.0f;
+    public static float MusicVolume = 0.75f;
 
 }

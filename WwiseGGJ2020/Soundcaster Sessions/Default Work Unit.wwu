@@ -29,7 +29,7 @@
 					<RTPCValueList ShowAll="true">
 						<RTPCValue>
 							<GameParameterRef Name="master_volume" ID="{39DDC789-6147-40FB-9D1F-AE11D3A25273}"/>
-							<Value>50</Value>
+							<Value>49.8809523809524</Value>
 						</RTPCValue>
 					</RTPCValueList>
 					<CurrentStateList ShowAll="true"/>

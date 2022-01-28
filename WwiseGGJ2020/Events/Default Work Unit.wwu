@@ -93,7 +93,6 @@
 					<ChildrenList>
 						<Action Name="" ID="{ABE27ACD-30AE-4BA3-B806-7A0094851DDD}" ShortID="938435141">
 							<PropertyList>
-								<Property Name="ActionType" Type="int16" Value="2"/>
 								<Property Name="FadeTime" Type="Real64" Value="3"/>
 							</PropertyList>
 							<ReferenceList>

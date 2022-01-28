@@ -505,6 +505,7 @@
 				</RandomSequenceContainer>
 				<Sound Name="AmbienceDay" ID="{0A94AB01-BD5D-4966-8A0F-4EE4F2F936FE}" ShortID="904117509">
 					<PropertyList>
+						<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
 						<Property Name="MaxSoundPerInstance" Type="int16">
 							<ValueList>
 								<Value>1</Value>
@@ -539,6 +540,9 @@
 					</ActiveSourceList>
 				</Sound>
 				<Sound Name="AmbienceNight" ID="{74AF0224-1060-4EEE-9E98-4EFC5677CD60}" ShortID="183041373">
+					<PropertyList>
+						<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{CDCD3BA4-22DA-4D0F-B878-FE934CC7D525}"/>

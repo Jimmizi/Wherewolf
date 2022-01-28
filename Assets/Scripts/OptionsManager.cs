@@ -14,6 +14,8 @@ public class OptionsManager : MonoBehaviour
     [SerializeField]
     public Slider MusicSlider;
 
+    private float lastMusicValue = 0.75f;
+
     public void PlayClickSound()
     {
         if(Service.Transition != null)
@@ -43,6 +45,13 @@ public class OptionsManager : MonoBehaviour
         if(MusicSlider)
         {
             Service.MusicVolume = MusicSlider.value;
+            if(Service.MusicVolume != lastMusicValue)
+            {
+                Debug.Log("Setting master_volume to " + Service.MusicVolume * 100.0f);
+                AkSoundEngine.SetRTPCValue("master_volume", Service.MusicVolume * 100.0f);
+            }
+
+            lastMusicValue = Service.MusicVolume;
         }
     }
 }

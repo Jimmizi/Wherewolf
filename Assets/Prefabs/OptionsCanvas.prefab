@@ -122,7 +122,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 1
+  m_Value: 0.75
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1181,7 +1181,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ClosedOptions: {fileID: 3028719281370328480}
   OpenOptions: {fileID: 3028719280749949641}
-  MusicSlider: {fileID: 0}
+  MusicSlider: {fileID: 3028719280604077993}
 --- !u!1 &6863644577080312305
 GameObject:
   m_ObjectHideFlags: 0
