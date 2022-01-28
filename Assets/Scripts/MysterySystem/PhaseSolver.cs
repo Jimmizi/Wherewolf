@@ -323,7 +323,14 @@ public class PhaseSolver : MonoBehaviour
 #endif
         }
 
-        // 6) Done
+        // 6) reset clue given status this phase
+
+        foreach (var c in Service.Population.ActiveCharacters)
+        {
+            c.HasGivenAClueThisPhase = false;
+        }
+
+        // 7) Done
 
         IsGeneratingAPhase = false;
         

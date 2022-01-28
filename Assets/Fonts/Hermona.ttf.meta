@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 412bdd4f50bafd646b89888f4a91eab5
+guid: 6415cc281a8846a45839b1ca418332da
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Arial
+  - Hermona
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0

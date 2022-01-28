@@ -44,6 +44,26 @@ public class ClueObject
 
     public ClueType Type;
 
+    public float GetWeightForThisClue()
+    {
+        float baseWeight = Weight;
+        
+        // If it relates to the werewolf, should very strongly weight it towards this clue
+        if(RelatesToCharacter != null && RelatesToCharacter.IsWerewolf)
+        {
+            baseWeight *= 10f;
+
+            // BIG weight towards werewolf clues if the player doesn't have as many clues as the current day
+            //  try to heavily guarantee that the player averages at least one good clue per day
+            if(Service.Player.NumberOfCluesAboutWerewolf < Service.Game.CurrentDay)
+            {
+                baseWeight *= 10f;
+            }
+        }
+
+        return baseWeight;
+    }
+
     // Weight for picking this clue - standardise between 0.0f and 100.0f of how likely this clue will be picked
     //  NOTE: clue weights don't need to add to 100.0f
     public float Weight = 0.0f;

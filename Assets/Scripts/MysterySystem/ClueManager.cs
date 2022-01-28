@@ -180,6 +180,7 @@ public class ClueManager : MonoBehaviour
                 clue.Generate();
             }
 
+            //c.LastClueGroup = currentPhase.CharacterCluesToGive[c];
 
 #if UNITY_EDITOR
             if (Service.Config.DebugYieldInGeneration)

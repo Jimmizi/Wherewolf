@@ -6,6 +6,11 @@ public class Randomiser
 {
     public static int GetRandomIndexFromWeights(List<float> fWeights)
     {
+        if(fWeights.Count == 0)
+        {
+            return -1;
+        }
+
         float fTotal = 0.0f;
         foreach(var w in fWeights)
         {

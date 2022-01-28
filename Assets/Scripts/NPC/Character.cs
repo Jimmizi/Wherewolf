@@ -30,7 +30,40 @@ public class Character
     public Emote CurrentClothingCondition = null;
 
     // Pointer towards the last list of clues the character was able to give
-    public List<ClueObject> LastClueGroup;
+    //public List<ClueObject> LastClueGroup;
+
+    public ClueObject ServeClueToPlayer()
+    {
+        if(Service.PhaseSolve.CurrentPhase == null)
+        {
+            Debug.LogError("Tried to give clue but currentphase was null?!");
+            return null;
+        }
+
+        List<ClueObject> myCluesToGive = Service.PhaseSolve.CurrentPhase.CharacterCluesToGive[this];
+        List<float> weightList = new List<float>();
+
+        foreach(var c in myCluesToGive)
+        {
+            weightList.Add(c.GetWeightForThisClue());
+        }
+
+        int iClueIndex = Randomiser.GetRandomIndexFromWeights(weightList);
+        if(iClueIndex == -1)
+        {
+            Debug.LogError(string.Format("Failed to get random clue index. list had {0} clues ", weightList.Count));
+            return null;
+        }
+
+        Debug.Log(string.Format("{0} gave player {1} clue about {2}", 
+            Name,
+            myCluesToGive[iClueIndex].Type.ToString(), 
+            myCluesToGive[iClueIndex].RelatesToCharacter?.Name ?? "invalidrelatestocharacter"));
+
+        HasGivenAClueThisPhase = true;
+
+        return myCluesToGive[iClueIndex];
+    }
 
     public WerewolfGame.TOD DeathTimeOfDay;
     public int DeathDay;
@@ -41,6 +74,8 @@ public class Character
 
     public Task CurrentTask;
     public Building Home;
+
+    public bool HasGivenAClueThisPhase = false;
 
     private int currentTaskIndex = 0;
 

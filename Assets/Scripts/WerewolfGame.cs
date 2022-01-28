@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class WerewolfGame : MonoBehaviour
@@ -60,10 +61,16 @@ public class WerewolfGame : MonoBehaviour
     [SerializeField]
     public SceneField LoseScene;
 
+    [SerializeField]
+    public Text DayCounterText;
+
     public GameState CurrentState = GameState.GeneratePopulation;
     private GameState NextState = InvalidState;
 
     public SubState CurrentSubState = SubState.Start;
+
+    // Reason for winning or losing the game
+    public string GameOverReason;
 
     public TOD CurrentTimeOfDay = TOD.Day;
     public int CurrentDay = 0;
@@ -84,6 +91,7 @@ public class WerewolfGame : MonoBehaviour
     private float fStateTimer = 0.0f;
     private bool canCurrentStateBeProgressed = false;
     private bool startedTransitionFadeOut = false;
+    private bool startedFailLoadSceneAfterDayExpiry = false;
 
     public bool CanUpdatePopulation()
     {
@@ -282,19 +290,31 @@ public class WerewolfGame : MonoBehaviour
             case SubState.Start:
                 {
                     // Play wolf howl if someone was murdered this day
-                    if(CurrentTimeOfDay == TOD.Night)
+                    if (CurrentTimeOfDay == TOD.Night)
                     {
                         if(Service.PhaseSolve.GetVictimFromDay(CurrentDay) != null)
                         {
                             Service.Audio.PlayWolfHowl();
                         }
-                    }                    
+                    }
+
+                    bool bFailed = CurrentDay + 1 >= ConfigManager.NumberOfDaysBeforeGameFailure
+                        && CurrentState == GameState.TransitionToDay;
+
+                    if (bFailed)
+                    {
+                        GameOverReason = "Took too long. The werewolf, sensing you were closing in fled the town.";
+                        startedFailLoadSceneAfterDayExpiry = false;
+                    }
 
                     // Bring in the transition blend
                     Service.Transition.BlendIn();
 
-                    // If there is a victim to kill, try and do so
-                    Service.PhaseSolve.TryKillOffCurrentVictim();
+                    if (!bFailed)
+                    {
+                        // If there is a victim to kill, try and do so
+                        Service.PhaseSolve.TryKillOffCurrentVictim();
+                    }
 
                     // Switch phase
                     CurrentTimeOfDay = CurrentState == GameState.TransitionToDay ? TOD.Day : TOD.Night;
@@ -303,48 +323,79 @@ public class WerewolfGame : MonoBehaviour
                     if(CurrentState == GameState.TransitionToDay)
                     {
                         CurrentDay++;
-                        Service.Audio.StartDay();
+
+                        if (!bFailed)
+                        { Service.Audio.StartDay(); }
                     }
-                    else
+                    else if (!bFailed)
                     {
                         Service.Audio.StartNight();
                     }
 
-                    if (CurrentTimeOfDay == TOD.Night)
+                    if (!bFailed)
                     {
-                        // If we're now night, set the wheel as being in day time so when we transition it, it will move to night
-                        Service.TransitionScreen.SetIsDay();
-                    }
-                    else
-                    {
-                        // vice versa
-                        Service.TransitionScreen.SetIsNight();
-                    }
+                        if (CurrentTimeOfDay == TOD.Night)
+                        {
+                            // If we're now night, set the wheel as being in day time so when we transition it, it will move to night
+                            Service.TransitionScreen.SetIsDay();
+                        }
+                        else
+                        {
+                            // vice versa
+                            Service.TransitionScreen.SetIsNight();
+                        }
 
                         Service.TransitionScreen.ShowPanel(0.5f);
-                    Service.TransitionScreen.PerformTransition(TimeTransitionDuration);
-                    startedTransitionFadeOut = false;
+                        Service.TransitionScreen.PerformTransition(TimeTransitionDuration);
+                        startedTransitionFadeOut = false;
+                    }
 
                     CurrentSubState++;
                     break;
                 }
             case SubState.Update:
                 {
-                    if(fStateTimer >= TimeTransitionDuration)
-                    {
-                        CurrentSubState++;
+                    bool bFailed = CurrentDay >= ConfigManager.NumberOfDaysBeforeGameFailure;
 
-                        foreach (var c in Service.Population.ActiveCharacters)
+                    if (!bFailed)
+                    {
+                        if (fStateTimer >= TimeTransitionDuration)
                         {
-                            c.OnTimeOfDayPhaseShift();
+                            CurrentSubState++;
+
+                            foreach (var c in Service.Population.ActiveCharacters)
+                            {
+                                c.OnTimeOfDayPhaseShift();
+                            }
+
+                            if (CurrentTimeOfDay == TOD.Day)
+                            {
+                                Service.Player.StartDay();
+                            }
+                            else
+                            {
+                                Service.Player.StartNight();
+                            }
+                        }
+
+                        // Time - 1, it takes 1 second to fade out
+                        if (!startedTransitionFadeOut && fStateTimer >= TimeTransitionDuration - 1)
+                        {
+                            startedTransitionFadeOut = true;
+                            Service.TransitionScreen.HidePanel();
                         }
                     }
-
-                    // Time - 1, it takes 1 second to fade out
-                    if(!startedTransitionFadeOut && fStateTimer >= TimeTransitionDuration - 1)
+                    else
                     {
-                        startedTransitionFadeOut = true;
-                        Service.TransitionScreen.HidePanel();
+                        if (!startedFailLoadSceneAfterDayExpiry && Service.Transition.IsBlendedIn())
+                        {
+                            startedFailLoadSceneAfterDayExpiry = true;
+
+                            // Hide action icons
+                            Service.Player.EndDayOrNight();
+                            Debug.Log("Loading in lose scene");
+                            SceneManager.LoadScene(LoseScene.SceneName);
+                        }
                     }
 
                     break;
@@ -355,7 +406,7 @@ public class WerewolfGame : MonoBehaviour
                     {
                         Service.Audio.PlayRoosterCrow();
                     }
-                    
+                    DayCounterText.text = string.Format("Day {0}", CurrentDay);
                     Service.Transition.BlendOut();
                     break;
                 }
@@ -478,6 +529,11 @@ public class WerewolfGame : MonoBehaviour
                         NextState = GameState.PlayerChoseToStake;
                         CurrentSubState++;
                     }
+                    else if(Service.Player.IsPlayerFinishedInCurrentPhase())
+                    {
+                        ProgressGameFromExternal();
+                    }
+
                     break;
                 }
             case SubState.Finish:
@@ -516,15 +572,20 @@ public class WerewolfGame : MonoBehaviour
                 {
                     if (Service.Transition.IsBlendedIn())
                     {
+                        // Hide action icons
+                        Service.Player.EndDayOrNight();
+
                         Debug.Assert(characterStaked != null);
                         if (characterStaked.IsWerewolf)
                         {
                             Debug.Log("Successfully staked the werewolf.");
+                            GameOverReason = string.Format("Successfully staked the werewolf! It was {0} all along!", characterStaked.Name);
                             SceneManager.LoadScene(WinScene.SceneName);
                         }
                         else
                         {
                             Debug.Log("Accidently staked a civilian.");
+                            GameOverReason = "You staked a civilian, the werewolf managed to get away.";
                             SceneManager.LoadScene(LoseScene.SceneName);
                         }
 
@@ -616,6 +677,18 @@ public class WerewolfGame : MonoBehaviour
             Service.Transition.BlendOut();
         }
 
+        if(CurrentState == GameState.TransitionToDay
+            || CurrentState == GameState.TransitionToDay)
+        {
+            Debug.Log("Loaded lose scene.");
+            NextState = GameState.GameSummaryLoss;
+            CurrentSubState = SubState.Finish;
+
+            // Play game over day as we lose at the end of the last night
+            Service.Audio.PlayGameOverNight();
+            Service.Transition.BlendOut();
+        }
+
         if (CurrentState == GameState.GameSummaryWon
             || CurrentState == GameState.GameSummaryLoss)
         {
@@ -688,6 +761,8 @@ public class WerewolfGame : MonoBehaviour
 #if UNITY_EDITOR
 
     Vector2 vStakeSelectionScrollPosition = new Vector2();
+    Vector2 vClueSelectionScrollPosition = new Vector2();
+    Vector2 vPLayerCluesScrollPosition = new Vector2();
     bool chosenToStake = false;
 
     private void OnGUI()
@@ -715,7 +790,7 @@ public class WerewolfGame : MonoBehaviour
 
         float fHeight = Screen.height - 80;
 
-        GUI.Box(new Rect(10, 40, 600, fHeight), "");
+        GUI.Box(new Rect(10, 40, 900, fHeight), "");
 
         // Choose to stake a character
         vStakeSelectionScrollPosition = GUI.BeginScrollView(new Rect(15, 45, 200, fHeight - 10), vStakeSelectionScrollPosition, new Rect(0, 0, 190, 1000));
@@ -740,6 +815,111 @@ public class WerewolfGame : MonoBehaviour
                     }
                     vPosition.y += 28;
                 }
+            }
+        }
+        GUI.EndScrollView();
+
+        // Choose to talk to character
+        vClueSelectionScrollPosition = GUI.BeginScrollView(new Rect(220, 45, 200, fHeight - 10), vClueSelectionScrollPosition, new Rect(0, 0, 190, 1000));
+        {
+            if (!chosenToStake)
+            {
+                Vector2 vPosition = new Vector2(5, 5);
+                GUI.Label(new Rect(vPosition.x, vPosition.y, 200, 24), "Select a character to talk to");
+                vPosition.y += 16;
+
+                foreach (var c in Service.Population.ActiveCharacters)
+                {
+                    if (!c.IsAlive)
+                    {
+                        continue;
+                    }
+
+                    if(c.HasGivenAClueThisPhase)
+                    {
+                        GUI.Label(new Rect(vPosition.x, vPosition.y, 200, 24), string.Format("[{0}] {1} Already given a clue.", c.Index, c.Name));
+                        vPosition.y += 28;
+                        continue;
+                    }
+
+                    if (GUI.Button(new Rect(vPosition.x, vPosition.y, 140, 24), string.Format("[{0}] {1}", c.Index, c.Name)))
+                    {
+                        Service.Player.TryGetClueFromCharacter(c);
+                    }
+                    vPosition.y += 28;
+                }
+            }
+        }
+        GUI.EndScrollView();
+
+        vPLayerCluesScrollPosition = GUI.BeginScrollView(new Rect(425, 45, 450, fHeight - 10), vPLayerCluesScrollPosition, new Rect(0, 0, 440, 5000));
+        {
+            Vector2 vPosition = new Vector2(5, 5);
+
+            foreach (var clueMap in Service.Player.SortedByDayAndPhaseClues)
+            {
+                GUI.Label(new Rect(vPosition.x, vPosition.y, 200, 24), string.Format("Day {0} clues:", clueMap.Key));
+                vPosition.y += 16;
+                foreach(var cluePhase in clueMap.Value)
+                {
+                    GUI.Label(new Rect(vPosition.x + 7, vPosition.y, 200, 24), string.Format("{0}:", cluePhase.Key.ToString()));
+                    vPosition.y += 16;
+                    foreach(var clue in cluePhase.Value)
+                    {
+                        // Type
+                        GUI.contentColor = Color.yellow;
+                        GUI.Label(new Rect(vPosition.x, vPosition.y, 150, 24), clue.Type.ToString());
+
+                        // True/false
+                        GUI.contentColor = clue.IsTruth ? new Color(0.1f, 0.8f, 0.1f) : new Color(0.8f, 0.1f, 0.1f);
+                        GUI.Label(new Rect(vPosition.x + 200, vPosition.y, 150, 24),
+                            string.Format("({0})", clue.IsTruth ? "Is the truth" : "Is a lie"));
+
+                        vPosition.y += 16;
+                        GUI.contentColor = Color.white;
+
+                        // Extra info
+                        if (clue.RelatesToCharacter.IsWerewolf)
+                        {
+                            GUI.contentColor = new Color(1.0f, 0.5f, 0.5f);
+                        }
+                        GUI.Label(new Rect(vPosition.x, vPosition.y, 200, 24),
+                            string.Format("Subject: [{0}] {1}", clue.RelatesToCharacter.Index, clue.RelatesToCharacter.Name));
+                        GUI.contentColor = Color.white;
+
+                        GUI.Label(new Rect(vPosition.x + 200, vPosition.y, 200, 24),
+                             string.Format("LocSeenIn: {0}", clue.LocationSeenIn));
+
+                        vPosition.y += 16;
+
+                        if (clue.Type == ClueObject.ClueType.VisualFromGhost)
+                        {
+                            GUI.Label(new Rect(vPosition.x, vPosition.y, 350, 24),
+                                string.Format("Ghost Descriptor Type: {0}", clue.GhostGivenClueType.ToString()));
+                            vPosition.y += 16;
+                        }
+
+                        if (clue.Emotes.Count > 0)
+                        {
+                            GUI.Label(new Rect(vPosition.x, vPosition.y, 200, 24), "Emotes string:");
+                            vPosition.y += 16;
+
+                            GUI.contentColor = new Color(0.2f, 0.7f, 1.0f);
+                            foreach (var emote in clue.Emotes)
+                            {
+                                GUI.Label(new Rect(vPosition.x, vPosition.y, 300, 24), emote.SubType.ToString());
+                                vPosition.y += 16;
+                            }
+                            GUI.contentColor = Color.white;
+                        }
+
+                        vPosition.y += 16;
+                    }
+
+                    vPosition.y += 16;
+                }
+
+                vPosition.y += 16;
             }
         }
         GUI.EndScrollView();
