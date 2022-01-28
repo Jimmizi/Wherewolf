@@ -1,13 +1,19 @@
 fileFormatVersion: 2
-guid: 2e1751c1c58ffda4cad7ba31c5af76a3
+guid: 19f43281c4472b647a80cd5f38f3e660
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8144886026044020093
-    second: 2j5uuj5s_0
+      213: 8788800531511572987
+    second: HairStyle_Bald
   - first:
-      213: 2513764488909250400
-    second: 2j5uuj5s_1
+      213: -5722426651582654444
+    second: HairStyle_Short
+  - first:
+      213: -6822097389772373708
+    second: HairStyle_Medium
+  - first:
+      213: -405450611330297678
+    second: HairStyle_Long
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -109,43 +115,85 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 2j5uuj5s_0
+      name: HairStyle_Bald
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1024
-        height: 1000
+        x: 204
+        y: 168
+        width: 660
+        height: 734
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 38a6a91105d87fe80800000000000000
-      internalID: -8144886026044020093
+      spriteID: bf9f282b48718f970800000000000000
+      internalID: 8788800531511572987
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 2j5uuj5s_1
+      name: HairStyle_Short
       rect:
         serializedVersion: 2
-        x: 1024
-        y: 0
-        width: 1024
-        height: 1000
+        x: 1136
+        y: 164
+        width: 800
+        height: 830
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 06f5d62fb7fa2e220800000000000000
-      internalID: 2513764488909250400
+      spriteID: 4181033774bd590b0800000000000000
+      internalID: -5722426651582654444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HairStyle_Medium
+      rect:
+        serializedVersion: 2
+        x: 2088
+        y: 170
+        width: 874
+        height: 830
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4318f7ba19a0351a0800000000000000
+      internalID: -6822097389772373708
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HairStyle_Long
+      rect:
+        serializedVersion: 2
+        x: 3064
+        y: 0
+        width: 948
+        height: 988
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b051b131dc8f5af0800000000000000
+      internalID: -405450611330297678
       vertices: []
       indices: 
       edges: []

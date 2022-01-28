@@ -533,6 +533,16 @@ public class InformationManager : MonoBehaviour
 #if DEBUG
     void AddDefaultEmotes()
     {
+        var blankIcon = Resources.Load<Sprite>("Emotes/blankicon");
+
+        Dictionary<string, Sprite> allEmotes = new Dictionary<string, Sprite>();
+        var spriteRes = Resources.LoadAll<Sprite>("Emotes/");
+
+        foreach(var spr in spriteRes)
+        {
+            allEmotes.Add(spr.name, spr);
+        }
+
         for (int i = 0; i <= (int)Emote.GetLastSubType; ++i)
         {
             Emote.EmoteSubType eSubType = (Emote.EmoteSubType)i;
@@ -588,10 +598,13 @@ public class InformationManager : MonoBehaviour
             //    }
             //}
 
-            var spr = Resources.Load<Sprite>("Emotes/" + sSubType);
-            if(spr != null)
+            if(allEmotes.ContainsKey(sSubType))
             {
-                newEmote.EmoteImage = spr;
+                newEmote.EmoteImage = allEmotes[sSubType];
+            }
+            else
+            {
+                newEmote.EmoteImage = blankIcon;
             }
 
             emoteList.Add(newEmote);
