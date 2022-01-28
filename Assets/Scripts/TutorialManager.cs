@@ -21,7 +21,14 @@ public class TutorialManager : MonoBehaviour
 
     public void GoBackAPage()
     {
-        Service.Audio.PlayUIClick();
+        if (Service.Transition != null)
+        {
+            Service.Transition.PlayClickSound();
+        }
+        else if (Service.Audio != null)
+        {
+            Service.Audio.PlayUIClick();
+        }
 
         if (CurrentPage > 0)
         {
@@ -34,7 +41,14 @@ public class TutorialManager : MonoBehaviour
 
     public void GoForwardsAPage()
     {
-        Service.Audio.PlayUIClick();
+        if (Service.Transition != null)
+        {
+            Service.Transition.PlayClickSound();
+        }
+        else if (Service.Audio != null)
+        {
+            Service.Audio.PlayUIClick();
+        }
 
         if (CurrentPage == TutorialPageList.Count - 1)
         {
@@ -77,7 +91,14 @@ public class TutorialManager : MonoBehaviour
 
     public void CloseTutorial()
     {
-        Service.Audio.PlayUIClick();
+        if (Service.Transition != null)
+        {
+            Service.Transition.PlayClickSound();
+        }
+        else if (Service.Audio != null)
+        {
+            Service.Audio.PlayUIClick();
+        }
 
         gameObject.SetActive(false);
         CurrentPage = 0;

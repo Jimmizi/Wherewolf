@@ -70,6 +70,8 @@ public class WerewolfGame : MonoBehaviour
     public bool IsGamePaused = false;
     public bool HasTriggeredStakeAction = false;
 
+    public bool FirstTimeHasShownTutorial = false;
+
     private Character characterStaked = null;
 
     public int GetLastDay => ConfigManager.NumberOfDaysBeforeGameFailure;
@@ -100,20 +102,6 @@ public class WerewolfGame : MonoBehaviour
         }
 
         return true;
-    }
-
-    [SerializeField]
-    public GameObject TutorialGameObject;
-    public bool IsTutorialOpen = false;
-    public void SetTutorialOpen()
-    {
-        TutorialGameObject?.SetActive(true);
-        IsTutorialOpen = true;
-    }
-    public void SetTutorialClosed()
-    {
-        TutorialGameObject?.SetActive(false);
-        IsTutorialOpen = false;
     }
 
     [SerializeField]
@@ -445,6 +433,20 @@ public class WerewolfGame : MonoBehaviour
                 }
             case SubState.Update:
                 {
+                    if(!FirstTimeHasShownTutorial && Service.Transition.IsBlendedOut())
+                    {
+                        if (!FirstTimeHasShownTutorial)
+                        {
+                            FirstTimeHasShownTutorial = true;
+
+                            if (!Service.Options.PlayerHasSeenTutorial)
+                            {
+                                Service.Audio.PlayDiscoveryDay();
+                                Service.Options.ShowTutorial();
+                            }
+                        }
+                    }
+
                     if(HasTriggeredStakeAction)
                     {
                         Service.Transition.BlendIn();

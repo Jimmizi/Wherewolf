@@ -14,6 +14,11 @@ public class OptionsManager : MonoBehaviour
     [SerializeField]
     public Slider MusicSlider;
 
+    public bool PlayerHasSeenTutorial = false;
+
+    [SerializeField]
+    public GameObject OpenTutorialButton;
+
     private float lastMusicValue = 0.75f;
 
     public void PlayClickSound()
@@ -33,10 +38,37 @@ public class OptionsManager : MonoBehaviour
         Application.Quit();
     }
 
-    // Start is called before the first frame update
+    [SerializeField]
+    public GameObject TutorialGameObject;
+    public void CloseTutorial()
+    {
+        TutorialGameObject?.SetActive(false);
+    }
+    public void ShowTutorial()
+    {
+        PlayerHasSeenTutorial = true;
+        TutorialGameObject?.SetActive(true);
+
+        if (OpenTutorialButton)
+        {
+            OpenTutorialButton.SetActive(true);
+        }
+    }
+
+    private static OptionsManager instance;
     void Awake()
     {
-        DontDestroyOnLoad(this.gameObject);
+        DontDestroyOnLoad(this);
+
+        if (instance == null)
+        {
+            instance = this;
+            Service.Options = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     // Update is called once per frame
