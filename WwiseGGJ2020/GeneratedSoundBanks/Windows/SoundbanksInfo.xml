@@ -11,21 +11,24 @@
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="1355168291" Language="SFX" Hash="3690994985">
+		<SoundBank Id="1355168291" Language="SFX" Hash="147798213">
 			<ObjectPath>Init</ObjectPath>
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
+			<GameParameters>
+				<GameParameter Id="4179668880" Name="master_volume" ObjectPath="\Game Parameters\Default Work Unit\master_volume"/>
+			</GameParameters>
 		</SoundBank>
-		<SoundBank Id="2276007709" Language="SFX" Hash="4038341661">
+		<SoundBank Id="2276007709" Language="SFX" Hash="1762013701">
 			<ObjectPath>\SoundBanks\Default Work Unit\NightCycle</ObjectPath>
 			<ShortName>NightCycle</ShortName>
 			<Path>NightCycle.bnk</Path>
 			<IncludedEvents>
-				<Event Id="192791793" Name="AmbienceNight" ObjectPath="\Events\Default Work Unit\AmbienceNight" DurationType="OneShot" DurationMin="69.8125" DurationMax="69.8125">
+				<Event Id="192791793" Name="AmbienceNight" ObjectPath="\Events\Default Work Unit\AmbienceNight" DurationType="Infinite">
 					<IncludedMemoryFiles>
 						<File Id="25883968" Language="SFX">
 							<ShortName>AmbienceNight.wav</ShortName>
-							<Path>SFX\AmbienceNight_10C4C929.wem</Path>
+							<Path>SFX\AmbienceNight_D79FB2B7.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
@@ -54,11 +57,11 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="3670738982" Name="StartTheNight" ObjectPath="\Events\Default Work Unit\StartTheNight" DurationType="OneShot" DurationMin="70.818184" DurationMax="70.818184">
+				<Event Id="3670738982" Name="StartTheNight" ObjectPath="\Events\Default Work Unit\StartTheNight" DurationType="Infinite">
 					<IncludedMemoryFiles>
 						<File Id="25883968" Language="SFX">
 							<ShortName>AmbienceNight.wav</ShortName>
-							<Path>SFX\AmbienceNight_10C4C929.wem</Path>
+							<Path>SFX\AmbienceNight_D79FB2B7.wem</Path>
 						</File>
 						<File Id="746160009" Language="SFX">
 							<ShortName>MusicNight.wav</ShortName>
@@ -68,16 +71,16 @@
 				</Event>
 			</IncludedEvents>
 		</SoundBank>
-		<SoundBank Id="2769481441" Language="SFX" Hash="733626234">
+		<SoundBank Id="2769481441" Language="SFX" Hash="1850992844">
 			<ObjectPath>\SoundBanks\Default Work Unit\DayCycle</ObjectPath>
 			<ShortName>DayCycle</ShortName>
 			<Path>DayCycle.bnk</Path>
 			<IncludedEvents>
-				<Event Id="345316221" Name="AmbienceDay" ObjectPath="\Events\Default Work Unit\AmbienceDay" DurationType="OneShot" DurationMin="52." DurationMax="52.">
+				<Event Id="345316221" Name="AmbienceDay" ObjectPath="\Events\Default Work Unit\AmbienceDay" DurationType="Infinite">
 					<IncludedMemoryFiles>
 						<File Id="221210545" Language="SFX">
 							<ShortName>AmbienceDay.wav</ShortName>
-							<Path>SFX\AmbienceDay_10C4C929.wem</Path>
+							<Path>SFX\AmbienceDay_D79FB2B7.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
@@ -106,11 +109,11 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="2972317186" Name="StartTheDay" ObjectPath="\Events\Default Work Unit\StartTheDay" DurationType="OneShot" DurationMin="65." DurationMax="65.">
+				<Event Id="2972317186" Name="StartTheDay" ObjectPath="\Events\Default Work Unit\StartTheDay" DurationType="Infinite">
 					<IncludedMemoryFiles>
 						<File Id="221210545" Language="SFX">
 							<ShortName>AmbienceDay.wav</ShortName>
-							<Path>SFX\AmbienceDay_10C4C929.wem</Path>
+							<Path>SFX\AmbienceDay_D79FB2B7.wem</Path>
 						</File>
 						<File Id="403956677" Language="SFX">
 							<ShortName>DayMusicPH.wav</ShortName>
@@ -128,12 +131,19 @@
 				</Event>
 			</IncludedEvents>
 		</SoundBank>
-		<SoundBank Id="3062523257" Language="SFX" Hash="3241561438">
+		<SoundBank Id="3062523257" Language="SFX" Hash="2252024199">
 			<ObjectPath>\SoundBanks\Default Work Unit\Misc</ObjectPath>
 			<ShortName>Misc</ShortName>
 			<Path>Misc.bnk</Path>
 			<IncludedEvents>
-				<Event Id="2144316923" Name="CreekFlow" ObjectPath="\Events\Default Work Unit\CreekFlow" DurationType="OneShot" DurationMin="0." DurationMax="0."/>
+				<Event Id="2144316923" Name="CreekFlow" ObjectPath="\Events\Default Work Unit\CreekFlow" DurationType="Infinite">
+					<IncludedMemoryFiles>
+						<File Id="130810277" Language="SFX">
+							<ShortName>CreekFlow.wav</ShortName>
+							<Path>SFX\CreekFlow_D79FB2B7.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
 			</IncludedEvents>
 		</SoundBank>
 		<SoundBank Id="3150299886" Language="SFX" Hash="624102342">

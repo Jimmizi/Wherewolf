@@ -7,7 +7,7 @@ Event	ID	Name			Wwise Object Path	Notes
 	3670738982	StartTheNight			\Default Work Unit\StartTheNight	
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
-	25883968	AmbienceNight	C:\Users\jaket\Documents\GitHub\GGJ2022\WwiseGGJ2020\.cache\Windows\SFX\AmbienceNight_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\AmbienceNight		13404144
+	25883968	AmbienceNight	C:\Users\jaket\Documents\GitHub\GGJ2022\WwiseGGJ2020\.cache\Windows\SFX\AmbienceNight_D79FB2B7.wem		\Actor-Mixer Hierarchy\Default Work Unit\AmbienceNight		13404144
 	206370308	GameOverNight	C:\Users\jaket\Documents\GitHub\GGJ2022\WwiseGGJ2020\.cache\Windows\SFX\GameOverNight_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\GameOverNight		960144
 	746160009	MusicNight	C:\Users\jaket\Documents\GitHub\GGJ2022\WwiseGGJ2020\.cache\Windows\SFX\MusicNight_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\MusicNightLoop\MusicNight\MusicNight		13405236
 	838286607	DiscoveryNight	C:\Users\jaket\Documents\GitHub\GGJ2022\WwiseGGJ2020\.cache\Windows\SFX\DiscoveryPH_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\DiscoveryNight		801532

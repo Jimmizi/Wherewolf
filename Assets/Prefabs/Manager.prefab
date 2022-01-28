@@ -684,7 +684,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TransitionAnimator: {fileID: 300781861}
   TransitionImage: {fileID: 1618955036}
-  TargetScene: {fileID: 0}
+  TargetScene:
+    sceneAsset: {fileID: 0}
+    sceneName: 
   TransitionLength: 1
   TransitionSpeed: 1
   ShaderBlendedInCutoff: -0.2
@@ -707,6 +709,7 @@ MonoBehaviour:
   - {fileID: 2800000, guid: f241cd32ddebee5498b7ae945c517915, type: 3}
   - {fileID: 2800000, guid: 5675fb99eaefa3a45a056ec772d8c508, type: 3}
   GradientIndexToUse: 1
+  MusicVolumeSlider: {fileID: 0}
 --- !u!1001 &4353751979489902336
 PrefabInstance:
   m_ObjectHideFlags: 0
