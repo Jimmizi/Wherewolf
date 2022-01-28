@@ -599,8 +599,9 @@ public class ClueManager : MonoBehaviour
                 if (eLastTrueDescriptorType == Character.InvalidDescriptor)
                 {
                     eLastTrueDescriptorType = ghostGeneratedClues[i].GhostGivenClueType;
-                    eAllTruthGivenTypes.Add(ghostGeneratedClues[i].GhostGivenClueType);
                 }
+
+                eAllTruthGivenTypes.Add(ghostGeneratedClues[i].GhostGivenClueType);
             }
         }
 

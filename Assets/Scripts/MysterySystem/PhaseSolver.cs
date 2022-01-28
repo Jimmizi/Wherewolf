@@ -740,6 +740,28 @@ public class PhaseSolver : MonoBehaviour
                     }
                     vPosition.y += iButtonHeight;
                 }
+
+                vPosition.y += iButtonHeight*2;
+                GUI.Label(new Rect(vPosition.x, vPosition.y, 140, 32), "Killed:");
+                vPosition.y += iButtonHeight;
+
+                foreach (var c in currentPhaseDebugging.CharacterCluesToGive)
+                {
+                    if(c.Key.IsAlive)
+                    {
+                        continue;
+                    }
+
+                    if (CurrentCharacterSelected != null && CurrentCharacterSelected == c.Key)
+                    {
+                        GUI.Box(new Rect(vPosition.x - 2, vPosition.y - 2, 144, iTextBoxHeight + 4), "", selectedStyle);
+                    }
+                    if (GUI.Button(new Rect(vPosition.x, vPosition.y, 140, iTextBoxHeight), string.Format("[{0}] {1}", c.Key.Index, c.Key.Name)))
+                    {
+                        CurrentCharacterSelected = c.Key;
+                    }
+                    vPosition.y += iButtonHeight;
+                }
             }
             GUI.EndScrollView();
 
@@ -749,53 +771,56 @@ public class PhaseSolver : MonoBehaviour
                 {
                     Vector2 vPosition = new Vector2(5, 5);
 
-                    GUI.Label(new Rect(vPosition.x, vPosition.y, 200, iTextBoxHeight), string.Format("This phase, {0} saw:", CurrentCharacterSelected.Name));
-                    vPosition.y += iTextHeight;
-
-                    foreach (var c in currentPhaseDebugging.CharacterSeenMap[CurrentCharacterSelected])
+                    if (CurrentCharacterSelected.IsAlive)
                     {
-                        if (c.Item1.IsWerewolf)
-                        {
-                            GUI.contentColor = new Color(1.0f, 0.5f, 0.5f);
-                        }
-
-                        GUI.Label(new Rect(vPosition.x, vPosition.y, 200, iTextBoxHeight), string.Format("[{0}] {1} in Loc {2}", c.Item1.Index, c.Item1.Name, c.Item2));
+                        GUI.Label(new Rect(vPosition.x, vPosition.y, 200, iTextBoxHeight), string.Format("This phase, {0} saw:", CurrentCharacterSelected.Name));
                         vPosition.y += iTextHeight;
-                        GUI.contentColor = Color.white;
-                    }
 
-                    vPosition.y += iTextHeight;
-                    GUI.Label(new Rect(vPosition.x, vPosition.y, 200, iTextBoxHeight), "and saw these passing by:");
-                    vPosition.y += iTextHeight;
-
-                    foreach (var c in currentPhaseDebugging.CharacterSawPassingByMap[CurrentCharacterSelected])
-                    {
-                        if (c.Item1.IsWerewolf)
+                        foreach (var c in currentPhaseDebugging.CharacterSeenMap[CurrentCharacterSelected])
                         {
-                            GUI.contentColor = new Color(1.0f, 0.5f, 0.5f);
-                        }
+                            if (c.Item1.IsWerewolf)
+                            {
+                                GUI.contentColor = new Color(1.0f, 0.5f, 0.5f);
+                            }
 
-                        GUI.Label(new Rect(vPosition.x, vPosition.y, 200, iTextBoxHeight), string.Format("[{0}] {1} in Loc {2}", c.Item1.Index, c.Item1.Name, c.Item2));
-                        vPosition.y += iTextHeight;
-                        GUI.contentColor = Color.white;
-                    }
-
-                    vPosition.y += iTextHeight * 2;
-                    GUI.Label(new Rect(vPosition.x, vPosition.y, 200, iTextBoxHeight), string.Format("This phase, {0} did:", CurrentCharacterSelected.Name));
-                    vPosition.y += iTextHeight;
-
-                    if (currentPhaseDebugging.CharacterTasks.ContainsKey(CurrentCharacterSelected))
-                    {
-                        foreach (var t in currentPhaseDebugging.CharacterTasks[CurrentCharacterSelected])
-                        {
-                            GUI.Label(new Rect(vPosition.x, vPosition.y, 200, iTextBoxHeight), string.Format("{0} at Loc {1}", t.Type.ToString(), t.Location));
+                            GUI.Label(new Rect(vPosition.x, vPosition.y, 200, iTextBoxHeight), string.Format("[{0}] {1} in Loc {2}", c.Item1.Index, c.Item1.Name, c.Item2));
                             vPosition.y += iTextHeight;
+                            GUI.contentColor = Color.white;
                         }
-                    }
 
-                    vPosition.y += iTextHeight;
-                    GUI.Label(new Rect(vPosition.x, vPosition.y, 200, iTextBoxHeight), "---------------");
-                    vPosition.y += iTextHeight * 2;
+                        vPosition.y += iTextHeight;
+                        GUI.Label(new Rect(vPosition.x, vPosition.y, 200, iTextBoxHeight), "and saw these passing by:");
+                        vPosition.y += iTextHeight;
+
+                        foreach (var c in currentPhaseDebugging.CharacterSawPassingByMap[CurrentCharacterSelected])
+                        {
+                            if (c.Item1.IsWerewolf)
+                            {
+                                GUI.contentColor = new Color(1.0f, 0.5f, 0.5f);
+                            }
+
+                            GUI.Label(new Rect(vPosition.x, vPosition.y, 200, iTextBoxHeight), string.Format("[{0}] {1} in Loc {2}", c.Item1.Index, c.Item1.Name, c.Item2));
+                            vPosition.y += iTextHeight;
+                            GUI.contentColor = Color.white;
+                        }
+
+                        vPosition.y += iTextHeight * 2;
+                        GUI.Label(new Rect(vPosition.x, vPosition.y, 200, iTextBoxHeight), string.Format("This phase, {0} did:", CurrentCharacterSelected.Name));
+                        vPosition.y += iTextHeight;
+
+                        if (currentPhaseDebugging.CharacterTasks.ContainsKey(CurrentCharacterSelected))
+                        {
+                            foreach (var t in currentPhaseDebugging.CharacterTasks[CurrentCharacterSelected])
+                            {
+                                GUI.Label(new Rect(vPosition.x, vPosition.y, 200, iTextBoxHeight), string.Format("{0} at Loc {1}", t.Type.ToString(), t.Location));
+                                vPosition.y += iTextHeight;
+                            }
+                        }
+
+                        vPosition.y += iTextHeight;
+                        GUI.Label(new Rect(vPosition.x, vPosition.y, 200, iTextBoxHeight), "---------------");
+                        vPosition.y += iTextHeight * 2;
+                    }
 
                     GUI.Label(new Rect(vPosition.x, vPosition.y, 200, iTextBoxHeight), "Can give these clues:");
                     vPosition.y += iTextHeight;

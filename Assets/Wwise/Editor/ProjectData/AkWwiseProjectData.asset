@@ -38,7 +38,7 @@ MonoBehaviour:
     ParentPath: Master-Mixer Hierarchy\Default Work Unit
     guid: a3f17b30e30d854c8d5ab0bbd3d00d42
     GuidInternal: 
-    m_lastTime: -8585582316666809097
+    m_lastTime: -8585582238044097363
     List:
     - name: Master Audio Bus
       guid: d8a41415a61d2a41a17e75ca0c2149f3
@@ -150,7 +150,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: 36187f795aed7446a84c500d367dfcf3
     GuidInternal: 
-    m_lastTime: -8585582316666729025
+    m_lastTime: -8585582238044017290
     List:
     - name: AmbienceDay
       guid: 5b6ed9ad00e9af4b8714261614d3ada4
@@ -167,8 +167,8 @@ MonoBehaviour:
         guid: 5b6ed9ad00e9af4b8714261614d3ada4
       Path: Events\Default Work Unit\AmbienceDay
       maxAttenuation: 0
-      maxDuration: 52
-      minDuration: 52
+      maxDuration: -1
+      minDuration: -1
     - name: AmbienceNight
       guid: d1ae6b73a644254a9fe4fe21fa75a128
       id: 192791793
@@ -184,8 +184,8 @@ MonoBehaviour:
         guid: d1ae6b73a644254a9fe4fe21fa75a128
       Path: Events\Default Work Unit\AmbienceNight
       maxAttenuation: 0
-      maxDuration: 69.8125
-      minDuration: 69.8125
+      maxDuration: -1
+      minDuration: -1
     - name: BackToGameTitle
       guid: 48d8c601e41f2041b77c042906706604
       id: 1272348217
@@ -235,8 +235,8 @@ MonoBehaviour:
         guid: fccb59e9f6bccd409165ddc4a2ec01b6
       Path: Events\Default Work Unit\CreekFlow
       maxAttenuation: 0
-      maxDuration: 0
-      minDuration: 0
+      maxDuration: -1
+      minDuration: -1
     - name: DiscoveryDay
       guid: 8d19a217f5e63344b43a6ac6dbb65e32
       id: 2538410761
@@ -456,8 +456,8 @@ MonoBehaviour:
         guid: 1dc886f903898540b733652fee0b61ce
       Path: Events\Default Work Unit\StartTheDay
       maxAttenuation: 0
-      maxDuration: 65
-      minDuration: 65
+      maxDuration: -1
+      minDuration: -1
     - name: StartTheNight
       guid: e723e9e9fae27945b52628ffc96f3cbe
       id: 3670738982
@@ -473,8 +473,8 @@ MonoBehaviour:
         guid: e723e9e9fae27945b52628ffc96f3cbe
       Path: Events\Default Work Unit\StartTheNight
       maxAttenuation: 0
-      maxDuration: 70.818184
-      minDuration: 70.818184
+      maxDuration: -1
+      minDuration: -1
     - name: WinDay
       guid: d4c89a7674f57548946491df7ea02e41
       id: 2364012353

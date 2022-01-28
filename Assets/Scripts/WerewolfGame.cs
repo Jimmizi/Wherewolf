@@ -83,6 +83,7 @@ public class WerewolfGame : MonoBehaviour
 
     private float fStateTimer = 0.0f;
     private bool canCurrentStateBeProgressed = false;
+    private bool startedTransitionFadeOut = false;
 
     public bool CanUpdatePopulation()
     {
@@ -287,7 +288,7 @@ public class WerewolfGame : MonoBehaviour
                         {
                             Service.Audio.PlayWolfHowl();
                         }
-                    }
+                    }                    
 
                     // Bring in the transition blend
                     Service.Transition.BlendIn();
@@ -309,6 +310,21 @@ public class WerewolfGame : MonoBehaviour
                         Service.Audio.StartNight();
                     }
 
+                    if (CurrentTimeOfDay == TOD.Night)
+                    {
+                        // If we're now night, set the wheel as being in day time so when we transition it, it will move to night
+                        Service.TransitionScreen.SetIsDay();
+                    }
+                    else
+                    {
+                        // vice versa
+                        Service.TransitionScreen.SetIsNight();
+                    }
+
+                        Service.TransitionScreen.ShowPanel(0.5f);
+                    Service.TransitionScreen.PerformTransition(TimeTransitionDuration);
+                    startedTransitionFadeOut = false;
+
                     CurrentSubState++;
                     break;
                 }
@@ -323,6 +339,14 @@ public class WerewolfGame : MonoBehaviour
                             c.OnTimeOfDayPhaseShift();
                         }
                     }
+
+                    // Time - 1, it takes 1 second to fade out
+                    if(!startedTransitionFadeOut && fStateTimer >= TimeTransitionDuration - 1)
+                    {
+                        startedTransitionFadeOut = true;
+                        Service.TransitionScreen.HidePanel();
+                    }
+
                     break;
                 }
             case SubState.Finish:
@@ -331,7 +355,7 @@ public class WerewolfGame : MonoBehaviour
                     {
                         Service.Audio.PlayRoosterCrow();
                     }
-
+                    
                     Service.Transition.BlendOut();
                     break;
                 }
@@ -439,7 +463,7 @@ public class WerewolfGame : MonoBehaviour
                         {
                             FirstTimeHasShownTutorial = true;
 
-                            if (!Service.Options.PlayerHasSeenTutorial)
+                            if (Service.Options != null && !Service.Options.PlayerHasSeenTutorial)
                             {
                                 Service.Audio.PlayDiscoveryDay();
                                 Service.Options.ShowTutorial();
