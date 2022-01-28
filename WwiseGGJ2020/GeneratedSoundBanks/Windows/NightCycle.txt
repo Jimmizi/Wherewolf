@@ -2,6 +2,7 @@ Event	ID	Name			Wwise Object Path	Notes
 	192791793	AmbienceNight			\Default Work Unit\AmbienceNight	
 	199733517	DiscoveryNight			\Default Work Unit\DiscoveryNight	
 	1268350941	GameOverNight			\Default Work Unit\GameOverNight	
+	1272348217	BackToGameTitle			\Default Work Unit\BackToGameTitle	
 	3028680700	MusicNight			\Default Work Unit\MusicNight	
 	3670738982	StartTheNight			\Default Work Unit\StartTheNight	
 

@@ -52,6 +52,9 @@ public class WerewolfGame : MonoBehaviour
 #endif
 
     [SerializeField]
+    public SceneField TitleScene;
+
+    [SerializeField]
     public SceneField WinScene;
 
     [SerializeField]
@@ -99,6 +102,7 @@ public class WerewolfGame : MonoBehaviour
         return true;
     }
 
+    [SerializeField]
     public GameObject TutorialGameObject;
     public bool IsTutorialOpen = false;
     public void SetTutorialOpen()
@@ -110,6 +114,25 @@ public class WerewolfGame : MonoBehaviour
     {
         TutorialGameObject?.SetActive(false);
         IsTutorialOpen = false;
+    }
+
+    [SerializeField]
+    public GameObject SummaryScreenGameObject;
+    public bool GoBackToTitleWhenAble = false;
+    public void GoBackToTitleScreen()
+    {
+        Service.Audio.PlayUIClick();
+
+        if (!GoBackToTitleWhenAble)
+        {
+            GoBackToTitleWhenAble = true;
+            Service.Audio.PlayBackToTitle();
+            Service.Transition.BlendIn();
+        }
+    }
+    public void SetSummaryScreenOpen()
+    {
+        SummaryScreenGameObject?.SetActive(true);
     }
 
     void Awake()
@@ -502,12 +525,20 @@ public class WerewolfGame : MonoBehaviour
         {
             case SubState.Start:
                 {
-
+                    SetSummaryScreenOpen();
+                    CurrentSubState++;
                     break;
                 }
             case SubState.Update:
                 {
-
+                    if(GoBackToTitleWhenAble)
+                    {
+                        if(Service.Transition.IsBlendedIn())
+                        {
+                            GoBackToTitleWhenAble = false;
+                            SceneManager.LoadScene(TitleScene.SceneName);
+                        }
+                    }
                     break;
                 }
             case SubState.Finish:
@@ -528,7 +559,8 @@ public class WerewolfGame : MonoBehaviour
             if (characterStaked.IsWerewolf)
             {
                 Debug.Log("Loaded win scene.");
-                CurrentState = GameState.GameSummaryWon;
+                NextState = GameState.GameSummaryWon;
+                CurrentSubState = SubState.Finish;
 
                 if (CurrentTimeOfDay == TOD.Day)
                 {
@@ -542,7 +574,8 @@ public class WerewolfGame : MonoBehaviour
             else
             {
                 Debug.Log("Loaded lose scene.");
-                CurrentState = GameState.GameSummaryLoss;
+                NextState = GameState.GameSummaryLoss;
+                CurrentSubState = SubState.Finish;
 
                 if (CurrentTimeOfDay == TOD.Day)
                 {
@@ -555,6 +588,13 @@ public class WerewolfGame : MonoBehaviour
             }
 
             Service.Transition.BlendOut();
+        }
+
+        if (CurrentState == GameState.GameSummaryWon
+            || CurrentState == GameState.GameSummaryLoss)
+        {
+            Debug.Log("Destroying Manager object at transition back to title");
+            Object.Destroy(gameObject);
         }
     }
 

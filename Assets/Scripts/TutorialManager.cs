@@ -21,7 +21,9 @@ public class TutorialManager : MonoBehaviour
 
     public void GoBackAPage()
     {
-        if(CurrentPage > 0)
+        Service.Audio.PlayUIClick();
+
+        if (CurrentPage > 0)
         {
             TutorialPageList[CurrentPage--].SetActive(false);
             TutorialPageList[CurrentPage].SetActive(true);
@@ -32,7 +34,9 @@ public class TutorialManager : MonoBehaviour
 
     public void GoForwardsAPage()
     {
-        if(CurrentPage == TutorialPageList.Count - 1)
+        Service.Audio.PlayUIClick();
+
+        if (CurrentPage == TutorialPageList.Count - 1)
         {
             CloseTutorial();
         }
@@ -73,6 +77,8 @@ public class TutorialManager : MonoBehaviour
 
     public void CloseTutorial()
     {
+        Service.Audio.PlayUIClick();
+
         gameObject.SetActive(false);
         CurrentPage = 0;
         GoPreviousButton.gameObject.SetActive(false);

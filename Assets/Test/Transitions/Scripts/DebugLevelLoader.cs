@@ -8,10 +8,14 @@ using Object = UnityEngine.Object;
 
 public class DebugLevelLoader : MonoBehaviour
 {
+    [SerializeField]
     public Animator TransitionAnimator;
+
+    [SerializeField]
     public Image TransitionImage;
 
-    public Object TargetScene;
+    [SerializeField]
+    public SceneField TargetScene;
 
     public float TransitionLength = 1.0f;
     public float TransitionSpeed = 1.0f;
@@ -20,10 +24,16 @@ public class DebugLevelLoader : MonoBehaviour
     public float ShaderBlendedOutCutoff;
 
     public bool AutoBlendOut = false;
+
+    private bool StartedPlayGameProcess = false;
+    private bool TriedPlayingGameBeforeTransitionEnd = false;
     private bool GoToSceneWhenBlendedIn = false;
 
     public List<Texture2D> GradientTextures;
     public int GradientIndexToUse;
+
+    [SerializeField]
+    public Slider MusicVolumeSlider;
 
     // Is the transition graphic not present
     public bool IsBlendedOut()
@@ -55,6 +65,30 @@ public class DebugLevelLoader : MonoBehaviour
         }
     }
 
+    public void StartGame()
+    {
+        AkSoundEngine.PostEvent("Click", this.gameObject);
+
+        if (StartedPlayGameProcess)
+        {
+            return;
+        }
+
+        StartedPlayGameProcess = true;
+
+        if (IsReadyForFadeInTransition())
+        {
+            TransitionAnimator.SetTrigger("EndLevel");
+        }
+        else
+        {
+            TriedPlayingGameBeforeTransitionEnd = true;
+        }
+
+        GoToSceneWhenBlendedIn = true;
+        
+    }
+
     public void SetGoToSceneWhenBlendedIn()
     {
         
@@ -64,6 +98,11 @@ public class DebugLevelLoader : MonoBehaviour
     public void PlayClickSound()
     {
         AkSoundEngine.PostEvent("Click", this.gameObject);
+    }
+
+    public void TriggerApplicationQuit()
+    {
+        Application.Quit();
     }
 
     private static Texture2D sm_TextureToUse;
@@ -103,12 +142,30 @@ public class DebugLevelLoader : MonoBehaviour
 
     void Update()
     {
+        if(MusicVolumeSlider)
+        {
+            //Service.MusicVolume = MusicVolumeSlider.value;
+        }
+
         if(GoToSceneWhenBlendedIn)
         {
-            if(IsReadyForFadeOutTransition())
+            if (TriedPlayingGameBeforeTransitionEnd)
             {
-                SceneManager.LoadScene(TargetScene.name);
-                GoToSceneWhenBlendedIn = false;
+                Debug.Log("Waiting for transition to be ready to blend in.");
+                if (IsReadyForFadeInTransition())
+                {
+                    TransitionAnimator.SetTrigger("EndLevel");
+                    TriedPlayingGameBeforeTransitionEnd = false;
+                }
+            }
+            else
+            {
+                Debug.Log(string.Format("Waiting for transition to blend in. Target scene: {0}", TargetScene != null ? TargetScene.SceneName : "invalid"));
+                if (IsReadyForFadeOutTransition() && TargetScene != null)
+                {
+                    SceneManager.LoadScene(TargetScene.SceneName);
+                    GoToSceneWhenBlendedIn = false;
+                }
             }
         }
 

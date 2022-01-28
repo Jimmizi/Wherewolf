@@ -1,6 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{1BE54F4F-908C-4C43-9A00-D12160220986}" SchemaVersion="103">
 	<SoundcasterSessions>
-		<WorkUnit Name="Default Work Unit" ID="{1BE54F4F-908C-4C43-9A00-D12160220986}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{1BE54F4F-908C-4C43-9A00-D12160220986}" PersistMode="Standalone">
+			<ChildrenList>
+				<SoundcasterSession Name="soundcaster_master" ID="{14A33ED5-BF03-4B52-9A3E-1BD844D4FA68}">
+					<ModuleList>
+						<Module>
+							<ObjectRef Name="MusicDayLoop" ID="{4492F738-1083-4906-BC04-4DEDCB118344}" WorkUnitID="{9277866B-E73D-4F74-B632-B6EF503A3632}"/>
+							<Position X="0" Y="0"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="MusicNightLoop" ID="{29E874DC-2EA5-4355-AD7F-D28D81DF2D3B}" WorkUnitID="{9277866B-E73D-4F74-B632-B6EF503A3632}"/>
+							<Position X="0" Y="1"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="AmbienceDay" ID="{0A94AB01-BD5D-4966-8A0F-4EE4F2F936FE}" WorkUnitID="{A81D3656-2325-46B3-9A64-828E3D72236B}"/>
+							<Position X="0" Y="2"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="AmbienceNight" ID="{74AF0224-1060-4EEE-9E98-4EFC5677CD60}" WorkUnitID="{A81D3656-2325-46B3-9A64-828E3D72236B}"/>
+							<Position X="0" Y="3"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="CreekFlow" ID="{A75548C0-305A-4B52-83D1-1BD1FD92ED11}" WorkUnitID="{A81D3656-2325-46B3-9A64-828E3D72236B}"/>
+							<Position X="0" Y="4"/>
+						</Module>
+					</ModuleList>
+					<RTPCValueList ShowAll="true">
+						<RTPCValue>
+							<GameParameterRef Name="master_volume" ID="{39DDC789-6147-40FB-9D1F-AE11D3A25273}"/>
+							<Value>50</Value>
+						</RTPCValue>
+					</RTPCValueList>
+					<CurrentStateList ShowAll="true"/>
+					<CurrentSwitchList ShowAll="true"/>
+				</SoundcasterSession>
+			</ChildrenList>
+		</WorkUnit>
 	</SoundcasterSessions>
 </WwiseDocument>

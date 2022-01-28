@@ -1,5 +1,6 @@
 Event	ID	Name			Wwise Object Path	Notes
 	345316221	AmbienceDay			\Default Work Unit\AmbienceDay	
+	1272348217	BackToGameTitle			\Default Work Unit\BackToGameTitle	
 	1437283993	GameOverDay			\Default Work Unit\GameOverDay	
 	2364012353	WinDay			\Default Work Unit\WinDay	
 	2538410761	DiscoveryDay			\Default Work Unit\DiscoveryDay	

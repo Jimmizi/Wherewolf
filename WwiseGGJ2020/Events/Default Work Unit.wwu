@@ -337,6 +337,54 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="BackToGameTitle" ID="{01C6D848-1FE4-4120-B77C-042906706604}">
+					<ChildrenList>
+						<Action Name="" ID="{37CA5FF4-CA3D-4E2E-B93B-84BB21A020E5}" ShortID="789111997">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+								<Property Name="FadeTime" Type="Real64" Value="2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="MusicDay" ID="{B2F82A73-7A9B-47F1-BFDE-B086F87C6F7F}" WorkUnitID="{9277866B-E73D-4F74-B632-B6EF503A3632}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{3939C154-9CC1-448D-92C2-6CC7E7282625}" ShortID="647449121">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+								<Property Name="FadeTime" Type="Real64" Value="2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="AmbienceDay" ID="{0A94AB01-BD5D-4966-8A0F-4EE4F2F936FE}" WorkUnitID="{A81D3656-2325-46B3-9A64-828E3D72236B}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{90F88551-ED1C-46F8-99FF-631FAE1E944B}" ShortID="47181371">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+								<Property Name="FadeTime" Type="Real64" Value="2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="AmbienceNight" ID="{74AF0224-1060-4EEE-9E98-4EFC5677CD60}" WorkUnitID="{A81D3656-2325-46B3-9A64-828E3D72236B}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{3BBAF789-3130-413C-B50B-0063A8E22BBB}" ShortID="82320542">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+								<Property Name="FadeTime" Type="Real64" Value="2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="MusicNight" ID="{6ADE9F7E-4D99-4313-BD8E-A0459D935384}" WorkUnitID="{9277866B-E73D-4F74-B632-B6EF503A3632}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

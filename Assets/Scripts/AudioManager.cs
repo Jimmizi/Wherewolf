@@ -148,7 +148,15 @@ public class AudioManager : MonoBehaviour
         WolfHowlEvent.Post(gameObject);
     }
 
-
+    [SerializeField]
+    AK.Wwise.Event BackToTitleEvent;
+    public void PlayBackToTitle()
+    {
+#if UNITY_EDITOR
+        if (DebugDisableAudio) return;
+#endif
+        BackToTitleEvent.Post(gameObject);
+    }
 
 
 

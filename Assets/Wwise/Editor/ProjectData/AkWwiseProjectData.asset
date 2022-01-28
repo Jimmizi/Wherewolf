@@ -38,7 +38,7 @@ MonoBehaviour:
     ParentPath: Master-Mixer Hierarchy\Default Work Unit
     guid: a3f17b30e30d854c8d5ab0bbd3d00d42
     GuidInternal: 
-    m_lastTime: -8585588864556785055
+    m_lastTime: -8585582755172405843
     List:
     - name: Master Audio Bus
       guid: d8a41415a61d2a41a17e75ca0c2149f3
@@ -66,7 +66,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: 27d1893c93ae55499ad02c34935af1e0
     GuidInternal: 
-    m_lastTime: -8585582875057556557
+    m_lastTime: -8585582792635576338
     List:
     - name: DayCycle
       guid: bc075cfc31de414393ea76b6a8e3e228
@@ -150,7 +150,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: 36187f795aed7446a84c500d367dfcf3
     GuidInternal: 
-    m_lastTime: -8585582869390560547
+    m_lastTime: -8585582792635746491
     List:
     - name: AmbienceDay
       guid: 5b6ed9ad00e9af4b8714261614d3ada4
@@ -186,6 +186,23 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 69.8125
       minDuration: 69.8125
+    - name: BackToGameTitle
+      guid: 48d8c601e41f2041b77c042906706604
+      id: 1272348217
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 36187f795aed7446a84c500d367dfcf3
+      - ElementName: BackToGameTitle
+        ObjectType: 3
+        guid: 48d8c601e41f2041b77c042906706604
+      Path: Events\Default Work Unit\BackToGameTitle
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
     - name: Click
       guid: b7a7a6a7fa68554d854264b17a611a74
       id: 1584507803
@@ -521,8 +538,22 @@ MonoBehaviour:
     ParentPath: Game Parameters\Default Work Unit
     guid: cf20ea7f0cb26a4f822746d353e6ee18
     GuidInternal: 
-    m_lastTime: -8585588864556735009
-    List: []
+    m_lastTime: -8585582755173563482
+    List:
+    - name: master_volume
+      guid: 89c7dd394761fb409d1fae11d3a25273
+      id: 4179668880
+      PathAndIcons:
+      - ElementName: Game Parameters
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: cf20ea7f0cb26a4f822746d353e6ee18
+      - ElementName: master_volume
+        ObjectType: 13
+        guid: 89c7dd394761fb409d1fae11d3a25273
+      Path: Game Parameters\Default Work Unit\master_volume
   StateWwu:
   - PhysicalPath: States\Default Work Unit.wwu
     PathAndIcons:
@@ -566,7 +597,7 @@ MonoBehaviour:
     m_lastTime: -8585588864557360343
     List: []
   ExpandedFileSystemItemIds: 
-  ExpandedWaapiItemIds: 050000000600000007000000080000001c0000001d0000001e0000001f00000020000000
+  ExpandedWaapiItemIds: 050000000600000007000000080000001c0000001d0000001e0000001f0000002000000021000000
   AutoSyncSelection: 0
   autoPopulateEnabled: 1
   currentDataSource: 0
