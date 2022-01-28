@@ -64,6 +64,9 @@ public class WerewolfGame : MonoBehaviour
     [SerializeField]
     public Text DayCounterText;
 
+    [SerializeField]
+    public Text SummaryScreenReason;
+
     public GameState CurrentState = GameState.GeneratePopulation;
     private GameState NextState = InvalidState;
 
@@ -303,7 +306,7 @@ public class WerewolfGame : MonoBehaviour
 
                     if (bFailed)
                     {
-                        GameOverReason = "Took too long. The werewolf, sensing you were closing in fled the town.";
+                        GameOverReason = "Took too long. The werewolf, sensing you were closing in, fled the town.";
                         startedFailLoadSceneAfterDayExpiry = false;
                     }
 
@@ -674,6 +677,11 @@ public class WerewolfGame : MonoBehaviour
                 }
             }
 
+            if (SummaryScreenReason)
+            {
+                SummaryScreenReason.text = GameOverReason;
+            }
+
             Service.Transition.BlendOut();
         }
 
@@ -687,6 +695,11 @@ public class WerewolfGame : MonoBehaviour
             // Play game over day as we lose at the end of the last night
             Service.Audio.PlayGameOverNight();
             Service.Transition.BlendOut();
+
+            if(SummaryScreenReason)
+            {
+                SummaryScreenReason.text = GameOverReason;
+            }
         }
 
         if (CurrentState == GameState.GameSummaryWon
