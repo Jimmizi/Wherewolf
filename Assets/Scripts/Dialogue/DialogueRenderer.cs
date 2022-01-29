@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
-
+using UnityEngine.UI.Extensions;
 using DialogueActionEmoteMap = System.Collections.Generic.Dictionary<DialogueActionType, Emote.EmoteSubType>;
 
 public class DialogueRenderer : MonoBehaviour {
@@ -20,6 +20,7 @@ public class DialogueRenderer : MonoBehaviour {
     public Transform choiceButtonHolder;
     public TextMeshProUGUI speakerText;
     public EmoteTextRenderer sentenceText;
+    public DropDownList charactersDropdown;
     
     private bool _linePlaying;
     
@@ -49,12 +50,13 @@ public class DialogueRenderer : MonoBehaviour {
         container.gameObject.SetActive(true);
         OnConversationStart.Invoke();
         StartCoroutine(DisplayDialogue(DialogueActionType.IssueGreeting, null));
+        PopulateCharactersDropdown();
         DisplayChoices();
     }
 
     private void EndConversation() {
         ClearDialogueBox(true);
-        container.gameObject.SetActive(true);
+        container.gameObject.SetActive(false);
         OnConversationEnd.Invoke();
     }
     
@@ -83,6 +85,17 @@ public class DialogueRenderer : MonoBehaviour {
         return Dialogue.FromClue(clue);
     }
 
+    private void PopulateCharactersDropdown() {
+        if (charactersDropdown == null) return;
+        
+        charactersDropdown.ResetItems();
+
+        foreach (Character character in Service.Population.ActiveCharacters) {
+            charactersDropdown.AddItem(new DropDownListItem<Character>(data: character));
+        }
+        //charactersDropdown.AddItem(new DropDownListItem<Character>(data: Service.Population.ActiveCharacters[0]));
+    }
+    
     /// <summary>
     /// The DisplayDialogue coroutine displays the dialogue character by character in a scrolling manner.
     /// </summary>
@@ -114,7 +127,15 @@ public class DialogueRenderer : MonoBehaviour {
     
     private void DoAction(DialogueActionType dialogueActionType, Character relatedCharacter) {
         ClearDialogueBox(true);
-        StartCoroutine(DisplayDialogue(dialogueActionType, relatedCharacter));
+
+        switch (dialogueActionType) {
+            case DialogueActionType.IssueFarewell:
+                EndConversation();
+                break;
+            default:
+                StartCoroutine(DisplayDialogue(dialogueActionType, relatedCharacter));
+                break;
+        }
     }
 
     private static readonly DialogueActionEmoteMap _dialogueActions = new DialogueActionEmoteMap() {
@@ -127,18 +148,31 @@ public class DialogueRenderer : MonoBehaviour {
     };
     
     protected void DisplayChoices() {
-        _choiceButtonInstances = new List<GameObject>();
-
-        foreach (KeyValuePair<DialogueActionType, Emote.EmoteSubType> dialogueAction in _dialogueActions) {
-            GameObject choiceButtonInstance = Instantiate(choiceButton, choiceButtonHolder);
-            Button button = choiceButtonInstance.GetComponent<Button>();
-            EmoteRenderer emoteRenderer = choiceButtonInstance.GetComponentInChildren<EmoteRenderer>();
+        if (_choiceButtonInstances == null) {
+            _choiceButtonInstances = new List<GameObject>();
             
-            _choiceButtonInstances.Add(choiceButtonInstance.gameObject);
-            emoteRenderer.Emote = new Emote(dialogueAction.Value);
-            button.onClick.AddListener(() => {
-                DoAction(dialogueAction.Key, Service.Population.GetRandomCharacter());
-            });
+            foreach (KeyValuePair<DialogueActionType, Emote.EmoteSubType> dialogueAction in _dialogueActions) {
+                GameObject choiceButtonInstance = Instantiate(choiceButton, choiceButtonHolder);
+                Button button = choiceButtonInstance.GetComponent<Button>();
+                EmoteRenderer emoteRenderer = choiceButtonInstance.GetComponentInChildren<EmoteRenderer>();
+
+                _choiceButtonInstances.Add(choiceButtonInstance.gameObject);
+                emoteRenderer.Emote = new Emote(dialogueAction.Value);
+                button.onClick.AddListener(() => {
+                    Debug.LogFormat("The player has chosen dialog action {0}", dialogueAction.Key);
+                    DoAction(dialogueAction.Key, Service.Population.GetRandomCharacter());
+                });
+            }
+        }
+
+        foreach (GameObject choiceButtonInstance in _choiceButtonInstances) {
+            choiceButtonInstance.SetActive(true);
+        }
+    }
+    
+    protected void HideChoices() {
+        foreach (GameObject choiceButtonInstance in _choiceButtonInstances) {
+            choiceButtonInstance.SetActive(false);
         }
     }
     
@@ -151,8 +185,9 @@ public class DialogueRenderer : MonoBehaviour {
         if (!newConversation) return;
         if (_choiceButtonInstances == null) return;
         
-        foreach (GameObject buttonInstance in _choiceButtonInstances) {
-            Destroy(buttonInstance);
-        }
+        //HideChoices();
+        // foreach (GameObject buttonInstance in _choiceButtonInstances) {
+        //     Destroy(buttonInstance);
+        // }
     }
 }

@@ -590,7 +590,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1ae1cc20172b48a39c8b5f8edc68888, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HeadSpriteRenderer: {fileID: 0}
+  HeadSpriteRenderer: {fileID: 6274378826509241156}
   EarsSpriteRenderer: {fileID: 6921341041605924595}
   EyesSpriteRenderer: {fileID: 389297071827275885}
   NoseSpriteRenderer: {fileID: 712640182646639997}
