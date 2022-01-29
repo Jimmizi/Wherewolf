@@ -127,6 +127,8 @@ public class PhaseSolver : MonoBehaviour
             CurrentPhase.Victim.IsVictim = false;
             CurrentPhase.Victim.DeathAnnounced = false;
 
+            Service.Population.PhysicalCharacterMap[CurrentPhase.Victim].ClearDestination();
+
             Service.Population.iNumberOfCharactersDead++;
         }
     }

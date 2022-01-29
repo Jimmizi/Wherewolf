@@ -16,6 +16,7 @@ public static class Service
     public static OptionsManager Options;
     public static TransitionScreenManager TransitionScreen;
     public static LocationManager Location;
+    public static LightingManager Lighting;
 
     public static float MusicVolume = 0.75f;
 

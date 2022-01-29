@@ -122,9 +122,10 @@ public class WerewolfGame : MonoBehaviour
     public void GoBackToTitleScreen()
     {
         Service.Audio.PlayUIClick();
-
+        Debug.Log("Going back to title pressed");
         if (!GoBackToTitleWhenAble)
         {
+            Service.Audio.PlayUIClick();
             GoBackToTitleWhenAble = true;
             Service.Audio.PlayBackToTitle();
             Service.Transition.BlendIn();
@@ -423,16 +424,30 @@ public class WerewolfGame : MonoBehaviour
 
                                 c.OnTimeOfDayPhaseShift();
                                 c.Update();
-                                c.TryWarpToTaskLocation();
+
+                                // half and half, put people already in place, and have the other half travel, so
+                                //  things aren't super idle when starting a phase
+                                if (UnityEngine.Random.Range(0.0f, 100.0f) < 50.0f)
+                                {
+                                    c.TryWarpToTaskLocation();
+                                }
+                                else
+                                {
+                                    Service.Population.PhysicalCharacterMap[c].gameObject.transform.position = 
+                                        Service.Location.GetRandomNavmeshPositionInLocation(Task.GetRandomLocation());
+                                }
 
                                 if(c.IsAlive && c.IsSleeping())
                                 {
                                     Service.Population.PhysicalCharacterMap[c].gameObject.SetActive(false);
                                 }
                                 // Hide ghosts once they've given their clue last phase
-                                else if(!c.IsAlive && c.HasGhostGivenClue)
+                                else if(!c.IsAlive)
                                 {
-                                    Service.Population.PhysicalCharacterMap[c].gameObject.SetActive(false);
+                                    if (c.HasGhostGivenClue || CurrentTimeOfDay == TOD.Night)
+                                    { 
+                                        Service.Population.PhysicalCharacterMap[c].gameObject.SetActive(false);
+                                    }
                                 }
                             }
 
@@ -440,10 +455,12 @@ public class WerewolfGame : MonoBehaviour
                             if (CurrentTimeOfDay == TOD.Day)
                             {
                                 Service.Player.StartDay();
+                                Service.Lighting.SetDay();
                             }
                             else
                             {
                                 Service.Player.StartNight();
+                                Service.Lighting.SetNight();
                             }
                         }
 
@@ -690,7 +707,8 @@ public class WerewolfGame : MonoBehaviour
                 {
                     if(GoBackToTitleWhenAble)
                     {
-                        if(Service.Transition.IsBlendedIn())
+                        Debug.Log("Waiting for transition to blend in....");
+                        if (Service.Transition.IsBlendedIn())
                         {
                             GoBackToTitleWhenAble = false;
                             SceneManager.LoadScene(TitleScene.SceneName);
@@ -773,6 +791,7 @@ public class WerewolfGame : MonoBehaviour
             || CurrentState == GameState.GameSummaryLoss)
         {
             Debug.Log("Destroying Manager object at transition back to title");
+            SceneManager.sceneLoaded -= OnSceneLoaded;
             Object.Destroy(gameObject);
         }
     }
