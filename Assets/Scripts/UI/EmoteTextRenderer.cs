@@ -51,6 +51,40 @@ public class EmoteTextRenderer : MonoBehaviour {
 
         ApplyMaxVisibleCharacters();
     }
+
+    public void SortEmotes(float fWidth)
+    {
+        if (_emoteRenderers.Count > 1)
+        {
+            for (int i = 1; i < _emoteRenderers.Count; ++i)
+            {
+                _emoteRenderers[i].transform.localPosition += new Vector3(i * fWidth, 0.0f, 0.0f);
+            }
+        }
+    }
+
+    public void ClearEmotes(bool makeNew = false)
+    {
+        if(_emotes != null)
+        {
+            _emotes.Clear();
+        }
+
+        if(makeNew)
+        {
+            _emotes = new List<Emote>();
+        }
+    }
+
+    public void AddEmoteToRender(Emote e)
+    {
+        _emotes.Add(e);
+    }
+
+    public void RenderWithoutEmotes()
+    {
+        Render();
+    }
     
     public void Render(List<Emote> emotes) {
         _emotes = emotes;

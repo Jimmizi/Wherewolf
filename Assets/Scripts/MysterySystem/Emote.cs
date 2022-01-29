@@ -97,6 +97,8 @@ public class Emote
         Specific_Werewolf,
         Specific_Approves,
         Specific_Disapproves,
+        Specific_TalkAction,
+        Specific_StakeAction,
 
         Gossip_RelationshipKiss,
         Gossip_RelationshipFight,
@@ -276,6 +278,8 @@ public class Emote
             case EmoteSubType.Specific_Werewolf:
             case EmoteSubType.Specific_Approves:
             case EmoteSubType.Specific_Disapproves:
+            case EmoteSubType.Specific_TalkAction:
+            case EmoteSubType.Specific_StakeAction:
                 return EmoteType.Specific;
 
             case EmoteSubType.Gossip_RelationshipKiss:

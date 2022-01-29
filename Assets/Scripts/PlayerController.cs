@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField]
     public GameObject CameraBoundsCube;
+
+    [SerializeField]
+    public EmoteTextRenderer ChooseActionRenderer;
 
     [SerializeField]
     public string ForwardsBackwardsMovementKey = "Vertical";
@@ -12,8 +16,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     public string LeftRightMovementKey = "Horizontal";
 
-    public float SpeedHorizontal = 10.0f;
-    public float SpeedVertical = 10.0f;
+    public float SpeedHorizontal = 0.2f;
+    public float SpeedVertical = 0.2f;
 
     public float FallOffSpeed = 10.0f;
 
@@ -23,6 +27,8 @@ public class PlayerController : MonoBehaviour
 
     private Vector2 vMinBounds;
     private Vector2 vMaxBounds;
+
+    private bool bPopulatedActionEmotes = false;
 
     // Start is called before the first frame update
     void Start()
@@ -43,6 +49,7 @@ public class PlayerController : MonoBehaviour
             vMinBounds = new Vector2(50f,50f);
         }
 
+        
     }
 
     // Update is called once per frame
@@ -51,6 +58,16 @@ public class PlayerController : MonoBehaviour
         if (Service.Game.CurrentState == WerewolfGame.GameState.PlayerInvestigateDay
             || Service.Game.CurrentState == WerewolfGame.GameState.PlayerInvestigateNight)
         {
+            if(!bPopulatedActionEmotes)
+            {
+                bPopulatedActionEmotes = true;
+                ChooseActionRenderer.ClearEmotes(true);
+                ChooseActionRenderer.AddEmoteToRender(Service.InfoManager.EmoteMapBySubType[Emote.EmoteSubType.Specific_TalkAction]);
+                ChooseActionRenderer.AddEmoteToRender(Service.InfoManager.EmoteMapBySubType[Emote.EmoteSubType.Specific_StakeAction]);
+                ChooseActionRenderer.RenderWithoutEmotes();
+                ChooseActionRenderer.SortEmotes(125f);
+            }
+
             if (Input.GetButton(ForwardsBackwardsMovementKey) || Input.GetButton(LeftRightMovementKey))
             {
                 float vert = Input.GetAxis(ForwardsBackwardsMovementKey) * SpeedVertical;

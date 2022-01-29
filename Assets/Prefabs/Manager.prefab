@@ -2291,6 +2291,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   customNames: []
   emoteList: []
+  AvailableOccupations: 
 --- !u!114 &4957857799237703566
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2319,7 +2320,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dde6160b284df8d47ad45794569a4faa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DebugYieldInGeneration: 0
+  DebugYieldInGeneration: 1
   CharacterHasOccupationChance: 50
   WanderRandomTimeMin: 5
   WanderRandomTimeMax: 15
@@ -2352,7 +2353,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ced30f6677b812747b8e994b58077a24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DisplayDebug: 1
+  DisplayDebug: 0
   TitleScene:
     sceneAsset: {fileID: 102900000, guid: a7e199a351dbcd04ea1a4d4676ba6995, type: 3}
     sceneName: Scenes/Title
