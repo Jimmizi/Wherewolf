@@ -9,19 +9,23 @@ public class CaseFilePageRenderer : MonoBehaviour, IDragHandler, IBeginDragHandl
     public RectTransform Content;
 
     private float _contentSize;
-    private List<RectTransform> _sections;
+    private List<RectTransform> _sections = new List<RectTransform>();
 
     private RectTransform _rectTransform;
     private Vector2 _lastMousePosition;
     private Canvas _canvas;
-    private float _canvasScale;
 
-    private void Start() {
+    private void Awake() {
         _sections = new List<RectTransform>();
         _contentSize = 0f;
-        _canvas = GetComponentInParent<Canvas>();
-        _canvasScale = (_canvas != null) ? _canvas.scaleFactor : 1f;
-        _rectTransform = GetComponent<RectTransform>();
+
+        if (_canvas == null) {
+            _canvas = GetComponentInParent<Canvas>();
+        }
+
+        if (_rectTransform == null) {
+            _rectTransform = GetComponent<RectTransform>();
+        }
     }
 
     public void AddSection(RectTransform section) {
@@ -29,6 +33,10 @@ public class CaseFilePageRenderer : MonoBehaviour, IDragHandler, IBeginDragHandl
         section.SetParent(Content, false);
         /* TODO: Add dynamic spacing, as set in VerticalLayoutGroup */
         _contentSize += section.rect.height + 20f;
+    }
+
+    public void SetCanvas(Canvas canvas) {
+        _canvas = canvas;
     }
 
     public bool TryAddSection(RectTransform section) {

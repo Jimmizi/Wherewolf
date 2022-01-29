@@ -82,7 +82,7 @@ public class Memo : MonoBehaviour
                 highlight.SetActive(value.highlighted);
             }
 
-            bool useEmotes = false;
+            bool useEmotes = true;
             emotes = value.emotes;
             if (emoteRenderer)
             {
