@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -7,12 +8,21 @@ public class TooltipManager : MonoBehaviour {
     public GameObject TooltipPrefab;
     public Canvas TooltipCanvas;
 
+    private List<Tooltip> _tooltips;
+    private Tooltip _activeTooltip;
+
+    private Dictionary<Emote.EmoteSubType, Tooltip> _emoteTooltips;
+    private static readonly Vector3 offset = new Vector3(0f, 40f, 0f);
+
     protected void Awake() {
         if (Instance != null && Instance != this) {
             Destroy(gameObject);
         } else {
             Instance = this;
         }
+
+        _tooltips = new List<Tooltip>();
+        _emoteTooltips = new Dictionary<Emote.EmoteSubType, Tooltip>();
     }
 
     public Tooltip NewTooltip() {
@@ -22,15 +32,44 @@ public class TooltipManager : MonoBehaviour {
         
         GameObject gameObject = Instantiate(TooltipPrefab, TooltipCanvas.transform);
         Tooltip tooltip = gameObject.GetComponent<Tooltip>();
+        _tooltips.Add(tooltip);
         return tooltip;
     }
 
     public void ShowTooltip(Tooltip tooltip, Vector3 position) {
         tooltip.gameObject.SetActive(true);
-        tooltip.transform.position = position + new Vector3(0f, 40f, 0f);
+        tooltip.transform.position = position + offset;
+        HideActiveTooltip();
+        _activeTooltip = tooltip;
     }
-
+    
     public void HideTooltip(Tooltip tooltip) {
         tooltip.gameObject.SetActive(false);
+    }
+    
+    public void ShowEmoteTooltip(Emote emote, Vector3 position) {
+        Tooltip tooltip;
+        
+        if (!_emoteTooltips.ContainsKey(emote.SubType)) {
+            tooltip = NewTooltip();
+            tooltip.Title = "EMOTE";
+            tooltip.Description = emote.SubType.ToString();
+            _emoteTooltips[emote.SubType] = tooltip;
+        } else {
+            tooltip = _emoteTooltips[emote.SubType];
+        }
+        
+        tooltip.gameObject.SetActive(true);
+        tooltip.transform.position = position + offset;
+        
+        HideActiveTooltip();
+        _activeTooltip = tooltip;
+    }
+
+    public void HideActiveTooltip() {
+        if (_activeTooltip != null) {
+            _activeTooltip.gameObject.SetActive(false);
+            _activeTooltip = null;
+        }
     }
 }
