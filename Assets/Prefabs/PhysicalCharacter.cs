@@ -5,7 +5,20 @@ using UnityEngine.AI;
 
 public class PhysicalCharacter : MonoBehaviour
 {
-    public Character AssociatedCharacter;
+    private Character _associatedChar;
+    public Character AssociatedCharacter
+    {
+        get => _associatedChar;
+        set
+        {
+            _associatedChar = value;
+            var links = GetComponentsInChildren<CharacterLink>();
+            foreach(var l in links)
+            {
+                l.LinkedCharacter = value;
+            }
+        }
+    }
 
     private NavMeshAgent navMesh;
 
@@ -16,7 +29,11 @@ public class PhysicalCharacter : MonoBehaviour
         set
         {
             _destination = value;
-            navMesh.destination = value;
+
+            if (gameObject.activeSelf)
+            {
+                navMesh.destination = value;
+            }
         }
     }
 

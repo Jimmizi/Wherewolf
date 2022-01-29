@@ -22,9 +22,6 @@ public class LightingManager : MonoBehaviour
             r.color = DayColor;
         }
 
-        //Shader shader = Shader.Find("HDRP/Lit");
-        //rend.material.SetColor("_BaseColor", red);
-
         foreach (var go in ExtraMaterials)
         {
             go.GetComponent<Renderer>().material.SetColor("_BaseColor", DayColor);
@@ -35,6 +32,15 @@ public class LightingManager : MonoBehaviour
     {
         foreach (var r in allSpriteRenderers)
         {
+            var linkedChar = r.GetComponent<CharacterLink>();
+            if(linkedChar)
+            {
+                if (!linkedChar.LinkedCharacter.IsAlive)
+                {
+                    continue;
+                }
+            }
+
             r.color = NightColor;
         }
 
