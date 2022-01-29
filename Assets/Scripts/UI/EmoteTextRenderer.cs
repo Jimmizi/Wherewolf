@@ -17,7 +17,7 @@ public class EmoteTextRenderer : MonoBehaviour {
     
     [SerializeField] private int _maxVisibleCharacters;
 
-    private List<EmoteRenderer> _emoteRenderers;
+    private List<EmoteRenderer> _emoteRenderers = new List<EmoteRenderer>();
     private List<Emote> _emotes;
     
     private void Awake() {
@@ -92,8 +92,12 @@ public class EmoteTextRenderer : MonoBehaviour {
     }
 
     public void Clear() {
-        foreach (EmoteRenderer emoteRenderer in _emoteRenderers) {
-            emoteRenderer.gameObject.SetActive(false);
+        if (_emoteRenderers != null)
+        {
+            foreach (EmoteRenderer emoteRenderer in _emoteRenderers)
+            {
+                emoteRenderer.gameObject.SetActive(false);
+            }
         }
     }
 }
