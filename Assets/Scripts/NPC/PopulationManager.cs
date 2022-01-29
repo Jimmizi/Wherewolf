@@ -1057,7 +1057,7 @@ public class PopulationManager : MonoBehaviour
 
         foreach(var t in schedule)
         {
-            t.UpdatePosition(true);
+            t.UpdatePosition();
         }
 
         return schedule;
