@@ -55,41 +55,17 @@ public class MemoPile : MonoBehaviour, IDropHandler, IBeginDragHandler, IDragHan
         {
             if (createNew)
             {
-                Memo newMemo = Instantiate(memoPrefab, memoHolder);
-                MemoData memoData = new MemoData();
-                memoData.position = rectTransform.anchoredPosition;
-                memoData.size = new Vector2(300, 256);
-                memoData.highlighted = false;
-                memoData.editable = true;
-                memoData.memoId = baseNewId;
-                baseNewId++;
-
-                newMemo.Data = memoData;
+                Memo newMemo = MemoFactory.instance.CreateNew(rectTransform.anchoredPosition, false);
                 eventData.pointerDrag = newMemo.gameObject;
             }
         }
         else
         {
-            Memo newMemo = Instantiate(memoPrefab, memoHolder);
-            MemoData memoData = memos[memos.Count - 1];
-            memoData.position = rectTransform.anchoredPosition;
-            newMemo.Data = memoData;
+            Memo newMemo = MemoFactory.instance.CreateFromData(memos[memos.Count - 1], rectTransform.anchoredPosition);
             memos.RemoveAt(memos.Count - 1);
 
             eventData.pointerDrag = newMemo.gameObject;
         }
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void OnDrag(PointerEventData eventData)
