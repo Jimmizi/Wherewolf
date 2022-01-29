@@ -899,6 +899,26 @@ public class PopulationManager : MonoBehaviour
 
         Service.InfoManager.RenameCharacterEmotes();
 
+#if UNITY_EDITOR
+        foreach(var c in ActiveCharacters)
+        {
+            for (int t = 0; t < Character.DescriptorMax; ++t)
+            {
+                var desc = (Character.Descriptor)t;
+
+                if (desc == Character.Descriptor.Occupation)
+                {
+                    continue;
+                }
+
+                if(c.Descriptors[desc].Count == 0)
+                {
+                    Debug.LogWarning(string.Format("FAILED to add descriptor {0} for character [{1}] {2}", desc.ToString(), c.Index, c.Name));
+                }
+            }
+        }
+#endif
+
         bDoneCharacterGeneration = true;
     }
 
@@ -1017,6 +1037,21 @@ public class PopulationManager : MonoBehaviour
             {
                 var iRandTask = UnityEngine.Random.Range(0, 3);
 
+                // Try set a bunch to just sleep
+                if(i == 0 && !bIsDaySchedule && iNumberImmediatelySleeping < 5)
+                {
+                    if(UnityEngine.Random.Range(0.0f, 100.0f) < 50)
+                    {
+                        iRandTask = 2;
+                    }
+                }
+                
+                // Don't allow characters who aren't immediately sleeping to sleep
+                if(i > 0 && !bIsDaySchedule && iRandTask == 2)
+                {
+                    iRandTask = UnityEngine.Random.Range(0, 2);
+                }
+
                 // Fail-safe so that we don't just get a lot of characters immediately going to bed at night
                 if(i == 0 && !bIsDaySchedule && iNumberImmediatelySleeping >= 5)
                 {
@@ -1048,7 +1083,6 @@ public class PopulationManager : MonoBehaviour
                             iNumberImmediatelySleeping++;
                         }
                         
-                        // If a sleep task is given, always end the schedule on this no matter how long the schedule should be
                         break;
                     }
                 }

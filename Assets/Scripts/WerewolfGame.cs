@@ -122,9 +122,10 @@ public class WerewolfGame : MonoBehaviour
     public void GoBackToTitleScreen()
     {
         Service.Audio.PlayUIClick();
-
+        Debug.Log("Going back to title pressed");
         if (!GoBackToTitleWhenAble)
         {
+            Service.Audio.PlayUIClick();
             GoBackToTitleWhenAble = true;
             Service.Audio.PlayBackToTitle();
             Service.Transition.BlendIn();
@@ -358,7 +359,7 @@ public class WerewolfGame : MonoBehaviour
                         }
 
                         Service.TransitionScreen.ShowPanel(0.5f);
-                        Service.TransitionScreen.PerformTransition(TimeTransitionDuration);
+                        Service.TransitionScreen.PerformTransition(TimeTransitionDuration * 0.7f);
                         startedTransitionFadeOut = false;
                     }
 
@@ -419,19 +420,47 @@ public class WerewolfGame : MonoBehaviour
 
                             foreach (var c in Service.Population.ActiveCharacters)
                             {
+                                Service.Population.PhysicalCharacterMap[c].gameObject.SetActive(true);
+
                                 c.OnTimeOfDayPhaseShift();
                                 c.Update();
-                                c.TryWarpToTaskLocation();
+
+                                // half and half, put people already in place, and have the other half travel, so
+                                //  things aren't super idle when starting a phase
+                                if (UnityEngine.Random.Range(0.0f, 100.0f) < 50.0f)
+                                {
+                                    c.TryWarpToTaskLocation();
+                                }
+                                else
+                                {
+                                    Service.Population.PhysicalCharacterMap[c].gameObject.transform.position = 
+                                        Service.Location.GetRandomNavmeshPositionInLocation(Task.GetRandomLocation());
+                                }
+
+                                if(c.IsAlive && c.IsSleeping())
+                                {
+                                    Service.Population.PhysicalCharacterMap[c].gameObject.SetActive(false);
+                                }
+                                // Hide ghosts once they've given their clue last phase
+                                else if(!c.IsAlive)
+                                {
+                                    if (c.HasGhostGivenClue || CurrentTimeOfDay == TOD.Night)
+                                    { 
+                                        Service.Population.PhysicalCharacterMap[c].gameObject.SetActive(false);
+                                    }
+                                }
                             }
 
                             // Will fade in the action icons
                             if (CurrentTimeOfDay == TOD.Day)
                             {
                                 Service.Player.StartDay();
+                                Service.Lighting.SetDay();
                             }
                             else
                             {
                                 Service.Player.StartNight();
+                                Service.Lighting.SetNight();
                             }
                         }
 
@@ -678,7 +707,8 @@ public class WerewolfGame : MonoBehaviour
                 {
                     if(GoBackToTitleWhenAble)
                     {
-                        if(Service.Transition.IsBlendedIn())
+                        Debug.Log("Waiting for transition to blend in....");
+                        if (Service.Transition.IsBlendedIn())
                         {
                             GoBackToTitleWhenAble = false;
                             SceneManager.LoadScene(TitleScene.SceneName);
@@ -761,6 +791,7 @@ public class WerewolfGame : MonoBehaviour
             || CurrentState == GameState.GameSummaryLoss)
         {
             Debug.Log("Destroying Manager object at transition back to title");
+            SceneManager.sceneLoaded -= OnSceneLoaded;
             Object.Destroy(gameObject);
         }
     }
@@ -831,7 +862,7 @@ public class WerewolfGame : MonoBehaviour
     Vector2 vStakeSelectionScrollPosition = new Vector2();
     Vector2 vClueSelectionScrollPosition = new Vector2();
     Vector2 vPLayerCluesScrollPosition = new Vector2();
-    bool chosenToStake = false;
+    bool DebugChosenToStake = false;
 
     private void OnGUI()
     {
@@ -879,7 +910,7 @@ public class WerewolfGame : MonoBehaviour
         // Choose to stake a character
         vStakeSelectionScrollPosition = GUI.BeginScrollView(new Rect(15, 45, 200, fHeight - 10), vStakeSelectionScrollPosition, new Rect(0, 0, 190, 1000));
         {
-            if (!chosenToStake)
+            if (!DebugChosenToStake)
             {
                 Vector2 vPosition = new Vector2(5, 5);
                 GUI.Label(new Rect(vPosition.x, vPosition.y, 200, 24), "Select a character to stake");
@@ -895,7 +926,7 @@ public class WerewolfGame : MonoBehaviour
                     if (GUI.Button(new Rect(vPosition.x, vPosition.y, 140, 24), string.Format("[{0}] {1}", c.Index, c.Name)))
                     {
                         ProcessPlayerActionStakeCharacter(c);
-                        chosenToStake = true;
+                        DebugChosenToStake = true;
                     }
                     vPosition.y += 28;
                 }
@@ -906,7 +937,7 @@ public class WerewolfGame : MonoBehaviour
         // Choose to talk to character
         vClueSelectionScrollPosition = GUI.BeginScrollView(new Rect(220, 45, 200, fHeight - 10), vClueSelectionScrollPosition, new Rect(0, 0, 190, 1000));
         {
-            if (!chosenToStake)
+            if (!DebugChosenToStake)
             {
                 Vector2 vPosition = new Vector2(5, 5);
                 GUI.Label(new Rect(vPosition.x, vPosition.y, 200, 24), "Select a character to talk to");

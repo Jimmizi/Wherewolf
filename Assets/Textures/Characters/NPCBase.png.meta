@@ -145,10 +145,10 @@ TextureImporter:
       name: NPCBase_1
       rect:
         serializedVersion: 2
-        x: 26
-        y: 588
-        width: 335
-        height: 149
+        x: 16
+        y: 576
+        width: 361
+        height: 161
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,10 +166,10 @@ TextureImporter:
       name: NPCBase_2
       rect:
         serializedVersion: 2
-        x: 385
-        y: 573
-        width: 362
-        height: 173
+        x: 401
+        y: 580
+        width: 334
+        height: 156
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}

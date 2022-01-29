@@ -179,11 +179,46 @@ public class Character
 
     public bool HasGivenAClueThisPhase = false;
 
+    public bool IsBeingTalkedTo = false;
+    private Vector3 vPreviousDestination = new Vector3();
+    public void SetBeingTalkedTo()
+    {
+        IsBeingTalkedTo = true;
+
+        PhysicalCharacter pc = Service.Population.PhysicalCharacterMap[this];
+
+        vPreviousDestination = pc.CurrentDestination;
+        pc.CurrentDestination = pc.gameObject.transform.position;
+    }
+    public void ReleaseFromBeingTalkedTo()
+    {
+        IsBeingTalkedTo = false;
+
+        PhysicalCharacter pc = Service.Population.PhysicalCharacterMap[this];
+        pc.CurrentDestination = vPreviousDestination;
+    }
+
+
+
     // Don't clear this - ghost can only give the clue once and then will disappear or remain static for the rest of the game
     public bool HasGhostGivenClue = false;
 
     private int currentTaskIndex = 0;
 
+    public bool HasDiscoveredName()
+    {
+        return Service.InfoManager.EmoteMapBySubType[GetHeadshotEmoteSubType()].HasDiscovered;
+    }
+
+    public void SetNameDiscovered()
+    {
+        Service.InfoManager.EmoteMapBySubType[GetHeadshotEmoteSubType()].HasDiscovered = true;
+    }
+
+    public string GetName()
+    {
+        return HasDiscoveredName() ? Name : "???";
+    }
 
     public bool CanTalkTo()
     {
@@ -427,6 +462,39 @@ public class Character
         return true;
     }
 
+    public bool IsSleeping()
+    {
+        if(CurrentTask != null)
+        {
+            if(CurrentTask.Type == Task.TaskType.Sleep)
+            {
+                return true;
+            }
+        }
+
+        if (Service.Game.CurrentTimeOfDay == WerewolfGame.TOD.Day)
+        {
+            if (TaskSchedule?.DayTasks != null && TaskSchedule.DayTasks.Count > 0)
+            {
+                if (TaskSchedule.DayTasks[0].Type == Task.TaskType.Sleep)
+                {
+                    return true;
+                }
+            }
+        }
+        if (Service.Game.CurrentTimeOfDay == WerewolfGame.TOD.Night)
+        {
+            if (TaskSchedule?.NightTasks != null && TaskSchedule.NightTasks.Count > 0)
+            {
+                if (TaskSchedule.NightTasks[0].Type == Task.TaskType.Sleep)
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
     public bool WillTravelThroughLocationDuringTasks(WerewolfGame.TOD eTod, List<int> iLocations, out int iLocSeenIn)
     {
         iLocSeenIn = 0;
@@ -561,12 +629,26 @@ public class Character
             }
         }
 
-        CurrentTask? .UpdatePosition();
+        CurrentTask?.UpdatePosition();
+        if(CurrentTask != null)
+        {
+            Service.Population.PhysicalCharacterMap[this].SetNotWait();
+        }
     }
 
     public void Update()
     {
+        if(IsBeingTalkedTo)
+        {
+            return;
+        }
+
         if (!IsAlive)
+        {
+            return;
+        }
+
+        if(IsSleeping())
         {
             return;
         }

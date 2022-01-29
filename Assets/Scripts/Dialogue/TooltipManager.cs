@@ -54,8 +54,8 @@ public class TooltipManager : MonoBehaviour {
         
         if (!_emoteTooltips.ContainsKey(emote.SubType)) {
             tooltip = NewTooltip();
-            tooltip.Title = "EMOTE";
-            tooltip.Description = emote.SubType.ToString();
+            tooltip.Title = emote.HasDiscovered ? emote.Name : "???";
+            tooltip.Description = emote.Description;
             _emoteTooltips[emote.SubType] = tooltip;
             
             /* Force rebuild layout on tooltip instantiation. */
@@ -63,6 +63,8 @@ public class TooltipManager : MonoBehaviour {
             LayoutRebuilder.ForceRebuildLayoutImmediate(tooltip.RectTransform);
         } else {
             tooltip = _emoteTooltips[emote.SubType];
+
+            tooltip.Title = emote.HasDiscovered ? emote.Name : "???";
         }
         
         tooltip.gameObject.SetActive(true);
@@ -81,8 +83,8 @@ public class TooltipManager : MonoBehaviour {
     
     private Vector3 ScreenBoundPosition(Vector3 position, RectTransform rectTransform) {
         rectTransform.position = position;
-        float halfWidth = LayoutUtility.GetPreferredWidth(rectTransform) * 0.5f;
-        float halfHeight = LayoutUtility.GetFlexibleHeight(rectTransform) * 0.5f;
+        float halfWidth = LayoutUtility.GetPreferredWidth(rectTransform) * 0.5f * TooltipCanvas.scaleFactor;
+        float halfHeight = LayoutUtility.GetFlexibleHeight(rectTransform) * 0.5f * TooltipCanvas.scaleFactor;
         Vector3 positionOffset = Vector3.zero;
         
         if (position.x - halfWidth < ScreenPadding.x) {

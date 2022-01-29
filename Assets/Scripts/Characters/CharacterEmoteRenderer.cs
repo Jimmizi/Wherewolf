@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public class CharacterEmoteRenderer : BaseCharacterRenderer {
-    public Image BaseSpriteRenderer;
+    public Image HeadSpriteRenderer;
     public Image EarsSpriteRenderer;
     public Image EyesSpriteRenderer;
     public Image NoseSpriteRenderer;
@@ -16,9 +16,9 @@ public class CharacterEmoteRenderer : BaseCharacterRenderer {
         
         CharacterGenerator generator = CharacterGenerator.Instance;
 
-        if (BaseSpriteRenderer != null && generator.BaseSprites != null) {
-            BaseSpriteRenderer.sprite =
-                generator.BaseSprites[_characterAttributes.BaseType % generator.BaseSprites.Count];
+        if (HeadSpriteRenderer != null && generator.HeadSprites != null) {
+            HeadSpriteRenderer.sprite =
+                generator.HeadSprites[_characterAttributes.BaseType % generator.HeadSprites.Count];
         }
 
         if (EarsSpriteRenderer != null && generator.EarsSprites != null) {
@@ -42,10 +42,10 @@ public class CharacterEmoteRenderer : BaseCharacterRenderer {
         }
     }
     
-    public void Start() {
-        if (CharacterGenerator.Instance != null) {
-            _characterAttributes = CharacterGenerator.Instance.Generate();
-            Assemble();
-        }
-    }
+    // public void Start() {
+    //     if (CharacterGenerator.Instance != null) {
+    //         _characterAttributes = CharacterGenerator.Instance.Generate();
+    //         Assemble();
+    //     }
+    // }
 }

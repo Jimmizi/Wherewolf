@@ -384,6 +384,84 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: night
+--- !u!1 &178619403
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 178619404}
+  - component: {fileID: 178619406}
+  - component: {fileID: 178619405}
+  m_Layer: 5
+  m_Name: StakeConfirmation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &178619404
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 178619403}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 2065978871}
+  - {fileID: 980453642}
+  - {fileID: 1472586114}
+  m_Father: {fileID: 1777611169}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 800.11, y: 230.2}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &178619406
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 178619403}
+  m_CullTransparentMesh: 1
+--- !u!114 &178619405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 178619403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &226612439
 GameObject:
   m_ObjectHideFlags: 0
@@ -674,6 +752,139 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 1, y: -1}
   m_UseGraphicAlpha: 1
+--- !u!1 &357306952
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 357306953}
+  - component: {fileID: 357306956}
+  - component: {fileID: 357306955}
+  - component: {fileID: 357306954}
+  m_Layer: 5
+  m_Name: StakeButton
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &357306953
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 357306952}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 920666216}
+  m_Father: {fileID: 4504804032312362297}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 118.61, y: 0}
+  m_SizeDelta: {x: 116.01, y: 117.1}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &357306956
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 357306952}
+  m_CullTransparentMesh: 1
+--- !u!114 &357306955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 357306952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!114 &357306954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 357306952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 357306955}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: ShowStakeConfirmation
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &373724232
 GameObject:
   m_ObjectHideFlags: 0
@@ -832,6 +1043,81 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: day
+--- !u!1 &439838250
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 439838251}
+  - component: {fileID: 2118618735127614616}
+  - component: {fileID: 6914278523199503644}
+  m_Layer: 5
+  m_Name: EmoteContainer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &439838251
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 439838250}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1338193694}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -57.26, y: 0}
+  m_SizeDelta: {x: 500, y: 200}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &2118618735127614616
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 439838250}
+  m_CullTransparentMesh: 1
+--- !u!114 &6914278523199503644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 439838250}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &469442032
 GameObject:
   m_ObjectHideFlags: 0
@@ -1211,6 +1497,404 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 1
+--- !u!1 &920666215
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 920666216}
+  - component: {fileID: 920666218}
+  - component: {fileID: 920666217}
+  m_Layer: 5
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &920666216
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 920666215}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 357306953}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &920666218
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 920666215}
+  m_CullTransparentMesh: 1
+--- !u!114 &920666217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 920666215}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: Button
+--- !u!1 &980453641
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 980453642}
+  - component: {fileID: 980453645}
+  - component: {fileID: 980453644}
+  - component: {fileID: 980453643}
+  m_Layer: 5
+  m_Name: Yes
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &980453642
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 980453641}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1162469458}
+  m_Father: {fileID: 178619404}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -100, y: -48.2}
+  m_SizeDelta: {x: 170.69, y: 80.9}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &980453645
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 980453641}
+  m_CullTransparentMesh: 1
+--- !u!114 &980453644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 980453641}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!114 &980453643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 980453641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 980453644}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: PickedStakeAction
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 178619403}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!1 &1011071845
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1011071846}
+  - component: {fileID: 1011071848}
+  - component: {fileID: 1011071847}
+  m_Layer: 5
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1011071846
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1011071845}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1398942846}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &1011071848
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1011071845}
+  m_CullTransparentMesh: 1
+--- !u!114 &1011071847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1011071845}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: Button
+--- !u!1 &1162469457
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1162469458}
+  - component: {fileID: 1162469461}
+  - component: {fileID: 1162469460}
+  - component: {fileID: 1162469459}
+  m_Layer: 5
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1162469458
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1162469457}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 980453642}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: -9.224997}
+  m_SizeDelta: {x: 0, y: -18.450008}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &1162469461
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1162469457}
+  m_CullTransparentMesh: 1
+--- !u!114 &1162469460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1162469457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.9056604, g: 0.9056604, b: 0.9056604, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 6415cc281a8846a45839b1ca418332da, type: 3}
+    m_FontSize: 102
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 1
+    m_MaxSize: 169
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
+    m_LineSpacing: 1
+  m_Text: Yes!
+--- !u!114 &1162469459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1162469457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1329615272
 GameObject:
   m_ObjectHideFlags: 0
@@ -1306,6 +1990,99 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 1, y: -1}
   m_UseGraphicAlpha: 1
+--- !u!1 &1338193693
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1338193694}
+  - component: {fileID: 1338193697}
+  - component: {fileID: 1338193695}
+  - component: {fileID: 6316493156575265680}
+  m_Layer: 5
+  m_Name: NpcClickedPanel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1338193694
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1338193693}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.75, y: 0.75, z: 1}
+  m_Children:
+  - {fileID: 439838251}
+  - {fileID: 4504804032312362297}
+  m_Father: {fileID: 1777611169}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -960, y: 540}
+  m_SizeDelta: {x: 280, y: 155}
+  m_Pivot: {x: 0, y: 1}
+--- !u!222 &1338193697
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1338193693}
+  m_CullTransparentMesh: 1
+--- !u!114 &1338193695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1338193693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa823e55d8ad4a91aadf874cc3d7488, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EmotePrefab: {fileID: 6689041651059275904, guid: b1d9295fe8b614ca0a9cf8fa2ceb24d4, type: 3}
+  TextArea: {fileID: 439838251}
+  _maxVisibleCharacters: 2
+--- !u!114 &6316493156575265680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1338193693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.7647059}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &1363134447
 GameObject:
   m_ObjectHideFlags: 0
@@ -1381,6 +2158,272 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &1398942845
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1398942846}
+  - component: {fileID: 1398942849}
+  - component: {fileID: 1398942848}
+  - component: {fileID: 1398942847}
+  m_Layer: 5
+  m_Name: TalkButton
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1398942846
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1398942845}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1011071846}
+  m_Father: {fileID: 4504804032312362297}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 116.01, y: 117.1}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &1398942849
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1398942845}
+  m_CullTransparentMesh: 1
+--- !u!114 &1398942848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1398942845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1398942847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1398942845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1398942848}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: PickedTalkAction
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!1 &1472586113
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1472586114}
+  - component: {fileID: 1472586117}
+  - component: {fileID: 1472586116}
+  - component: {fileID: 1472586115}
+  m_Layer: 5
+  m_Name: No
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1472586114
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1472586113}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1837533579}
+  m_Father: {fileID: 178619404}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 100, y: -48.2}
+  m_SizeDelta: {x: 170.69, y: 80.9}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &1472586117
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1472586113}
+  m_CullTransparentMesh: 1
+--- !u!114 &1472586116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1472586113}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1472586115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1472586113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1472586116}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: CancelledStakeAction
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1500319254
 GameObject:
   m_ObjectHideFlags: 0
@@ -1602,6 +2645,9 @@ RectTransform:
   - {fileID: 2065137338}
   - {fileID: 1941979219}
   - {fileID: 36015590}
+  - {fileID: 1338193694}
+  - {fileID: 178619404}
+  - {fileID: 1843890087}
   m_Father: {fileID: 4957857799237703567}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1671,6 +2717,196 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!1 &1837533578
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1837533579}
+  - component: {fileID: 1837533582}
+  - component: {fileID: 1837533581}
+  - component: {fileID: 1837533580}
+  m_Layer: 5
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1837533579
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1837533578}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1472586114}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: -9.380002}
+  m_SizeDelta: {x: 0, y: -18.759996}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &1837533582
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1837533578}
+  m_CullTransparentMesh: 1
+--- !u!114 &1837533581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1837533578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.9056604, g: 0.9056604, b: 0.9056604, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 6415cc281a8846a45839b1ca418332da, type: 3}
+    m_FontSize: 102
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 1
+    m_MaxSize: 169
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
+    m_LineSpacing: 1
+  m_Text: No!
+--- !u!114 &1837533580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1837533578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
+--- !u!1 &1843890086
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1843890087}
+  - component: {fileID: 1843890090}
+  - component: {fileID: 1843890089}
+  - component: {fileID: 1843890088}
+  m_Layer: 5
+  m_Name: HoverNameText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1843890087
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1843890086}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1777611169}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: 0, y: 1}
+--- !u!222 &1843890090
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1843890086}
+  m_CullTransparentMesh: 1
+--- !u!114 &1843890089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1843890086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.8962264, g: 0.8962264, b: 0.8962264, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 6415cc281a8846a45839b1ca418332da, type: 3}
+    m_FontSize: 57
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 57
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
+    m_LineSpacing: 1
+  m_Text: Name
+--- !u!114 &1843890088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1843890086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 2, y: 2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1863219716
 GameObject:
   m_ObjectHideFlags: 0
@@ -2022,6 +3258,101 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!1 &2065978867
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2065978871}
+  - component: {fileID: 2065978870}
+  - component: {fileID: 2065978868}
+  - component: {fileID: 2065978869}
+  m_Layer: 5
+  m_Name: AreYouSure
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2065978871
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2065978867}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 178619404}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 77.4}
+  m_SizeDelta: {x: 106.9, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &2065978870
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2065978867}
+  m_CullTransparentMesh: 1
+--- !u!114 &2065978868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2065978867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.9528302, g: 0.4449537, b: 0.4449537, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 6415cc281a8846a45839b1ca418332da, type: 3}
+    m_FontSize: 74
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 74
+    m_Alignment: 1
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
+    m_LineSpacing: 1
+  m_Text: Stake ThisTestCharacterString
+--- !u!114 &2065978869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2065978867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 1, y: 1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &2092695170
 GameObject:
   m_ObjectHideFlags: 0
@@ -2290,7 +3621,573 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   customNames: []
-  emoteList: []
+  emoteList:
+  - Name: Long
+    Description: This person has long hair.
+    HasDiscovered: 0
+    Type: 0
+    SubType: 0
+    EmoteImage: {fileID: 21300000, guid: 47cab85408c356845bdec9539099a5a0, type: 3}
+  - Name: Medium
+    Description: This person has medium length hair.
+    HasDiscovered: 0
+    Type: 0
+    SubType: 1
+    EmoteImage: {fileID: 21300000, guid: bfc1d1e5f92739148a2a7796ffbb80e5, type: 3}
+  - Name: Short
+    Description: This person keeps their hair short.
+    HasDiscovered: 0
+    Type: 0
+    SubType: 2
+    EmoteImage: {fileID: 21300000, guid: 8ee98ed6f7a57dc498d93cb211ccbf5c, type: 3}
+  - Name: Bald
+    Description: This person rocks the bald hair style.
+    HasDiscovered: 0
+    Type: 0
+    SubType: 3
+    EmoteImage: {fileID: 21300000, guid: e4094870115984a44a22fe9b64d21e8f, type: 3}
+  - Name: Ugly
+    Description: Their defining feature is that they're ugly.
+    HasDiscovered: 0
+    Type: 1
+    SubType: 4
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Beautiful
+    Description: This person is just really beautiful.
+    HasDiscovered: 0
+    Type: 1
+    SubType: 5
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Warts
+    Description: This person has warts over their face.
+    HasDiscovered: 0
+    Type: 1
+    SubType: 6
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Big Nose
+    Description: This person has a really big nose.
+    HasDiscovered: 0
+    Type: 1
+    SubType: 7
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Big Eyes
+    Description: This person has a pair of big eyes.
+    HasDiscovered: 0
+    Type: 1
+    SubType: 8
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Big Mouth
+    Description: This person has a bigger than usual mouth.
+    HasDiscovered: 0
+    Type: 1
+    SubType: 9
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Big Ears
+    Description: This person sports a pair of big ears.
+    HasDiscovered: 0
+    Type: 1
+    SubType: 10
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Brown
+    Description: Sets the colour of the following emote.
+    HasDiscovered: 0
+    Type: 2
+    SubType: 11
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Black
+    Description: Sets the colour of the following emote.
+    HasDiscovered: 0
+    Type: 2
+    SubType: 12
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: White
+    Description: Sets the colour of the following emote.
+    HasDiscovered: 0
+    Type: 2
+    SubType: 13
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Blue
+    Description: Sets the colour of the following emote.
+    HasDiscovered: 0
+    Type: 2
+    SubType: 14
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Red
+    Description: Sets the colour of the following emote.
+    HasDiscovered: 0
+    Type: 2
+    SubType: 15
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Orange
+    Description: Sets the colour of the following emote.
+    HasDiscovered: 0
+    Type: 2
+    SubType: 16
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Yellow
+    Description: Sets the colour of the following emote.
+    HasDiscovered: 0
+    Type: 2
+    SubType: 17
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Green
+    Description: Sets the colour of the following emote.
+    HasDiscovered: 0
+    Type: 2
+    SubType: 18
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Purple
+    Description: Sets the colour of the following emote.
+    HasDiscovered: 0
+    Type: 2
+    SubType: 19
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: North West
+    Description: This location is North West of the town, relative to the center.
+    HasDiscovered: 0
+    Type: 3
+    SubType: 20
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: North
+    Description: This location is North of the town, relative to the center.
+    HasDiscovered: 0
+    Type: 3
+    SubType: 21
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: North East
+    Description: This location is North East of the town, relative to the center.
+    HasDiscovered: 0
+    Type: 3
+    SubType: 22
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: West
+    Description: This location is West of the town, relative to the center.
+    HasDiscovered: 0
+    Type: 3
+    SubType: 23
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Central
+    Description: This location is in the center of town.
+    HasDiscovered: 0
+    Type: 3
+    SubType: 24
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: East
+    Description: This location is East of the town, relative to the center.
+    HasDiscovered: 0
+    Type: 3
+    SubType: 25
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: South West
+    Description: This location is South West of the town, relative to the center.
+    HasDiscovered: 0
+    Type: 3
+    SubType: 26
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: South
+    Description: This location is South of the town, relative to the center.
+    HasDiscovered: 0
+    Type: 3
+    SubType: 27
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: South East
+    Description: This location is South East of the town, relative to the center.
+    HasDiscovered: 0
+    Type: 3
+    SubType: 28
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Bank
+    Description: This signifies that a character might work there.
+    HasDiscovered: 0
+    Type: 4
+    SubType: 29
+    EmoteImage: {fileID: 21300000, guid: 93c273626aeef014bb1d5a0e761dfc79, type: 3}
+  - Name: Hospital
+    Description: This signifies that a character might work there.
+    HasDiscovered: 0
+    Type: 4
+    SubType: 30
+    EmoteImage: {fileID: 21300000, guid: c9f02d6c727e86d469d448e7f35d563a, type: 3}
+  - Name: Law
+    Description: This signifies that a character might work there.
+    HasDiscovered: 0
+    Type: 4
+    SubType: 31
+    EmoteImage: {fileID: 21300000, guid: df39c2947950fd44a9b043fbbd4aeb18, type: 3}
+  - Name: School
+    Description: This signifies that a character might work there.
+    HasDiscovered: 0
+    Type: 4
+    SubType: 32
+    EmoteImage: {fileID: 21300000, guid: 2e48bb5ba5cdae44b8756c02a40ccfd9, type: 3}
+  - Name: Tavern
+    Description: This signifies that a character might work there.
+    HasDiscovered: 0
+    Type: 4
+    SubType: 33
+    EmoteImage: {fileID: 21300000, guid: 4a755c35db7af6d40b2697d4300842a6, type: 3}
+  - Name: Blacksmith
+    Description: This signifies that a character might work there.
+    HasDiscovered: 0
+    Type: 4
+    SubType: 34
+    EmoteImage: {fileID: 21300000, guid: 3eaf78cd83946e84c9109c60f62a0dba, type: 3}
+  - Name: Wood Cutter
+    Description: This signifies that a character might work there.
+    HasDiscovered: 0
+    Type: 4
+    SubType: 35
+    EmoteImage: {fileID: 21300000, guid: 3f66c3c345b3f4f4291a14a36e20a309, type: 3}
+  - Name: Engineer
+    Description: This signifies that a character might work there.
+    HasDiscovered: 0
+    Type: 4
+    SubType: 36
+    EmoteImage: {fileID: 21300000, guid: 73a9d17d403e68046a73b122081d9fbd, type: 3}
+  - Name: Fisher
+    Description: This signifies that a character might work there.
+    HasDiscovered: 0
+    Type: 4
+    SubType: 37
+    EmoteImage: {fileID: 21300000, guid: bd5b5e265eb452c46ad53c005024f459, type: 3}
+  - Name: Library
+    Description: This signifies that a character might work there.
+    HasDiscovered: 0
+    Type: 4
+    SubType: 38
+    EmoteImage: {fileID: 21300000, guid: 55673c78a7887b54a8e397f14800425c, type: 3}
+  - Name: General Store
+    Description: This signifies that a character might work there.
+    HasDiscovered: 0
+    Type: 4
+    SubType: 39
+    EmoteImage: {fileID: 21300000, guid: a4831fab7c6d1f7438e63c02f4890a0f, type: 3}
+  - Name: Day
+    Description: 
+    HasDiscovered: 0
+    Type: 5
+    SubType: 40
+    EmoteImage: {fileID: -8144886026044020093, guid: 2e1751c1c58ffda4cad7ba31c5af76a3, type: 3}
+  - Name: Night
+    Description: 
+    HasDiscovered: 0
+    Type: 5
+    SubType: 41
+    EmoteImage: {fileID: 2513764488909250400, guid: 2e1751c1c58ffda4cad7ba31c5af76a3, type: 3}
+  - Name: Dirty
+    Description: Describes the emote following this.
+    HasDiscovered: 0
+    Type: 7
+    SubType: 42
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Wet
+    Description: Describes the emote following this.
+    HasDiscovered: 0
+    Type: 7
+    SubType: 43
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Bloody
+    Description: Describes the emote following this.
+    HasDiscovered: 0
+    Type: 7
+    SubType: 44
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Clean
+    Description: Describes the emote following this.
+    HasDiscovered: 0
+    Type: 7
+    SubType: 45
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Torn
+    Description: Describes the emote following this.
+    HasDiscovered: 0
+    Type: 7
+    SubType: 46
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Shirt
+    Description: An item of clothing that is predominant on the person.
+    HasDiscovered: 0
+    Type: 6
+    SubType: 47
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Jacket
+    Description: An item of clothing that is predominant on the person.
+    HasDiscovered: 0
+    Type: 6
+    SubType: 48
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Boots
+    Description: An item of clothing that is predominant on the person.
+    HasDiscovered: 0
+    Type: 6
+    SubType: 49
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Trousers
+    Description: An item of clothing that is predominant on the person.
+    HasDiscovered: 0
+    Type: 6
+    SubType: 50
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Hat
+    Description: An item of clothing that is predominant on the person.
+    HasDiscovered: 0
+    Type: 6
+    SubType: 51
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Glasses
+    Description: An item of clothing that is predominant on the person.
+    HasDiscovered: 0
+    Type: 6
+    SubType: 52
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Gloves
+    Description: An item of clothing that is predominant on the person.
+    HasDiscovered: 0
+    Type: 6
+    SubType: 53
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Footsteps
+    Description: Signifies a person was seen in travel.
+    HasDiscovered: 0
+    Type: 8
+    SubType: 54
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Accident Knife
+    Description: This person had an accident.
+    HasDiscovered: 0
+    Type: 8
+    SubType: 55
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Accident Fall
+    Description: This person had an accident.
+    HasDiscovered: 0
+    Type: 8
+    SubType: 56
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Eyes
+    Description: Signifies having seen someone in a location.
+    HasDiscovered: 0
+    Type: 8
+    SubType: 57
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Werewolf
+    Description: The big bad.
+    HasDiscovered: 0
+    Type: 8
+    SubType: 58
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Approves
+    Description: 
+    HasDiscovered: 0
+    Type: 8
+    SubType: 59
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Disapproves
+    Description: 
+    HasDiscovered: 0
+    Type: 8
+    SubType: 60
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Talk Action
+    Description: 
+    HasDiscovered: 0
+    Type: 8
+    SubType: 61
+    EmoteImage: {fileID: 21300000, guid: 5eec43133b2bdfd469bf558b804f8c20, type: 3}
+  - Name: Stake Action
+    Description: 
+    HasDiscovered: 0
+    Type: 8
+    SubType: 62
+    EmoteImage: {fileID: 21300000, guid: f75e1cc87086e1b4e9e71e37ec70a488, type: 3}
+  - Name: Relationship Kiss
+    Description: Saw someone kissing someone else.
+    HasDiscovered: 0
+    Type: 9
+    SubType: 63
+    EmoteImage: {fileID: 21300000, guid: 9dd5d1620f3170d4bb00251f738b0293, type: 3}
+  - Name: Relationship Fight
+    Description: 
+    HasDiscovered: 0
+    Type: 9
+    SubType: 64
+    EmoteImage: {fileID: 21300000, guid: 04b3daae9392a894f9b9608fd6664f78, type: 3}
+  - Name: Relationship Marriage
+    Description: 
+    HasDiscovered: 0
+    Type: 9
+    SubType: 65
+    EmoteImage: {fileID: 21300000, guid: 5c7de32f6b414d947adb5cd29d0e286b, type: 3}
+  - Name: Grover
+    Description: Indicates that the emotes preceeding or following this relate to
+      Grover.
+    HasDiscovered: 0
+    Type: 10
+    SubType: 66
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Celia
+    Description: Indicates that the emotes preceeding or following this relate to
+      Celia.
+    HasDiscovered: 0
+    Type: 10
+    SubType: 67
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Henry
+    Description: Indicates that the emotes preceeding or following this relate to
+      Henry.
+    HasDiscovered: 0
+    Type: 10
+    SubType: 68
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Harriet
+    Description: Indicates that the emotes preceeding or following this relate to
+      Harriet.
+    HasDiscovered: 0
+    Type: 10
+    SubType: 69
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Marie
+    Description: Indicates that the emotes preceeding or following this relate to
+      Marie.
+    HasDiscovered: 0
+    Type: 10
+    SubType: 70
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Marshall
+    Description: Indicates that the emotes preceeding or following this relate to
+      Marshall.
+    HasDiscovered: 0
+    Type: 10
+    SubType: 71
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Lois
+    Description: Indicates that the emotes preceeding or following this relate to
+      Lois.
+    HasDiscovered: 0
+    Type: 10
+    SubType: 72
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Theodore
+    Description: Indicates that the emotes preceeding or following this relate to
+      Theodore.
+    HasDiscovered: 0
+    Type: 10
+    SubType: 73
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Chester
+    Description: Indicates that the emotes preceeding or following this relate to
+      Chester.
+    HasDiscovered: 0
+    Type: 10
+    SubType: 74
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Alva
+    Description: Indicates that the emotes preceeding or following this relate to
+      Alva.
+    HasDiscovered: 0
+    Type: 10
+    SubType: 75
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Lee
+    Description: Indicates that the emotes preceeding or following this relate to
+      Lee.
+    HasDiscovered: 0
+    Type: 10
+    SubType: 76
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Matthew
+    Description: Indicates that the emotes preceeding or following this relate to
+      Matthew.
+    HasDiscovered: 0
+    Type: 10
+    SubType: 77
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Charles
+    Description: Indicates that the emotes preceeding or following this relate to
+      Charles.
+    HasDiscovered: 0
+    Type: 10
+    SubType: 78
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Nellie
+    Description: Indicates that the emotes preceeding or following this relate to
+      Nellie.
+    HasDiscovered: 0
+    Type: 10
+    SubType: 79
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Owen
+    Description: Indicates that the emotes preceeding or following this relate to
+      Owen.
+    HasDiscovered: 0
+    Type: 10
+    SubType: 80
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Carrie
+    Description: Indicates that the emotes preceeding or following this relate to
+      Carrie.
+    HasDiscovered: 0
+    Type: 10
+    SubType: 81
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Ola
+    Description: Indicates that the emotes preceeding or following this relate to
+      Ola.
+    HasDiscovered: 0
+    Type: 10
+    SubType: 82
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Josephine
+    Description: Indicates that the emotes preceeding or following this relate to
+      Josephine.
+    HasDiscovered: 0
+    Type: 10
+    SubType: 83
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Myra
+    Description: Indicates that the emotes preceeding or following this relate to
+      Myra.
+    HasDiscovered: 0
+    Type: 10
+    SubType: 84
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Otto
+    Description: Indicates that the emotes preceeding or following this relate to
+      Otto.
+    HasDiscovered: 0
+    Type: 10
+    SubType: 85
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Love
+    Description: 
+    HasDiscovered: 0
+    Type: 11
+    SubType: 86
+    EmoteImage: {fileID: 21300000, guid: 6ae8ec6f7851e544383e359ec29b1092, type: 3}
+  - Name: Like
+    Description: 
+    HasDiscovered: 0
+    Type: 11
+    SubType: 87
+    EmoteImage: {fileID: 21300000, guid: ed93054b867642a478e3b7c17ff3d5db, type: 3}
+  - Name: Neutral
+    Description: 
+    HasDiscovered: 0
+    Type: 11
+    SubType: 88
+    EmoteImage: {fileID: 21300000, guid: 05ca9fcc61e4d2b408647adfae010913, type: 3}
+  - Name: Dislike
+    Description: 
+    HasDiscovered: 0
+    Type: 11
+    SubType: 89
+    EmoteImage: {fileID: 21300000, guid: 18b0d3426c74bb64f947462cf8c91993, type: 3}
+  - Name: Hate
+    Description: 
+    HasDiscovered: 0
+    Type: 11
+    SubType: 90
+    EmoteImage: {fileID: 21300000, guid: 48ce7a7a686f02f419edfe7dc5c864f7, type: 3}
   AvailableOccupations: 
 --- !u!114 &4957857799237703566
 MonoBehaviour:
@@ -2665,6 +4562,43 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 5675fb99eaefa3a45a056ec772d8c508, type: 3}
   GradientIndexToUse: 1
   MusicVolumeSlider: {fileID: 0}
+--- !u!1 &8154686703494120999
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4504804032312362297}
+  m_Layer: 5
+  m_Name: ButtonContainer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &4504804032312362297
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8154686703494120999}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 357306953}
+  - {fileID: 1398942846}
+  m_Father: {fileID: 1338193694}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -57.26, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &4353751979489902336
 PrefabInstance:
   m_ObjectHideFlags: 0

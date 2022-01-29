@@ -92,9 +92,14 @@ public class Task
 
         switch (Type)
         {
+            case TaskType.Work:
+                Service.Population.GetWorkPositionAndLocation(TaskOwner, out Position, out Location);
+                Service.Population.PhysicalCharacterMap[TaskOwner].CurrentDestination = Position;
+                break;
             case TaskType.WanderArea:
             case TaskType.Idle:
                 Position = Service.Location.GetRandomNavmeshPositionInLocation(Location);
+                Service.Population.PhysicalCharacterMap[TaskOwner].CurrentDestination = Position;
                 break;
         }
 
@@ -128,7 +133,7 @@ public class Task
     
     void SetupWork()
     {
-        Service.Population.GetWorkPositionAndLocation(TaskOwner, out Position, out Location);
+        
     }
 
     public void Update()

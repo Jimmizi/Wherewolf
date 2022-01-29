@@ -1,6 +1,4 @@
-using System;
 using TMPro;
-using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 
 public class Tooltip : MonoBehaviour {
