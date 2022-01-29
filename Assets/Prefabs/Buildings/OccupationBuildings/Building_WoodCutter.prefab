@@ -201,5 +201,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 531aa0aade5d4394f94c8c25018953b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ForPositionUseOverride: {fileID: 0}
   Base: {fileID: 0}
   Children: []

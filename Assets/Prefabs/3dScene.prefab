@@ -438,6 +438,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DayColor: {r: 1, g: 1, b: 1, a: 1}
   NightColor: {r: 0.20784314, g: 0.20784314, b: 0.20784314, a: 1}
+  ExtraMaterials: []
+  allSpriteRenderers: []
 --- !u!1 &887976004382439382
 GameObject:
   m_ObjectHideFlags: 0

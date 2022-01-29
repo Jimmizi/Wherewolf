@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class PhaseSolver : MonoBehaviour
 {
+    [SerializeField]
+    public Sprite GhostSprite;
+
     public SortedDictionary<int, List<Phase>> PhaseHistory = new SortedDictionary<int, List<Phase>>();
 
     public Phase CurrentPhase;
@@ -127,7 +130,17 @@ public class PhaseSolver : MonoBehaviour
             CurrentPhase.Victim.IsVictim = false;
             CurrentPhase.Victim.DeathAnnounced = false;
 
-            Service.Population.PhysicalCharacterMap[CurrentPhase.Victim].ClearDestination();
+            PhysicalCharacter pc = Service.Population.PhysicalCharacterMap[CurrentPhase.Victim];
+            pc.ClearDestination();
+
+            var cr = pc.GetComponentInChildren<CharacterRenderer>();
+            if(cr)
+            {
+                cr.BaseSpriteRenderer.sprite = GhostSprite;
+                cr.EyesSpriteRenderer.enabled = false;
+                cr.EarsSpriteRenderer.enabled = false;
+                cr.NoseSpriteRenderer.enabled = false;
+            }
 
             Service.Population.iNumberOfCharactersDead++;
         }
