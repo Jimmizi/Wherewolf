@@ -1134,6 +1134,105 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 502539857}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &508000922
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 508000926}
+  - component: {fileID: 508000925}
+  - component: {fileID: 508000924}
+  - component: {fileID: 508000923}
+  m_Layer: 5
+  m_Name: TooltipCanvas
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &508000923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 508000922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!114 &508000924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 508000922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UiScaleMode: 0
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 800, y: 600}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 0
+--- !u!223 &508000925
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 508000922}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 0
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 25
+  m_SortingLayerID: 0
+  m_SortingOrder: 1000
+  m_TargetDisplay: 0
+--- !u!224 &508000926
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 508000922}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0, y: 0}
 --- !u!1001 &554205058
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1145,14 +1244,30 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 962407900}
+    - target: {fileID: 357306955, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 920666217, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 980453643, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 962407900}
+    - target: {fileID: 1011071847, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1398942847, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 962407900}
+    - target: {fileID: 1398942848, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1472586115, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 1
@@ -1168,6 +1283,1562 @@ PrefabInstance:
     - target: {fileID: 1472586115, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: PlayerController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.size
+      value: 91
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[0].Name
+      value: Long
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[1].Name
+      value: Medium
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[2].Name
+      value: Short
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[3].Name
+      value: Bald
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[4].Name
+      value: Ugly
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[4].Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[5].Name
+      value: Beautiful
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[5].Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[6].Name
+      value: Warts
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[6].Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[7].Name
+      value: Big Nose
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[7].Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[8].Name
+      value: Big Eyes
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[8].Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[9].Name
+      value: Big Mouth
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[9].Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[10].Name
+      value: Big Ears
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[10].Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[11].Name
+      value: Brown
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[11].Type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[12].Name
+      value: Black
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[12].Type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[13].Name
+      value: White
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[13].Type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[14].Name
+      value: Blue
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[14].Type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[15].Name
+      value: Red
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[15].Type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[16].Name
+      value: Orange
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[16].Type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[17].Name
+      value: Yellow
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[17].Type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[18].Name
+      value: Green
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[18].Type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[19].Name
+      value: Purple
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[19].Type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[20].Name
+      value: North West
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[20].Type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[21].Name
+      value: North
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[21].Type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[22].Name
+      value: North East
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[22].Type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[23].Name
+      value: West
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[23].Type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[24].Name
+      value: Central
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[24].Type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[25].Name
+      value: East
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[25].Type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[26].Name
+      value: South West
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[26].Type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[27].Name
+      value: South
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[27].Type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[28].Name
+      value: South East
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[28].Type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[29].Name
+      value: Bank
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[29].Type
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[30].Name
+      value: Hospital
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[30].Type
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[31].Name
+      value: Law
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[31].Type
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[32].Name
+      value: School
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[32].Type
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[33].Name
+      value: Tavern
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[33].Type
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[34].Name
+      value: Blacksmith
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[34].Type
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[35].Name
+      value: Wood Cutter
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[35].Type
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[36].Name
+      value: Engineer
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[36].Type
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[37].Name
+      value: Fisher
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[37].Type
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[38].Name
+      value: Library
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[38].Type
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[39].Name
+      value: General Store
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[39].Type
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[40].Name
+      value: Day
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[40].Type
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[41].Name
+      value: Night
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[41].Type
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[42].Name
+      value: Dirty
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[42].Type
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[43].Name
+      value: Wet
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[43].Type
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[44].Name
+      value: Bloody
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[44].Type
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[45].Name
+      value: Clean
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[45].Type
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[46].Name
+      value: Torn
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[46].Type
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[47].Name
+      value: Shirt
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[47].Type
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[48].Name
+      value: Jacket
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[48].Type
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[49].Name
+      value: Boots
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[49].Type
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[50].Name
+      value: Trousers
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[50].Type
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[51].Name
+      value: Hat
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[51].Type
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[52].Name
+      value: Glasses
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[52].Type
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[53].Name
+      value: Gloves
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[53].Type
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[54].Name
+      value: Footsteps
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[54].Type
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[55].Name
+      value: Accident Knife
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[55].Type
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[56].Name
+      value: Accident Fall
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[56].Type
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[57].Name
+      value: Eyes
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[57].Type
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[58].Name
+      value: Werewolf
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[58].Type
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[59].Name
+      value: Approves
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[59].Type
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[60].Name
+      value: Disapproves
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[60].Type
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[61].Name
+      value: Talk Action
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[61].Type
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[62].Name
+      value: Stake Action
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[62].Type
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[63].Name
+      value: Relationship Kiss
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[63].Type
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[64].Name
+      value: Relationship Fight
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[64].Type
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[65].Name
+      value: Relationship Marriage
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[65].Type
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[66].Name
+      value: Grover
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[66].Type
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[67].Name
+      value: Celia
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[67].Type
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[68].Name
+      value: Henry
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[68].Type
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[69].Name
+      value: Harriet
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[69].Type
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[70].Name
+      value: Marie
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[70].Type
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[71].Name
+      value: Marshall
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[71].Type
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[72].Name
+      value: Lois
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[72].Type
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[73].Name
+      value: Theodore
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[73].Type
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[74].Name
+      value: Chester
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[74].Type
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[75].Name
+      value: Alva
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[75].Type
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[76].Name
+      value: Lee
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[76].Type
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[77].Name
+      value: Matthew
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[77].Type
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[78].Name
+      value: Charles
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[78].Type
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[79].Name
+      value: Nellie
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[79].Type
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[80].Name
+      value: Owen
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[80].Type
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[81].Name
+      value: Carrie
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[81].Type
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[82].Name
+      value: Ola
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[82].Type
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[83].Name
+      value: Josephine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[83].Type
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[84].Name
+      value: Myra
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[84].Type
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[85].Name
+      value: Otto
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[85].Type
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[86].Name
+      value: Love
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[86].Type
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[87].Name
+      value: Like
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[87].Type
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[88].Name
+      value: Neutral
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[88].Type
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[89].Name
+      value: Dislike
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[89].Type
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[90].Name
+      value: Hate
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[90].Type
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[1].SubType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[2].SubType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[3].SubType
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[4].SubType
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[5].SubType
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[6].SubType
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[7].SubType
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[8].SubType
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[9].SubType
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[10].SubType
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[11].SubType
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[12].SubType
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[13].SubType
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[14].SubType
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[15].SubType
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[16].SubType
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[17].SubType
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[18].SubType
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[19].SubType
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[20].SubType
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[21].SubType
+      value: 21
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[22].SubType
+      value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[23].SubType
+      value: 23
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[24].SubType
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[25].SubType
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[26].SubType
+      value: 26
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[27].SubType
+      value: 27
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[28].SubType
+      value: 28
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[29].SubType
+      value: 29
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[30].SubType
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[31].SubType
+      value: 31
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[32].SubType
+      value: 32
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[33].SubType
+      value: 33
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[34].SubType
+      value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[35].SubType
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[36].SubType
+      value: 36
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[37].SubType
+      value: 37
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[38].SubType
+      value: 38
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[39].SubType
+      value: 39
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[40].SubType
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[41].SubType
+      value: 41
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[42].SubType
+      value: 42
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[43].SubType
+      value: 43
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[44].SubType
+      value: 44
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[45].SubType
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[46].SubType
+      value: 46
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[47].SubType
+      value: 47
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[48].SubType
+      value: 48
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[49].SubType
+      value: 49
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[50].SubType
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[51].SubType
+      value: 51
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[52].SubType
+      value: 52
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[53].SubType
+      value: 53
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[54].SubType
+      value: 54
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[55].SubType
+      value: 55
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[56].SubType
+      value: 56
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[57].SubType
+      value: 57
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[58].SubType
+      value: 58
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[59].SubType
+      value: 59
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[60].SubType
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[61].SubType
+      value: 61
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[62].SubType
+      value: 62
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[63].SubType
+      value: 63
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[64].SubType
+      value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[65].SubType
+      value: 65
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[66].SubType
+      value: 66
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[67].SubType
+      value: 67
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[68].SubType
+      value: 68
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[69].SubType
+      value: 69
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[70].SubType
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[71].SubType
+      value: 71
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[72].SubType
+      value: 72
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[73].SubType
+      value: 73
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[74].SubType
+      value: 74
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[75].SubType
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[76].SubType
+      value: 76
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[77].SubType
+      value: 77
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[78].SubType
+      value: 78
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[79].SubType
+      value: 79
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[80].SubType
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[81].SubType
+      value: 81
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[82].SubType
+      value: 82
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[83].SubType
+      value: 83
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[84].SubType
+      value: 84
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[85].SubType
+      value: 85
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[86].SubType
+      value: 86
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[87].SubType
+      value: 87
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[88].SubType
+      value: 88
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[89].SubType
+      value: 89
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[90].SubType
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[0].EmoteImage
+      value: 
+      objectReference: {fileID: 21300000, guid: 47cab85408c356845bdec9539099a5a0, type: 3}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[1].EmoteImage
+      value: 
+      objectReference: {fileID: 21300000, guid: bfc1d1e5f92739148a2a7796ffbb80e5, type: 3}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[2].EmoteImage
+      value: 
+      objectReference: {fileID: 21300000, guid: 8ee98ed6f7a57dc498d93cb211ccbf5c, type: 3}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[3].EmoteImage
+      value: 
+      objectReference: {fileID: 21300000, guid: e4094870115984a44a22fe9b64d21e8f, type: 3}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[4].EmoteImage
+      value: 
+      objectReference: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[5].EmoteImage
+      value: 
+      objectReference: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[6].EmoteImage
+      value: 
+      objectReference: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[7].EmoteImage
+      value: 
+      objectReference: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[8].EmoteImage
+      value: 
+      objectReference: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[9].EmoteImage
+      value: 
+      objectReference: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[10].EmoteImage
+      value: 
+      objectReference: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[11].EmoteImage
+      value: 
+      objectReference: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[12].EmoteImage
+      value: 
+      objectReference: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[13].EmoteImage
+      value: 
+      objectReference: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[14].EmoteImage
+      value: 
+      objectReference: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[15].EmoteImage
+      value: 
+      objectReference: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[16].EmoteImage
+      value: 
+      objectReference: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[17].EmoteImage
+      value: 
+      objectReference: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[18].EmoteImage
+      value: 
+      objectReference: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[19].EmoteImage
+      value: 
+      objectReference: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[20].EmoteImage
+      value: 
+      objectReference: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[21].EmoteImage
+      value: 
+      objectReference: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[22].EmoteImage
+      value: 
+      objectReference: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[23].EmoteImage
+      value: 
+      objectReference: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[24].EmoteImage
+      value: 
+      objectReference: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[25].EmoteImage
+      value: 
+      objectReference: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[26].EmoteImage
+      value: 
+      objectReference: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[27].EmoteImage
+      value: 
+      objectReference: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[28].EmoteImage
+      value: 
+      objectReference: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[29].EmoteImage
+      value: 
+      objectReference: {fileID: 21300000, guid: 93c273626aeef014bb1d5a0e761dfc79, type: 3}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[30].EmoteImage
+      value: 
+      objectReference: {fileID: 21300000, guid: c9f02d6c727e86d469d448e7f35d563a, type: 3}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[31].EmoteImage
+      value: 
+      objectReference: {fileID: 21300000, guid: df39c2947950fd44a9b043fbbd4aeb18, type: 3}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[32].EmoteImage
+      value: 
+      objectReference: {fileID: 21300000, guid: 2e48bb5ba5cdae44b8756c02a40ccfd9, type: 3}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[33].EmoteImage
+      value: 
+      objectReference: {fileID: 21300000, guid: 4a755c35db7af6d40b2697d4300842a6, type: 3}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[34].EmoteImage
+      value: 
+      objectReference: {fileID: 21300000, guid: 3eaf78cd83946e84c9109c60f62a0dba, type: 3}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[35].EmoteImage
+      value: 
+      objectReference: {fileID: 21300000, guid: 3f66c3c345b3f4f4291a14a36e20a309, type: 3}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[36].EmoteImage
+      value: 
+      objectReference: {fileID: 21300000, guid: 73a9d17d403e68046a73b122081d9fbd, type: 3}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[37].EmoteImage
+      value: 
+      objectReference: {fileID: 21300000, guid: bd5b5e265eb452c46ad53c005024f459, type: 3}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[38].EmoteImage
+      value: 
+      objectReference: {fileID: 21300000, guid: 55673c78a7887b54a8e397f14800425c, type: 3}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[39].EmoteImage
+      value: 
+      objectReference: {fileID: 21300000, guid: a4831fab7c6d1f7438e63c02f4890a0f, type: 3}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[40].EmoteImage
+      value: 
+      objectReference: {fileID: -8144886026044020093, guid: 2e1751c1c58ffda4cad7ba31c5af76a3, type: 3}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[41].EmoteImage
+      value: 
+      objectReference: {fileID: 2513764488909250400, guid: 2e1751c1c58ffda4cad7ba31c5af76a3, type: 3}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[42].EmoteImage
+      value: 
+      objectReference: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[43].EmoteImage
+      value: 
+      objectReference: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[44].EmoteImage
+      value: 
+      objectReference: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[45].EmoteImage
+      value: 
+      objectReference: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[46].EmoteImage
+      value: 
+      objectReference: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[47].EmoteImage
+      value: 
+      objectReference: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[48].EmoteImage
+      value: 
+      objectReference: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[49].EmoteImage
+      value: 
+      objectReference: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[50].EmoteImage
+      value: 
+      objectReference: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[51].EmoteImage
+      value: 
+      objectReference: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[52].EmoteImage
+      value: 
+      objectReference: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[53].EmoteImage
+      value: 
+      objectReference: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[54].EmoteImage
+      value: 
+      objectReference: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[55].EmoteImage
+      value: 
+      objectReference: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[56].EmoteImage
+      value: 
+      objectReference: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[57].EmoteImage
+      value: 
+      objectReference: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[58].EmoteImage
+      value: 
+      objectReference: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[59].EmoteImage
+      value: 
+      objectReference: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[60].EmoteImage
+      value: 
+      objectReference: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[61].EmoteImage
+      value: 
+      objectReference: {fileID: 21300000, guid: 5eec43133b2bdfd469bf558b804f8c20, type: 3}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[62].EmoteImage
+      value: 
+      objectReference: {fileID: 21300000, guid: f75e1cc87086e1b4e9e71e37ec70a488, type: 3}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[63].EmoteImage
+      value: 
+      objectReference: {fileID: 21300000, guid: 9dd5d1620f3170d4bb00251f738b0293, type: 3}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[64].EmoteImage
+      value: 
+      objectReference: {fileID: 21300000, guid: 04b3daae9392a894f9b9608fd6664f78, type: 3}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[65].EmoteImage
+      value: 
+      objectReference: {fileID: 21300000, guid: 5c7de32f6b414d947adb5cd29d0e286b, type: 3}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[66].EmoteImage
+      value: 
+      objectReference: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[67].EmoteImage
+      value: 
+      objectReference: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[68].EmoteImage
+      value: 
+      objectReference: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[69].EmoteImage
+      value: 
+      objectReference: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[70].EmoteImage
+      value: 
+      objectReference: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[71].EmoteImage
+      value: 
+      objectReference: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[72].EmoteImage
+      value: 
+      objectReference: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[73].EmoteImage
+      value: 
+      objectReference: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[74].EmoteImage
+      value: 
+      objectReference: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[75].EmoteImage
+      value: 
+      objectReference: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[76].EmoteImage
+      value: 
+      objectReference: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[77].EmoteImage
+      value: 
+      objectReference: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[78].EmoteImage
+      value: 
+      objectReference: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[79].EmoteImage
+      value: 
+      objectReference: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[80].EmoteImage
+      value: 
+      objectReference: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[81].EmoteImage
+      value: 
+      objectReference: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[82].EmoteImage
+      value: 
+      objectReference: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[83].EmoteImage
+      value: 
+      objectReference: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[84].EmoteImage
+      value: 
+      objectReference: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[85].EmoteImage
+      value: 
+      objectReference: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[86].EmoteImage
+      value: 
+      objectReference: {fileID: 21300000, guid: 6ae8ec6f7851e544383e359ec29b1092, type: 3}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[87].EmoteImage
+      value: 
+      objectReference: {fileID: 21300000, guid: ed93054b867642a478e3b7c17ff3d5db, type: 3}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[88].EmoteImage
+      value: 
+      objectReference: {fileID: 21300000, guid: 05ca9fcc61e4d2b408647adfae010913, type: 3}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[89].EmoteImage
+      value: 
+      objectReference: {fileID: 21300000, guid: 18b0d3426c74bb64f947462cf8c91993, type: 3}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[90].EmoteImage
+      value: 
+      objectReference: {fileID: 21300000, guid: 48ce7a7a686f02f419edfe7dc5c864f7, type: 3}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[20].Description
+      value: This location is North West of the town, relative to the center.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[21].Description
+      value: This location is North of the town, relative to the center.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[22].Description
+      value: This location is North East of the town, relative to the center.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[23].Description
+      value: This location is West of the town, relative to the center.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[24].Description
+      value: This location is in the center of town.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[25].Description
+      value: This location is East of the town, relative to the center.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[26].Description
+      value: This location is South West of the town, relative to the center.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[27].Description
+      value: This location is South of the town, relative to the center.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[28].Description
+      value: This location is South East of the town, relative to the center.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[66].Description
+      value: Indicates that the emotes preceeding or following this relate to Grover.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[67].Description
+      value: Indicates that the emotes preceeding or following this relate to Celia.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[68].Description
+      value: Indicates that the emotes preceeding or following this relate to Henry.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[69].Description
+      value: Indicates that the emotes preceeding or following this relate to Harriet.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[70].Description
+      value: Indicates that the emotes preceeding or following this relate to Marie.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[71].Description
+      value: Indicates that the emotes preceeding or following this relate to Marshall.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[72].Description
+      value: Indicates that the emotes preceeding or following this relate to Lois.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[73].Description
+      value: Indicates that the emotes preceeding or following this relate to Theodore.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[74].Description
+      value: Indicates that the emotes preceeding or following this relate to Chester.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[75].Description
+      value: Indicates that the emotes preceeding or following this relate to Alva.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[76].Description
+      value: Indicates that the emotes preceeding or following this relate to Lee.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[77].Description
+      value: Indicates that the emotes preceeding or following this relate to Matthew.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[78].Description
+      value: Indicates that the emotes preceeding or following this relate to Charles.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[79].Description
+      value: Indicates that the emotes preceeding or following this relate to Nellie.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[80].Description
+      value: Indicates that the emotes preceeding or following this relate to Owen.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[81].Description
+      value: Indicates that the emotes preceeding or following this relate to Carrie.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[82].Description
+      value: Indicates that the emotes preceeding or following this relate to Ola.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[83].Description
+      value: Indicates that the emotes preceeding or following this relate to Josephine.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[84].Description
+      value: Indicates that the emotes preceeding or following this relate to Myra.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957857799237703560, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: emoteList.Array.data[85].Description
+      value: Indicates that the emotes preceeding or following this relate to Otto.
       objectReference: {fileID: 0}
     - target: {fileID: 4957857799237703561, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
       propertyPath: m_Name
@@ -3176,6 +4847,52 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5428255168794265574, guid: 39abb8fcfe72c4c47905b15968976a65, type: 3}
   m_PrefabInstance: {fileID: 1517425619}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1542558133
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1542558135}
+  - component: {fileID: 1542558134}
+  m_Layer: 0
+  m_Name: TooltipManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1542558134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1542558133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ef379b93bfcd49cfb4fba706b03405e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TooltipPrefab: {fileID: 3996254956359008741, guid: 8cd1a913c82604dc7bd75b714bb3489c, type: 3}
+  TooltipCanvas: {fileID: 508000925}
+  ScreenPadding: {x: 30, y: 30}
+--- !u!4 &1542558135
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1542558133}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 707.48175, y: 714.10547, z: -191.80054}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1587469287
 PrefabInstance:
   m_ObjectHideFlags: 0

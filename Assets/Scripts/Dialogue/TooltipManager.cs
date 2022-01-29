@@ -54,8 +54,8 @@ public class TooltipManager : MonoBehaviour {
         
         if (!_emoteTooltips.ContainsKey(emote.SubType)) {
             tooltip = NewTooltip();
-            tooltip.Title = "EMOTE";
-            tooltip.Description = emote.SubType.ToString();
+            tooltip.Title = emote.Name;
+            tooltip.Description = emote.Description;
             _emoteTooltips[emote.SubType] = tooltip;
             
             /* Force rebuild layout on tooltip instantiation. */

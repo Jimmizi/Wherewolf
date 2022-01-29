@@ -86,6 +86,8 @@ public class InformationManager : MonoBehaviour
         }
 #endif
 
+        LoadEmoteImages();
+
         SortEmotes();
     }
 
@@ -548,6 +550,25 @@ public class InformationManager : MonoBehaviour
             if(emote.Type == Emote.EmoteType.Occupation)
             {
                 AvailableOccupations.Add(emote.SubType);
+            }
+        }
+    }
+
+    void LoadEmoteImages()
+    {
+        var blankIcon = Resources.Load<Sprite>("Emotes/blankicon");
+
+        Dictionary<string, Sprite> allEmotes = new Dictionary<string, Sprite>();
+        var spriteRes = Resources.LoadAll<Sprite>("Emotes/");
+
+        foreach (var emote in emoteList)
+        {
+            if(emote.EmoteImage == blankIcon)
+            {
+                if (allEmotes.ContainsKey(emote.SubType.ToString()))
+                {
+                    emote.EmoteImage = allEmotes[emote.SubType.ToString()];
+                }
             }
         }
     }
