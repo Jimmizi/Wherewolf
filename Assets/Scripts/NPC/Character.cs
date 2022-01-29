@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -32,6 +33,97 @@ public class Character
     // Pointer towards the last list of clues the character was able to give
     //public List<ClueObject> LastClueGroup;
 
+    public ClueObject TryServeSpecificClueToPlayer(ClueObject.ClueType eType, Character relatesToCharacter = null)
+    {
+        if (IsAlive)
+        {
+            // When only looking for a type, we'll just grab that type from the pre-generated clues to give
+            if (relatesToCharacter == null)
+            {
+                List<ClueObject> myCluesToGive = Service.PhaseSolve.CurrentPhase.CharacterCluesToGive[this];
+                foreach (var clue in myCluesToGive)
+                {
+                    if (clue.Type == eType)
+                    {
+                        Debug.Log(string.Format("Requested specific type, but no character - {0} gave player {1} clue about {2}",
+                            Name,
+                            clue.Type.ToString(),
+                            clue.RelatesToCharacter?.Name ?? "invalidrelatestocharacter"));
+
+                        HasGivenAClueThisPhase = true;
+
+                        return clue;
+                    }
+                }
+            }
+            // But when relating to a character, we'll see if the phase history includes this and then freshly generate a clue
+            else
+            {
+                // Test to make sure we don't already have a clue ready for this character
+                List<ClueObject> myCluesToGive = Service.PhaseSolve.CurrentPhase.CharacterCluesToGive[this];
+                foreach(var clue in myCluesToGive)
+                {
+                    if(clue.Type == eType && clue.RelatesToCharacter == relatesToCharacter)
+                    {
+                        return clue;
+                    }
+                }
+
+                bool TryGetType(ClueObject.ClueType eTypeToTry, out ClueObject clueOut)
+                {
+                    clueOut = null;
+
+                    List<Tuple<Character, int>> seenCharacters = new List<Tuple<Character, int>>();
+
+                    switch (eTypeToTry)
+                    {
+                        case ClueObject.ClueType.SawInLocation:
+                        case ClueObject.ClueType.SawAtWork:
+                        case ClueObject.ClueType.CommentFacialFeatures:
+                        case ClueObject.ClueType.CommentClothing:
+                            seenCharacters = Service.PhaseSolve.CurrentPhase.CharacterSeenMap[this];
+                            break;
+                        case ClueObject.ClueType.SawPassingBy:
+                            seenCharacters = Service.PhaseSolve.CurrentPhase.CharacterSawPassingByMap[this];
+                            break;
+                    }
+
+                    foreach (var charLoc in seenCharacters)
+                    {
+                        if (charLoc.Item1 == relatesToCharacter)
+                        {
+                            clueOut = new ClueObject(eTypeToTry)
+                            {
+                                GivenByCharacter = this,
+                                RelatesToCharacter = relatesToCharacter,
+                                LocationSeenIn = eTypeToTry == ClueObject.ClueType.SawAtWork ? -1 : charLoc.Item2
+                            };
+
+                            clueOut.Generate();
+
+                            return true;
+                        }
+                    }
+
+                    return false;
+                }
+
+                if (eType != ClueObject.ClueType.CommentGossip
+                    && eType != ClueObject.ClueType.VisualFromGhost)
+                {
+                    ClueObject clue = null;
+                    if(TryGetType(eType, out clue))
+                    {
+                        return clue;
+                    }
+                }
+            }
+        }
+
+        // Fallback to just serving a random clue
+        return ServeClueToPlayer();
+    }
+
     public ClueObject ServeClueToPlayer()
     {
         if(Service.PhaseSolve.CurrentPhase == null)
@@ -40,25 +132,35 @@ public class Character
             return null;
         }
 
+        int iClueIndex = 0;
         List<ClueObject> myCluesToGive = Service.PhaseSolve.CurrentPhase.CharacterCluesToGive[this];
-        List<float> weightList = new List<float>();
 
-        foreach(var c in myCluesToGive)
+        if (myCluesToGive.Count > 1)
         {
-            weightList.Add(c.GetWeightForThisClue());
-        }
+            List<float> weightList = new List<float>();
 
-        int iClueIndex = Randomiser.GetRandomIndexFromWeights(weightList);
-        if(iClueIndex == -1)
-        {
-            Debug.LogError(string.Format("Failed to get random clue index. list had {0} clues ", weightList.Count));
-            return null;
+            foreach (var c in myCluesToGive)
+            {
+                weightList.Add(c.GetWeightForThisClue());
+            }
+
+            iClueIndex = Randomiser.GetRandomIndexFromWeights(weightList);
+            if (iClueIndex == -1)
+            {
+                Debug.LogError(string.Format("Failed to get random clue index. list had {0} clues ", weightList.Count));
+                return null;
+            }
         }
 
         Debug.Log(string.Format("{0} gave player {1} clue about {2}", 
             Name,
             myCluesToGive[iClueIndex].Type.ToString(), 
             myCluesToGive[iClueIndex].RelatesToCharacter?.Name ?? "invalidrelatestocharacter"));
+
+        if(!IsAlive)
+        {
+            HasGhostGivenClue = true;
+        }
 
         HasGivenAClueThisPhase = true;
 
@@ -77,7 +179,28 @@ public class Character
 
     public bool HasGivenAClueThisPhase = false;
 
+    // Don't clear this - ghost can only give the clue once and then will disappear or remain static for the rest of the game
+    public bool HasGhostGivenClue = false;
+
     private int currentTaskIndex = 0;
+
+
+    public bool CanTalkTo()
+    {
+        // If a ghost, and hasn't given a clue yet
+        if(!IsAlive && !HasGhostGivenClue)
+        {
+            return true;
+        }
+
+        // If alive, and hasn't give a clue yet
+        if(IsAlive && !HasGivenAClueThisPhase)
+        {
+            return true;
+        }
+
+        return false;
+    }
 
     // Functions
 

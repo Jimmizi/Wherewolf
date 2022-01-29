@@ -163,6 +163,7 @@ public class ClueManager : MonoBehaviour
 
                 // 1) Generate ghost visual clue
                 GenerateGhostVisualClue(currentPhase, c, bShouldGenerateALie);
+                c.HasGeneratedGhostClues = true;
 
 #if UNITY_EDITOR
                 if (Service.Config.DebugYieldInGeneration)

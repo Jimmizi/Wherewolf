@@ -48,7 +48,7 @@ public class PlayerManager : MonoBehaviour
             return false;
         }
 
-        if(!c.IsAlive)
+        if(!c.CanTalkTo())
         {
             return false;
         }
