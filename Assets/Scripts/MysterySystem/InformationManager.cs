@@ -570,6 +570,11 @@ public class InformationManager : MonoBehaviour
                     emote.EmoteImage = allEmotes[emote.SubType.ToString()];
                 }
             }
+
+            if(emote.Type != Emote.EmoteType.CharacterHeadshot)
+            {
+                emote.HasDiscovered = true;
+            }
         }
     }
 

@@ -184,6 +184,20 @@ public class Character
 
     private int currentTaskIndex = 0;
 
+    public bool HasDiscoveredName()
+    {
+        return Service.InfoManager.EmoteMapBySubType[GetHeadshotEmoteSubType()].HasDiscovered;
+    }
+
+    public void SetNameDiscovered()
+    {
+        Service.InfoManager.EmoteMapBySubType[GetHeadshotEmoteSubType()].HasDiscovered = true;
+    }
+
+    public string GetName()
+    {
+        return HasDiscoveredName() ? Name : "???";
+    }
 
     public bool CanTalkTo()
     {

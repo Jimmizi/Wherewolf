@@ -24,6 +24,9 @@ public class PlayerController : MonoBehaviour
     public GameObject StakeConfirmationGo;
 
     [SerializeField]
+    public Text HoverNameText;
+
+    [SerializeField]
     public Text StakeText;
 
     private PhysicalCharacter CurrentlySelectedCharacter;
@@ -64,7 +67,9 @@ public class PlayerController : MonoBehaviour
         Debug.Assert(CurrentlySelectedCharacter);
         Debug.Log(string.Format("Picked talk to {0}", CurrentlySelectedCharacter.name));
 
-        Service.Player.IsTalkingToCharacter = true;
+        CurrentlySelectedCharacter.AssociatedCharacter.SetNameDiscovered();
+
+        //Service.Player.IsTalkingToCharacter = true;
     }
 
     public void PickedStakeAction()
@@ -120,6 +125,7 @@ public class PlayerController : MonoBehaviour
         }
 
         ActionPanel.gameObject.SetActive(false);
+        HoverNameText.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -132,6 +138,7 @@ public class PlayerController : MonoBehaviour
             ProcessMovement();
             ProcessClicking();
             ProcessUpdateActionUIPosition();
+            ProcessHoverName();
         }
     }
 
@@ -169,6 +176,36 @@ public class PlayerController : MonoBehaviour
         }
 
         ActionPanel.anchoredPosition = new Vector2(pos.x, pos.y);
+    }
+
+    void ProcessHoverName()
+    {
+        bool bHitNothing = true;
+
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, 100))
+        {
+            PhysicalCharacter pc = hit.transform.gameObject.GetComponent<PhysicalCharacter>();
+            if (pc)
+            {
+                bHitNothing = false;
+
+                Vector2 viewportPos = Camera.main.WorldToViewportPoint(pc.transform.position);
+                Vector2 screenPos = new Vector2(
+                (viewportPos.x * Screen.width) - (Screen.width * 0.5f),
+                (viewportPos.y * Screen.height) - (Screen.height * 0.5f));
+
+                HoverNameText.gameObject.SetActive(true);
+                HoverNameText.text = pc.AssociatedCharacter.GetName();
+                HoverNameText.GetComponent<RectTransform>().anchoredPosition = screenPos;
+            }
+        }
+
+        if(bHitNothing)
+        {
+            HoverNameText.gameObject.SetActive(false);
+        }
     }
 
     void ProcessClicking()

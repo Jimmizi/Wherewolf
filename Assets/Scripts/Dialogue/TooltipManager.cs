@@ -54,7 +54,7 @@ public class TooltipManager : MonoBehaviour {
         
         if (!_emoteTooltips.ContainsKey(emote.SubType)) {
             tooltip = NewTooltip();
-            tooltip.Title = emote.Name;
+            tooltip.Title = emote.HasDiscovered ? emote.Name : "???";
             tooltip.Description = emote.Description;
             _emoteTooltips[emote.SubType] = tooltip;
             
@@ -63,6 +63,8 @@ public class TooltipManager : MonoBehaviour {
             LayoutRebuilder.ForceRebuildLayoutImmediate(tooltip.RectTransform);
         } else {
             tooltip = _emoteTooltips[emote.SubType];
+
+            tooltip.Title = emote.HasDiscovered ? emote.Name : "???";
         }
         
         tooltip.gameObject.SetActive(true);
