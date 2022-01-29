@@ -2303,6 +2303,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde3ecf4db00d1c4a892d5503158c666, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CharacterContainerToSpawnOnto: {fileID: 0}
+  CharacterPrefab: {fileID: 7303218419792384055, guid: ec2e6f7d7d9ff7b4e862e5e03ef75261, type: 3}
   iNumberOfCharactersDead: 0
   bShowDebug: 0
 --- !u!114 &4957857799237703565

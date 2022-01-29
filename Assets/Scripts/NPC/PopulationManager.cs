@@ -7,8 +7,16 @@ public class PopulationManager : MonoBehaviour
 {
     // Public vars
 
+    [SerializeField]
+    public GameObject CharacterContainerToSpawnOnto;
+
+    [SerializeField]
+    public GameObject CharacterPrefab;
+
     // Actual list of characters in the population
     public List<Character> ActiveCharacters = new List<Character>();
+
+    public Dictionary<Character, PhysicalCharacter> PhysicalCharacterMap = new Dictionary<Character, PhysicalCharacter>();
 
     // Map of what characters think of other characters (randomised basically)
     public Dictionary<Character, Dictionary<Character, Emote.EmoteSubType>> CharacterOpinionMap = new Dictionary<Character, Dictionary<Character, Emote.EmoteSubType>>();
@@ -791,6 +799,40 @@ public class PopulationManager : MonoBehaviour
 
         #endregion
 
+        #region Create Physical Characters
+
+        foreach (var c in ActiveCharacters)
+        {
+            GameObject go = null;
+            if (CharacterContainerToSpawnOnto)
+            {
+                go = Instantiate(CharacterPrefab, CharacterContainerToSpawnOnto.transform);
+            }
+            else
+            {
+                go = Instantiate(CharacterPrefab);
+            }
+
+            var pc = go.GetComponent<PhysicalCharacter>();
+            pc.AssociatedCharacter = c;
+            pc.name = string.Format("Character_{0}", c.Name);
+
+            // pc.transform.position = Service.Location.GetRandomNavmeshPositionInLocation(4);
+
+            PhysicalCharacterMap.Add(c, pc);
+
+#if UNITY_EDITOR
+            if (Service.Config.DebugYieldInGeneration)
+            {
+                yield return new WaitForSeconds(0.02f);
+            }
+#else
+                yield return new WaitForSeconds(0.02f);
+#endif
+        }
+
+        #endregion
+
         #region Giving characters schedules
 
         // Give the NPCs schedules to follow
@@ -1015,7 +1057,7 @@ public class PopulationManager : MonoBehaviour
 
         foreach(var t in schedule)
         {
-            t.UpdatePosition();
+            t.UpdatePosition(true);
         }
 
         return schedule;

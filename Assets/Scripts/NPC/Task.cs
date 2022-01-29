@@ -83,22 +83,24 @@ public class Task
 
     public static int GetRandomLocation() => UnityEngine.Random.Range(Emote.LocationMin, Emote.LocationMax + 1);
 
-    public void UpdatePosition()
+    public void UpdatePosition(bool bPhysicallyWarpToPosition = false)
     {
         if(Location == -1 || Location < Emote.LocationMin || Location > Emote.LocationMax)
         {
             Location = GetRandomLocation();
         }
 
-        // TODO
         switch (Type)
         {
             case TaskType.WanderArea:
-                // Position = FindWanderPosition(location)
-                break;
             case TaskType.Idle:
-                // Position = FindPositionInLocation(location)
+                Position = Service.Location.GetRandomNavmeshPositionInLocation(Location);
                 break;
+        }
+
+        if(bPhysicallyWarpToPosition && Position != Vector3.zero)
+        {
+            Service.Population.PhysicalCharacterMap[TaskOwner].gameObject.transform.position = Position;
         }
     }
 

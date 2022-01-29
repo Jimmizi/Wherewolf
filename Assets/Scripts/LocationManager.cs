@@ -24,12 +24,12 @@ public class LocationManager : MonoBehaviour
     {
         Transform t = Locations[iLocation].transform;
 
-        Vector2 vRange = new Vector2(t.localScale.x / 2, t.localScale.y / 2);
+        Vector2 vRange = new Vector2(t.localScale.x / 2, t.localScale.z / 2);
 
         float randomXPosition = t.position.x + UnityEngine.Random.Range(-vRange.x, vRange.x);
-        float randomYPosition = t.position.y + UnityEngine.Random.Range(-vRange.y, vRange.y);
+        float randomZPosition = t.position.z + UnityEngine.Random.Range(-vRange.y, vRange.y);
 
-        return new Vector3(randomXPosition, randomYPosition, 0.5f);
+        return new Vector3(randomXPosition, 0.5f, randomZPosition);
 
     }
 
@@ -56,7 +56,7 @@ public class LocationManager : MonoBehaviour
         vPositionOut = Vector3.zero;
 
         NavMeshHit hit;
-        if (NavMesh.SamplePosition(vPosition, out hit, 1.0f, 1))
+        if (NavMesh.SamplePosition(vPosition, out hit, 5.0f, 1))
         {
             vPositionOut = hit.position;
             return true;

@@ -5,21 +5,23 @@ using UnityEngine.AI;
 
 public class PhysicalCharacter : MonoBehaviour
 {
-    public GameObject Destination;
+    public Character AssociatedCharacter;
+
+    private NavMeshAgent navMesh;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        navMesh = GetComponent<NavMeshAgent>();
+        Debug.Assert(navMesh);
     }
 
     // Update is called once per frame
     void Update()
     {
-        NavMeshAgent agent = GetComponent<NavMeshAgent>();
-        if(agent)
+        if(navMesh)
         {
-            agent.destination = Destination.transform.position;
+            //agent.destination = Destination.transform.position;
         }
     }
 }

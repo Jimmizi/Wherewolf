@@ -302,5 +302,18 @@ public class PlayerManager : MonoBehaviour
         }
 #endif
 
+        if(Service.Game.CurrentState == WerewolfGame.GameState.PlayerInvestigateDay
+            || Service.Game.CurrentState == WerewolfGame.GameState.PlayerInvestigateNight)
+        if (Input.GetMouseButtonDown(0))
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit, 100))
+            {
+                Debug.Log(hit.transform.gameObject.name);
+            }
+        }
+
     }
 }
