@@ -812,7 +812,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1549,7 +1549,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 920666215}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
@@ -1773,7 +1773,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1011071845}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
@@ -2008,7 +2008,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1338193694
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2218,7 +2218,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2412,10 +2412,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 178619403}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: CancelledStakeAction
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3525,7 +3525,573 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   customNames: []
-  emoteList: []
+  emoteList:
+  - Name: Long
+    Description: This person has long hair.
+    HasDiscovered: 0
+    Type: 0
+    SubType: 0
+    EmoteImage: {fileID: 21300000, guid: 47cab85408c356845bdec9539099a5a0, type: 3}
+  - Name: Medium
+    Description: This person has medium length hair.
+    HasDiscovered: 0
+    Type: 0
+    SubType: 1
+    EmoteImage: {fileID: 21300000, guid: bfc1d1e5f92739148a2a7796ffbb80e5, type: 3}
+  - Name: Short
+    Description: This person keeps their hair short.
+    HasDiscovered: 0
+    Type: 0
+    SubType: 2
+    EmoteImage: {fileID: 21300000, guid: 8ee98ed6f7a57dc498d93cb211ccbf5c, type: 3}
+  - Name: Bald
+    Description: This person rocks the bald hair style.
+    HasDiscovered: 0
+    Type: 0
+    SubType: 3
+    EmoteImage: {fileID: 21300000, guid: e4094870115984a44a22fe9b64d21e8f, type: 3}
+  - Name: Ugly
+    Description: Their defining feature is that they're ugly.
+    HasDiscovered: 0
+    Type: 1
+    SubType: 4
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Beautiful
+    Description: This person is just really beautiful.
+    HasDiscovered: 0
+    Type: 1
+    SubType: 5
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Warts
+    Description: This person has warts over their face.
+    HasDiscovered: 0
+    Type: 1
+    SubType: 6
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Big Nose
+    Description: This person has a really big nose.
+    HasDiscovered: 0
+    Type: 1
+    SubType: 7
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Big Eyes
+    Description: This person has a pair of big eyes.
+    HasDiscovered: 0
+    Type: 1
+    SubType: 8
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Big Mouth
+    Description: This person has a bigger than usual mouth.
+    HasDiscovered: 0
+    Type: 1
+    SubType: 9
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Big Ears
+    Description: This person sports a pair of big ears.
+    HasDiscovered: 0
+    Type: 1
+    SubType: 10
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Brown
+    Description: Sets the colour of the following emote.
+    HasDiscovered: 0
+    Type: 2
+    SubType: 11
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Black
+    Description: Sets the colour of the following emote.
+    HasDiscovered: 0
+    Type: 2
+    SubType: 12
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: White
+    Description: Sets the colour of the following emote.
+    HasDiscovered: 0
+    Type: 2
+    SubType: 13
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Blue
+    Description: Sets the colour of the following emote.
+    HasDiscovered: 0
+    Type: 2
+    SubType: 14
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Red
+    Description: Sets the colour of the following emote.
+    HasDiscovered: 0
+    Type: 2
+    SubType: 15
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Orange
+    Description: Sets the colour of the following emote.
+    HasDiscovered: 0
+    Type: 2
+    SubType: 16
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Yellow
+    Description: Sets the colour of the following emote.
+    HasDiscovered: 0
+    Type: 2
+    SubType: 17
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Green
+    Description: Sets the colour of the following emote.
+    HasDiscovered: 0
+    Type: 2
+    SubType: 18
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Purple
+    Description: Sets the colour of the following emote.
+    HasDiscovered: 0
+    Type: 2
+    SubType: 19
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: North West
+    Description: This location is North West of the town, relative to the center.
+    HasDiscovered: 0
+    Type: 3
+    SubType: 20
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: North
+    Description: This location is North of the town, relative to the center.
+    HasDiscovered: 0
+    Type: 3
+    SubType: 21
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: North East
+    Description: This location is North East of the town, relative to the center.
+    HasDiscovered: 0
+    Type: 3
+    SubType: 22
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: West
+    Description: This location is West of the town, relative to the center.
+    HasDiscovered: 0
+    Type: 3
+    SubType: 23
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Central
+    Description: This location is in the center of town.
+    HasDiscovered: 0
+    Type: 3
+    SubType: 24
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: East
+    Description: This location is East of the town, relative to the center.
+    HasDiscovered: 0
+    Type: 3
+    SubType: 25
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: South West
+    Description: This location is South West of the town, relative to the center.
+    HasDiscovered: 0
+    Type: 3
+    SubType: 26
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: South
+    Description: This location is South of the town, relative to the center.
+    HasDiscovered: 0
+    Type: 3
+    SubType: 27
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: South East
+    Description: This location is South East of the town, relative to the center.
+    HasDiscovered: 0
+    Type: 3
+    SubType: 28
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Bank
+    Description: This signifies that a character might work there.
+    HasDiscovered: 0
+    Type: 4
+    SubType: 29
+    EmoteImage: {fileID: 21300000, guid: 93c273626aeef014bb1d5a0e761dfc79, type: 3}
+  - Name: Hospital
+    Description: This signifies that a character might work there.
+    HasDiscovered: 0
+    Type: 4
+    SubType: 30
+    EmoteImage: {fileID: 21300000, guid: c9f02d6c727e86d469d448e7f35d563a, type: 3}
+  - Name: Law
+    Description: This signifies that a character might work there.
+    HasDiscovered: 0
+    Type: 4
+    SubType: 31
+    EmoteImage: {fileID: 21300000, guid: df39c2947950fd44a9b043fbbd4aeb18, type: 3}
+  - Name: School
+    Description: This signifies that a character might work there.
+    HasDiscovered: 0
+    Type: 4
+    SubType: 32
+    EmoteImage: {fileID: 21300000, guid: 2e48bb5ba5cdae44b8756c02a40ccfd9, type: 3}
+  - Name: Tavern
+    Description: This signifies that a character might work there.
+    HasDiscovered: 0
+    Type: 4
+    SubType: 33
+    EmoteImage: {fileID: 21300000, guid: 4a755c35db7af6d40b2697d4300842a6, type: 3}
+  - Name: Blacksmith
+    Description: This signifies that a character might work there.
+    HasDiscovered: 0
+    Type: 4
+    SubType: 34
+    EmoteImage: {fileID: 21300000, guid: 3eaf78cd83946e84c9109c60f62a0dba, type: 3}
+  - Name: Wood Cutter
+    Description: This signifies that a character might work there.
+    HasDiscovered: 0
+    Type: 4
+    SubType: 35
+    EmoteImage: {fileID: 21300000, guid: 3f66c3c345b3f4f4291a14a36e20a309, type: 3}
+  - Name: Engineer
+    Description: This signifies that a character might work there.
+    HasDiscovered: 0
+    Type: 4
+    SubType: 36
+    EmoteImage: {fileID: 21300000, guid: 73a9d17d403e68046a73b122081d9fbd, type: 3}
+  - Name: Fisher
+    Description: This signifies that a character might work there.
+    HasDiscovered: 0
+    Type: 4
+    SubType: 37
+    EmoteImage: {fileID: 21300000, guid: bd5b5e265eb452c46ad53c005024f459, type: 3}
+  - Name: Library
+    Description: This signifies that a character might work there.
+    HasDiscovered: 0
+    Type: 4
+    SubType: 38
+    EmoteImage: {fileID: 21300000, guid: 55673c78a7887b54a8e397f14800425c, type: 3}
+  - Name: General Store
+    Description: This signifies that a character might work there.
+    HasDiscovered: 0
+    Type: 4
+    SubType: 39
+    EmoteImage: {fileID: 21300000, guid: a4831fab7c6d1f7438e63c02f4890a0f, type: 3}
+  - Name: Day
+    Description: 
+    HasDiscovered: 0
+    Type: 5
+    SubType: 40
+    EmoteImage: {fileID: -8144886026044020093, guid: 2e1751c1c58ffda4cad7ba31c5af76a3, type: 3}
+  - Name: Night
+    Description: 
+    HasDiscovered: 0
+    Type: 5
+    SubType: 41
+    EmoteImage: {fileID: 2513764488909250400, guid: 2e1751c1c58ffda4cad7ba31c5af76a3, type: 3}
+  - Name: Dirty
+    Description: Describes the emote following this.
+    HasDiscovered: 0
+    Type: 7
+    SubType: 42
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Wet
+    Description: Describes the emote following this.
+    HasDiscovered: 0
+    Type: 7
+    SubType: 43
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Bloody
+    Description: Describes the emote following this.
+    HasDiscovered: 0
+    Type: 7
+    SubType: 44
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Clean
+    Description: Describes the emote following this.
+    HasDiscovered: 0
+    Type: 7
+    SubType: 45
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Torn
+    Description: Describes the emote following this.
+    HasDiscovered: 0
+    Type: 7
+    SubType: 46
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Shirt
+    Description: An item of clothing that is predominant on the person.
+    HasDiscovered: 0
+    Type: 6
+    SubType: 47
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Jacket
+    Description: An item of clothing that is predominant on the person.
+    HasDiscovered: 0
+    Type: 6
+    SubType: 48
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Boots
+    Description: An item of clothing that is predominant on the person.
+    HasDiscovered: 0
+    Type: 6
+    SubType: 49
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Trousers
+    Description: An item of clothing that is predominant on the person.
+    HasDiscovered: 0
+    Type: 6
+    SubType: 50
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Hat
+    Description: An item of clothing that is predominant on the person.
+    HasDiscovered: 0
+    Type: 6
+    SubType: 51
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Glasses
+    Description: An item of clothing that is predominant on the person.
+    HasDiscovered: 0
+    Type: 6
+    SubType: 52
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Gloves
+    Description: An item of clothing that is predominant on the person.
+    HasDiscovered: 0
+    Type: 6
+    SubType: 53
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Footsteps
+    Description: Signifies a person was seen in travel.
+    HasDiscovered: 0
+    Type: 8
+    SubType: 54
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Accident Knife
+    Description: This person had an accident.
+    HasDiscovered: 0
+    Type: 8
+    SubType: 55
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Accident Fall
+    Description: This person had an accident.
+    HasDiscovered: 0
+    Type: 8
+    SubType: 56
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Eyes
+    Description: Signifies having seen someone in a location.
+    HasDiscovered: 0
+    Type: 8
+    SubType: 57
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Werewolf
+    Description: The big bad.
+    HasDiscovered: 0
+    Type: 8
+    SubType: 58
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Approves
+    Description: 
+    HasDiscovered: 0
+    Type: 8
+    SubType: 59
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Disapproves
+    Description: 
+    HasDiscovered: 0
+    Type: 8
+    SubType: 60
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Talk Action
+    Description: 
+    HasDiscovered: 0
+    Type: 8
+    SubType: 61
+    EmoteImage: {fileID: 21300000, guid: 5eec43133b2bdfd469bf558b804f8c20, type: 3}
+  - Name: Stake Action
+    Description: 
+    HasDiscovered: 0
+    Type: 8
+    SubType: 62
+    EmoteImage: {fileID: 21300000, guid: f75e1cc87086e1b4e9e71e37ec70a488, type: 3}
+  - Name: Relationship Kiss
+    Description: Saw someone kissing someone else.
+    HasDiscovered: 0
+    Type: 9
+    SubType: 63
+    EmoteImage: {fileID: 21300000, guid: 9dd5d1620f3170d4bb00251f738b0293, type: 3}
+  - Name: Relationship Fight
+    Description: 
+    HasDiscovered: 0
+    Type: 9
+    SubType: 64
+    EmoteImage: {fileID: 21300000, guid: 04b3daae9392a894f9b9608fd6664f78, type: 3}
+  - Name: Relationship Marriage
+    Description: 
+    HasDiscovered: 0
+    Type: 9
+    SubType: 65
+    EmoteImage: {fileID: 21300000, guid: 5c7de32f6b414d947adb5cd29d0e286b, type: 3}
+  - Name: Grover
+    Description: Indicates that the emotes preceeding or following this relate to
+      Grover.
+    HasDiscovered: 0
+    Type: 10
+    SubType: 66
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Celia
+    Description: Indicates that the emotes preceeding or following this relate to
+      Celia.
+    HasDiscovered: 0
+    Type: 10
+    SubType: 67
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Henry
+    Description: Indicates that the emotes preceeding or following this relate to
+      Henry.
+    HasDiscovered: 0
+    Type: 10
+    SubType: 68
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Harriet
+    Description: Indicates that the emotes preceeding or following this relate to
+      Harriet.
+    HasDiscovered: 0
+    Type: 10
+    SubType: 69
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Marie
+    Description: Indicates that the emotes preceeding or following this relate to
+      Marie.
+    HasDiscovered: 0
+    Type: 10
+    SubType: 70
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Marshall
+    Description: Indicates that the emotes preceeding or following this relate to
+      Marshall.
+    HasDiscovered: 0
+    Type: 10
+    SubType: 71
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Lois
+    Description: Indicates that the emotes preceeding or following this relate to
+      Lois.
+    HasDiscovered: 0
+    Type: 10
+    SubType: 72
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Theodore
+    Description: Indicates that the emotes preceeding or following this relate to
+      Theodore.
+    HasDiscovered: 0
+    Type: 10
+    SubType: 73
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Chester
+    Description: Indicates that the emotes preceeding or following this relate to
+      Chester.
+    HasDiscovered: 0
+    Type: 10
+    SubType: 74
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Alva
+    Description: Indicates that the emotes preceeding or following this relate to
+      Alva.
+    HasDiscovered: 0
+    Type: 10
+    SubType: 75
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Lee
+    Description: Indicates that the emotes preceeding or following this relate to
+      Lee.
+    HasDiscovered: 0
+    Type: 10
+    SubType: 76
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Matthew
+    Description: Indicates that the emotes preceeding or following this relate to
+      Matthew.
+    HasDiscovered: 0
+    Type: 10
+    SubType: 77
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Charles
+    Description: Indicates that the emotes preceeding or following this relate to
+      Charles.
+    HasDiscovered: 0
+    Type: 10
+    SubType: 78
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Nellie
+    Description: Indicates that the emotes preceeding or following this relate to
+      Nellie.
+    HasDiscovered: 0
+    Type: 10
+    SubType: 79
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Owen
+    Description: Indicates that the emotes preceeding or following this relate to
+      Owen.
+    HasDiscovered: 0
+    Type: 10
+    SubType: 80
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Carrie
+    Description: Indicates that the emotes preceeding or following this relate to
+      Carrie.
+    HasDiscovered: 0
+    Type: 10
+    SubType: 81
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Ola
+    Description: Indicates that the emotes preceeding or following this relate to
+      Ola.
+    HasDiscovered: 0
+    Type: 10
+    SubType: 82
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Josephine
+    Description: Indicates that the emotes preceeding or following this relate to
+      Josephine.
+    HasDiscovered: 0
+    Type: 10
+    SubType: 83
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Myra
+    Description: Indicates that the emotes preceeding or following this relate to
+      Myra.
+    HasDiscovered: 0
+    Type: 10
+    SubType: 84
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Otto
+    Description: Indicates that the emotes preceeding or following this relate to
+      Otto.
+    HasDiscovered: 0
+    Type: 10
+    SubType: 85
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Love
+    Description: 
+    HasDiscovered: 0
+    Type: 11
+    SubType: 86
+    EmoteImage: {fileID: 21300000, guid: 6ae8ec6f7851e544383e359ec29b1092, type: 3}
+  - Name: Like
+    Description: 
+    HasDiscovered: 0
+    Type: 11
+    SubType: 87
+    EmoteImage: {fileID: 21300000, guid: ed93054b867642a478e3b7c17ff3d5db, type: 3}
+  - Name: Neutral
+    Description: 
+    HasDiscovered: 0
+    Type: 11
+    SubType: 88
+    EmoteImage: {fileID: 21300000, guid: 05ca9fcc61e4d2b408647adfae010913, type: 3}
+  - Name: Dislike
+    Description: 
+    HasDiscovered: 0
+    Type: 11
+    SubType: 89
+    EmoteImage: {fileID: 21300000, guid: 18b0d3426c74bb64f947462cf8c91993, type: 3}
+  - Name: Hate
+    Description: 
+    HasDiscovered: 0
+    Type: 11
+    SubType: 90
+    EmoteImage: {fileID: 21300000, guid: 48ce7a7a686f02f419edfe7dc5c864f7, type: 3}
   AvailableOccupations: 
 --- !u!114 &4957857799237703566
 MonoBehaviour:
