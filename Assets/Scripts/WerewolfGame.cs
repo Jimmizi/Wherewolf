@@ -67,6 +67,9 @@ public class WerewolfGame : MonoBehaviour
     [SerializeField]
     public Text SummaryScreenReason;
 
+    [SerializeField]
+    public Text DeathAnnouncementText;
+
     public GameState CurrentState = GameState.GeneratePopulation;
     private GameState NextState = InvalidState;
 
@@ -140,7 +143,7 @@ public class WerewolfGame : MonoBehaviour
     {
         Service.Game = this;
         DontDestroyOnLoad(this.gameObject);
-
+        iVictimText = 0;
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
@@ -488,28 +491,100 @@ public class WerewolfGame : MonoBehaviour
                 }
             case SubState.Finish:
                 {
-                    if (CurrentTimeOfDay == TOD.Day)
+                    //Character v = CurrentTimeOfDay == TOD.Day ? Service.PhaseSolve.GetVictimFromDay(CurrentDay - 1) : null;
+
+                    //if (v == null)
                     {
-                        Service.Audio.PlayRoosterCrow();
+                        if (CurrentTimeOfDay == TOD.Day)
+                        {
+                            Service.Audio.PlayRoosterCrow();
+                        }
+                        DayCounterText.text = string.Format("Day {0}", CurrentDay);
+                        Service.Transition.BlendOut();
                     }
-                    DayCounterText.text = string.Format("Day {0}", CurrentDay);
-                    Service.Transition.BlendOut();
+
                     break;
                 }
         }
     }
+
+    IEnumerator DoFadeInDeathAnnouncementText()
+    {
+        DeathAnnouncementText.gameObject.SetActive(true);
+
+        Color col = DeathAnnouncementText.color;
+        col.a = 0.0f;
+        DeathAnnouncementText.color = col;
+
+        while(col.a < 1.0f)
+        {
+            col.a += Time.deltaTime;
+            DeathAnnouncementText.color = col;
+
+            yield return new WaitForSeconds(Time.deltaTime);
+        }
+
+        col.a = 1.0f;
+        DeathAnnouncementText.color = col;
+    }
+
+    IEnumerator DoFadeOutDeathAnnouncementText()
+    {
+        DeathAnnouncementText.gameObject.SetActive(true);
+
+        Color col = DeathAnnouncementText.color;
+        col.a = 1.0f;
+        DeathAnnouncementText.color = col;
+
+        while (col.a > 0.0f)
+        {
+            col.a -= Time.deltaTime;
+            DeathAnnouncementText.color = col;
+
+            yield return new WaitForSeconds(Time.deltaTime);
+        }
+
+        col.a = 0.0f;
+        DeathAnnouncementText.color = col;
+
+        DeathAnnouncementText.gameObject.SetActive(false);
+    }
+
+    private int iVictimText = 0;
     void ProcessVictimFoundAnnouncement()
     {
         switch (CurrentSubState)
         {
             case SubState.Start:
                 {
+                    CurrentSubState = SubState.Finish;
+                    return;
                     Character v = Service.PhaseSolve.GetVictimFromDay(CurrentDay - 1);
                     if (v != null)
                     {
+                        switch (iVictimText++)
+                        {
+                            case 0:
+                                DeathAnnouncementText.text = string.Format("A fresh widow mourns; {0}'s was found in the early hours of the morning.", v.Name);
+                                break;
+                            case 1:
+                                DeathAnnouncementText.text = string.Format("Screams pierced the sky early in the morning. {0}'s body was found in pieces in the street.", v.Name);
+                                break;
+                            case 2:
+                                DeathAnnouncementText.text = string.Format("{0}'s warm blood fills the alleyway in the early morning. A figure reported ", v.Name);
+                                break;
+                            case 3:
+                                DeathAnnouncementText.text = string.Format("A fresh widow mourns; {0}'s body was found mauled in the early hours of the morning.", v.Name);
+                                break;
+                            case 4:
+                                DeathAnnouncementText.text = string.Format("A fresh widow mourns; {0}'s body was found mauled in the early hours of the morning.", v.Name);
+                                break;
+                        }
+                        StartCoroutine(DoFadeInDeathAnnouncementText());
+
                         // Setup announcement
 
-                        CurrentSubState = SubState.Finish; // Don't actually finish when we have a way to announce
+                        CurrentSubState++;
                     }
                     else
                     {
@@ -525,6 +600,12 @@ public class WerewolfGame : MonoBehaviour
                 }
             case SubState.Finish:
                 {
+                    if (CurrentTimeOfDay == TOD.Day)
+                    {
+                        Service.Audio.PlayRoosterCrow();
+                    }
+                    DayCounterText.text = string.Format("Day {0}", CurrentDay);
+                    Service.Transition.BlendOut();
 
                     break;
                 }

@@ -314,6 +314,50 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 962407900}
+    - target: {fileID: 624931402, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1143.98
+      objectReference: {fileID: 0}
+    - target: {fileID: 624931403, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: m_Text
+      value: Perry's family mourns as their body was found mauled this morning
+      objectReference: {fileID: 0}
+    - target: {fileID: 624931403, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: m_Color.b
+      value: 0.8867924
+      objectReference: {fileID: 0}
+    - target: {fileID: 624931403, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: m_Color.g
+      value: 0.8867924
+      objectReference: {fileID: 0}
+    - target: {fileID: 624931403, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: m_Color.r
+      value: 0.8867924
+      objectReference: {fileID: 0}
+    - target: {fileID: 624931403, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 6415cc281a8846a45839b1ca418332da, type: 3}
+    - target: {fileID: 624931403, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: m_FontData.m_MaxSize
+      value: 163
+      objectReference: {fileID: 0}
+    - target: {fileID: 624931403, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 624931403, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: m_FontData.m_Alignment
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 624931403, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: m_FontData.m_VerticalOverflow
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 624931403, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: m_FontData.m_HorizontalOverflow
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 980453643, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -380,6 +424,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+--- !u!1 &624931401 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 624931401, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+  m_PrefabInstance: {fileID: 554205058}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &624931402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 624931401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!114 &962407900 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6470389130443444341, guid: dd7ff00fcce572349affdd2db0492b03, type: 3}
