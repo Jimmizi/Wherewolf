@@ -157,7 +157,7 @@ public class DialogueRenderer : MonoBehaviour {
                 EmoteRenderer emoteRenderer = choiceButtonInstance.GetComponentInChildren<EmoteRenderer>();
 
                 _choiceButtonInstances.Add(choiceButtonInstance.gameObject);
-                emoteRenderer.Emote = new Emote(dialogueAction.Value);
+                emoteRenderer.Emote = Service.InfoManager.EmoteMapBySubType[dialogueAction.Value];
                 button.onClick.AddListener(() => {
                     Debug.LogFormat("The player has chosen dialog action {0}", dialogueAction.Key);
                     DoAction(dialogueAction.Key, Service.Population.GetRandomCharacter());

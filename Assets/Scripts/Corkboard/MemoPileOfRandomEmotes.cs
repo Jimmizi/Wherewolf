@@ -14,7 +14,7 @@ public class MemoPileOfRandomEmotes : MemoPile
         for (int i=0; i< numEmotes; i++)
         {
             var randomEmoteSubType = (Emote.EmoteSubType)Random.Range(0, numEmoteTypes);
-            emotes.Add(new Emote(randomEmoteSubType));
+            emotes.Add(Service.InfoManager.EmoteMapBySubType[randomEmoteSubType]);
         }
 
         return MemoFactory.instance.CreateNew(emotes, rectTransform.anchoredPosition, false);
