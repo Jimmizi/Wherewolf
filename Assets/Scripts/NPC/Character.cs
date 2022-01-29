@@ -586,7 +586,19 @@ public class Character
         }
     }
 
-    public void OnTimeOfDayPhaseShift() 
+    public void TryWarpToTaskLocation()
+    {
+        if (CurrentTask != null)
+        {
+            CurrentTask.WarpToTaskPosition();
+        }
+        else
+        {
+            Debug.Log(string.Format("TryWarpToTaskLocation: {0} had to task to warp to.", Name));
+        }
+    }
+
+    public void OnTimeOfDayPhaseShift(bool bWarpToTaskPosition = false) 
     {
         if(!IsAlive)
         {

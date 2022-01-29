@@ -56,7 +56,16 @@ public class EmoteRenderer : MonoBehaviour, IEmoteRenderer, IPointerEnterHandler
             }
             default: {
                 Image.gameObject.SetActive(true);
-                Image.sprite = EmoteLibrary.Instance.FindSprite(type);
+
+                if (Service.InfoManager != null && Service.InfoManager.EmoteMapBySubType.ContainsKey(type))
+                {
+                    if (Service.InfoManager.EmoteMapBySubType[type].EmoteImage)
+                    {
+                        Image.sprite = Service.InfoManager.EmoteMapBySubType[type].EmoteImage;
+                    }
+                }
+
+                //Image.sprite = EmoteLibrary.Instance.FindSprite(type);
                 if (CharacterEmoteRenderer != null) {
                     CharacterEmoteRenderer.gameObject.SetActive(false);
                 }
@@ -66,7 +75,7 @@ public class EmoteRenderer : MonoBehaviour, IEmoteRenderer, IPointerEnterHandler
     }
 
     public void Start() {
-        SetEmote(new Emote((Emote.EmoteSubType) Random.Range(0, 10)));
+        //SetEmote(new Emote((Emote.EmoteSubType) Random.Range(0, 10)));
     }
 
     public void SetEmote(Emote emote) {
@@ -75,10 +84,10 @@ public class EmoteRenderer : MonoBehaviour, IEmoteRenderer, IPointerEnterHandler
     }
 
     public void OnPointerEnter(PointerEventData eventData) {
-        TooltipManager.Instance.ShowEmoteTooltip(Emote, transform.position);
+        TooltipManager.Instance?.ShowEmoteTooltip(Emote, transform.position);
     }
 
     public void OnPointerExit(PointerEventData eventData) {
-        TooltipManager.Instance.HideActiveTooltip();
+        TooltipManager.Instance?.HideActiveTooltip();
     }
 }

@@ -81,14 +81,6 @@ public class ClueManager : MonoBehaviour
                 // 1) Generate saw in location clue
                 GenerateSawInLocationClue(currentPhase, c, bShouldGenerateALie);
 
-#if UNITY_EDITOR
-                if(Service.Config.DebugYieldInGeneration)
-                {
-                    yield return new WaitForSeconds(0.02f);
-                }
-#else
-                yield return new WaitForSeconds(0.02f);
-#endif
                 // 2) Generate saw passing by clue
                 GenerateSawPassingByClue(currentPhase, c, bShouldGenerateALie);
 
@@ -104,15 +96,6 @@ public class ClueManager : MonoBehaviour
                 // 3) Generate saw at work clue
                 GenerateSawAtWorkClue(currentPhase, c, bShouldGenerateALie);
 
-#if UNITY_EDITOR
-                if (Service.Config.DebugYieldInGeneration)
-                {
-                    yield return new WaitForSeconds(0.02f);
-                }
-#else
-                yield return new WaitForSeconds(0.02f);
-#endif
-
                 // 4) Generate comment on facial features clue
                 GenerateCommentFacialClue(currentPhase, c, bShouldGenerateALie);
 
@@ -127,15 +110,6 @@ public class ClueManager : MonoBehaviour
 
                 // 5) Generate comment on clothing clue
                 GenerateCommentClothingClue(currentPhase, c, bShouldGenerateALie);
-
-#if UNITY_EDITOR
-                if (Service.Config.DebugYieldInGeneration)
-                {
-                    yield return new WaitForSeconds(0.02f);
-                }
-#else
-                yield return new WaitForSeconds(0.02f);
-#endif
 
                 // 6) Generate gossip clue
                 GenerateGossipClue(currentPhase, c);
@@ -164,15 +138,6 @@ public class ClueManager : MonoBehaviour
                 // 1) Generate ghost visual clue
                 GenerateGhostVisualClue(currentPhase, c, bShouldGenerateALie);
                 c.HasGeneratedGhostClues = true;
-
-#if UNITY_EDITOR
-                if (Service.Config.DebugYieldInGeneration)
-                {
-                    yield return new WaitForSeconds(0.02f);
-                }
-#else
-                yield return new WaitForSeconds(0.02f);
-#endif
             }
 
             // Generate emotes for all clues given
@@ -180,17 +145,6 @@ public class ClueManager : MonoBehaviour
             {
                 clue.Generate();
             }
-
-            //c.LastClueGroup = currentPhase.CharacterCluesToGive[c];
-
-#if UNITY_EDITOR
-            if (Service.Config.DebugYieldInGeneration)
-            {
-                yield return new WaitForSeconds(0.02f);
-            }
-#else
-                yield return new WaitForSeconds(0.02f);
-#endif
         }
 
         IsGeneratingClues = false;

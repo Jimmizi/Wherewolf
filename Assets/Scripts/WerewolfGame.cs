@@ -19,14 +19,14 @@ public class WerewolfGame : MonoBehaviour
 
         // \/ Start of game loop \/
         TransitionToDay,            // Graphic wheel transition to day
+        //PhaseGenerationDay,         // We generate the story data for the next day time phase
         VictimFoundAnnouncement,    // Game announces a found victim in the morning (if any)
-        PhaseGenerationDay,         // We generate the story data for the next day time phase
-        ClueGenerationDay,          // We generate the clue data from the day phase generated
+        //ClueGenerationDay,          // We generate the clue data from the day phase generated
         PlayerInvestigateDay,       // Player is walking around investigating the town (daytime)
         
         TransitionToNight,          // Graphic wheel transition to night
-        PhaseGenerationNight,       // We generate the story data for the next night time phase
-        ClueGenerationNight,        // We generate the clue data from the night phase generated
+        //PhaseGenerationNight,       // We generate the story data for the next night time phase
+        //ClueGenerationNight,        // We generate the clue data from the night phase generated
         PlayerInvestigateNight,     // Player is walking around investigating the town (nighttime)
 
         PlayerInformationReview,    // Corkboard scene where the player can organise their clues and thoughts
@@ -189,19 +189,19 @@ public class WerewolfGame : MonoBehaviour
                 ProcessTimeTransitionState();
                 break;
 
+            //case GameState.PhaseGenerationDay:
+            //case GameState.PhaseGenerationNight:
+            //    ProcessStatePhaseGeneration();
+            //    break;
+
             case GameState.VictimFoundAnnouncement:
                 ProcessVictimFoundAnnouncement();
                 break;
 
-            case GameState.PhaseGenerationDay:
-            case GameState.PhaseGenerationNight:
-                ProcessStatePhaseGeneration();
-                break;
-
-            case GameState.ClueGenerationDay:
-            case GameState.ClueGenerationNight:
-                ProcessStateClueGeneration();
-                break;
+            //case GameState.ClueGenerationDay:
+            //case GameState.ClueGenerationNight:
+            //    ProcessStateClueGeneration();
+            //    break;
 
             case GameState.PlayerInvestigateDay:
             case GameState.PlayerInvestigateNight:
@@ -286,6 +286,15 @@ public class WerewolfGame : MonoBehaviour
                 }
         }
     }
+
+
+    const int TransitionState_GeneratePhase = 0;
+    const int TransitionState_WaitForPhaseComplete = 1;
+    const int TransitionState_GenerateClues = 2;
+    const int TransitionState_WaitForCluesComplete = 3;
+    const int TransitionState_DONE = 4;
+
+    private int transitionGenerationState = 0;
     void ProcessTimeTransitionState()
     {
         switch (CurrentSubState)
@@ -349,9 +358,11 @@ public class WerewolfGame : MonoBehaviour
                         }
 
                         Service.TransitionScreen.ShowPanel(0.5f);
-                        Service.TransitionScreen.PerformTransition(TimeTransitionDuration);
+                        Service.TransitionScreen.PerformTransition(TimeTransitionDuration * 0.7f);
                         startedTransitionFadeOut = false;
                     }
+
+                    transitionGenerationState = TransitionState_GeneratePhase;
 
                     CurrentSubState++;
                     break;
@@ -362,15 +373,58 @@ public class WerewolfGame : MonoBehaviour
 
                     if (!bFailed)
                     {
-                        if (fStateTimer >= TimeTransitionDuration)
+                        // Process generation inside the daytime transition rather than as separate states
+                        switch(transitionGenerationState)
+                        {
+                            case TransitionState_GeneratePhase:
+                                {
+                                    if (Service.PhaseSolve.CanGeneratePhase())
+                                    {
+                                        Service.PhaseSolve.StartPhaseGeneration();
+                                        transitionGenerationState = TransitionState_WaitForPhaseComplete;
+                                    }
+                                    else
+                                    {
+                                        Debug.LogError("Was unable to generate a phase.");
+                                    }
+                                    break;
+                                }
+                            case TransitionState_WaitForPhaseComplete:
+                                {
+                                    if (!Service.PhaseSolve.IsGeneratingAPhase)
+                                    {
+                                        transitionGenerationState = TransitionState_GenerateClues;
+                                    }
+                                    break;
+                                }
+                            case TransitionState_GenerateClues:
+                                {
+                                    Service.Clue.GenerateCluesForCurrentPhase();
+                                    transitionGenerationState = TransitionState_WaitForCluesComplete;
+                                    break;
+                                }
+                            case TransitionState_WaitForCluesComplete:
+                                {
+                                    if (!Service.Clue.IsGeneratingClues)
+                                    {
+                                        transitionGenerationState = TransitionState_DONE;
+                                    }
+                                    break;
+                                }
+                        }
+
+                        if (fStateTimer >= TimeTransitionDuration && transitionGenerationState == TransitionState_DONE)
                         {
                             CurrentSubState++;
 
                             foreach (var c in Service.Population.ActiveCharacters)
                             {
                                 c.OnTimeOfDayPhaseShift();
+                                c.Update();
+                                c.TryWarpToTaskLocation();
                             }
 
+                            // Will fade in the action icons
                             if (CurrentTimeOfDay == TOD.Day)
                             {
                                 Service.Player.StartDay();
@@ -460,6 +514,7 @@ public class WerewolfGame : MonoBehaviour
                     }
                     else
                     {
+                        Debug.LogError("Was unable to generate a phase.");
                         // TODO: Go to fail screen?
                     }
                     break;
@@ -732,12 +787,12 @@ public class WerewolfGame : MonoBehaviour
                 case GameState.IntroStorySegment:
                 case GameState.TransitionToDay:
                 case GameState.VictimFoundAnnouncement:
-                case GameState.PhaseGenerationDay:
-                case GameState.ClueGenerationDay:
+                //case GameState.PhaseGenerationDay:
+                //case GameState.ClueGenerationDay:
                 case GameState.PlayerInvestigateDay:
                 case GameState.TransitionToNight:
-                case GameState.PhaseGenerationNight:
-                case GameState.ClueGenerationNight:
+                //case GameState.PhaseGenerationNight:
+                //case GameState.ClueGenerationNight:
                 case GameState.PlayerInvestigateNight:
                     NextState = CurrentState + 1;
                     break;
@@ -776,7 +831,7 @@ public class WerewolfGame : MonoBehaviour
     Vector2 vStakeSelectionScrollPosition = new Vector2();
     Vector2 vClueSelectionScrollPosition = new Vector2();
     Vector2 vPLayerCluesScrollPosition = new Vector2();
-    bool chosenToStake = false;
+    bool DebugChosenToStake = false;
 
     private void OnGUI()
     {
@@ -801,6 +856,22 @@ public class WerewolfGame : MonoBehaviour
             CurrentDay, 
             CurrentTimeOfDay.ToString()));
 
+        if (CurrentState == GameState.TransitionToDay
+            || CurrentState == GameState.TransitionToNight)
+        {
+            string sTransitionState = "";
+            switch(transitionGenerationState)
+            {
+                case TransitionState_GeneratePhase: sTransitionState = "GeneratePhase"; break;
+                case TransitionState_WaitForPhaseComplete: sTransitionState = "WaitForPhaseComplete"; break;
+                case TransitionState_GenerateClues: sTransitionState = "GenerateClues"; break;
+                case TransitionState_WaitForCluesComplete: sTransitionState = "WaitForCluesComplete"; break;
+                case TransitionState_DONE: sTransitionState = "DONE"; break;
+            }
+
+            GUI.Label(new Rect(415, 30, 400, 24), sTransitionState);
+        }
+
         float fHeight = Screen.height - 80;
 
         GUI.Box(new Rect(10, 40, 900, fHeight), "");
@@ -808,7 +879,7 @@ public class WerewolfGame : MonoBehaviour
         // Choose to stake a character
         vStakeSelectionScrollPosition = GUI.BeginScrollView(new Rect(15, 45, 200, fHeight - 10), vStakeSelectionScrollPosition, new Rect(0, 0, 190, 1000));
         {
-            if (!chosenToStake)
+            if (!DebugChosenToStake)
             {
                 Vector2 vPosition = new Vector2(5, 5);
                 GUI.Label(new Rect(vPosition.x, vPosition.y, 200, 24), "Select a character to stake");
@@ -824,7 +895,7 @@ public class WerewolfGame : MonoBehaviour
                     if (GUI.Button(new Rect(vPosition.x, vPosition.y, 140, 24), string.Format("[{0}] {1}", c.Index, c.Name)))
                     {
                         ProcessPlayerActionStakeCharacter(c);
-                        chosenToStake = true;
+                        DebugChosenToStake = true;
                     }
                     vPosition.y += 28;
                 }
@@ -835,7 +906,7 @@ public class WerewolfGame : MonoBehaviour
         // Choose to talk to character
         vClueSelectionScrollPosition = GUI.BeginScrollView(new Rect(220, 45, 200, fHeight - 10), vClueSelectionScrollPosition, new Rect(0, 0, 190, 1000));
         {
-            if (!chosenToStake)
+            if (!DebugChosenToStake)
             {
                 Vector2 vPosition = new Vector2(5, 5);
                 GUI.Label(new Rect(vPosition.x, vPosition.y, 200, 24), "Select a character to talk to");

@@ -899,6 +899,26 @@ public class PopulationManager : MonoBehaviour
 
         Service.InfoManager.RenameCharacterEmotes();
 
+#if UNITY_EDITOR
+        foreach(var c in ActiveCharacters)
+        {
+            for (int t = 0; t < Character.DescriptorMax; ++t)
+            {
+                var desc = (Character.Descriptor)t;
+
+                if (desc == Character.Descriptor.Occupation)
+                {
+                    continue;
+                }
+
+                if(c.Descriptors[desc].Count == 0)
+                {
+                    Debug.LogWarning(string.Format("FAILED to add descriptor {0} for character [{1}] {2}", desc.ToString(), c.Index, c.Name));
+                }
+            }
+        }
+#endif
+
         bDoneCharacterGeneration = true;
     }
 
@@ -937,7 +957,10 @@ public class PopulationManager : MonoBehaviour
         {
             foreach(var d in descriptorsToGive)
             {
-                c.Descriptors[d.Key] = d.Value;
+                if (d.Key != Character.Descriptor.Occupation)
+                {
+                    c.Descriptors[d.Key] = d.Value;
+                }
             }
         }
 
@@ -962,12 +985,17 @@ public class PopulationManager : MonoBehaviour
             c.Descriptors[Character.Descriptor.Facial].Add(Service.InfoManager.GetRandomEmoteOfType(Emote.EmoteType.FacialFeature));
         }
 
-        if (descriptorsToGive == null || !descriptorsToGive.ContainsKey(Character.Descriptor.Occupation))
+        //if (descriptorsToGive == null || !descriptorsToGive.ContainsKey(Character.Descriptor.Occupation))
         {
             if (UnityEngine.Random.Range(0, 101) < Service.Config.CharacterHasOccupationChance)
             {
-                // Occupation
-                c.Descriptors[Character.Descriptor.Occupation].Add(Service.InfoManager.GetRandomEmoteOfType(Emote.EmoteType.Occupation));
+                Emote occupation = Service.InfoManager.GetAvailableOccupation();
+
+                if (occupation != null)
+                {
+                    // Occupation
+                    c.Descriptors[Character.Descriptor.Occupation].Add(occupation);
+                }
             }
         }
 
@@ -1183,7 +1211,7 @@ public class PopulationManager : MonoBehaviour
         {
             if(building.BuildingType == eBuildingType)
             {
-                vPosition = building.UseBuildingPosition;
+                vPosition = building.transform.position + building.UseBuildingPosition;
                 iLocation = building.Location;
             }
         }

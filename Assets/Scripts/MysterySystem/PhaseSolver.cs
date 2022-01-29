@@ -94,7 +94,7 @@ public class PhaseSolver : MonoBehaviour
 
     // Public Access
 
-    public bool CanGeneratePhase() => Service.Game.CurrentDay < 20 && !IsGeneratingAPhase;
+    public bool CanGeneratePhase() => Service.Game.CurrentDay < ConfigManager.NumberOfDaysBeforeGameFailure && !IsGeneratingAPhase;
     public void StartPhaseGeneration() => StartCoroutine(GeneratePhase(Service.Game.CurrentTimeOfDay));
 
     public Character GetVictimFromDay(int iDay)
@@ -215,17 +215,6 @@ public class PhaseSolver : MonoBehaviour
                 iWerewolfLastMurderLoc: bWerewolfReemergeAfterHiding ? iLastPlaceSomeoneWasMurdered : -1);
         }
 
-        // Yield for about a frame (a frame at 60fps is 0.016666)
-
-#if UNITY_EDITOR
-        if (Service.Config.DebugYieldInGeneration)
-        {
-            yield return new WaitForSeconds(0.02f);
-        }
-#else
-                yield return new WaitForSeconds(0.02f);
-#endif
-
         // 2) Next up, we randomise locations for characters doing idles and wanders
         //  By randomise we either give them a completely random location if they don't already have one
         //  but if they do have one, we just alter it to move to an adjacent tile
@@ -238,17 +227,16 @@ public class PhaseSolver : MonoBehaviour
             }
 
             RandomiseCharacterTaskLocations(eTod, c);
-
+        }
 
 #if UNITY_EDITOR
-            if (Service.Config.DebugYieldInGeneration)
-            {
-                yield return new WaitForSeconds(0.02f);
-            }
+        if (Service.Config.DebugYieldInGeneration)
+        {
+            yield return new WaitForSeconds(0.02f);
+        }
 #else
                 yield return new WaitForSeconds(0.02f);
 #endif
-        }
 
         // 3 randomise clothes condition
 
@@ -266,17 +254,16 @@ public class PhaseSolver : MonoBehaviour
             {
                 c.CurrentClothingCondition = Service.InfoManager.GetRandomNonBloodyConditionEmote();
             }
-
+        }
 
 #if UNITY_EDITOR
-            if (Service.Config.DebugYieldInGeneration)
-            {
-                yield return new WaitForSeconds(0.02f);
-            }
+        if (Service.Config.DebugYieldInGeneration)
+        {
+            yield return new WaitForSeconds(0.02f);
+        }
 #else
                 yield return new WaitForSeconds(0.02f);
 #endif
-        }
 
         // 4) Then we calculate what characters everyone would have seen throughout the day
 
@@ -291,17 +278,16 @@ public class PhaseSolver : MonoBehaviour
             
             CurrentPhase.CharacterTasks.Add(c, new List<Task>());
             CurrentPhase.CharacterTasks[c].AddRange(eTod == WerewolfGame.TOD.Day ? c.TaskSchedule.DayTasks : c.TaskSchedule.NightTasks);
-
+        }
 
 #if UNITY_EDITOR
-            if (Service.Config.DebugYieldInGeneration)
-            {
-                yield return new WaitForSeconds(0.02f);
-            }
+        if (Service.Config.DebugYieldInGeneration)
+        {
+            yield return new WaitForSeconds(0.02f);
+        }
 #else
                 yield return new WaitForSeconds(0.02f);
 #endif
-        }
 
         // 5) Calculate what characters they saw passing by (only if that character isn't present in the character seen map
 
@@ -313,29 +299,23 @@ public class PhaseSolver : MonoBehaviour
             }
 
             CurrentPhase.CharacterSawPassingByMap.Add(c, CalculateSawCharactersPassingByDuringPhase(eTod, c));
-
+        }
 
 #if UNITY_EDITOR
-            if (Service.Config.DebugYieldInGeneration)
-            {
-                yield return new WaitForSeconds(0.02f);
-            }
+        if (Service.Config.DebugYieldInGeneration)
+        {
+            yield return new WaitForSeconds(0.02f);
+        }
 #else
                 yield return new WaitForSeconds(0.02f);
 #endif
-        }
 
-        // 6) reset clue given status this phase
-
+        // 6) reset clue given status this phase & Lay ghosts to rest
         foreach (var c in Service.Population.ActiveCharacters)
         {
             c.HasGivenAClueThisPhase = false;
-        }
 
-        // 7) Lay ghosts to rest
-        foreach(var c in Service.Population.ActiveCharacters)
-        {
-            if(!c.IsAlive)
+            if (!c.IsAlive)
             {
                 if(c.HasGhostGivenClue)
                 {
@@ -346,7 +326,7 @@ public class PhaseSolver : MonoBehaviour
             }
         }
 
-        // 8) Done
+        // 7) Done
 
         IsGeneratingAPhase = false;
         

@@ -10,7 +10,7 @@ public class ConfigManager : MonoBehaviour
     public const int NumberOfCharactersToGenerate = 20;
 
 #if UNITY_EDITOR
-    public bool DebugYieldInGeneration = false;
+    public bool DebugYieldInGeneration = true;
 #endif
 
     [SerializeField]
