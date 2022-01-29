@@ -139,6 +139,8 @@ public class PlayerController : MonoBehaviour
     {
         if (!bPopulatedActionEmotes)
         {
+            ActionPanel.gameObject.SetActive(true);
+
             bPopulatedActionEmotes = true;
             ChooseActionRenderer.ClearEmotes(true);
             ChooseActionRenderer.AddEmoteToRender(Service.InfoManager.EmoteMapBySubType[Emote.EmoteSubType.Specific_TalkAction]);

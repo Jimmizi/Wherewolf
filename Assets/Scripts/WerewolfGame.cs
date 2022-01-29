@@ -358,7 +358,7 @@ public class WerewolfGame : MonoBehaviour
                         }
 
                         Service.TransitionScreen.ShowPanel(0.5f);
-                        Service.TransitionScreen.PerformTransition(TimeTransitionDuration);
+                        Service.TransitionScreen.PerformTransition(TimeTransitionDuration * 0.7f);
                         startedTransitionFadeOut = false;
                     }
 

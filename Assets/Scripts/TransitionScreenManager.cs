@@ -65,7 +65,6 @@ public class TransitionScreenManager : MonoBehaviour
             yield return new WaitForSeconds(fDelay);
         }
 
-        float fTimer = 0.0f;
         bool bDone = false;
 
         float fCurrentAlpha = AlphaGroup.alpha;
@@ -73,13 +72,11 @@ public class TransitionScreenManager : MonoBehaviour
 
         while (!bDone)
         {
-            fTimer += Time.deltaTime;
-
             if(bAlphaRise)
             {
                 if (fCurrentAlpha < fTarget)
                 {
-                    fCurrentAlpha += Time.deltaTime;
+                    fCurrentAlpha += Time.deltaTime / fDuration;
                 }
                 else
                 {
@@ -90,7 +87,7 @@ public class TransitionScreenManager : MonoBehaviour
             {
                 if (fCurrentAlpha > fTarget)
                 {
-                    fCurrentAlpha -= Time.deltaTime;
+                    fCurrentAlpha -= Time.deltaTime / fDuration;
                 }
                 else
                 {
@@ -100,7 +97,7 @@ public class TransitionScreenManager : MonoBehaviour
 
             AlphaGroup.alpha = fCurrentAlpha;
 
-            yield return new WaitForSeconds(fDuration * Time.deltaTime);
+            yield return new WaitForSeconds(Time.deltaTime);
         }
 
         AlphaGroup.alpha = fTarget;
@@ -128,18 +125,15 @@ public class TransitionScreenManager : MonoBehaviour
         }
 
         isTransitioning = true;
-        float fTimer = 0.0f;
         bool bDone = false;
 
         float fCurrentRotation = PanelToRotate.transform.eulerAngles.z;
 
         while (!bDone)
         {
-            fTimer += Time.deltaTime;
-
             if(fCurrentRotation > fRotationTarget)
             {
-                fCurrentRotation -= (180.0f * Time.deltaTime);
+                fCurrentRotation -= ((180.0f * Time.deltaTime) / fDuration);
             }
             else
             {
@@ -150,7 +144,7 @@ public class TransitionScreenManager : MonoBehaviour
             Sun.transform.localEulerAngles = new Vector3(0.0f, 0.0f, -fCurrentRotation);
             Moon.transform.localEulerAngles = new Vector3(0.0f, 0.0f, -fCurrentRotation);
 
-            yield return new WaitForSeconds(fDuration * Time.deltaTime);
+            yield return new WaitForSeconds(Time.deltaTime);
         }
 
         PanelToRotate.transform.eulerAngles = new Vector3(0.0f, 0.0f, fRotationTarget);

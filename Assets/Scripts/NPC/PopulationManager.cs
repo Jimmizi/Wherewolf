@@ -899,6 +899,26 @@ public class PopulationManager : MonoBehaviour
 
         Service.InfoManager.RenameCharacterEmotes();
 
+#if UNITY_EDITOR
+        foreach(var c in ActiveCharacters)
+        {
+            for (int t = 0; t < Character.DescriptorMax; ++t)
+            {
+                var desc = (Character.Descriptor)t;
+
+                if (desc == Character.Descriptor.Occupation)
+                {
+                    continue;
+                }
+
+                if(c.Descriptors[desc].Count == 0)
+                {
+                    Debug.LogWarning(string.Format("FAILED to add descriptor {0} for character [{1}] {2}", desc.ToString(), c.Index, c.Name));
+                }
+            }
+        }
+#endif
+
         bDoneCharacterGeneration = true;
     }
 

@@ -1245,8 +1245,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 962407900}
     - target: {fileID: 357306955, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
-      propertyPath: m_Enabled
+      propertyPath: m_Color.a
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 357306955, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 920666217, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
       propertyPath: m_Enabled
@@ -1260,13 +1264,21 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1338193693, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1398942847, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 962407900}
     - target: {fileID: 1398942848, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
-      propertyPath: m_Enabled
+      propertyPath: m_Color.a
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1398942848, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1472586115, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -6247,6 +6259,14 @@ PrefabInstance:
       propertyPath: ActionPanel
       value: 
       objectReference: {fileID: 1338193694}
+    - target: {fileID: 6470389130443444341, guid: dd7ff00fcce572349affdd2db0492b03, type: 3}
+      propertyPath: SpeedVertical
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6470389130443444341, guid: dd7ff00fcce572349affdd2db0492b03, type: 3}
+      propertyPath: SpeedHorizontal
+      value: 1.2
+      objectReference: {fileID: 0}
     - target: {fileID: 6470389130443444341, guid: dd7ff00fcce572349affdd2db0492b03, type: 3}
       propertyPath: CameraBoundsCube
       value: 
