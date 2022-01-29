@@ -62,8 +62,21 @@ public class PlayerController : MonoBehaviour
         return true;
     }
 
+    public void DialogueFinished()
+    {
+
+        Service.Player.IsTalkingToCharacter = false;
+        CurrentlySelectedCharacter.AssociatedCharacter.ReleaseFromBeingTalkedTo();
+        CurrentlySelectedCharacter = null;
+
+        // Just remove and add everytime, don't want to produce bugs with this being destroyed end of game
+        DialogueRenderer.OnConversationEnd.RemoveListener(DialogueFinished);
+    }
+
     public void PickedTalkAction()
     {
+        DialogueRenderer.OnConversationEnd.AddListener(DialogueFinished);
+        
         Service.Audio.PlayUIClick();
 
         Debug.Assert(CurrentlySelectedCharacter);
@@ -72,9 +85,9 @@ public class PlayerController : MonoBehaviour
         CurrentlySelectedCharacter.AssociatedCharacter.SetNameDiscovered();
         ActionPanel.gameObject.SetActive(false);
 
-        // TODO Launch conversation from here and subscribe to its functions
+        Service.DialogueManager.StartConversation(CurrentlySelectedCharacter.AssociatedCharacter);
 
-        //Service.Player.IsTalkingToCharacter = true;
+        Service.Player.IsTalkingToCharacter = true;
     }
 
     public void PickedStakeAction()

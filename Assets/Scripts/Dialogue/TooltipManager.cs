@@ -21,6 +21,7 @@ public class TooltipManager : MonoBehaviour {
             Destroy(gameObject);
         } else {
             Instance = this;
+            Service.TooltipManager = this;
         }
 
         _tooltips = new List<Tooltip>();

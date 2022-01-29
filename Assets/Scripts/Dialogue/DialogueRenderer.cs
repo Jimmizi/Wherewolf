@@ -37,11 +37,11 @@ public class DialogueRenderer : MonoBehaviour {
         // Code to execute after the delay
         StartConversation(Service.Population.GetRandomCharacter());
     }
-    
+
     private void Start() {
         container.gameObject.SetActive(false);
         //StartConversation(Service.Population.GetRandomCharacter());
-        StartCoroutine(ExecuteAfterTime(10f));
+        //StartCoroutine(ExecuteAfterTime(10f));
     }
 
     public void StartConversation(Character character) {
