@@ -6,17 +6,9 @@ using UnityEngine.EventSystems;
 public class MemoPile : MonoBehaviour, IDropHandler, IBeginDragHandler, IDragHandler, IPointerClickHandler
 {
     [SerializeField]
-    Memo memoPrefab;
-
-    [SerializeField]
-    Transform memoHolder;
-
-    [SerializeField]
     bool createNew = true;
 
     List<MemoData> memos = new List<MemoData>();
-
-    static int baseNewId = 2000;
 
     RectTransform _rectTransform;
     private RectTransform rectTransform
