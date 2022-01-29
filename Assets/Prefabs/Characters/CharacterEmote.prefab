@@ -156,7 +156,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -9110637738016182130, guid: 525805dcde76b4435894b9a19fa526af, type: 3}
+  m_Sprite: {fileID: 1022078377882442576, guid: 525805dcde76b4435894b9a19fa526af, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -179,7 +179,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_AspectMode: 1
-  m_AspectRatio: 2.4
+  m_AspectRatio: 1.8
 --- !u!1 &3716243079712624804
 GameObject:
   m_ObjectHideFlags: 0
@@ -590,7 +590,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1ae1cc20172b48a39c8b5f8edc68888, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BaseSpriteRenderer: {fileID: 6274378826509241156}
+  HeadSpriteRenderer: {fileID: 0}
   EarsSpriteRenderer: {fileID: 6921341041605924595}
   EyesSpriteRenderer: {fileID: 389297071827275885}
   NoseSpriteRenderer: {fileID: 712640182646639997}
