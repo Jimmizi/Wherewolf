@@ -516,9 +516,9 @@ GameObject:
   - component: {fileID: 2400794890567843122}
   - component: {fileID: 8851693774812876335}
   - component: {fileID: 3439887005868828046}
-  - component: {fileID: 6904927174743423079}
+  - component: {fileID: 4240690847364689968}
   m_Layer: 0
-  m_Name: CharacterUIEmote
+  m_Name: CharacterEmote
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -578,7 +578,7 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
---- !u!114 &6904927174743423079
+--- !u!114 &4240690847364689968
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -587,11 +587,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 7445254533933172367}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37f04c6dc3c2d41bb888d5308f563f58, type: 3}
+  m_Script: {fileID: 11500000, guid: a1ae1cc20172b48a39c8b5f8edc68888, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   BaseSpriteRenderer: {fileID: 6274378826509241156}
-  EarsSpriteRenderer: {fileID: 389297071827275885}
-  EyesSpriteRenderer: {fileID: 6921341041605924595}
+  EarsSpriteRenderer: {fileID: 6921341041605924595}
+  EyesSpriteRenderer: {fileID: 389297071827275885}
   NoseSpriteRenderer: {fileID: 712640182646639997}
   MouthSpriteRenderer: {fileID: 1287453713849689639}

@@ -57,7 +57,7 @@ public class CaseFilePageRenderer : MonoBehaviour, IDragHandler, IBeginDragHandl
         Vector3 newPosition = rect.position + new Vector3(diff.x, diff.y, transform.position.z);
         Vector3 oldPos = rect.position;
         rect.position = newPosition;
-        if (!IsRectTransformInsideSreen(rect)) {
+        if (!IsRectTransformInsideScreen(rect)) {
             rect.position = oldPos;
         }
 
@@ -68,7 +68,7 @@ public class CaseFilePageRenderer : MonoBehaviour, IDragHandler, IBeginDragHandl
         // Does nothing.
     }
 
-    private bool IsRectTransformInsideSreen(RectTransform rectTransform) {
+    private bool IsRectTransformInsideScreen(RectTransform rectTransform) {
         bool isInside = false;
         Vector3[] corners = new Vector3[4];
         rectTransform.GetWorldCorners(corners);
