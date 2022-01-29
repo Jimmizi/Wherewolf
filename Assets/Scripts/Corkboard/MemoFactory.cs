@@ -37,7 +37,7 @@ public class MemoFactory : MonoBehaviour
         }
     }
 
-    public Memo CreateNew(int memoId, string message, Vector2 position, Vector2 size, bool highlighted = true, bool editable = false)
+    public Memo CreateNew(int memoId, string message, List<Emote> emotes, Vector2 position, Vector2 size, bool highlighted = true, bool editable = false)
     {        
         MemoData memoData = new MemoData();
         memoData.position = position;
@@ -46,6 +46,7 @@ public class MemoFactory : MonoBehaviour
         memoData.editable = editable;
         memoData.memoId = memoId;
         memoData.message = message;
+        memoData.emotes = emotes;
 
         return CreateFromData(memoData);
     }
@@ -53,7 +54,13 @@ public class MemoFactory : MonoBehaviour
     public Memo CreateNew(string message, Vector2 position, bool highlighted = true, bool editable = false)
     {
         Vector2 defaultSize = defaultRectTransform ? defaultRectTransform.sizeDelta : new Vector2(300, 256);
-        return CreateNew(++baseNewId, message, position, defaultSize, highlighted, editable);
+        return CreateNew(++baseNewId, message, null, position, defaultSize, highlighted, editable);
+    }
+
+    public Memo CreateNew(List<Emote> emotes, Vector2 position, bool highlighted = true)
+    {
+        Vector2 defaultSize = defaultRectTransform ? defaultRectTransform.sizeDelta : new Vector2(300, 256);
+        return CreateNew(++baseNewId, "", emotes, position, defaultSize, highlighted, false);
     }
 
     public Memo CreateNew(Vector2 position, bool highlighted = true)
@@ -65,6 +72,12 @@ public class MemoFactory : MonoBehaviour
     {
         Vector3 defaultPosition = defaultRectTransform ? defaultRectTransform.position : new Vector3(0, 0);
         return CreateNew(message, defaultPosition, highlighted, editable);
+    }
+
+    public Memo CreateNew(List<Emote> emotes, bool highlighted = true)
+    {
+        Vector3 defaultPosition = defaultRectTransform ? defaultRectTransform.position : new Vector3(0, 0);
+        return CreateNew(emotes, defaultPosition, highlighted);
     }
 
     public Memo CreateNew(bool highlighted = true)

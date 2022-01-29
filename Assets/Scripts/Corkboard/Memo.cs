@@ -8,6 +8,7 @@ public struct MemoData
 {
     public int memoId;
     public string message;
+    public List<Emote> emotes;
     public Vector2 position;
     public Vector2 size;
     public List<int> connectedIds;
@@ -24,7 +25,12 @@ public class Memo : MonoBehaviour
     private InputField note;
 
     [SerializeField]
+    private EmoteTextRenderer emoteRenderer; 
+
+    [SerializeField]
     private GameObject highlight;
+
+    private List<Emote> emotes = new List<Emote>();
 
     RectTransform _rectTransform;
     private RectTransform rectTransform
@@ -53,6 +59,7 @@ public class Memo : MonoBehaviour
                 size = rectTransform ? rectTransform.sizeDelta : new Vector2(300, 256),
                 highlighted = highlight ? highlight.activeSelf : false,
                 editable = note ? note.interactable : false,
+                emotes = emotes,
             };
         }
 
@@ -62,6 +69,32 @@ public class Memo : MonoBehaviour
             {
                 pin.PinId = value.memoId;
                 pin.ConnectedIds = value.connectedIds;
+            }            
+
+            if (rectTransform)
+            {
+                rectTransform.anchoredPosition = value.position;
+                rectTransform.sizeDelta = value.size;
+            }
+
+            if (highlight)
+            {
+                highlight.SetActive(value.highlighted);
+            }
+
+            bool useEmotes = false;
+            emotes = value.emotes;
+            if (emoteRenderer)
+            {
+                useEmotes = (emotes != null && emotes.Count > 0);
+                if (useEmotes)
+                {
+                    emoteRenderer.Render(emotes);
+                }
+                else
+                {
+                    emoteRenderer.Clear();
+                }
             }
 
             if (note)
@@ -73,17 +106,8 @@ public class Memo : MonoBehaviour
                 {
                     text.raycastTarget = value.editable;
                 }
-            }
 
-            if (rectTransform)
-            {
-                rectTransform.anchoredPosition = value.position;
-                rectTransform.sizeDelta = value.size;
-            }
-
-            if (highlight)
-            {
-                highlight.SetActive(value.highlighted);
+                note.gameObject.SetActive(!useEmotes);
             }
         }
 
