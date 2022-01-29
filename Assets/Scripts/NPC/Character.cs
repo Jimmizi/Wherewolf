@@ -566,7 +566,12 @@ public class Character
 
     public void Update()
     {
-        if(CurrentTask == null || CurrentTask.ShouldFinish)
+        if (!IsAlive)
+        {
+            return;
+        }
+
+        if (CurrentTask == null || CurrentTask.ShouldFinish)
         {
             if (CurrentTask != null)
             {
@@ -583,6 +588,11 @@ public class Character
 
     public void OnTimeOfDayPhaseShift() 
     {
+        if(!IsAlive)
+        {
+            return;
+        }
+
         if (CurrentTask != null)
         {
             CurrentTask.Timer = 0.0f;

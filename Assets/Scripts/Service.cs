@@ -15,6 +15,7 @@ public static class Service
     public static DebugLevelLoader Transition;
     public static OptionsManager Options;
     public static TransitionScreenManager TransitionScreen;
+    public static LocationManager Location;
 
     public static float MusicVolume = 0.75f;
 

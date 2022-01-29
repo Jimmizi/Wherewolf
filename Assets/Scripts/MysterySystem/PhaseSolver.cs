@@ -121,6 +121,8 @@ public class PhaseSolver : MonoBehaviour
     {
         if(CurrentPhase != null && CurrentPhase.Victim != null)
         {
+            CurrentPhase.Victim.TaskSchedule.Clear();
+
             CurrentPhase.Victim.IsAlive = false;
             CurrentPhase.Victim.IsVictim = false;
             CurrentPhase.Victim.DeathAnnounced = false;
@@ -330,7 +332,21 @@ public class PhaseSolver : MonoBehaviour
             c.HasGivenAClueThisPhase = false;
         }
 
-        // 7) Done
+        // 7) Lay ghosts to rest
+        foreach(var c in Service.Population.ActiveCharacters)
+        {
+            if(!c.IsAlive)
+            {
+                if(c.HasGhostGivenClue)
+                {
+                    c.TaskSchedule.Clear();
+                    c.TaskSchedule.DayTasks.Add(new Task(c, Task.TaskType.Sleep));
+                    c.TaskSchedule.NightTasks.Add(new Task(c, Task.TaskType.Sleep));
+                }
+            }
+        }
+
+        // 8) Done
 
         IsGeneratingAPhase = false;
         
