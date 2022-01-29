@@ -831,7 +831,7 @@ public class WerewolfGame : MonoBehaviour
     Vector2 vStakeSelectionScrollPosition = new Vector2();
     Vector2 vClueSelectionScrollPosition = new Vector2();
     Vector2 vPLayerCluesScrollPosition = new Vector2();
-    bool chosenToStake = false;
+    bool DebugChosenToStake = false;
 
     private void OnGUI()
     {
@@ -879,7 +879,7 @@ public class WerewolfGame : MonoBehaviour
         // Choose to stake a character
         vStakeSelectionScrollPosition = GUI.BeginScrollView(new Rect(15, 45, 200, fHeight - 10), vStakeSelectionScrollPosition, new Rect(0, 0, 190, 1000));
         {
-            if (!chosenToStake)
+            if (!DebugChosenToStake)
             {
                 Vector2 vPosition = new Vector2(5, 5);
                 GUI.Label(new Rect(vPosition.x, vPosition.y, 200, 24), "Select a character to stake");
@@ -895,7 +895,7 @@ public class WerewolfGame : MonoBehaviour
                     if (GUI.Button(new Rect(vPosition.x, vPosition.y, 140, 24), string.Format("[{0}] {1}", c.Index, c.Name)))
                     {
                         ProcessPlayerActionStakeCharacter(c);
-                        chosenToStake = true;
+                        DebugChosenToStake = true;
                     }
                     vPosition.y += 28;
                 }
@@ -906,7 +906,7 @@ public class WerewolfGame : MonoBehaviour
         // Choose to talk to character
         vClueSelectionScrollPosition = GUI.BeginScrollView(new Rect(220, 45, 200, fHeight - 10), vClueSelectionScrollPosition, new Rect(0, 0, 190, 1000));
         {
-            if (!chosenToStake)
+            if (!DebugChosenToStake)
             {
                 Vector2 vPosition = new Vector2(5, 5);
                 GUI.Label(new Rect(vPosition.x, vPosition.y, 200, 24), "Select a character to talk to");
