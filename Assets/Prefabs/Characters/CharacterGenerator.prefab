@@ -45,6 +45,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BaseSprites:
   - {fileID: -2926083719925882210, guid: 525805dcde76b4435894b9a19fa526af, type: 3}
+  HeadSprites:
+  - {fileID: -1080122055839052550, guid: 525805dcde76b4435894b9a19fa526af, type: 3}
   EarsSprites:
   - {fileID: -9110637738016182130, guid: 525805dcde76b4435894b9a19fa526af, type: 3}
   - {fileID: 1022078377882442576, guid: 525805dcde76b4435894b9a19fa526af, type: 3}

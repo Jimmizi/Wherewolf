@@ -48,11 +48,10 @@ public class EmoteRenderer : MonoBehaviour, IEmoteRenderer, IPointerEnterHandler
             case Emote.EmoteSubType.CharacterHeadshot_19:
             case Emote.EmoteSubType.CharacterHeadshot_20: {
                 Image.gameObject.SetActive(false);
-                if (CharacterEmoteRenderer != null) {
+                if (CharacterEmoteRenderer != null && CharacterGenerator.Instance != null) {
                     CharacterEmoteRenderer.gameObject.SetActive(true);
-                    CharacterEmoteRenderer.SetAttributes(new CharacterAttributes());
+                    CharacterEmoteRenderer.SetAttributes(CharacterGenerator.Instance.AttributesForEmoteType(type));
                 }
-
                 break;
             }
             default: {

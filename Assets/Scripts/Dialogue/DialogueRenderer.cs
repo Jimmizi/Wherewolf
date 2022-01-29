@@ -6,6 +6,8 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
+using DialogueActionEmoteMap = System.Collections.Generic.Dictionary<DialogueActionType, Emote.EmoteSubType>;
+
 public class DialogueRenderer : MonoBehaviour {
     
     public static UnityEvent OnConversationStart = new UnityEvent();
@@ -28,7 +30,6 @@ public class DialogueRenderer : MonoBehaviour {
 
     private Character _character;
     private Dialogue _currentDialogue;
-    private List<QuestionType> _questionsNotAsked;
 
     IEnumerator ExecuteAfterTime(float time) {
         yield return new WaitForSeconds(time);
@@ -44,16 +45,11 @@ public class DialogueRenderer : MonoBehaviour {
 
     public void StartConversation(Character character) {
         _character = character;
-        _questionsNotAsked = new List<QuestionType>() {
-            QuestionType.Greeting,
-            QuestionType.Gossip,
-            QuestionType.Location
-        };
-        
         ClearDialogueBox(true);
         container.gameObject.SetActive(true);
         OnConversationStart.Invoke();
-        StartCoroutine(DisplayDialogue(QuestionType.Greeting));
+        StartCoroutine(DisplayDialogue(DialogueActionType.IssueGreeting, null));
+        DisplayChoices();
     }
 
     private void EndConversation() {
@@ -62,26 +58,36 @@ public class DialogueRenderer : MonoBehaviour {
         OnConversationEnd.Invoke();
     }
     
-    private Dialogue GenerateResponseDialogue(QuestionType questionType) {
-        // switch (questionType) {
-        //     case QuestionType.Greeting:
-        //         return Dialogue.FromClue(new ClueObject(ClueObject.ClueType.CommentClothing));
-        //     default:
-        //         return Dialogue.FromClue(new ClueObject(ClueObject.ClueType.CommentClothing));
-        // }
+    private Dialogue GenerateResponseDialogue(DialogueActionType dialogueActionType, Character relatedCharacter) {
+        ClueObject clue;
+        
+        switch (dialogueActionType) {
+            case DialogueActionType.IssueGreeting:
+            case DialogueActionType.Gossip:
+                clue = _character.TryServeSpecificClueToPlayer(ClueObject.ClueType.CommentGossip, relatedCharacter);
+                break;
+            case DialogueActionType.QuerySawAtLocation:
+                clue = _character.TryServeSpecificClueToPlayer(ClueObject.ClueType.SawInLocation, relatedCharacter);
+                break;
+            case DialogueActionType.QuerySawAtWork:
+                clue = _character.TryServeSpecificClueToPlayer(ClueObject.ClueType.SawAtWork, relatedCharacter);
+                break;
+            case DialogueActionType.QuerySawPassing:
+                clue = _character.TryServeSpecificClueToPlayer(ClueObject.ClueType.SawPassingBy, relatedCharacter);
+                break;
+            default:
+                clue = _character.TryServeSpecificClueToPlayer(ClueObject.ClueType.CommentGossip, relatedCharacter);
+                break;
+        }
 
-        //Service.Player.TryGetClueFromCharacter(_character);
-        ClueObject clue = _character.TryServeSpecificClueToPlayer(
-            ClueObject.ClueType.SawInLocation,
-            Service.Population.GetRandomCharacter());
         return Dialogue.FromClue(clue);
     }
 
     /// <summary>
     /// The DisplayDialogue coroutine displays the dialogue character by character in a scrolling manner.
     /// </summary>
-    private IEnumerator DisplayDialogue(QuestionType questionType) {
-        Dialogue dialogue = GenerateResponseDialogue(questionType);
+    private IEnumerator DisplayDialogue(DialogueActionType dialogueActionType, Character relatedCharacter) {
+        Dialogue dialogue = GenerateResponseDialogue(dialogueActionType, relatedCharacter);
 
         if (dialogue.Speaker != null) {
             speakerText.text = dialogue.Speaker.Name;
@@ -101,30 +107,37 @@ public class DialogueRenderer : MonoBehaviour {
         }
 
         _linePlaying = false;
-        DisplayChoices();
+        //DisplayChoices();
         
         yield return null;
     }
     
-    private void AskQuestion(QuestionType questionType) {
+    private void DoAction(DialogueActionType dialogueActionType, Character relatedCharacter) {
         ClearDialogueBox(true);
-        StartCoroutine(DisplayDialogue(questionType));
+        StartCoroutine(DisplayDialogue(dialogueActionType, relatedCharacter));
     }
 
+    private static readonly DialogueActionEmoteMap _dialogueActions = new DialogueActionEmoteMap() {
+        //{DialogueActionType.IssueGreeting, Emote.EmoteSubType.Specific_Approves},
+        {DialogueActionType.Gossip, Emote.EmoteSubType.Gossip_RelationshipFight},
+        {DialogueActionType.QuerySawAtLocation, Emote.EmoteSubType.Specific_Footsteps},
+        {DialogueActionType.QuerySawPassing, Emote.EmoteSubType.Specific_Eyes},
+        {DialogueActionType.QuerySawAtWork, Emote.EmoteSubType.Occupation_Bank},
+        {DialogueActionType.IssueFarewell, Emote.EmoteSubType.Specific_Disapproves},
+    };
+    
     protected void DisplayChoices() {
         _choiceButtonInstances = new List<GameObject>();
 
-        if (_questionsNotAsked.Count == 0) {
-            EndConversation();
-            return;
-        }
-        
-        foreach (QuestionType questionType in _questionsNotAsked) {
-            Button choiceButtonInstance = Instantiate(choiceButton, choiceButtonHolder).GetComponent<Button>();
+        foreach (KeyValuePair<DialogueActionType, Emote.EmoteSubType> dialogueAction in _dialogueActions) {
+            GameObject choiceButtonInstance = Instantiate(choiceButton, choiceButtonHolder);
+            Button button = choiceButtonInstance.GetComponent<Button>();
+            EmoteRenderer emoteRenderer = choiceButtonInstance.GetComponentInChildren<EmoteRenderer>();
+            
             _choiceButtonInstances.Add(choiceButtonInstance.gameObject);
-            choiceButtonInstance.onClick.AddListener(() => {
-                _questionsNotAsked.Remove(questionType);
-                AskQuestion(questionType);
+            emoteRenderer.Emote = new Emote(dialogueAction.Value);
+            button.onClick.AddListener(() => {
+                DoAction(dialogueAction.Key, Service.Population.GetRandomCharacter());
             });
         }
     }

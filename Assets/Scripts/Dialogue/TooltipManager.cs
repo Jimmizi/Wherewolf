@@ -81,8 +81,8 @@ public class TooltipManager : MonoBehaviour {
     
     private Vector3 ScreenBoundPosition(Vector3 position, RectTransform rectTransform) {
         rectTransform.position = position;
-        float halfWidth = LayoutUtility.GetPreferredWidth(rectTransform) * 0.5f;
-        float halfHeight = LayoutUtility.GetFlexibleHeight(rectTransform) * 0.5f;
+        float halfWidth = LayoutUtility.GetPreferredWidth(rectTransform) * 0.5f * TooltipCanvas.scaleFactor;
+        float halfHeight = LayoutUtility.GetFlexibleHeight(rectTransform) * 0.5f * TooltipCanvas.scaleFactor;
         Vector3 positionOffset = Vector3.zero;
         
         if (position.x - halfWidth < ScreenPadding.x) {
