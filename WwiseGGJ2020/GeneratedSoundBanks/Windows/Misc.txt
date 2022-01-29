@@ -2,5 +2,5 @@ Event	ID	Name			Wwise Object Path	Notes
 	2144316923	CreekFlow			\Default Work Unit\CreekFlow	
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
-	130810277	CreekFlow	C:\Users\leoto\OneDrive\Documents\GitHub\GGJ2022\WwiseGGJ2020\.cache\Windows\SFX\CreekFlow_D79FB2B7.wem		\Actor-Mixer Hierarchy\Default Work Unit\CreekFlow		7200144
+	130810277	CreekFlow	C:\Users\jaket\Documents\GitHub\GGJ2022\WwiseGGJ2020\.cache\Windows\SFX\CreekFlow_D79FB2B7.wem		\Actor-Mixer Hierarchy\Default Work Unit\CreekFlow		7200144
 

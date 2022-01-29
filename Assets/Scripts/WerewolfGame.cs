@@ -305,10 +305,16 @@ public class WerewolfGame : MonoBehaviour
         {
             case SubState.Start:
                 {
+                    bool bGoingToDeathAnnounce = CurrentTimeOfDay == TOD.Night && Service.PhaseSolve.GetVictimFromDay(CurrentDay, false) != null;
+
+                    if (bGoingToDeathAnnounce)
+                    {
+                        Debug.Log("Going to death announce for day " + CurrentDay);
+                    }
                     // Play wolf howl if someone was murdered this day
                     if (CurrentTimeOfDay == TOD.Night)
                     {
-                        if(Service.PhaseSolve.GetVictimFromDay(CurrentDay) != null)
+                        if(bGoingToDeathAnnounce)
                         {
                             Service.Audio.PlayWolfHowl();
                         }
@@ -336,16 +342,24 @@ public class WerewolfGame : MonoBehaviour
                     CurrentTimeOfDay = CurrentState == GameState.TransitionToDay ? TOD.Day : TOD.Night;
 
                     // (Night -> Day, increment the day counter)
-                    if(CurrentState == GameState.TransitionToDay)
+                    if (CurrentState == GameState.TransitionToDay)
                     {
                         CurrentDay++;
 
-                        if (!bFailed)
-                        { Service.Audio.StartDay(); }
+                        if (!bFailed && !bGoingToDeathAnnounce)
+                        { 
+                            Service.Audio.StartDay(); 
+                        }
                     }
-                    else if (!bFailed)
+                    else if (!bFailed && !bGoingToDeathAnnounce)
                     {
                         Service.Audio.StartNight();
+                    }
+
+                    if (bGoingToDeathAnnounce)
+                    {
+                        Debug.Log("Service.Audio.PlayDeathAnnounce() called");
+                        Service.Audio.PlayDeathAnnounce();
                     }
 
                     if (!bFailed)
@@ -491,10 +505,11 @@ public class WerewolfGame : MonoBehaviour
                 }
             case SubState.Finish:
                 {
-                    //Character v = CurrentTimeOfDay == TOD.Day ? Service.PhaseSolve.GetVictimFromDay(CurrentDay - 1) : null;
+                    Character v = CurrentTimeOfDay == TOD.Day ? Service.PhaseSolve.GetVictimFromDay(CurrentDay - 1) : null;
 
-                    //if (v == null)
+                    if (v == null)
                     {
+                        Debug.Log("Transition finish, no victim");
                         if (CurrentTimeOfDay == TOD.Day)
                         {
                             Service.Audio.PlayRoosterCrow();
@@ -551,38 +566,42 @@ public class WerewolfGame : MonoBehaviour
     }
 
     private int iVictimText = 0;
+    private float fTimerForDeathAnnounce = 0.0f;
+    private bool deathAnnounceBringMusicBackIn = true;
     void ProcessVictimFoundAnnouncement()
     {
         switch (CurrentSubState)
         {
             case SubState.Start:
                 {
-                    CurrentSubState = SubState.Finish;
-                    return;
                     Character v = Service.PhaseSolve.GetVictimFromDay(CurrentDay - 1);
                     if (v != null)
                     {
                         switch (iVictimText++)
                         {
                             case 0:
-                                DeathAnnouncementText.text = string.Format("A fresh widow mourns; {0}'s was found in the early hours of the morning.", v.Name);
+                                DeathAnnouncementText.text = string.Format("A fresh widow mourns; {0} was found in the early hours of the morning.", v.Name);
                                 break;
                             case 1:
                                 DeathAnnouncementText.text = string.Format("Screams pierced the sky early in the morning. {0}'s body was found in pieces in the street.", v.Name);
                                 break;
                             case 2:
-                                DeathAnnouncementText.text = string.Format("{0}'s warm blood fills the alleyway in the early morning. A figure reported ", v.Name);
+                                DeathAnnouncementText.text = string.Format("{0}'s warm blood fills the alleyway in the early morning. A figure reported leaving the scene. No traces.", v.Name);
                                 break;
                             case 3:
-                                DeathAnnouncementText.text = string.Format("A fresh widow mourns; {0}'s body was found mauled in the early hours of the morning.", v.Name);
+                                DeathAnnouncementText.text = string.Format("{0}'s body found this morning in their home. The residents are starting to get scared.", v.Name);
                                 break;
                             case 4:
-                                DeathAnnouncementText.text = string.Format("A fresh widow mourns; {0}'s body was found mauled in the early hours of the morning.", v.Name);
+                                DeathAnnouncementText.text = string.Format("You see a woman leaving the town in tears. The widow of {0}.", v.Name);
+                                break;
+                            default:
+                                DeathAnnouncementText.text = string.Format("Reported in the early hours of the morning, {0}'s murder adds onto the death toll.", v.Name);
                                 break;
                         }
                         StartCoroutine(DoFadeInDeathAnnouncementText());
 
-                        // Setup announcement
+                        fTimerForDeathAnnounce = 0.0f;
+                        deathAnnounceBringMusicBackIn = true;
 
                         CurrentSubState++;
                     }
@@ -595,17 +614,38 @@ public class WerewolfGame : MonoBehaviour
                 }
             case SubState.Update:
                 {
+                    fTimerForDeathAnnounce += Time.deltaTime;
+                    if(fTimerForDeathAnnounce >= 7f)
+                    {
+                        StartCoroutine(DoFadeOutDeathAnnouncementText());
 
+                        if (CurrentTimeOfDay == TOD.Day)
+                        {
+                            Service.Audio.PlayRoosterCrow();
+                        }
+                        DayCounterText.text = string.Format("Day {0}", CurrentDay);
+                        Service.Transition.BlendOut();
+
+                        CurrentSubState++;
+                    }
+
+                    if(deathAnnounceBringMusicBackIn && fTimerForDeathAnnounce >= 6.5f)
+                    {
+                        deathAnnounceBringMusicBackIn = false;
+                        if (CurrentTimeOfDay == TOD.Day)
+                        {
+                            Service.Audio.StartDay();
+                            
+                        }
+                        else
+                        {
+                            Service.Audio.StartNight();
+                        }
+                    }
                     break;
                 }
             case SubState.Finish:
                 {
-                    if (CurrentTimeOfDay == TOD.Day)
-                    {
-                        Service.Audio.PlayRoosterCrow();
-                    }
-                    DayCounterText.text = string.Format("Day {0}", CurrentDay);
-                    Service.Transition.BlendOut();
 
                     break;
                 }

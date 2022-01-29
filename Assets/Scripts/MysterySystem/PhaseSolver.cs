@@ -100,7 +100,7 @@ public class PhaseSolver : MonoBehaviour
     public bool CanGeneratePhase() => Service.Game.CurrentDay < ConfigManager.NumberOfDaysBeforeGameFailure && !IsGeneratingAPhase;
     public void StartPhaseGeneration() => StartCoroutine(GeneratePhase(Service.Game.CurrentTimeOfDay));
 
-    public Character GetVictimFromDay(int iDay)
+    public Character GetVictimFromDay(int iDay, bool bNeedsToBeDead = true)
     {
         if(!PhaseHistory.ContainsKey(iDay))
         {
@@ -110,6 +110,11 @@ public class PhaseSolver : MonoBehaviour
         foreach(var p in PhaseHistory[iDay])
         {
             if(p.Victim == null)
+            {
+                continue;
+            }
+
+            if(bNeedsToBeDead && p.Victim.IsAlive)
             {
                 continue;
             }
@@ -375,6 +380,12 @@ public class PhaseSolver : MonoBehaviour
         {
             // If the day time didn't produce a victim, do it now
             return CurrentPhase.Victim == null;
+        }
+
+        // TO NOT SUBMIT
+        if(Service.Game.CurrentTimeOfDay == WerewolfGame.TOD.Day)
+        {
+            return true;
         }
 
         // Otherwise it's either the first day time, or a new day in which case we have a random chance of striking in the day time

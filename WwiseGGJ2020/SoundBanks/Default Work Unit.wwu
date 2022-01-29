@@ -12,6 +12,7 @@
 						<ObjectRef Name="WinDay" ID="{769AC8D4-F574-4875-9464-91DF7EA02E41}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="GameOverDay" ID="{E4806E2F-144A-4B25-8DF5-C89FF84FC53A}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="AmbienceDay" ID="{ADD96E5B-E900-4BAF-8714-261614D3ADA4}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="StartDeathAnnouncement" ID="{5FD5F5B5-3ECB-4BFB-867B-44998C57CCA3}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
 					</ObjectInclusionList>
 					<ObjectExclusionList/>
 					<GameSyncExclusionList/>
@@ -22,6 +23,7 @@
 						<ObjectRef Name="StartTheNight" ID="{E9E923E7-E2FA-4579-B526-28FFC96F3CBE}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="GameOverNight" ID="{C33449F5-E63A-4964-AF7B-CC7E99795733}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="AmbienceNight" ID="{736BAED1-44A6-4A25-9FE4-FE21FA75A128}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="StartDeathAnnouncement" ID="{5FD5F5B5-3ECB-4BFB-867B-44998C57CCA3}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="DiscoveryNight" ID="{B7A00018-7450-4C68-BFE0-4F085EBCA65D}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="MusicNight" ID="{99169D93-93FA-4FB5-B16D-9B9CD91A6107}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
 					</ObjectInclusionList>

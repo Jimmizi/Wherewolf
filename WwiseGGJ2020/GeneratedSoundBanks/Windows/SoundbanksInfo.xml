@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="12" SoundbankVersion="140">
 	<RootPaths>
-		<ProjectRoot>C:\Users\leoto\OneDrive\Documents\GitHub\GGJ2022\WwiseGGJ2020\</ProjectRoot>
-		<SourceFilesRoot>C:\Users\leoto\OneDrive\Documents\GitHub\GGJ2022\WwiseGGJ2020\.cache\Windows\</SourceFilesRoot>
-		<SoundBanksRoot>C:\Users\leoto\OneDrive\Documents\GitHub\GGJ2022\WwiseGGJ2020\GeneratedSoundBanks\Windows\</SoundBanksRoot>
+		<ProjectRoot>C:\Users\jaket\Documents\GitHub\GGJ2022\WwiseGGJ2020\</ProjectRoot>
+		<SourceFilesRoot>C:\Users\jaket\Documents\GitHub\GGJ2022\WwiseGGJ2020\.cache\Windows\</SourceFilesRoot>
+		<SoundBanksRoot>C:\Users\jaket\Documents\GitHub\GGJ2022\WwiseGGJ2020\GeneratedSoundBanks\Windows\</SoundBanksRoot>
 		<ExternalSourcesInputFile></ExternalSourcesInputFile>
-		<ExternalSourcesOutputRoot>C:\Users\leoto\OneDrive\Documents\GitHub\GGJ2022\WwiseGGJ2020\GeneratedSoundBanks\Windows</ExternalSourcesOutputRoot>
+		<ExternalSourcesOutputRoot>C:\Users\jaket\Documents\GitHub\GGJ2022\WwiseGGJ2020\GeneratedSoundBanks\Windows</ExternalSourcesOutputRoot>
 	</RootPaths>
 	<DialogueEvents/>
 	<StreamedFiles/>
@@ -19,7 +19,7 @@
 				<GameParameter Id="4179668880" Name="master_volume" ObjectPath="\Game Parameters\Default Work Unit\master_volume"/>
 			</GameParameters>
 		</SoundBank>
-		<SoundBank Id="2276007709" Language="SFX" Hash="3603879819">
+		<SoundBank Id="2276007709" Language="SFX" Hash="4226151515">
 			<ObjectPath>\SoundBanks\Default Work Unit\NightCycle</ObjectPath>
 			<ShortName>NightCycle</ShortName>
 			<Path>NightCycle.bnk</Path>
@@ -57,6 +57,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
+				<Event Id="1248669510" Name="StartDeathAnnouncement" ObjectPath="\Events\Default Work Unit\StartDeathAnnouncement" DurationType="OneShot" DurationMin="0." DurationMax="0."/>
 				<Event Id="3670738982" Name="StartTheNight" ObjectPath="\Events\Default Work Unit\StartTheNight" DurationType="Infinite">
 					<IncludedMemoryFiles>
 						<File Id="25883968" Language="SFX">
@@ -71,7 +72,7 @@
 				</Event>
 			</IncludedEvents>
 		</SoundBank>
-		<SoundBank Id="2769481441" Language="SFX" Hash="2803150784">
+		<SoundBank Id="2769481441" Language="SFX" Hash="3724877831">
 			<ObjectPath>\SoundBanks\Default Work Unit\DayCycle</ObjectPath>
 			<ShortName>DayCycle</ShortName>
 			<Path>DayCycle.bnk</Path>
@@ -109,6 +110,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
+				<Event Id="1248669510" Name="StartDeathAnnouncement" ObjectPath="\Events\Default Work Unit\StartDeathAnnouncement" DurationType="OneShot" DurationMin="0." DurationMax="0."/>
 				<Event Id="2972317186" Name="StartTheDay" ObjectPath="\Events\Default Work Unit\StartTheDay" DurationType="Infinite">
 					<IncludedMemoryFiles>
 						<File Id="221210545" Language="SFX">
@@ -131,7 +133,7 @@
 				</Event>
 			</IncludedEvents>
 		</SoundBank>
-		<SoundBank Id="3062523257" Language="SFX" Hash="1161438855">
+		<SoundBank Id="3062523257" Language="SFX" Hash="2252024199">
 			<ObjectPath>\SoundBanks\Default Work Unit\Misc</ObjectPath>
 			<ShortName>Misc</ShortName>
 			<Path>Misc.bnk</Path>
@@ -146,7 +148,7 @@
 				</Event>
 			</IncludedEvents>
 		</SoundBank>
-		<SoundBank Id="3150299886" Language="SFX" Hash="3115725571">
+		<SoundBank Id="3150299886" Language="SFX" Hash="624102342">
 			<ObjectPath>\SoundBanks\Default Work Unit\OneShots</ObjectPath>
 			<ShortName>OneShots</ShortName>
 			<Path>OneShots.bnk</Path>
@@ -209,7 +211,7 @@
 				</Event>
 			</IncludedEvents>
 		</SoundBank>
-		<SoundBank Id="3313685232" Language="SFX" Hash="618332901">
+		<SoundBank Id="3313685232" Language="SFX" Hash="2865779011">
 			<ObjectPath>\SoundBanks\Default Work Unit\Voices</ObjectPath>
 			<ShortName>Voices</ShortName>
 			<Path>Voices.bnk</Path>
