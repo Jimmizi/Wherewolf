@@ -1037,6 +1037,21 @@ public class PopulationManager : MonoBehaviour
             {
                 var iRandTask = UnityEngine.Random.Range(0, 3);
 
+                // Try set a bunch to just sleep
+                if(i == 0 && !bIsDaySchedule && iNumberImmediatelySleeping < 5)
+                {
+                    if(UnityEngine.Random.Range(0.0f, 100.0f) < 50)
+                    {
+                        iRandTask = 2;
+                    }
+                }
+                
+                // Don't allow characters who aren't immediately sleeping to sleep
+                if(i > 0 && !bIsDaySchedule && iRandTask == 2)
+                {
+                    iRandTask = UnityEngine.Random.Range(0, 2);
+                }
+
                 // Fail-safe so that we don't just get a lot of characters immediately going to bed at night
                 if(i == 0 && !bIsDaySchedule && iNumberImmediatelySleeping >= 5)
                 {
@@ -1068,7 +1083,6 @@ public class PopulationManager : MonoBehaviour
                             iNumberImmediatelySleeping++;
                         }
                         
-                        // If a sleep task is given, always end the schedule on this no matter how long the schedule should be
                         break;
                     }
                 }

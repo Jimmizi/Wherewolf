@@ -32,6 +32,11 @@ public class SpriteLayerOrderingManager : MonoBehaviour
 
         foreach(var s in allSprites)
         {
+            if(!s.IsValid())
+            {
+                continue;
+            }
+
             float fZ = s.GetPositionZ();
 
             while(byDistance.ContainsKey(fZ))

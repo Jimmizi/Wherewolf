@@ -427,6 +427,39 @@ public class Character
         return true;
     }
 
+    public bool IsSleeping()
+    {
+        if(CurrentTask != null)
+        {
+            if(CurrentTask.Type == Task.TaskType.Sleep)
+            {
+                return true;
+            }
+        }
+
+        if (Service.Game.CurrentTimeOfDay == WerewolfGame.TOD.Day)
+        {
+            if (TaskSchedule?.DayTasks != null && TaskSchedule.DayTasks.Count > 0)
+            {
+                if (TaskSchedule.DayTasks[0].Type == Task.TaskType.Sleep)
+                {
+                    return true;
+                }
+            }
+        }
+        if (Service.Game.CurrentTimeOfDay == WerewolfGame.TOD.Night)
+        {
+            if (TaskSchedule?.NightTasks != null && TaskSchedule.NightTasks.Count > 0)
+            {
+                if (TaskSchedule.NightTasks[0].Type == Task.TaskType.Sleep)
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
     public bool WillTravelThroughLocationDuringTasks(WerewolfGame.TOD eTod, List<int> iLocations, out int iLocSeenIn)
     {
         iLocSeenIn = 0;
@@ -567,6 +600,11 @@ public class Character
     public void Update()
     {
         if (!IsAlive)
+        {
+            return;
+        }
+
+        if(IsSleeping())
         {
             return;
         }

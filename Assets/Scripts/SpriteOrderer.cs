@@ -20,6 +20,21 @@ public class SpriteOrderer : MonoBehaviour
         return transform.position.z;
     }
 
+    public bool IsValid()
+    {
+        if(!gameObject.activeSelf)
+        {
+            return false;
+        }
+
+        if(ForPositionUseOverride && !ForPositionUseOverride.activeSelf)
+        {
+            return false;
+        }
+
+        return true;
+    }
+
     // Start is called before the first frame update
     void Start()
     {

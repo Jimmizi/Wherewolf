@@ -419,9 +419,21 @@ public class WerewolfGame : MonoBehaviour
 
                             foreach (var c in Service.Population.ActiveCharacters)
                             {
+                                Service.Population.PhysicalCharacterMap[c].gameObject.SetActive(true);
+
                                 c.OnTimeOfDayPhaseShift();
                                 c.Update();
                                 c.TryWarpToTaskLocation();
+
+                                if(c.IsAlive && c.IsSleeping())
+                                {
+                                    Service.Population.PhysicalCharacterMap[c].gameObject.SetActive(false);
+                                }
+                                // Hide ghosts once they've given their clue last phase
+                                else if(!c.IsAlive && c.HasGhostGivenClue)
+                                {
+                                    Service.Population.PhysicalCharacterMap[c].gameObject.SetActive(false);
+                                }
                             }
 
                             // Will fade in the action icons
