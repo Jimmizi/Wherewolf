@@ -52,7 +52,7 @@ public class CharacterGenerator : MonoBehaviour {
     }
 
     public CharacterAttributes AttributesForCharacter(Character character) {
-        if (character.Index > 0 && character.Index < _charactersAttributes.Count) {
+        if (character.Index >= 0 && character.Index < _charactersAttributes.Count) {
             return _charactersAttributes[character.Index];
         }
         

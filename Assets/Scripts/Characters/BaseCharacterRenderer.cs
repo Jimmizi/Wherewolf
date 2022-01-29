@@ -11,4 +11,10 @@ public abstract class BaseCharacterRenderer : MonoBehaviour {
         Assemble();
     }
 
+    public virtual void Render(Character character) {
+        if (character == null) return;
+        _characterAttributes = CharacterGenerator.Instance.AttributesForCharacter(character);
+        Assemble();
+    }
+
 }
