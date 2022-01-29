@@ -1,12 +1,14 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TooltipManager : MonoBehaviour {
     public static TooltipManager Instance { get; private set; }
     
     public GameObject TooltipPrefab;
     public Canvas TooltipCanvas;
+    public Vector2 ScreenPadding = Vector2.zero;
 
     private List<Tooltip> _tooltips;
     private Tooltip _activeTooltip;
@@ -38,7 +40,7 @@ public class TooltipManager : MonoBehaviour {
 
     public void ShowTooltip(Tooltip tooltip, Vector3 position) {
         tooltip.gameObject.SetActive(true);
-        tooltip.transform.position = position + offset;
+        tooltip.transform.position = ScreenBoundPosition(position + offset, tooltip.RectTransform);
         HideActiveTooltip();
         _activeTooltip = tooltip;
     }
@@ -55,12 +57,16 @@ public class TooltipManager : MonoBehaviour {
             tooltip.Title = "EMOTE";
             tooltip.Description = emote.SubType.ToString();
             _emoteTooltips[emote.SubType] = tooltip;
+            
+            /* Force rebuild layout on tooltip instantiation. */
+            tooltip.transform.position = position + offset;
+            LayoutRebuilder.ForceRebuildLayoutImmediate(tooltip.RectTransform);
         } else {
             tooltip = _emoteTooltips[emote.SubType];
         }
         
         tooltip.gameObject.SetActive(true);
-        tooltip.transform.position = position + offset;
+        tooltip.transform.position = ScreenBoundPosition(position + offset, tooltip.RectTransform);
         
         HideActiveTooltip();
         _activeTooltip = tooltip;
@@ -71,5 +77,30 @@ public class TooltipManager : MonoBehaviour {
             _activeTooltip.gameObject.SetActive(false);
             _activeTooltip = null;
         }
+    }
+    
+    private Vector3 ScreenBoundPosition(Vector3 position, RectTransform rectTransform) {
+        rectTransform.position = position;
+        float halfWidth = LayoutUtility.GetPreferredWidth(rectTransform) * 0.5f;
+        float halfHeight = LayoutUtility.GetFlexibleHeight(rectTransform) * 0.5f;
+        Vector3 positionOffset = Vector3.zero;
+        
+        if (position.x - halfWidth < ScreenPadding.x) {
+            positionOffset.x += ScreenPadding.x - (position.x - halfWidth);
+        }
+
+        if (position.x + halfWidth > Screen.width - ScreenPadding.x) {
+            positionOffset.x -= position.x + halfWidth - (Screen.width - ScreenPadding.x);
+        }
+
+        if (position.y - halfHeight < ScreenPadding.y) {
+            positionOffset.y += ScreenPadding.y - (position.y - halfHeight);
+        }
+
+        if (position.y + halfHeight > Screen.height - ScreenPadding.y) {
+            positionOffset.y -= position.y + halfHeight - (Screen.height - ScreenPadding.y);
+        }
+
+        return position + positionOffset;
     }
 }

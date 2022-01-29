@@ -7,6 +7,7 @@ public class Tooltip : MonoBehaviour {
     [SerializeField] private string _title;
     [SerializeField] private string _description;
 
+    public RectTransform RectTransform;
     public TextMeshProUGUI TitleText;
     public TextMeshProUGUI DescriptionText;
 
