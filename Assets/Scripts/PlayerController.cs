@@ -206,7 +206,7 @@ public class PlayerController : MonoBehaviour
     {
         bool bHitNothing = true;
 
-        if (!isStakeConfirmationWindowUp)
+        if (!isStakeConfirmationWindowUp && !Service.Player.IsTalkingToCharacter)
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
@@ -237,7 +237,7 @@ public class PlayerController : MonoBehaviour
 
     void ProcessClicking()
     {
-        if (Input.GetMouseButtonDown(0) && !isStakeConfirmationWindowUp)
+        if (Input.GetMouseButtonDown(0) && !isStakeConfirmationWindowUp && !Service.Player.IsTalkingToCharacter)
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;

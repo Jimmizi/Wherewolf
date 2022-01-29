@@ -83,13 +83,28 @@ namespace UnityEngine.UI.Extensions {
                 OnItemClicked(0);
             }
             
-            AddItem(new DropDownListItem<Character>(data: Service.Population.GetRandomCharacter()));
-            AddItem(new DropDownListItem<Character>(data: Service.Population.GetRandomCharacter()));
-            AddItem(new DropDownListItem<Character>(data: Service.Population.GetRandomCharacter()));
-            AddItem(new DropDownListItem<Character>(data: Service.Population.GetRandomCharacter()));
-            AddItem(new DropDownListItem<Character>(data: Service.Population.GetRandomCharacter()));
+            // Character generation not finished at this point
+            //AddItem(new DropDownListItem<Character>(data: Service.Population.GetRandomCharacter()));
+            //AddItem(new DropDownListItem<Character>(data: Service.Population.GetRandomCharacter()));
+            //AddItem(new DropDownListItem<Character>(data: Service.Population.GetRandomCharacter()));
+            //AddItem(new DropDownListItem<Character>(data: Service.Population.GetRandomCharacter()));
+            //AddItem(new DropDownListItem<Character>(data: Service.Population.GetRandomCharacter()));
 
             RedrawPanel();
+        }
+
+        private bool bAddedDefaultItems = false;
+        private void Update()
+        {
+            if(!bAddedDefaultItems && Service.Population.CharacterCreationDone)
+            {
+                bAddedDefaultItems = true;
+                AddItem(new DropDownListItem<Character>(data: Service.Population.GetRandomCharacter()));
+                AddItem(new DropDownListItem<Character>(data: Service.Population.GetRandomCharacter()));
+                AddItem(new DropDownListItem<Character>(data: Service.Population.GetRandomCharacter()));
+                AddItem(new DropDownListItem<Character>(data: Service.Population.GetRandomCharacter()));
+                AddItem(new DropDownListItem<Character>(data: Service.Population.GetRandomCharacter()));
+            }
         }
 
         private bool Initialize() {

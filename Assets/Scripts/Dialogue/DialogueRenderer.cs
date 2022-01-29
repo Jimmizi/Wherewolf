@@ -130,6 +130,10 @@ public class DialogueRenderer : MonoBehaviour {
 
         switch (dialogueActionType) {
             case DialogueActionType.IssueFarewell:
+
+                // Fixes the tooltip staying around when leaving conversation.
+                TooltipManager.Instance?.HideActiveTooltip();
+
                 EndConversation();
                 break;
             default:
@@ -138,29 +142,35 @@ public class DialogueRenderer : MonoBehaviour {
         }
     }
 
+    const Emote.EmoteSubType eTypeForFarewell = Emote.EmoteSubType.Specific_Disapproves;
+
     private static readonly DialogueActionEmoteMap _dialogueActions = new DialogueActionEmoteMap() {
         //{DialogueActionType.IssueGreeting, Emote.EmoteSubType.Specific_Approves},
         {DialogueActionType.Gossip, Emote.EmoteSubType.Gossip_RelationshipFight},
-        {DialogueActionType.QuerySawAtLocation, Emote.EmoteSubType.Specific_Footsteps},
-        {DialogueActionType.QuerySawPassing, Emote.EmoteSubType.Specific_Eyes},
+        {DialogueActionType.QuerySawAtLocation, Emote.EmoteSubType.Specific_Eyes},
+        {DialogueActionType.QuerySawPassing, Emote.EmoteSubType.Specific_Footsteps},
         {DialogueActionType.QuerySawAtWork, Emote.EmoteSubType.Occupation_Bank},
-        {DialogueActionType.IssueFarewell, Emote.EmoteSubType.Specific_Disapproves},
+        {DialogueActionType.IssueFarewell, eTypeForFarewell},
     };
     
     protected void DisplayChoices() {
-        if (_choiceButtonInstances == null) {
+        if (_choiceButtonInstances == null) 
+        {
             _choiceButtonInstances = new List<GameObject>();
             
-            foreach (KeyValuePair<DialogueActionType, Emote.EmoteSubType> dialogueAction in _dialogueActions) {
+            foreach (KeyValuePair<DialogueActionType, Emote.EmoteSubType> dialogueAction in _dialogueActions) 
+            {
                 GameObject choiceButtonInstance = Instantiate(choiceButton, choiceButtonHolder);
                 Button button = choiceButtonInstance.GetComponent<Button>();
                 EmoteRenderer emoteRenderer = choiceButtonInstance.GetComponentInChildren<EmoteRenderer>();
 
                 _choiceButtonInstances.Add(choiceButtonInstance.gameObject);
-                emoteRenderer.Emote = new Emote(dialogueAction.Value);
-                button.onClick.AddListener(() => {
+                emoteRenderer.Emote = Service.InfoManager.EmoteMapBySubType[dialogueAction.Value];
+                button.onClick.AddListener(() => 
+                {
                     Debug.LogFormat("The player has chosen dialog action {0}", dialogueAction.Key);
                     DoAction(dialogueAction.Key, Service.Population.GetRandomCharacter());
+                    HideChoices(true);
                 });
             }
         }
@@ -170,8 +180,18 @@ public class DialogueRenderer : MonoBehaviour {
         }
     }
     
-    protected void HideChoices() {
-        foreach (GameObject choiceButtonInstance in _choiceButtonInstances) {
+    protected void HideChoices(bool bKeepIssueFarewell = false) {
+        foreach (GameObject choiceButtonInstance in _choiceButtonInstances) 
+        {
+            if(bKeepIssueFarewell)
+            {
+                EmoteRenderer emoteRenderer = choiceButtonInstance.GetComponentInChildren<EmoteRenderer>();
+                if(emoteRenderer && emoteRenderer.Emote.SubType == eTypeForFarewell)
+                {
+                    continue;
+                }
+            }
+
             choiceButtonInstance.SetActive(false);
         }
     }
