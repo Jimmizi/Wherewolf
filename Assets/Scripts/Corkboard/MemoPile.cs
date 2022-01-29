@@ -6,12 +6,15 @@ using UnityEngine.EventSystems;
 public class MemoPile : MonoBehaviour, IDropHandler, IBeginDragHandler, IDragHandler, IPointerClickHandler
 {
     [SerializeField]
-    bool createNew = true;
+    protected bool createNewMemos = true;
 
-    List<MemoData> memos = new List<MemoData>();
+    [SerializeField]
+    protected bool collectMemos = true;
+
+    protected List<MemoData> memos = new List<MemoData>();
 
     RectTransform _rectTransform;
-    private RectTransform rectTransform
+    protected RectTransform rectTransform
     {
         get
         {
@@ -37,7 +40,15 @@ public class MemoPile : MonoBehaviour, IDropHandler, IBeginDragHandler, IDragHan
             return;
         }
 
-        memos.Add( memo.Data );
+        if (collectMemos)
+        {
+            OnMemoDropped(memo);
+        }
+    }
+
+    protected virtual void OnMemoDropped(Memo memo)
+    {
+        memos.Add(memo.Data);
         memo.Destroy();
     }
 
@@ -45,19 +56,29 @@ public class MemoPile : MonoBehaviour, IDropHandler, IBeginDragHandler, IDragHan
     {
         if (memos.Count <= 0)
         {
-            if (createNew)
+            if (createNewMemos)
             {
-                Memo newMemo = MemoFactory.instance.CreateNew(rectTransform.anchoredPosition, false);
+                Memo newMemo = CreateNewMemo();                
                 eventData.pointerDrag = newMemo.gameObject;
             }
         }
         else
         {
-            Memo newMemo = MemoFactory.instance.CreateFromData(memos[memos.Count - 1], rectTransform.anchoredPosition);
-            memos.RemoveAt(memos.Count - 1);
-
+            Memo newMemo = CreateMemoFromPile();
             eventData.pointerDrag = newMemo.gameObject;
         }
+    }
+
+    protected virtual Memo CreateNewMemo()
+    {
+        return MemoFactory.instance.CreateNew(rectTransform.anchoredPosition, false);
+    }
+
+    protected virtual Memo CreateMemoFromPile()
+    {
+        Memo newMemo = MemoFactory.instance.CreateFromData(memos[memos.Count - 1], rectTransform.anchoredPosition);
+        memos.RemoveAt(memos.Count - 1);
+        return newMemo;
     }
 
     public void OnDrag(PointerEventData eventData)

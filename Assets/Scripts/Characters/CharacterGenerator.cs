@@ -17,6 +17,7 @@ public class CharacterGenerator : MonoBehaviour {
             Destroy(gameObject);
         } else {
             Instance = this;
+            Service.CharacterGenerator = this;
         }
         
         GenerateCharacters();
