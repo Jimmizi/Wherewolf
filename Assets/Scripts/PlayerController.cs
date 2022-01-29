@@ -85,9 +85,7 @@ public class PlayerController : MonoBehaviour
         CurrentlySelectedCharacter.AssociatedCharacter.SetNameDiscovered();
         ActionPanel.gameObject.SetActive(false);
 
-        Service.Dialogue.StartConversation(CurrentlySelectedCharacter.AssociatedCharacter);
-
-        
+        Service.DialogueManager.StartConversation(CurrentlySelectedCharacter.AssociatedCharacter);
 
         Service.Player.IsTalkingToCharacter = true;
     }

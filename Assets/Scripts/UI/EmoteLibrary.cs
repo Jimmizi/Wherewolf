@@ -9,6 +9,7 @@ public class EmoteLibrary : MonoBehaviour {
             Destroy(gameObject);
         } else {
             Instance = this;
+            Service.EmoteLibrary = this;
         }
     }
 
