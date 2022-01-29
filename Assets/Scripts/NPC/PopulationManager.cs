@@ -937,7 +937,10 @@ public class PopulationManager : MonoBehaviour
         {
             foreach(var d in descriptorsToGive)
             {
-                c.Descriptors[d.Key] = d.Value;
+                if (d.Key != Character.Descriptor.Occupation)
+                {
+                    c.Descriptors[d.Key] = d.Value;
+                }
             }
         }
 
@@ -962,12 +965,17 @@ public class PopulationManager : MonoBehaviour
             c.Descriptors[Character.Descriptor.Facial].Add(Service.InfoManager.GetRandomEmoteOfType(Emote.EmoteType.FacialFeature));
         }
 
-        if (descriptorsToGive == null || !descriptorsToGive.ContainsKey(Character.Descriptor.Occupation))
+        //if (descriptorsToGive == null || !descriptorsToGive.ContainsKey(Character.Descriptor.Occupation))
         {
             if (UnityEngine.Random.Range(0, 101) < Service.Config.CharacterHasOccupationChance)
             {
-                // Occupation
-                c.Descriptors[Character.Descriptor.Occupation].Add(Service.InfoManager.GetRandomEmoteOfType(Emote.EmoteType.Occupation));
+                Emote occupation = Service.InfoManager.GetAvailableOccupation();
+
+                if (occupation != null)
+                {
+                    // Occupation
+                    c.Descriptors[Character.Descriptor.Occupation].Add(occupation);
+                }
             }
         }
 
@@ -1183,7 +1191,7 @@ public class PopulationManager : MonoBehaviour
         {
             if(building.BuildingType == eBuildingType)
             {
-                vPosition = building.UseBuildingPosition;
+                vPosition = building.transform.position + building.UseBuildingPosition;
                 iLocation = building.Location;
             }
         }

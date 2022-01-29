@@ -23,4 +23,12 @@ public class Building : MonoBehaviour
     {
         
     }
+
+#if UNITY_EDITOR
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawSphere(gameObject.transform.position + UseBuildingPosition, 0.2f);
+    }
+#endif
 }

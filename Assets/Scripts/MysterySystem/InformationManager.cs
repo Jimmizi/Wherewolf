@@ -21,6 +21,8 @@ public class InformationManager : MonoBehaviour
     private List<string> availableNamePool = new List<string>();
     private List<string> inUseNamePool = new List<string>();
 
+    public List<Emote.EmoteSubType> AvailableOccupations = new List<Emote.EmoteSubType>();
+
     // API Access
 
     public string GetRandomName()
@@ -97,6 +99,21 @@ public class InformationManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public Emote GetAvailableOccupation()
+    {
+        if(AvailableOccupations.Count == 0)
+        {
+            return null;
+        }
+
+        int iRand = UnityEngine.Random.Range(0, AvailableOccupations.Count);
+        Emote.EmoteSubType eTypeToReturn = AvailableOccupations[iRand];
+
+        AvailableOccupations.RemoveAt(iRand);
+
+        return EmoteMapBySubType[eTypeToReturn];
     }
 
     public void RenameCharacterEmotes()
@@ -527,6 +544,11 @@ public class InformationManager : MonoBehaviour
             EmoteMapByType[emote.Type].Add(emote);
 
             EmoteMapBySubType.Add(emote.SubType, emote);
+
+            if(emote.Type == Emote.EmoteType.Occupation)
+            {
+                AvailableOccupations.Add(emote.SubType);
+            }
         }
     }
 
