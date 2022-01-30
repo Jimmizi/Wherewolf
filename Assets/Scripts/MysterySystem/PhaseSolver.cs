@@ -142,10 +142,12 @@ public class PhaseSolver : MonoBehaviour
             var cr = pc.GetComponentInChildren<CharacterRenderer>();
             if(cr)
             {
-                cr.BaseSpriteRenderer.sprite = GhostSprite;
+                cr.HeadSpriteRenderer.sprite = GhostSprite;
                 cr.EyesSpriteRenderer.enabled = false;
-                cr.EarsSpriteRenderer.enabled = false;
+                cr.HairSpriteRenderer.enabled = false;
                 cr.NoseSpriteRenderer.enabled = false;
+                cr.BodySpriteRenderer.enabled = false;
+                cr.LegsSpriteRenderer.enabled = false;
             }
 
             Service.Population.iNumberOfCharactersDead++;

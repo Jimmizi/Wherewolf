@@ -112,11 +112,11 @@ public class PhysicalCharacter : MonoBehaviour
                 
             CharacterRenderer.transform.localPosition = new Vector3(
                 Mathf.Cos(time * speed) * bounceIntensity * 0.1f,
-                Mathf.Abs(Mathf.Sin(time * speed) * bounceIntensity) + 0.65f,
+                Mathf.Abs(Mathf.Sin(time * speed) * bounceIntensity) + 1.15f,
                 0f);
             CharacterRenderer.transform.localRotation = Quaternion.Euler(0f, 0f, Mathf.Sin(time * speed) * 5f);
         } else {
-            CharacterRenderer.transform.localPosition = new Vector3(0f, 0.65f, 0f);
+            CharacterRenderer.transform.localPosition = new Vector3(0f, 1.15f, 0f);
             CharacterRenderer.transform.localRotation = Quaternion.identity;
         }
     }

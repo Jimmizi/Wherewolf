@@ -1,0 +1,396 @@
+fileFormatVersion: 2
+guid: 866c58a274dca472abf0f615d4bbc089
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4533249740495524082
+    second: CharacterHair_0
+  - first:
+      213: -8142348151292379780
+    second: CharacterHair_1
+  - first:
+      213: -8407589438536067022
+    second: CharacterHair_2
+  - first:
+      213: -3330146215110097417
+    second: CharacterHair_3
+  - first:
+      213: 7453196644828883793
+    second: CharacterHair_4
+  - first:
+      213: 7284716698216589776
+    second: CharacterHair_5
+  - first:
+      213: 6753916780000190641
+    second: CharacterHair_6
+  - first:
+      213: 6184120087409723368
+    second: CharacterHair_7
+  - first:
+      213: 327331573708330604
+    second: CharacterHair_8
+  - first:
+      213: 633597387063541697
+    second: CharacterHair_9
+  - first:
+      213: 5869410254463973535
+    second: CharacterHair_10
+  - first:
+      213: 648237240288205658
+    second: CharacterHair_11
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 0
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: CharacterHair_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1987.5
+        width: 1370.8334
+        height: 1987.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0fe1a31169a611c0800000000000000
+      internalID: -4533249740495524082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterHair_1
+      rect:
+        serializedVersion: 2
+        x: 1370
+        y: 1987.5
+        width: 1370.8334
+        height: 1987.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7db8a41f71900f80800000000000000
+      internalID: -8142348151292379780
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterHair_2
+      rect:
+        serializedVersion: 2
+        x: 2740
+        y: 1987.5
+        width: 1370.8334
+        height: 1987.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2385bb273fd325b80800000000000000
+      internalID: -8407589438536067022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterHair_3
+      rect:
+        serializedVersion: 2
+        x: 4110
+        y: 1987.5
+        width: 1370.8334
+        height: 1987.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f5404649a1f8c1d0800000000000000
+      internalID: -3330146215110097417
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterHair_4
+      rect:
+        serializedVersion: 2
+        x: 5480
+        y: 1987.5
+        width: 1370.8334
+        height: 1987.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15ba8281cd21f6760800000000000000
+      internalID: 7453196644828883793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterHair_5
+      rect:
+        serializedVersion: 2
+        x: 6850
+        y: 1987.5
+        width: 1370.8334
+        height: 1987.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d96e8ead33881560800000000000000
+      internalID: 7284716698216589776
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterHair_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0.5
+        width: 1370.8334
+        height: 1987.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b02672178bbabd50800000000000000
+      internalID: 6753916780000190641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterHair_7
+      rect:
+        serializedVersion: 2
+        x: 1370
+        y: 0.5
+        width: 1370.8334
+        height: 1987.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e70a62647862d550800000000000000
+      internalID: 6184120087409723368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterHair_8
+      rect:
+        serializedVersion: 2
+        x: 2740
+        y: 0.5
+        width: 1370.8334
+        height: 1987.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6697aef45aea8400800000000000000
+      internalID: 327331573708330604
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterHair_9
+      rect:
+        serializedVersion: 2
+        x: 4110
+        y: 0.5
+        width: 1370.8334
+        height: 1987.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1cfb982777dfac800800000000000000
+      internalID: 633597387063541697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterHair_10
+      rect:
+        serializedVersion: 2
+        x: 5480
+        y: 0.5
+        width: 1370.8334
+        height: 1987.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f983c5a6785547150800000000000000
+      internalID: 5869410254463973535
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterHair_11
+      rect:
+        serializedVersion: 2
+        x: 6850
+        y: 0.5
+        width: 1370.8334
+        height: 1987.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5bde85e5500ff800800000000000000
+      internalID: 648237240288205658
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
