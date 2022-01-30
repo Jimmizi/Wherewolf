@@ -82,6 +82,9 @@ public class DialogueRenderer : MonoBehaviour {
             case DialogueActionType.QuerySawPassing:
                 clue = _character.TryServeSpecificClueToPlayer(ClueObject.ClueType.SawPassingBy, relatedCharacter);
                 break;
+            case DialogueActionType.QueryClothing:
+                clue = _character.TryServeSpecificClueToPlayer(ClueObject.ClueType.CommentClothing, relatedCharacter);
+                break;
             default:
                 clue = _character.TryServeSpecificClueToPlayer(ClueObject.ClueType.CommentGossip, relatedCharacter);
                 break;
@@ -183,6 +186,7 @@ public class DialogueRenderer : MonoBehaviour {
         {DialogueActionType.QuerySawAtLocation, Emote.EmoteSubType.Specific_Eyes},
         {DialogueActionType.QuerySawPassing, Emote.EmoteSubType.Specific_Footsteps},
         {DialogueActionType.QuerySawAtWork, Emote.EmoteSubType.Occupation_Bank},
+        {DialogueActionType.QueryClothing, Emote.EmoteSubType.Clothing_Shirt},
         {DialogueActionType.IssueFarewell, eTypeForFarewell},
     };
     

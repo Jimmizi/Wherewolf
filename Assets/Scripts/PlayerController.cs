@@ -166,7 +166,7 @@ public class PlayerController : MonoBehaviour
         if (Service.Game.CurrentState == WerewolfGame.GameState.PlayerInvestigateDay
             || Service.Game.CurrentState == WerewolfGame.GameState.PlayerInvestigateNight)
         {
-            if(Service.Game.AreInvestigateToolsOpen)
+            if(Service.Game.AreInvestigateToolsOpen || (Service.Options?.ShowingTutorial ?? false))
             {
                 return;
             }

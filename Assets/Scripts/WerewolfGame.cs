@@ -342,6 +342,7 @@ public class WerewolfGame : MonoBehaviour
                     {
                         GameOverReason = "Took too long. The werewolf, sensing you were closing in, fled the town.";
                         startedFailLoadSceneAfterDayExpiry = false;
+                        CloseInvestigateTools();
                     }
 
                     // Bring in the transition blend
@@ -985,6 +986,7 @@ public class WerewolfGame : MonoBehaviour
     {
         if(CurrentState != GameState.PlayerChoseToStake)
         {
+            CloseInvestigateTools();
             c.ChosenForStakeTarget = true;
             characterStaked = c;
             HasTriggeredStakeAction = true;

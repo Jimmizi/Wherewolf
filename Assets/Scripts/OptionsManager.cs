@@ -40,12 +40,15 @@ public class OptionsManager : MonoBehaviour
 
     [SerializeField]
     public GameObject TutorialGameObject;
+    public bool ShowingTutorial = false;
     public void CloseTutorial()
     {
         TutorialGameObject?.SetActive(false);
+        ShowingTutorial = false;
     }
     public void ShowTutorial()
     {
+        ShowingTutorial = true;
         PlayerHasSeenTutorial = true;
         TutorialGameObject?.SetActive(true);
 

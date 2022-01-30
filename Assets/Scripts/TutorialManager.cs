@@ -100,6 +100,7 @@ public class TutorialManager : MonoBehaviour
             Service.Audio.PlayUIClick();
         }
 
+        Service.Options.ShowingTutorial = false;
         gameObject.SetActive(false);
         CurrentPage = 0;
         GoPreviousButton.gameObject.SetActive(false);

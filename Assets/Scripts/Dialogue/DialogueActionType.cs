@@ -4,5 +4,6 @@ public enum DialogueActionType {
     QuerySawAtLocation,
     QuerySawAtWork,
     QuerySawPassing,
+    QueryClothing,
     IssueFarewell
 }
