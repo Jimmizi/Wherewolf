@@ -1426,6 +1426,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3028719280604077993, guid: d0cd22590707b9a4aa4554324eebe599, type: 3}
+      propertyPath: m_Value
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 3028719282503094241, guid: d0cd22590707b9a4aa4554324eebe599, type: 3}
       propertyPath: m_Name
       value: OptionsCanvas
@@ -1513,6 +1517,26 @@ PrefabInstance:
     - target: {fileID: 3028719282503094246, guid: d0cd22590707b9a4aa4554324eebe599, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6266841759421829715, guid: d0cd22590707b9a4aa4554324eebe599, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6266841759450350719, guid: d0cd22590707b9a4aa4554324eebe599, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6266841759610073984, guid: d0cd22590707b9a4aa4554324eebe599, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6266841759890422038, guid: d0cd22590707b9a4aa4554324eebe599, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6266841761141922520, guid: d0cd22590707b9a4aa4554324eebe599, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d0cd22590707b9a4aa4554324eebe599, type: 3}

@@ -25,6 +25,6 @@ public static class Service
     public static TooltipManager TooltipManager;
     public static EmoteLibrary EmoteLibrary;
 
-    public static float MusicVolume = 0.75f;
+    public static float MusicVolume = 0.5f;
 
 }

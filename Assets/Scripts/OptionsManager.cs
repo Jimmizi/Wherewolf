@@ -19,7 +19,7 @@ public class OptionsManager : MonoBehaviour
     [SerializeField]
     public GameObject OpenTutorialButton;
 
-    private float lastMusicValue = 0.75f;
+    private float lastMusicValue = 0.5f;
 
     public void PlayClickSound()
     {
