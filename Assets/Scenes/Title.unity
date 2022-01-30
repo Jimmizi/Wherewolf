@@ -123,102 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &233835931
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 233835932}
-  - component: {fileID: 233835935}
-  - component: {fileID: 233835934}
-  - component: {fileID: 233835933}
-  m_Layer: 0
-  m_Name: Text (2)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &233835932
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 233835931}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 3028719282177375809}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 327.4, y: -215}
-  m_SizeDelta: {x: 634.1, y: 147.69}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &233835933
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 233835931}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: 1, y: -1}
-  m_UseGraphicAlpha: 1
---- !u!114 &233835934
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 233835931}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.2924528, g: 0.2924528, b: 0.2924528, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 32
-    m_FontStyle: 2
-    m_BestFit: 0
-    m_MinSize: 3
-    m_MaxSize: 128
-    m_Alignment: 0
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 1
-    m_LineSpacing: 1
-  m_Text: 'Detective-to-detective tip: look out for the ghosts of past victims during
-    the night, they can provide the most valuable information about the werewolf!'
---- !u!222 &233835935
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 233835931}
-  m_CullTransparentMesh: 1
 --- !u!114 &389515587 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 235615802384601696, guid: d2ec1934f07d3f747867e317e394b491, type: 3}
@@ -693,27 +597,29 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1468837759, guid: d0cd22590707b9a4aa4554324eebe599, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 55
+    - target: {fileID: 3028719280699438303, guid: d0cd22590707b9a4aa4554324eebe599, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 1468837761, guid: d0cd22590707b9a4aa4554324eebe599, type: 3}
-      propertyPath: m_Text
-      value: 'You have a big view over the whole situation, use WASD or Arrow Keys
-        to move around, and click on people to reveal your two actions.
-
-
-        Make
-        sure you''re ready and have a good guess on who the Werewolf is before driving
-        a stake through any Bob or Jane out there!'
+    - target: {fileID: 3028719280699438303, guid: d0cd22590707b9a4aa4554324eebe599, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1842239535, guid: d0cd22590707b9a4aa4554324eebe599, type: 3}
-      propertyPath: m_Text
-      value: I'm sure a detective as fine as yourself has near picture perfect memory,
-        but just in case you need a refresher on something you've learnt about, check
-        out the investigation tools accessible by clicking on the book at the bottom
-        middle of the screen when in game! There you'll have a corkboard and a case
-        files history on them.
+    - target: {fileID: 3028719280749949641, guid: d0cd22590707b9a4aa4554324eebe599, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3028719280811380339, guid: d0cd22590707b9a4aa4554324eebe599, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3028719280811380339, guid: d0cd22590707b9a4aa4554324eebe599, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3028719280811380339, guid: d0cd22590707b9a4aa4554324eebe599, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3028719282503094241, guid: d0cd22590707b9a4aa4554324eebe599, type: 3}
       propertyPath: m_Name
@@ -811,6 +717,30 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6266841759450350689, guid: d0cd22590707b9a4aa4554324eebe599, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6266841759450350689, guid: d0cd22590707b9a4aa4554324eebe599, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6266841759450350689, guid: d0cd22590707b9a4aa4554324eebe599, type: 3}
+      propertyPath: m_Color.a
+      value: 0.41960785
+      objectReference: {fileID: 0}
+    - target: {fileID: 6266841759450350689, guid: d0cd22590707b9a4aa4554324eebe599, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6266841759450350689, guid: d0cd22590707b9a4aa4554324eebe599, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6266841759450350689, guid: d0cd22590707b9a4aa4554324eebe599, type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6266841759450350719, guid: d0cd22590707b9a4aa4554324eebe599, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -827,25 +757,17 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 8715791472980197970, guid: d0cd22590707b9a4aa4554324eebe599, type: 3}
-      propertyPath: m_Text
-      value: 'Welcome to Where Wolf, a procedural murder mystery game set in the
-        victorian town of Wildpelt. You''ve been called in as a detective to question
-        the townsfolk and track down the big bad werewolf running havok in the town.
-
-
-        Use
-        your wits, the games tools, and maybe some pen and paper if you''re really
-        looking to get into it - to correlate the clues given to you. Everyone but
-        the werewolf is trying to help you!
-
-
-'
+    - target: {fileID: 6266841761460913647, guid: d0cd22590707b9a4aa4554324eebe599, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6266841761460913647, guid: d0cd22590707b9a4aa4554324eebe599, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3d9f4a468bc0bbe4d987b13eebda0d21, type: 3}
+    - target: {fileID: 6266841761460913647, guid: d0cd22590707b9a4aa4554324eebe599, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d0cd22590707b9a4aa4554324eebe599, type: 3}
---- !u!224 &3028719282177375809 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 6266841761141922521, guid: d0cd22590707b9a4aa4554324eebe599, type: 3}
-  m_PrefabInstance: {fileID: 3028719282177375808}
-  m_PrefabAsset: {fileID: 0}
