@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public struct MemoData
 {
     public int memoId;
+    public string title;
     public string message;
     public List<Emote> emotes;
     public Vector2 position;
@@ -22,7 +23,10 @@ public class Memo : MonoBehaviour
     private Pin pin;
 
     [SerializeField]
-    private InputField note;
+    private Text title;
+
+    [SerializeField]
+    private InputField note;    
 
     [SerializeField]
     private EmoteTextRenderer emoteRenderer; 
@@ -73,6 +77,7 @@ public class Memo : MonoBehaviour
             return new MemoData
             {
                 memoId = pin ? pin.PinId : -1,
+                title = title ? title.text : "",
                 connectedIds = pin ? pin.ConnectedIds : new List<int>(),
                 message = note ? note.text : "",
                 position = rectTransform ? rectTransform.anchoredPosition : Vector2.zero,
@@ -89,7 +94,7 @@ public class Memo : MonoBehaviour
             {
                 pin.PinId = value.memoId;
                 pin.ConnectedIds = value.connectedIds;
-            }            
+            }
 
             if (rectTransform)
             {
@@ -100,6 +105,11 @@ public class Memo : MonoBehaviour
             if (highlight)
             {
                 highlight.SetActive(value.highlighted);
+            }
+
+            if (title)
+            {
+                title.text = value.title;
             }
 
             bool useEmotes = true;

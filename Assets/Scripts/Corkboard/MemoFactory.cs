@@ -50,6 +50,7 @@ public class MemoFactory : MonoBehaviour
         memoData.memoId = memoId;
         memoData.message = message;
         memoData.emotes = emotes;
+        memoData.title = CreateTitle();
 
         return CreateFromData(memoData);
     }
@@ -102,5 +103,15 @@ public class MemoFactory : MonoBehaviour
     public Memo CreateFromData(MemoData memoData)
     {
         return CreateFromData(memoData, memoData.position);
+    }
+
+    private string CreateTitle()
+    {
+        if (Service.Game)
+        {
+            return Service.Game.CurrentTimeOfDay.ToString() + " " + Service.Game.CurrentDay;
+        }
+
+        return "";
     }
 }
