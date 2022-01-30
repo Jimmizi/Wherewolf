@@ -1,11 +1,33 @@
 Event	ID	Name			Wwise Object Path	Notes
-	4245458931	Speech			\Default Work Unit\Speech	
+	1369532193	Speak_01			\Default Work Unit\Speak_01	
+	1369532194	Speak_02			\Default Work Unit\Speak_02	
+	1369532195	Speak_03			\Default Work Unit\Speak_03	
+	1369532196	Speak_04			\Default Work Unit\Speak_04	
+	1369532197	Speak_05			\Default Work Unit\Speak_05	
+	1369532198	Speak_06			\Default Work Unit\Speak_06	
+	1369532199	Speak_07			\Default Work Unit\Speak_07	
+	1369532200	Speak_08			\Default Work Unit\Speak_08	
+	1369532201	Speak_09			\Default Work Unit\Speak_09	
+	1386309776	Speak_13			\Default Work Unit\Speak_13	
+	1386309777	Speak_12			\Default Work Unit\Speak_12	
+	1386309778	Speak_11			\Default Work Unit\Speak_11	
+	1386309779	Speak_10			\Default Work Unit\Speak_10	
+	1386309780	Speak_17			\Default Work Unit\Speak_17	
+	1386309781	Speak_16			\Default Work Unit\Speak_16	
+	1386309782	Speak_15			\Default Work Unit\Speak_15	
+	1386309783	Speak_14			\Default Work Unit\Speak_14	
+	1386309786	Speak_19			\Default Work Unit\Speak_19	
+	1386309787	Speak_18			\Default Work Unit\Speak_18	
+	1403087366	Speak_20			\Default Work Unit\Speak_20	
+
+Effect plug-ins	ID	Name	Type				Notes
+	1237275451	Octave_Up	Wwise Pitch Shifter			
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
-	262827715	speech3	C:\Users\jaket\Documents\GitHub\GGJ2022\WwiseGGJ2020\.cache\Windows\SFX\speech3_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\speachsoundcontainer\randomspeachcontainer\speech3		408144
-	368272965	speech6	C:\Users\jaket\Documents\GitHub\GGJ2022\WwiseGGJ2020\.cache\Windows\SFX\speech6_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\speachsoundcontainer\randomspeachcontainer\speech6		552144
-	455956520	speech4	C:\Users\jaket\Documents\GitHub\GGJ2022\WwiseGGJ2020\.cache\Windows\SFX\speech4_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\speachsoundcontainer\randomspeachcontainer\speech4		408144
-	551637967	speech2	C:\Users\jaket\Documents\GitHub\GGJ2022\WwiseGGJ2020\.cache\Windows\SFX\speech2_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\speachsoundcontainer\randomspeachcontainer\speech2		384144
-	756625115	speech5	C:\Users\jaket\Documents\GitHub\GGJ2022\WwiseGGJ2020\.cache\Windows\SFX\speech5_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\speachsoundcontainer\randomspeachcontainer\speech5		384144
-	977955553	speech1	C:\Users\jaket\Documents\GitHub\GGJ2022\WwiseGGJ2020\.cache\Windows\SFX\speech1_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\speachsoundcontainer\randomspeachcontainer\speech1		432144
+	262827715	speech3	C:\Users\leoto\OneDrive\Documents\GitHub\GGJ2022\WwiseGGJ2020\.cache\Windows\SFX\speech3_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\speachsoundcontainer\speak_15\speech3		408144
+	368272965	speech6	C:\Users\leoto\OneDrive\Documents\GitHub\GGJ2022\WwiseGGJ2020\.cache\Windows\SFX\speech6_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\speachsoundcontainer\speak_15\speech6		552144
+	455956520	speech4	C:\Users\leoto\OneDrive\Documents\GitHub\GGJ2022\WwiseGGJ2020\.cache\Windows\SFX\speech4_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\speachsoundcontainer\speak_15\speech4		408144
+	551637967	speech2	C:\Users\leoto\OneDrive\Documents\GitHub\GGJ2022\WwiseGGJ2020\.cache\Windows\SFX\speech2_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\speachsoundcontainer\speak_15\speech2		384144
+	756625115	speech5	C:\Users\leoto\OneDrive\Documents\GitHub\GGJ2022\WwiseGGJ2020\.cache\Windows\SFX\speech5_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\speachsoundcontainer\speak_15\speech5		384144
+	977955553	speech1	C:\Users\leoto\OneDrive\Documents\GitHub\GGJ2022\WwiseGGJ2020\.cache\Windows\SFX\speech1_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\speachsoundcontainer\speak_15\speech1		432144
 

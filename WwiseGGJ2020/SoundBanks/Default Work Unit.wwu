@@ -5,11 +5,10 @@
 			<ChildrenList>
 				<SoundBank Name="DayCycle" ID="{FC5C07BC-DE31-4341-93EA-76B6A8E3E228}">
 					<ObjectInclusionList>
-						<ObjectRef Name="StartTheDay" ID="{F986C81D-8903-4085-B733-652FEE0B61CE}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="BackToGameTitle" ID="{01C6D848-1FE4-4120-B77C-042906706604}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="DiscoveryDay" ID="{17A2198D-E6F5-4433-B43A-6AC6DBB65E32}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
-						<ObjectRef Name="MusicDay" ID="{8F30BA2E-2CFE-44DB-A307-0044EF142F75}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="WinDay" ID="{769AC8D4-F574-4875-9464-91DF7EA02E41}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="MusicDayLoop" ID="{4492F738-1083-4906-BC04-4DEDCB118344}" WorkUnitID="{9277866B-E73D-4F74-B632-B6EF503A3632}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="GameOverDay" ID="{E4806E2F-144A-4B25-8DF5-C89FF84FC53A}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="AmbienceDay" ID="{ADD96E5B-E900-4BAF-8714-261614D3ADA4}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="StartDeathAnnouncement" ID="{5FD5F5B5-3ECB-4BFB-867B-44998C57CCA3}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
@@ -20,19 +19,37 @@
 				<SoundBank Name="NightCycle" ID="{BCA837B0-7050-4257-875D-ACDB506127D8}">
 					<ObjectInclusionList>
 						<ObjectRef Name="BackToGameTitle" ID="{01C6D848-1FE4-4120-B77C-042906706604}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
-						<ObjectRef Name="StartTheNight" ID="{E9E923E7-E2FA-4579-B526-28FFC96F3CBE}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="MusicNightLoop" ID="{29E874DC-2EA5-4355-AD7F-D28D81DF2D3B}" WorkUnitID="{9277866B-E73D-4F74-B632-B6EF503A3632}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="GameOverNight" ID="{C33449F5-E63A-4964-AF7B-CC7E99795733}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="AmbienceNight" ID="{736BAED1-44A6-4A25-9FE4-FE21FA75A128}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="StartDeathAnnouncement" ID="{5FD5F5B5-3ECB-4BFB-867B-44998C57CCA3}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="DiscoveryNight" ID="{B7A00018-7450-4C68-BFE0-4F085EBCA65D}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
-						<ObjectRef Name="MusicNight" ID="{99169D93-93FA-4FB5-B16D-9B9CD91A6107}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
 					</ObjectInclusionList>
 					<ObjectExclusionList/>
 					<GameSyncExclusionList/>
 				</SoundBank>
 				<SoundBank Name="Voices" ID="{E5A3BC42-72B5-43D9-A4A7-2AE3EA06C34C}">
 					<ObjectInclusionList>
-						<ObjectRef Name="Speech" ID="{8444C04B-C1EB-454C-801D-7A0D8D55830D}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Speak_13" ID="{A9B8461C-7D7A-401A-A56A-F107FF4168E0}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Speak_11" ID="{7D2F2A0A-DCAA-40F3-8D59-B641C37C90B7}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Speak_08" ID="{24C5A979-A2CF-4162-AA13-8DE976C2791E}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Speak_16" ID="{7238C4A1-E82C-41DB-B602-7CDC0BCC74BB}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Speak_04" ID="{558DB529-818C-4427-AB35-97A277F9DCF0}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Speak_07" ID="{9BE05DD5-883B-44D4-8CD9-DD20DC7A9F84}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Speak_10" ID="{2195EEA3-A63F-44DA-805D-63E6827700DA}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Speak_17" ID="{06387892-1175-44E6-85CF-1303431C5E71}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Speak_20" ID="{93F61B36-D244-454D-BAD0-AE00D08ECE3E}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Speak_01" ID="{9A03715E-1454-4886-A224-A24A2BBBAFEA}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Speak_02" ID="{6910C9B0-AB3C-4C82-867D-407518C23E9A}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Speak_19" ID="{2BEEA365-FCE5-4C9D-A44E-33C9DDA1E0A4}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Speak_12" ID="{14F1671D-EA86-4D01-AD3D-84F5DDDF19E3}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Speak_15" ID="{F0B48D49-504B-4D96-892E-EA679EECDBCD}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Speak_14" ID="{13B58844-66B8-4DE1-BC86-EF56419FA40F}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Speak_03" ID="{30D969BE-E4ED-4DFE-A016-9A3F5C9B5958}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Speak_05" ID="{E36C7ABE-E540-4E1E-8CB2-191BACBEF36D}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Speak_18" ID="{B4EA3365-F3E4-4E69-8E11-EA150F8659FC}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Speak_09" ID="{A7395627-4950-4E88-BA7C-D35D274ADE83}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Speak_06" ID="{F8E4C118-31BB-4FA9-B133-A428896CD6B0}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
 					</ObjectInclusionList>
 					<ObjectExclusionList/>
 					<GameSyncExclusionList/>
@@ -52,6 +69,7 @@
 				<SoundBank Name="Misc" ID="{52410054-CF92-48C0-8430-71B28C03B880}">
 					<ObjectInclusionList>
 						<ObjectRef Name="CreekFlow" ID="{E959CBFC-BCF6-40CD-9165-DDC4A2EC01B6}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="MusicCorkboard" ID="{BC6905A2-68F0-4C0A-AC37-9871FDE72C78}" WorkUnitID="{9277866B-E73D-4F74-B632-B6EF503A3632}" Origin="Manual" Filter="7"/>
 					</ObjectInclusionList>
 					<ObjectExclusionList/>
 					<GameSyncExclusionList/>

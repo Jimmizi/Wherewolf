@@ -1,6 +1,8 @@
 Event	ID	Name			Wwise Object Path	Notes
 	2144316923	CreekFlow			\Default Work Unit\CreekFlow	
+	3514557227	MusicCorkboard			\Default Work Unit\MusicCorkboard	
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
-	130810277	CreekFlow	C:\Users\jaket\Documents\GitHub\GGJ2022\WwiseGGJ2020\.cache\Windows\SFX\CreekFlow_D79FB2B7.wem		\Actor-Mixer Hierarchy\Default Work Unit\CreekFlow		7200144
+	130810277	CreekFlow	C:\Users\leoto\OneDrive\Documents\GitHub\GGJ2022\WwiseGGJ2020\.cache\Windows\SFX\CreekFlow_D79FB2B7.wem		\Actor-Mixer Hierarchy\Default Work Unit\CreekFlow		7200144
+	315214103	MusicCorkboard	C:\Users\leoto\OneDrive\Documents\GitHub\GGJ2022\WwiseGGJ2020\.cache\Windows\SFX\MusicCorkboard_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\MusicCorkboard\MusicCorkboard\MusicCorkboard		20159552
 
