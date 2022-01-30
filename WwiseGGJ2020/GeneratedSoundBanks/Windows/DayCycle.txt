@@ -4,6 +4,7 @@ Event	ID	Name			Wwise Object Path	Notes
 	1437283993	GameOverDay			\Default Work Unit\GameOverDay	
 	2364012353	WinDay			\Default Work Unit\WinDay	
 	2538410761	DiscoveryDay			\Default Work Unit\DiscoveryDay	
+	3155631888	MusicDay			\Default Work Unit\MusicDay	
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	6432356	DiscoveryDay	C:\Users\leoto\OneDrive\Documents\GitHub\GGJ2022\WwiseGGJ2020\.cache\Windows\SFX\PositiveThingDay_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\DiscoveryDay		672144

@@ -469,49 +469,34 @@
 						</Action>
 					</ChildrenList>
 				</Event>
-				<Event Name="StartDeathAnnouncement" ID="{5FD5F5B5-3ECB-4BFB-867B-44998C57CCA3}">
+				<Event Name="MusicDay" ID="{6953FFCD-5F0F-4859-AD84-065244E07BF4}">
 					<ChildrenList>
-						<Action Name="" ID="{D483A0B7-F8F8-45FF-9E4B-D424DA3F54D4}" ShortID="909031128">
-							<PropertyList>
-								<Property Name="ActionType" Type="int16" Value="2"/>
-								<Property Name="FadeTime" Type="Real64" Value="2"/>
-							</PropertyList>
+						<Action Name="" ID="{3609BD0F-F933-4E41-852C-C3933F0734E2}" ShortID="925976694">
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="MusicDay" ID="{B2F82A73-7A9B-47F1-BFDE-B086F87C6F7F}" WorkUnitID="{9277866B-E73D-4F74-B632-B6EF503A3632}"/>
+									<ObjectRef Name="MusicDayLoop" ID="{4492F738-1083-4906-BC04-4DEDCB118344}" WorkUnitID="{9277866B-E73D-4F74-B632-B6EF503A3632}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
-						<Action Name="" ID="{DCA59090-876E-421B-97D6-24B9170093D1}" ShortID="846562874">
-							<PropertyList>
-								<Property Name="ActionType" Type="int16" Value="2"/>
-								<Property Name="FadeTime" Type="Real64" Value="2"/>
-							</PropertyList>
+					</ChildrenList>
+				</Event>
+				<Event Name="MusicNight" ID="{9EA34CEC-F35B-4DEF-84B2-5152605A74FC}">
+					<ChildrenList>
+						<Action Name="" ID="{101F1164-006B-491B-887D-2AF3BF69E1DE}" ShortID="614588058">
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="AmbienceDay" ID="{0A94AB01-BD5D-4966-8A0F-4EE4F2F936FE}" WorkUnitID="{A81D3656-2325-46B3-9A64-828E3D72236B}"/>
+									<ObjectRef Name="MusicNightLoop" ID="{29E874DC-2EA5-4355-AD7F-D28D81DF2D3B}" WorkUnitID="{9277866B-E73D-4F74-B632-B6EF503A3632}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
-						<Action Name="" ID="{21C34061-CAE4-4528-A178-6DE8B4FCFF15}" ShortID="932220914">
-							<PropertyList>
-								<Property Name="ActionType" Type="int16" Value="2"/>
-								<Property Name="FadeTime" Type="Real64" Value="2"/>
-							</PropertyList>
+					</ChildrenList>
+				</Event>
+				<Event Name="MusicCorkboard" ID="{EA58181C-04D0-4C7C-99F8-8C209E52AD3B}">
+					<ChildrenList>
+						<Action Name="" ID="{E5EDDFF9-26A7-4475-8BD7-8E0C6929F7D2}" ShortID="824673656">
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="AmbienceNight" ID="{74AF0224-1060-4EEE-9E98-4EFC5677CD60}" WorkUnitID="{A81D3656-2325-46B3-9A64-828E3D72236B}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
-						<Action Name="" ID="{1667ED87-D98A-4B56-90FD-4ACCC62DED8C}" ShortID="482574396">
-							<PropertyList>
-								<Property Name="ActionType" Type="int16" Value="2"/>
-								<Property Name="FadeTime" Type="Real64" Value="2"/>
-							</PropertyList>
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="MusicNight" ID="{6ADE9F7E-4D99-4313-BD8E-A0459D935384}" WorkUnitID="{9277866B-E73D-4F74-B632-B6EF503A3632}"/>
+									<ObjectRef Name="MusicCorkboard" ID="{BC6905A2-68F0-4C0A-AC37-9871FDE72C78}" WorkUnitID="{9277866B-E73D-4F74-B632-B6EF503A3632}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>

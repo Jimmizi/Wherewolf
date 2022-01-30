@@ -3,6 +3,7 @@ Event	ID	Name			Wwise Object Path	Notes
 	199733517	DiscoveryNight			\Default Work Unit\DiscoveryNight	
 	1268350941	GameOverNight			\Default Work Unit\GameOverNight	
 	1272348217	BackToGameTitle			\Default Work Unit\BackToGameTitle	
+	3028680700	MusicNight			\Default Work Unit\MusicNight	
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	25883968	AmbienceNight	C:\Users\leoto\OneDrive\Documents\GitHub\GGJ2022\WwiseGGJ2020\.cache\Windows\SFX\AmbienceNight_D79FB2B7.wem		\Actor-Mixer Hierarchy\Default Work Unit\AmbienceNight		13404144

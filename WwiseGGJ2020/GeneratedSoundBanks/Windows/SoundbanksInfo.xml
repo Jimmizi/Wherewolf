@@ -19,7 +19,7 @@
 				<GameParameter Id="4179668880" Name="master_volume" ObjectPath="\Game Parameters\Default Work Unit\master_volume"/>
 			</GameParameters>
 		</SoundBank>
-		<SoundBank Id="2276007709" Language="SFX" Hash="3494586372">
+		<SoundBank Id="2276007709" Language="SFX" Hash="770622938">
 			<ObjectPath>\SoundBanks\Default Work Unit\NightCycle</ObjectPath>
 			<ShortName>NightCycle</ShortName>
 			<Path>NightCycle.bnk</Path>
@@ -49,6 +49,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
+				<Event Id="3028680700" Name="MusicNight" ObjectPath="\Events\Default Work Unit\MusicNight" DurationType="Infinite"/>
 			</IncludedEvents>
 			<IncludedMemoryFiles>
 				<File Id="746160009" Language="SFX">
@@ -61,7 +62,7 @@
 				</File>
 			</IncludedMemoryFiles>
 		</SoundBank>
-		<SoundBank Id="2769481441" Language="SFX" Hash="1766702094">
+		<SoundBank Id="2769481441" Language="SFX" Hash="1255410825">
 			<ObjectPath>\SoundBanks\Default Work Unit\DayCycle</ObjectPath>
 			<ShortName>DayCycle</ShortName>
 			<Path>DayCycle.bnk</Path>
@@ -91,6 +92,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
+				<Event Id="3155631888" Name="MusicDay" ObjectPath="\Events\Default Work Unit\MusicDay" DurationType="Infinite"/>
 				<Event Id="2364012353" Name="WinDay" ObjectPath="\Events\Default Work Unit\WinDay" DurationType="OneShot" DurationMin="6.5" DurationMax="6.5">
 					<IncludedMemoryFiles>
 						<File Id="830455018" Language="SFX">
@@ -111,7 +113,7 @@
 				</File>
 			</IncludedMemoryFiles>
 		</SoundBank>
-		<SoundBank Id="3062523257" Language="SFX" Hash="3317566131">
+		<SoundBank Id="3062523257" Language="SFX" Hash="924511997">
 			<ObjectPath>\SoundBanks\Default Work Unit\Misc</ObjectPath>
 			<ShortName>Misc</ShortName>
 			<Path>Misc.bnk</Path>
@@ -124,6 +126,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
+				<Event Id="3514557227" Name="MusicCorkboard" ObjectPath="\Events\Default Work Unit\MusicCorkboard" DurationType="Infinite"/>
 			</IncludedEvents>
 			<IncludedMemoryFiles>
 				<File Id="315214103" Language="SFX">
