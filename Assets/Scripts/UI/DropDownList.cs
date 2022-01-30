@@ -83,29 +83,24 @@ namespace UnityEngine.UI.Extensions {
                 OnItemClicked(0);
             }
             
-            // Character generation not finished at this point
-            //AddItem(new DropDownListItem<Character>(data: Service.Population.GetRandomCharacter()));
-            //AddItem(new DropDownListItem<Character>(data: Service.Population.GetRandomCharacter()));
-            //AddItem(new DropDownListItem<Character>(data: Service.Population.GetRandomCharacter()));
-            //AddItem(new DropDownListItem<Character>(data: Service.Population.GetRandomCharacter()));
-            //AddItem(new DropDownListItem<Character>(data: Service.Population.GetRandomCharacter()));
-
             RedrawPanel();
         }
 
-        private bool bAddedDefaultItems = false;
-        private void Update()
-        {
-            if(!bAddedDefaultItems && Service.Population.CharacterCreationDone)
-            {
-                bAddedDefaultItems = true;
-                AddItem(new DropDownListItem<Character>(data: Service.Population.GetRandomCharacter()));
-                AddItem(new DropDownListItem<Character>(data: Service.Population.GetRandomCharacter()));
-                AddItem(new DropDownListItem<Character>(data: Service.Population.GetRandomCharacter()));
-                AddItem(new DropDownListItem<Character>(data: Service.Population.GetRandomCharacter()));
-                AddItem(new DropDownListItem<Character>(data: Service.Population.GetRandomCharacter()));
-            }
-        }
+        // Uncomment if you want to test with some populated characters
+        //  But by default the player shouldn't have discovered anyone
+        //private bool bAddedDefaultItems = false;
+        //private void Update()
+        //{
+        //    if (!bAddedDefaultItems && Service.Population.CharacterCreationDone)
+        //    {
+        //        bAddedDefaultItems = true;
+        //        AddItem(new DropDownListItem<Character>(data: Service.Population.GetRandomCharacter()));
+        //        AddItem(new DropDownListItem<Character>(data: Service.Population.GetRandomCharacter()));
+        //        AddItem(new DropDownListItem<Character>(data: Service.Population.GetRandomCharacter()));
+        //        AddItem(new DropDownListItem<Character>(data: Service.Population.GetRandomCharacter()));
+        //        AddItem(new DropDownListItem<Character>(data: Service.Population.GetRandomCharacter()));
+        //    }
+        //}
 
         private bool Initialize() {
             bool success = true;

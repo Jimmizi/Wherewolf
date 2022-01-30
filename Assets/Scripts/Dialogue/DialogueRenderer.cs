@@ -85,15 +85,36 @@ public class DialogueRenderer : MonoBehaviour {
         return Dialogue.FromClue(clue);
     }
 
-    private void PopulateCharactersDropdown() {
+    private void PopulateCharactersDropdown() 
+    {
         if (charactersDropdown == null) return;
-        
+
         charactersDropdown.ResetItems();
 
-        foreach (Character character in Service.Population.ActiveCharacters) {
+        // Add a dummy character so we can always select to get a random character clue
+        Character dummyCharacter = new Character()
+        {
+            Name = "Random"
+        };
+
+        charactersDropdown.AddItem(new DropDownListItem<Character>(data: dummyCharacter));
+
+        foreach (Character character in Service.Population.ActiveCharacters) 
+        {
+            // Can't ask about self
+            if(character == _character)
+            {
+                continue;
+            }
+
+            // Only add discovered characters (otherwise we wouldn't be able to know to to ask about)
+            if (!Service.InfoManager.EmoteMapBySubType[character.GetHeadshotEmoteSubType()].HasDiscovered)
+            {
+                continue;
+            }
+
             charactersDropdown.AddItem(new DropDownListItem<Character>(data: character));
         }
-        //charactersDropdown.AddItem(new DropDownListItem<Character>(data: Service.Population.ActiveCharacters[0]));
     }
     
     /// <summary>
@@ -168,8 +189,18 @@ public class DialogueRenderer : MonoBehaviour {
                 emoteRenderer.Emote = Service.InfoManager.EmoteMapBySubType[dialogueAction.Value];
                 button.onClick.AddListener(() => 
                 {
-                    Debug.LogFormat("The player has chosen dialog action {0}", dialogueAction.Key);
-                    DoAction(dialogueAction.Key, Service.Population.GetRandomCharacter());
+                    Character characterToQueryAbout = null;
+                    DropDownListItem<Character> itemToUse = (DropDownListItem<Character>)charactersDropdown.SelectedItem;
+
+                    if(itemToUse != null && itemToUse.Data.Name != "Random")
+                    {
+                        characterToQueryAbout = itemToUse.Data;
+                    }
+
+                    Debug.LogFormat("The player has chosen dialog action {0}, to find out about {1}", 
+                        dialogueAction.Key, characterToQueryAbout != null ? characterToQueryAbout.Name : "Random");
+
+                    DoAction(dialogueAction.Key, characterToQueryAbout);
                     HideChoices(true);
                 });
             }
