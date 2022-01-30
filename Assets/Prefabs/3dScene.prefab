@@ -437,8 +437,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DayColor: {r: 1, g: 1, b: 1, a: 1}
-  NightColor: {r: 0.20784314, g: 0.20784314, b: 0.20784314, a: 1}
-  ExtraMaterials: []
+  NightColor: {r: 0.3773585, g: 0.3773585, b: 0.3773585, a: 1}
+  ExtraMaterials:
+  - {fileID: 887976004239786550}
   allSpriteRenderers: []
 --- !u!1 &887976004382439382
 GameObject:
@@ -1062,7 +1063,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 887976005794506563}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0

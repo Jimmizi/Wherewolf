@@ -1697,7 +1697,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 765019653}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 632284306}
+        m_TargetAssemblyTypeName: WerewolfGame, Assembly-CSharp
+        m_MethodName: OpenInvestigateTools
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &920666215
 GameObject:
   m_ObjectHideFlags: 0
@@ -4600,6 +4612,7 @@ MonoBehaviour:
   HasTriggeredStakeAction: 0
   FirstTimeHasShownTutorial: 0
   TimeTransitionDuration: 3
+  AreInvestigateToolsOpen: 0
   SummaryScreenGameObject: {fileID: 2065137333}
   GoBackToTitleWhenAble: 0
 --- !u!114 &7202421594343879778

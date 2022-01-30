@@ -28,7 +28,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6470389130443444351}
-  m_LocalRotation: {x: 0.2525736, y: -0, z: -0, w: 0.9675777}
+  m_LocalRotation: {x: 0.25257602, y: 0, z: 0, w: 0.96757704}
   m_LocalPosition: {x: 0, y: 4.663, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -44,8 +44,8 @@ Camera:
   m_GameObject: {fileID: 6470389130443444351}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -163,6 +163,9 @@ MonoBehaviour:
   ActionPanel: {fileID: 0}
   ForwardsBackwardsMovementKey: Vertical
   LeftRightMovementKey: Horizontal
-  SpeedHorizontal: 0.3
-  SpeedVertical: 0.3
+  StakeConfirmationGo: {fileID: 0}
+  HoverNameText: {fileID: 0}
+  StakeText: {fileID: 0}
+  SpeedHorizontal: 1.2
+  SpeedVertical: 1.2
   FallOffSpeed: 10
