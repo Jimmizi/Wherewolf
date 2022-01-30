@@ -213,7 +213,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 200
+  m_SortingOrder: 32767
   m_TargetDisplay: 0
 --- !u!114 &108094757
 MonoBehaviour:
@@ -562,7 +562,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 32767
+  m_SortingOrder: 31000
   m_TargetDisplay: 0
 --- !u!114 &300781859
 MonoBehaviour:
@@ -3032,6 +3032,7 @@ GameObject:
   - component: {fileID: 1777611168}
   - component: {fileID: 1777611167}
   - component: {fileID: 1777611166}
+  - component: {fileID: 1530227246}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -3127,6 +3128,22 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &1530227246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1777611165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d59f60b296f2574cb74d43b3daa1e69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  memoHolder: {fileID: 1474576337741352130}
+  memoPrefab: {fileID: 824337718127794735, guid: 9b2108f776b76424ba39d64c6f685e40, type: 3}
+  defaultRectTransform: {fileID: 5145787054175465641}
+  baseNewId: 200
 --- !u!1 &1837533578
 GameObject:
   m_ObjectHideFlags: 0
@@ -4914,206 +4931,218 @@ MonoBehaviour:
     HasDiscovered: 1
     Type: 8
     SubType: 67
-    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+    EmoteImage: {fileID: 21300000, guid: 2a208339dfe47fe4785bf60324cb6c09, type: 3}
   - Name: Wave
     Description: 
     HasDiscovered: 1
     Type: 8
     SubType: 68
     EmoteImage: {fileID: 21300000, guid: 2e706a29cb909fb4f9935b5f36573730, type: 3}
+  - Name: Spacing
+    Description: 
+    HasDiscovered: 1
+    Type: 8
+    SubType: 69
+    EmoteImage: {fileID: 21300000, guid: 6d287289d1503ff4587f3f244bead8b8, type: 3}
+  - Name: Shrug
+    Description: Probably doesn't know.
+    HasDiscovered: 1
+    Type: 8
+    SubType: 70
+    EmoteImage: {fileID: 21300000, guid: a5df334c823af794e823aedf0ee15f51, type: 3}
   - Name: Gossip
     Description: Ask for some juicy gossip.
     HasDiscovered: 1
     Type: 9
-    SubType: 69
+    SubType: 71
     EmoteImage: {fileID: 21300000, guid: 9ee2d16c02b89f84bb632529496ea2c6, type: 3}
   - Name: Relationship Kiss
     Description: Someones been kissing and telling.
     HasDiscovered: 1
     Type: 9
-    SubType: 70
+    SubType: 72
     EmoteImage: {fileID: 21300000, guid: 9dd5d1620f3170d4bb00251f738b0293, type: 3}
   - Name: Relationship Fight
     Description: Left the fists to do the talking.
     HasDiscovered: 1
     Type: 9
-    SubType: 71
+    SubType: 73
     EmoteImage: {fileID: 21300000, guid: 04b3daae9392a894f9b9608fd6664f78, type: 3}
   - Name: Relationship Marriage
     Description: Someone got married.
     HasDiscovered: 1
     Type: 9
-    SubType: 72
-    EmoteImage: {fileID: 21300000, guid: 5c7de32f6b414d947adb5cd29d0e286b, type: 3}
-  - Name: Lola
-    Description: Indicates that the emotes preceeding or following this relate to
-      Lola.
-    HasDiscovered: 0
-    Type: 10
-    SubType: 73
-    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
-  - Name: Dollie
-    Description: Indicates that the emotes preceeding or following this relate to
-      Dollie.
-    HasDiscovered: 0
-    Type: 10
     SubType: 74
-    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
-  - Name: Daisy
+    EmoteImage: {fileID: 21300000, guid: 5c7de32f6b414d947adb5cd29d0e286b, type: 3}
+  - Name: Goldie
     Description: Indicates that the emotes preceeding or following this relate to
-      Daisy.
+      Goldie.
     HasDiscovered: 0
     Type: 10
     SubType: 75
     EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
-  - Name: Mathilda
+  - Name: Chester
     Description: Indicates that the emotes preceeding or following this relate to
-      Mathilda.
+      Chester.
     HasDiscovered: 0
     Type: 10
     SubType: 76
     EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
-  - Name: Lloyd
+  - Name: Sara
     Description: Indicates that the emotes preceeding or following this relate to
-      Lloyd.
+      Sara.
     HasDiscovered: 0
     Type: 10
     SubType: 77
     EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
-  - Name: Walter
+  - Name: Etta
     Description: Indicates that the emotes preceeding or following this relate to
-      Walter.
+      Etta.
     HasDiscovered: 0
     Type: 10
     SubType: 78
     EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
-  - Name: Christine
+  - Name: Edwin
     Description: Indicates that the emotes preceeding or following this relate to
-      Christine.
+      Edwin.
     HasDiscovered: 0
     Type: 10
     SubType: 79
     EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
-  - Name: Grace
+  - Name: Clifford
     Description: Indicates that the emotes preceeding or following this relate to
-      Grace.
+      Clifford.
     HasDiscovered: 0
     Type: 10
     SubType: 80
     EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
-  - Name: Cleveland
+  - Name: Morris
     Description: Indicates that the emotes preceeding or following this relate to
-      Cleveland.
+      Morris.
     HasDiscovered: 0
     Type: 10
     SubType: 81
     EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
-  - Name: Henrietta
+  - Name: Noah
     Description: Indicates that the emotes preceeding or following this relate to
-      Henrietta.
+      Noah.
     HasDiscovered: 0
     Type: 10
     SubType: 82
     EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
-  - Name: Sadie
+  - Name: Lester
     Description: Indicates that the emotes preceeding or following this relate to
-      Sadie.
+      Lester.
     HasDiscovered: 0
     Type: 10
     SubType: 83
     EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
-  - Name: Evelyn
+  - Name: Emil
     Description: Indicates that the emotes preceeding or following this relate to
-      Evelyn.
+      Emil.
     HasDiscovered: 0
     Type: 10
     SubType: 84
     EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
-  - Name: Jennie
+  - Name: Olive
     Description: Indicates that the emotes preceeding or following this relate to
-      Jennie.
+      Olive.
     HasDiscovered: 0
     Type: 10
     SubType: 85
     EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
-  - Name: Mary
+  - Name: Inez
     Description: Indicates that the emotes preceeding or following this relate to
-      Mary.
+      Inez.
     HasDiscovered: 0
     Type: 10
     SubType: 86
     EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
-  - Name: Wilbur
+  - Name: Gus
     Description: Indicates that the emotes preceeding or following this relate to
-      Wilbur.
+      Gus.
     HasDiscovered: 0
     Type: 10
     SubType: 87
     EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
-  - Name: Ellis
+  - Name: Laura
     Description: Indicates that the emotes preceeding or following this relate to
-      Ellis.
+      Laura.
     HasDiscovered: 0
     Type: 10
     SubType: 88
     EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
-  - Name: Claude
+  - Name: Ethel
     Description: Indicates that the emotes preceeding or following this relate to
-      Claude.
+      Ethel.
     HasDiscovered: 0
     Type: 10
     SubType: 89
     EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
-  - Name: Andrew
+  - Name: Maria
     Description: Indicates that the emotes preceeding or following this relate to
-      Andrew.
+      Maria.
     HasDiscovered: 0
     Type: 10
     SubType: 90
     EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
-  - Name: Leo
+  - Name: Lois
     Description: Indicates that the emotes preceeding or following this relate to
-      Leo.
+      Lois.
     HasDiscovered: 0
     Type: 10
     SubType: 91
     EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
-  - Name: Loretta
+  - Name: Hiram
     Description: Indicates that the emotes preceeding or following this relate to
-      Loretta.
+      Hiram.
     HasDiscovered: 0
     Type: 10
     SubType: 92
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Ed
+    Description: Indicates that the emotes preceeding or following this relate to
+      Ed.
+    HasDiscovered: 0
+    Type: 10
+    SubType: 93
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Harry
+    Description: Indicates that the emotes preceeding or following this relate to
+      Harry.
+    HasDiscovered: 0
+    Type: 10
+    SubType: 94
     EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
   - Name: Love
     Description: 
     HasDiscovered: 1
     Type: 11
-    SubType: 93
+    SubType: 95
     EmoteImage: {fileID: 21300000, guid: 6ae8ec6f7851e544383e359ec29b1092, type: 3}
   - Name: Like
     Description: 
     HasDiscovered: 1
     Type: 11
-    SubType: 94
+    SubType: 96
     EmoteImage: {fileID: 21300000, guid: ed93054b867642a478e3b7c17ff3d5db, type: 3}
   - Name: Neutral
     Description: 
     HasDiscovered: 1
     Type: 11
-    SubType: 95
+    SubType: 97
     EmoteImage: {fileID: 21300000, guid: 05ca9fcc61e4d2b408647adfae010913, type: 3}
   - Name: Dislike
     Description: 
     HasDiscovered: 1
     Type: 11
-    SubType: 96
+    SubType: 98
     EmoteImage: {fileID: 21300000, guid: 18b0d3426c74bb64f947462cf8c91993, type: 3}
   - Name: Hate
     Description: 
     HasDiscovered: 1
     Type: 11
-    SubType: 97
+    SubType: 99
     EmoteImage: {fileID: 21300000, guid: 48ce7a7a686f02f419edfe7dc5c864f7, type: 3}
   AvailableOccupations: 
   DebugScanForNewEmotes: 0
@@ -5191,7 +5220,7 @@ MonoBehaviour:
   DayCounterText: {fileID: 1933778910}
   SummaryScreenReason: {fileID: 1329615275}
   DeathAnnouncementText: {fileID: 624931403}
-  InvestigateToolsCanvas: {fileID: 2282509199913330516}
+  InvestigateToolsCanvas: {fileID: 7165476482855864451}
   CorkboardGo: {fileID: 1474576337741352129}
   corkboardOpenerGo: {fileID: 765019650}
   corkboardCloserGo: {fileID: 1053423298}
@@ -5276,7 +5305,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63ddea758dd4fe74f91048202e08f763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DebugDisableAudio: 1
+  DebugDisableAudio: 0
 --- !u!114 &2868963963725791734
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5901,6 +5930,10 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 6450085222195578590, guid: 336491d77c48d684d89cba5ade965a0d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7116778224112702738, guid: 336491d77c48d684d89cba5ade965a0d, type: 3}
       propertyPath: m_SortingOrder
       value: 0
@@ -5911,6 +5944,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 336491d77c48d684d89cba5ade965a0d, type: 3}
+--- !u!224 &5145787054175465641 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 5145787052557302776, guid: 336491d77c48d684d89cba5ade965a0d, type: 3}
+  m_PrefabInstance: {fileID: 1620429649}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1474576337741352130 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1474576337213638547, guid: 336491d77c48d684d89cba5ade965a0d, type: 3}
@@ -6326,11 +6364,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d18525d48d3216c41a2c84429cd63f78, type: 3}
---- !u!1 &2065137333 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4353751979910054325, guid: d18525d48d3216c41a2c84429cd63f78, type: 3}
-  m_PrefabInstance: {fileID: 4353751979489902336}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1767862350 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4353751980149657422, guid: d18525d48d3216c41a2c84429cd63f78, type: 3}
@@ -6339,6 +6372,11 @@ GameObject:
 --- !u!224 &2065137338 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4353751979910054330, guid: d18525d48d3216c41a2c84429cd63f78, type: 3}
+  m_PrefabInstance: {fileID: 4353751979489902336}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2065137333 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4353751979910054325, guid: d18525d48d3216c41a2c84429cd63f78, type: 3}
   m_PrefabInstance: {fileID: 4353751979489902336}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &554205061

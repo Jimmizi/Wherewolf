@@ -7,12 +7,15 @@ using UnityEngine.EventSystems;
 
 public class CaseFilePageRenderer : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler {
     public RectTransform Content;
+    public Vector2 ScreenPadding = new Vector2(20f, 20f);
 
     private float _contentSize;
     private List<RectTransform> _sections = new List<RectTransform>();
 
     private RectTransform _rectTransform;
     private Vector2 _lastMousePosition;
+    private Vector3 _lastPosition;
+    private Vector3 _dragBeginOffset;
     private Canvas _canvas;
 
     private void Awake() {
@@ -48,7 +51,7 @@ public class CaseFilePageRenderer : MonoBehaviour, IDragHandler, IBeginDragHandl
             _contentSize -= section.rect.height;
             return false;
         }
-        
+
         _sections.Add(section);
         return true;
     }
@@ -58,53 +61,36 @@ public class CaseFilePageRenderer : MonoBehaviour, IDragHandler, IBeginDragHandl
         //if (_sections.Count == 0) return Content.rect.height;
         //return Content.rect.height - _sections.Last().rect.yMax;
     }
-    
+
+    private Vector2 ScreenPointToLocalPointInRectangle(Vector2 screenPoint) {
+        if (_canvas == null) return screenPoint;
+
+        Vector2 position = screenPoint;
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(_canvas.transform as RectTransform, screenPoint,
+            _canvas.worldCamera, out position);
+        return position;
+    }
+
+
     public void OnBeginDrag(PointerEventData eventData) {
-        _lastMousePosition = eventData.position;
+        _dragBeginOffset = _canvas.transform.TransformPoint(ScreenPointToLocalPointInRectangle(eventData.position)) -
+                           _rectTransform.position;
+        Service.TooltipManager.DisableTooltips();
     }
 
     public void OnDrag(PointerEventData eventData) {
-        if (_canvas == null) return;
-        
-        Vector2 pos;
-        RectTransformUtility.ScreenPointToLocalPointInRectangle(_canvas.transform as RectTransform, eventData.position, _canvas.worldCamera, out pos);
-        _rectTransform.position = _canvas.transform.TransformPoint(pos);
-        
-        // Vector2 currentMousePosition = eventData.position;
-        // Vector2 diff = currentMousePosition - _lastMousePosition;
-        // RectTransform rect = GetComponent<RectTransform>();
-        //
-        // Vector3 newPosition = rect.position / _canvasScale + new Vector3(diff.x, diff.y, transform.position.z);
-        // Vector3 oldPos = rect.position;
-        //
-        // rect.position = newPosition * _canvasScale;
-        //
-        // if (!IsRectTransformInsideScreen(rect)) {
-        //     rect.position = oldPos;
-        // }
-        //
-        // _lastMousePosition = currentMousePosition;
+        Vector2 position = ScreenPointToLocalPointInRectangle(eventData.position);
+        Vector3 oldPosition = _rectTransform.position;
+
+        _rectTransform.position = _canvas.transform.TransformPoint(position) - _dragBeginOffset;
+
+        if (!IsRectTransformInsideScreen(_rectTransform)) {
+            _rectTransform.position = oldPosition;
+        }
     }
 
-    public void OnEndDrag(PointerEventData eventData) 
-    {
-        if(_rectTransform.anchoredPosition.x >= Screen.width / 2)
-        {
-            _rectTransform.anchoredPosition = new Vector2(0.0f,_rectTransform.anchoredPosition.y);
-        }
-        else if (_rectTransform.anchoredPosition.x < -(Screen.width / 2))
-        {
-            _rectTransform.anchoredPosition = new Vector2(0.0f, _rectTransform.anchoredPosition.y);
-        }
-
-        if (_rectTransform.anchoredPosition.y >= Screen.height / 2)
-        {
-            _rectTransform.anchoredPosition = new Vector2(_rectTransform.anchoredPosition.x, 0.0f);
-        }
-        else if (_rectTransform.anchoredPosition.y < -(Screen.height / 2))
-        {
-            _rectTransform.anchoredPosition = new Vector2(_rectTransform.anchoredPosition.x, 0.0f);
-        }
+    public void OnEndDrag(PointerEventData eventData) {
+        Service.TooltipManager.EnableTooltips();
     }
 
     private bool IsRectTransformInsideScreen(RectTransform rectTransform) {
@@ -112,14 +98,18 @@ public class CaseFilePageRenderer : MonoBehaviour, IDragHandler, IBeginDragHandl
         Vector3[] corners = new Vector3[4];
         rectTransform.GetWorldCorners(corners);
         int visibleCorners = 0;
-        Rect rect = new Rect(0, 0, Screen.width, Screen.height);
+
+        Rect rect = new Rect(
+            ScreenPadding.x, ScreenPadding.y,
+            Screen.width - ScreenPadding.x * 2, Screen.height - ScreenPadding.y * 2);
+
         foreach (Vector3 corner in corners) {
             if (rect.Contains(corner)) {
                 visibleCorners++;
             }
         }
 
-        if (visibleCorners == 4) {
+        if (visibleCorners > 0) {
             isInside = true;
         }
 

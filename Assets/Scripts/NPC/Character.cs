@@ -124,6 +124,10 @@ public class Character
                         return clue;
                     }
                 }
+
+                Debug.LogFormat("{0} didn't have a clue about {1}", Name, relatesToCharacter.Name);
+                // Didn't find a clue about this specific person
+                return ClueObject.GetDontKnowClue(this, relatesToCharacter);
             }
         }
 
@@ -255,7 +259,7 @@ public class Character
     public void SetNameDiscovered()
     {
         Service.InfoManager.EmoteMapBySubType[GetHeadshotEmoteSubType()].HasDiscovered = true;
-        Service.CaseFile.AddCharacterFirstPage(this);
+        //Service.CaseFile.AddCharacterFirstPage(this);
     }
 
     public string GetName()
@@ -713,6 +717,11 @@ public class Character
 
     public void TryWarpToTaskLocation()
     {
+        if(!IsAlive)
+        {
+            return;
+        }
+
         if (CurrentTask != null)
         {
             CurrentTask.WarpToTaskPosition();

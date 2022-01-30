@@ -24,6 +24,7 @@ Shader "Unlit/ArtificialLitSpriteShader"
             "RenderType"="Transparent"
             "PreviewType"="Plane"
             "CanUseSpriteAtlas"="True"
+            "DisableBatching" = "True" 
         }
 
         Cull Off
@@ -93,6 +94,22 @@ Shader "Unlit/ArtificialLitSpriteShader"
                 return float4(pos.xy * flip, pos.z, 1.0);
             }
             
+            half4 ObjectPosition() {
+                return half4(
+                    unity_ObjectToWorld._m03_m13_m23,
+                    0.0
+                );
+            }
+            
+            half4 ObjectScale() {
+                return half4(
+                    length(unity_ObjectToWorld._m00_m10_m20),
+                    length(unity_ObjectToWorld._m01_m11_m21),
+                    length(unity_ObjectToWorld._m02_m12_m22),
+                    1.0
+                );
+            }
+
             v2f SpriteVert(appdata_t IN)
             {
                 v2f OUT;
@@ -102,13 +119,17 @@ Shader "Unlit/ArtificialLitSpriteShader"
             
                 OUT.vertex = UnityFlipSprite(IN.vertex, _Flip);
                 OUT.vertex = UnityObjectToClipPos(OUT.vertex);
+                //OUT.vertex = mul(UNITY_MATRIX_P, 
+                //    mul(UNITY_MATRIX_MV, float4(0.0, 0.0, 0.0, 1.0)) + float4(OUT.vertex.x, OUT.vertex.y, 0.0, 0.0) * ObjectScale() //+ ObjectPosition()
+                //);
+                
                 OUT.texcoord = IN.texcoord;
-                OUT.color = IN.color * _Color * _RendererColor;
+                OUT.color = IN.color * _Color * _RendererColor; 
             
                 #ifdef PIXELSNAP_ON
                 OUT.vertex = UnityPixelSnap (OUT.vertex);
                 #endif
-            
+
                 return OUT;
             }
             
@@ -171,6 +192,7 @@ Shader "Unlit/ArtificialLitSpriteShader"
                 
                 fixed4 gradient = ColorGradient(_TimeOfDay);
                 c.rgb = darken(c.rgb, gradient.rgb) * gradient.a;
+                
                 return c;
             }
 

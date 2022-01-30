@@ -7,6 +7,8 @@ public class SpriteMaterialManager : MonoBehaviour {
     private Material _material;
     private WerewolfGame.TOD _time;
 
+    private bool initMaterials = false;
+
     private void UpdateParameters() {
         if (_material == null) return;
 
@@ -15,18 +17,33 @@ public class SpriteMaterialManager : MonoBehaviour {
     }
 
     private void Start() {
-        _material = new Material(Material);
-        ManagedMaterialSprite[] sprites = Resources.FindObjectsOfTypeAll<ManagedMaterialSprite>();
-        foreach (ManagedMaterialSprite sprite in sprites) {
-            sprite.SetMaterial(_material);
-        }
+        
     }
 
     // Update is called once per frame
     void Update() {
-        if (Service.Game.CurrentTimeOfDay != _time) {
-            _time = Service.Game.CurrentTimeOfDay;
-            UpdateParameters();
+
+        if(!initMaterials)
+        {
+            if(Service.Population.CharacterCreationDone)
+            {
+                initMaterials = true;
+                _material = new Material(Material);
+                ManagedMaterialSprite[] sprites = Resources.FindObjectsOfTypeAll<ManagedMaterialSprite>();
+                foreach (ManagedMaterialSprite sprite in sprites)
+                {
+                    sprite.SetMaterial(_material);
+                }
+            }
+        }
+
+        if (initMaterials && Service.Game.CurrentTimeOfDay != _time) 
+        {
+            if (Service.Transition.IsBlendedIn())
+            {
+                _time = Service.Game.CurrentTimeOfDay;
+                UpdateParameters();
+            }
         }
     }
 }

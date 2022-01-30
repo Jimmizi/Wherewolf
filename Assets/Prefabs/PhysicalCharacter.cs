@@ -30,7 +30,7 @@ public class PhysicalCharacter : MonoBehaviour
         {
             _destination = value;
 
-            if (gameObject.activeSelf)
+            if (navMesh.enabled)
             {
                 navMesh.destination = value;
             }

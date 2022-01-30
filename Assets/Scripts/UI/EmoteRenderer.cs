@@ -71,7 +71,7 @@ public class EmoteRenderer : MonoBehaviour, IEmoteRenderer, IPointerEnterHandler
                     }
                 } else {
                     /* For debug purposes only */
-                    Image.sprite = EmoteLibrary.Instance.FindSprite(type);
+                    Image.sprite = Service.EmoteLibrary.FindSprite(type);
                 }
 
                 if (CharacterEmoteRenderer != null) {
@@ -93,10 +93,10 @@ public class EmoteRenderer : MonoBehaviour, IEmoteRenderer, IPointerEnterHandler
     }
 
     public void OnPointerEnter(PointerEventData eventData) {
-        TooltipManager.Instance?.ShowEmoteTooltip(Emote, transform.position);
+        Service.TooltipManager.ShowEmoteTooltip(Emote, transform.position);
     }
 
     public void OnPointerExit(PointerEventData eventData) {
-        TooltipManager.Instance?.HideActiveTooltip();
+        Service.TooltipManager.HideActiveTooltip();
     }
 }

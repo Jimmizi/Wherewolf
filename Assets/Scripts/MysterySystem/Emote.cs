@@ -105,6 +105,8 @@ public class Emote
         Specific_Location,
         Specific_Question,
         Specific_Wave,
+        Specific_Spacing,
+        Specific_Shrug,
 
         Gossip_Gossip,
         Gossip_RelationshipKiss,
@@ -293,6 +295,8 @@ public class Emote
             case EmoteSubType.Specific_Location:
             case EmoteSubType.Specific_Question:
             case EmoteSubType.Specific_Wave:
+            case EmoteSubType.Specific_Spacing:
+            case EmoteSubType.Specific_Shrug:
                 return EmoteType.Specific;
 
             case EmoteSubType.Gossip_Gossip:

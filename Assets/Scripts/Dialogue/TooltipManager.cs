@@ -4,28 +4,22 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class TooltipManager : MonoBehaviour {
-    public static TooltipManager Instance { get; private set; }
-    
     public GameObject TooltipPrefab;
     public Canvas TooltipCanvas;
     public Vector2 ScreenPadding = Vector2.zero;
 
     private List<Tooltip> _tooltips;
     private Tooltip _activeTooltip;
+    private bool _tooltipsEnabled;
 
     private Dictionary<Emote.EmoteSubType, Tooltip> _emoteTooltips;
     private static readonly Vector3 offset = new Vector3(0f, 40f, 0f);
 
     protected void Awake() {
-        if (Instance != null && Instance != this) {
-            Destroy(gameObject);
-        } else {
-            Instance = this;
-            Service.TooltipManager = this;
-        }
-
+        Service.TooltipManager = this;
         _tooltips = new List<Tooltip>();
         _emoteTooltips = new Dictionary<Emote.EmoteSubType, Tooltip>();
+        _tooltipsEnabled = true;
     }
 
     public Tooltip NewTooltip() {
@@ -40,6 +34,8 @@ public class TooltipManager : MonoBehaviour {
     }
 
     public void ShowTooltip(Tooltip tooltip, Vector3 position) {
+        if (!_tooltipsEnabled) return;
+        
         tooltip.gameObject.SetActive(true);
         tooltip.transform.position = ScreenBoundPosition(position + offset, tooltip.RectTransform);
         HideActiveTooltip();
@@ -51,6 +47,8 @@ public class TooltipManager : MonoBehaviour {
     }
     
     public void ShowEmoteTooltip(Emote emote, Vector3 position) {
+        if (!_tooltipsEnabled) return;
+        
         Tooltip tooltip;
         
         if (!_emoteTooltips.ContainsKey(emote.SubType)) {
@@ -105,5 +103,14 @@ public class TooltipManager : MonoBehaviour {
         }
 
         return position + positionOffset;
+    }
+
+    public void EnableTooltips() {
+        _tooltipsEnabled = true;
+    }
+    
+    public void DisableTooltips() {
+        HideActiveTooltip();
+        _tooltipsEnabled = false;
     }
 }
