@@ -8,6 +8,7 @@ public struct MemoData
 {
     public int memoId;
     public string title;
+    public string subtitle;
     public string message;
     public List<Emote> emotes;
     public Vector2 position;
@@ -24,6 +25,9 @@ public class Memo : MonoBehaviour
 
     [SerializeField]
     private Text title;
+
+    [SerializeField]
+    private Text subtitle;
 
     [SerializeField]
     private InputField note;    
@@ -78,6 +82,7 @@ public class Memo : MonoBehaviour
             {
                 memoId = pin ? pin.PinId : -1,
                 title = title ? title.text : "",
+                subtitle = subtitle ? subtitle.text : "",
                 connectedIds = pin ? pin.ConnectedIds : new List<int>(),
                 message = note ? note.text : "",
                 position = rectTransform ? rectTransform.anchoredPosition : Vector2.zero,
@@ -110,6 +115,11 @@ public class Memo : MonoBehaviour
             if (title)
             {
                 title.text = value.title;
+            }
+
+            if (subtitle)
+            {
+                subtitle.text = value.subtitle;
             }
 
             bool useEmotes = true;

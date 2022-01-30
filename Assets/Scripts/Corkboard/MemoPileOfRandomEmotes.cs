@@ -17,6 +17,6 @@ public class MemoPileOfRandomEmotes : MemoPile
             emotes.Add(Service.InfoManager.EmoteMapBySubType[randomEmoteSubType]);
         }
 
-        return MemoFactory.instance.CreateNew(emotes, rectTransform.anchoredPosition, false);
+        return MemoFactory.instance.CreateNew("Rando", emotes, rectTransform.anchoredPosition, false);
     }
 }
