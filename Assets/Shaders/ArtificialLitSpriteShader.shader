@@ -13,6 +13,15 @@ Shader "Unlit/ArtificialLitSpriteShader"
         [HideInInspector] _Flip ("Flip", Vector) = (1,1,1,1)
         [PerRendererData] _AlphaTex ("External Alpha", 2D) = "white" {}
         [PerRendererData] _EnableExternalAlpha ("Enable External Alpha", Float) = 0
+        
+        /* Sway */
+        [MaterialToggle] _Sway ("Sway", float) = 0
+        _Speed ("MoveSpeed", Range(20, 50)) = 25
+        _Rigidness ("Rigidness", Range(1,50)) = 25
+        _SwayMax ("Sway Max", Range(0, 0.1)) = .005 
+        _YOffset ("Y offset", float) = 0.0
+        _MaxWidth ("Max Displacement Width", Range(0, 2)) = 0.1
+		_Radius ("Radius", Range(0,5)) = 1
     }
 
     SubShader
@@ -73,6 +82,13 @@ Shader "Unlit/ArtificialLitSpriteShader"
             fixed4 _NightColor;
             float _TimeOfDay;
             
+            float _Sway;
+            float _Speed;
+            float _SwayMax;
+            float _YOffset;
+            float _Rigidness;
+            float _MaxWidth;
+                
             struct appdata_t
             {
                 float4 vertex   : POSITION;
@@ -110,6 +126,10 @@ Shader "Unlit/ArtificialLitSpriteShader"
                 );
             }
 
+            float Random(float2 params) {
+                return frac(sin(dot(params, float2(12.9898, 78.233))) * 43758.5453);
+            }
+            
             v2f SpriteVert(appdata_t IN)
             {
                 v2f OUT;
@@ -118,10 +138,26 @@ Shader "Unlit/ArtificialLitSpriteShader"
                 UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(OUT);
             
                 OUT.vertex = UnityFlipSprite(IN.vertex, _Flip);
+                
+                // Sway movement
+                
+                if (_Sway > 0) {
+                    float r = Random(ObjectPosition().xy);
+                    float t = _Time.x + r;
+                    float3 wpos = mul(unity_ObjectToWorld, OUT.vertex).xyz;
+                    float x = sin(wpos.x / _Rigidness + (t * _Speed)) * (OUT.vertex.y - _YOffset) * 5;
+                    float z = sin(wpos.z / _Rigidness + (t * _Speed)) * (OUT.vertex.y - _YOffset) * 5;
+                    OUT.vertex.x += (step(0, OUT.vertex.y - _YOffset) * x * _SwayMax);
+                    OUT.vertex.z += (step(0, OUT.vertex.y - _YOffset) * z * _SwayMax);
+                }
+                
                 OUT.vertex = UnityObjectToClipPos(OUT.vertex);
                 //OUT.vertex = mul(UNITY_MATRIX_P, 
                 //    mul(UNITY_MATRIX_MV, float4(0.0, 0.0, 0.0, 1.0)) + float4(OUT.vertex.x, OUT.vertex.y, 0.0, 0.0) * ObjectScale() //+ ObjectPosition()
                 //);
+                    
+                OUT.texcoord = IN.texcoord;
+                OUT.color = IN.color * _Color * _RendererColor; 
                 
                 OUT.texcoord = IN.texcoord;
                 OUT.color = IN.color * _Color * _RendererColor; 
@@ -149,20 +185,20 @@ Shader "Unlit/ArtificialLitSpriteShader"
             }
             
             fixed3 darken(fixed3 a, fixed3 b)
-        {
-            return min(a, b);
-        }
-
-        fixed3 lighten(fixed3 a, fixed3 b)
-        {
-            return max(a, b);
-        }
-
-        fixed3 pinLight(fixed3 a, fixed3 b)
-        {
-            return (b < 0.5) ? darken(a, (2.0 * b)) : lighten(a, (2.0 * (b - 0.5)));
-        }
-        
+            {
+                return min(a, b);
+            }
+    
+            fixed3 lighten(fixed3 a, fixed3 b)
+            {
+                return max(a, b);
+            }
+    
+            fixed3 pinLight(fixed3 a, fixed3 b)
+            {
+                return (b < 0.5) ? darken(a, (2.0 * b)) : lighten(a, (2.0 * (b - 0.5)));
+            }
+            
             fixed4 Overlay (fixed4 a, fixed4 b)
             {
                 fixed4 r = a < .5 ? 2.0 * a * b : 1.0 - 2.0 * (1.0 - a) * (1.0 - b);

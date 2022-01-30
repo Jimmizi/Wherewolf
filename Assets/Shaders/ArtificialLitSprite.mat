@@ -41,13 +41,20 @@ Material:
     - _ColorMask: 15
     - _CullMode: 0
     - _EnableExternalAlpha: 0
+    - _MaxWidth: 0.439
+    - _Radius: 1
+    - _Rigidness: 1
+    - _Speed: 42.92
     - _Stencil: 0
     - _StencilComp: 8
     - _StencilOp: 0
     - _StencilReadMask: 255
     - _StencilWriteMask: 255
+    - _Sway: 0
+    - _SwayMax: 0.0627
     - _TimeOfDay: 0
     - _UseUIAlphaClip: 0
+    - _YOffset: -1.77
     m_Colors:
     - _AfternoonColor: {r: 0.6320754, g: 0.50159615, b: 0.40250087, a: 1}
     - _ClipRect: {r: -32767, g: -32767, b: 32767, a: 32767}
