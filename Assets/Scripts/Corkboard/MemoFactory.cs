@@ -40,53 +40,54 @@ public class MemoFactory : MonoBehaviour
         }
     }
 
-    public Memo CreateNew(int memoId, string message, List<Emote> emotes, Vector2 position, Vector2 size, bool highlighted = true, bool editable = false)
+    public Memo CreateNew(int memoId, string subtitle, string message, List<Emote> emotes, Vector2 position, Vector2 size, bool highlighted = true, bool editable = false)
     {        
         MemoData memoData = new MemoData();
+        memoData.title = CreateTitle();
+        memoData.subtitle = subtitle;
         memoData.position = position;
         memoData.size = size;
         memoData.highlighted = highlighted;
         memoData.editable = editable;
         memoData.memoId = memoId;
         memoData.message = message;
-        memoData.emotes = emotes;
-        memoData.title = CreateTitle();
+        memoData.emotes = emotes;        
 
         return CreateFromData(memoData);
     }
 
-    public Memo CreateNew(string message, Vector2 position, bool highlighted = true, bool editable = false)
+    public Memo CreateNew(string subtitle, string message, Vector2 position, bool highlighted = true, bool editable = false)
     {
         Vector2 defaultSize = defaultRectTransform ? defaultRectTransform.sizeDelta : new Vector2(300, 256);
-        return CreateNew(++baseNewId, message, null, position, defaultSize, highlighted, editable);
+        return CreateNew(++baseNewId, subtitle, message, null, position, defaultSize, highlighted, editable);
     }
 
-    public Memo CreateNew(List<Emote> emotes, Vector2 position, bool highlighted = true)
+    public Memo CreateNew(string subtitle, List<Emote> emotes, Vector2 position, bool highlighted = true)
     {
         Vector2 defaultSize = defaultRectTransform ? defaultRectTransform.sizeDelta : new Vector2(300, 256);
-        return CreateNew(++baseNewId, "", emotes, position, defaultSize, highlighted, false);
+        return CreateNew(++baseNewId, subtitle, "", emotes, position, defaultSize, highlighted, false);
     }
 
     public Memo CreateNew(Vector2 position, bool highlighted = true)
     {        
-        return CreateNew("", position, highlighted, true);
+        return CreateNew("", "", position, highlighted, true);
     }
 
-    public Memo CreateNew(string message, bool highlighted = true, bool editable = false)
+    public Memo CreateNew(string subtitle, string message, bool highlighted = true, bool editable = false)
     {
         Vector3 defaultPosition = defaultRectTransform ? defaultRectTransform.position : new Vector3(0, 0);
-        return CreateNew(message, defaultPosition, highlighted, editable);
+        return CreateNew(subtitle, message, defaultPosition, highlighted, editable);
     }
 
-    public Memo CreateNew(List<Emote> emotes, bool highlighted = true)
+    public Memo CreateNew(string subtitle, List<Emote> emotes, bool highlighted = true)
     {
         Vector3 defaultPosition = defaultRectTransform ? defaultRectTransform.position : new Vector3(0, 0);
-        return CreateNew(emotes, defaultPosition, highlighted);
+        return CreateNew(subtitle, emotes, defaultPosition, highlighted);
     }
 
     public Memo CreateNew(bool highlighted = true)
     {
-        return CreateNew("", highlighted, true);
+        return CreateNew("", "", highlighted, true);
     }
 
     public Memo CreateFromData(MemoData memoData, Vector2 position)
