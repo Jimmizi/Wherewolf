@@ -158,7 +158,15 @@ public class AudioManager : MonoBehaviour
         BackToTitleEvent.Post(gameObject);
     }
 
-
+    [SerializeField]
+    AK.Wwise.Event DeathAnnounceEvent;
+    public void PlayDeathAnnounce()
+    {
+#if UNITY_EDITOR
+        if (DebugDisableAudio) return;
+#endif
+        DeathAnnounceEvent.Post(gameObject);
+    }
 
     // Start is called before the first frame update
     void Awake()

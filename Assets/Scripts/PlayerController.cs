@@ -62,18 +62,37 @@ public class PlayerController : MonoBehaviour
         return true;
     }
 
+    public void DialogueFinished()
+    {
+
+        Service.Player.IsTalkingToCharacter = false;
+        CurrentlySelectedCharacter.AssociatedCharacter.ReleaseFromBeingTalkedTo();
+        CurrentlySelectedCharacter = null;
+
+        // Just remove and add everytime, don't want to produce bugs with this being destroyed end of game
+        DialogueRenderer.OnConversationEnd.RemoveListener(DialogueFinished);
+    }
+
     public void PickedTalkAction()
     {
+        DialogueRenderer.OnConversationEnd.AddListener(DialogueFinished);
+        
+        Service.Audio.PlayUIClick();
+
         Debug.Assert(CurrentlySelectedCharacter);
         Debug.Log(string.Format("Picked talk to {0}", CurrentlySelectedCharacter.name));
 
         CurrentlySelectedCharacter.AssociatedCharacter.SetNameDiscovered();
+        ActionPanel.gameObject.SetActive(false);
 
-        //Service.Player.IsTalkingToCharacter = true;
+        Service.DialogueManager.StartConversation(CurrentlySelectedCharacter.AssociatedCharacter);
+
+        Service.Player.IsTalkingToCharacter = true;
     }
 
     public void PickedStakeAction()
     {
+        Service.Audio.PlayUIClick();
         Debug.Assert(CurrentlySelectedCharacter);
         Debug.Log(string.Format("Picked stake {0}", CurrentlySelectedCharacter.name));
 
@@ -82,10 +101,12 @@ public class PlayerController : MonoBehaviour
 
     public void ShowStakeConfirmation()
     {
+        Service.Audio.PlayUIClick();
+        StakeText.text = string.Format("Stake '{0}'?", CurrentlySelectedCharacter.AssociatedCharacter.GetName());
+
         isStakeConfirmationWindowUp = true;
 
         StakeConfirmationGo.SetActive(true);
-        Service.Audio.PlayUIClick();
         ActionPanel.gameObject.SetActive(false);
     }
 
@@ -95,13 +116,16 @@ public class PlayerController : MonoBehaviour
 
         StakeConfirmationGo.SetActive(false);
         Service.Audio.PlayUIClick();
+        CurrentlySelectedCharacter.AssociatedCharacter.ReleaseFromBeingTalkedTo();
         CurrentlySelectedCharacter = null;
     }
 
     public void HideActionPanel()
     {
         Service.Audio.PlayUIClick();
+        CurrentlySelectedCharacter.AssociatedCharacter.ReleaseFromBeingTalkedTo();
         CurrentlySelectedCharacter = null;
+
         ActionPanel.gameObject.SetActive(false);
     }
 
@@ -182,23 +206,26 @@ public class PlayerController : MonoBehaviour
     {
         bool bHitNothing = true;
 
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, 100))
+        if (!isStakeConfirmationWindowUp && !Service.Player.IsTalkingToCharacter)
         {
-            PhysicalCharacter pc = hit.transform.gameObject.GetComponent<PhysicalCharacter>();
-            if (pc)
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit, 100))
             {
-                bHitNothing = false;
+                PhysicalCharacter pc = hit.transform.gameObject.GetComponent<PhysicalCharacter>();
+                if (pc)
+                {
+                    bHitNothing = false;
 
-                Vector2 viewportPos = Camera.main.WorldToViewportPoint(pc.transform.position);
-                Vector2 screenPos = new Vector2(
-                (viewportPos.x * Screen.width) - (Screen.width * 0.5f),
-                (viewportPos.y * Screen.height) - (Screen.height * 0.5f));
+                    Vector2 viewportPos = Camera.main.WorldToViewportPoint(pc.transform.position);
+                    Vector2 screenPos = new Vector2(
+                    (viewportPos.x * Screen.width) - (Screen.width * 0.5f),
+                    (viewportPos.y * Screen.height) - (Screen.height * 0.5f));
 
-                HoverNameText.gameObject.SetActive(true);
-                HoverNameText.text = pc.AssociatedCharacter.GetName();
-                HoverNameText.GetComponent<RectTransform>().anchoredPosition = screenPos;
+                    HoverNameText.gameObject.SetActive(true);
+                    HoverNameText.text = pc.AssociatedCharacter.GetName();
+                    HoverNameText.GetComponent<RectTransform>().anchoredPosition = screenPos;
+                }
             }
         }
 
@@ -210,7 +237,7 @@ public class PlayerController : MonoBehaviour
 
     void ProcessClicking()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !isStakeConfirmationWindowUp && !Service.Player.IsTalkingToCharacter)
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
@@ -222,6 +249,8 @@ public class PlayerController : MonoBehaviour
                 PhysicalCharacter pc = hit.transform.gameObject.GetComponent<PhysicalCharacter>();
                 if(pc)
                 {
+                    Service.Audio.PlayUIClick();
+
                     CurrentlySelectedCharacter = pc;
 
                     var pos = GetUIPositionForCharacterAction();
@@ -230,6 +259,9 @@ public class PlayerController : MonoBehaviour
 
                     ActionPanel.anchoredPosition = pos;
                     ActionPanel.gameObject.SetActive(true);
+
+                    // "Talked to" so that they stop moving while you decide to talk/stake
+                    CurrentlySelectedCharacter.AssociatedCharacter.SetBeingTalkedTo();
                 }
             }
         }

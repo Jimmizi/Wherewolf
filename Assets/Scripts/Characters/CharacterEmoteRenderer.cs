@@ -42,10 +42,10 @@ public class CharacterEmoteRenderer : BaseCharacterRenderer {
         }
     }
     
-    public void Start() {
-        if (CharacterGenerator.Instance != null) {
-            _characterAttributes = CharacterGenerator.Instance.Generate();
-            Assemble();
-        }
-    }
+    // public void Start() {
+    //     if (CharacterGenerator.Instance != null) {
+    //         _characterAttributes = CharacterGenerator.Instance.Generate();
+    //         Assemble();
+    //     }
+    // }
 }

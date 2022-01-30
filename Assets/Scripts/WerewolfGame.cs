@@ -67,6 +67,9 @@ public class WerewolfGame : MonoBehaviour
     [SerializeField]
     public Text SummaryScreenReason;
 
+    [SerializeField]
+    public Text DeathAnnouncementText;
+
     public GameState CurrentState = GameState.GeneratePopulation;
     private GameState NextState = InvalidState;
 
@@ -122,9 +125,10 @@ public class WerewolfGame : MonoBehaviour
     public void GoBackToTitleScreen()
     {
         Service.Audio.PlayUIClick();
-
+        Debug.Log("Going back to title pressed");
         if (!GoBackToTitleWhenAble)
         {
+            Service.Audio.PlayUIClick();
             GoBackToTitleWhenAble = true;
             Service.Audio.PlayBackToTitle();
             Service.Transition.BlendIn();
@@ -139,7 +143,7 @@ public class WerewolfGame : MonoBehaviour
     {
         Service.Game = this;
         DontDestroyOnLoad(this.gameObject);
-
+        iVictimText = 0;
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
@@ -301,10 +305,16 @@ public class WerewolfGame : MonoBehaviour
         {
             case SubState.Start:
                 {
+                    bool bGoingToDeathAnnounce = CurrentTimeOfDay == TOD.Night && Service.PhaseSolve.GetVictimFromDay(CurrentDay, false) != null;
+
+                    if (bGoingToDeathAnnounce)
+                    {
+                        Debug.Log("Going to death announce for day " + CurrentDay);
+                    }
                     // Play wolf howl if someone was murdered this day
                     if (CurrentTimeOfDay == TOD.Night)
                     {
-                        if(Service.PhaseSolve.GetVictimFromDay(CurrentDay) != null)
+                        if(bGoingToDeathAnnounce)
                         {
                             Service.Audio.PlayWolfHowl();
                         }
@@ -332,16 +342,24 @@ public class WerewolfGame : MonoBehaviour
                     CurrentTimeOfDay = CurrentState == GameState.TransitionToDay ? TOD.Day : TOD.Night;
 
                     // (Night -> Day, increment the day counter)
-                    if(CurrentState == GameState.TransitionToDay)
+                    if (CurrentState == GameState.TransitionToDay)
                     {
                         CurrentDay++;
 
-                        if (!bFailed)
-                        { Service.Audio.StartDay(); }
+                        if (!bFailed && !bGoingToDeathAnnounce)
+                        { 
+                            Service.Audio.StartDay(); 
+                        }
                     }
-                    else if (!bFailed)
+                    else if (!bFailed && !bGoingToDeathAnnounce)
                     {
                         Service.Audio.StartNight();
+                    }
+
+                    if (bGoingToDeathAnnounce)
+                    {
+                        Debug.Log("Service.Audio.PlayDeathAnnounce() called");
+                        Service.Audio.PlayDeathAnnounce();
                     }
 
                     if (!bFailed)
@@ -423,16 +441,30 @@ public class WerewolfGame : MonoBehaviour
 
                                 c.OnTimeOfDayPhaseShift();
                                 c.Update();
-                                c.TryWarpToTaskLocation();
+
+                                // half and half, put people already in place, and have the other half travel, so
+                                //  things aren't super idle when starting a phase
+                                if (UnityEngine.Random.Range(0.0f, 100.0f) < 50.0f)
+                                {
+                                    c.TryWarpToTaskLocation();
+                                }
+                                else
+                                {
+                                    Service.Population.PhysicalCharacterMap[c].gameObject.transform.position = 
+                                        Service.Location.GetRandomNavmeshPositionInLocation(Task.GetRandomLocation());
+                                }
 
                                 if(c.IsAlive && c.IsSleeping())
                                 {
                                     Service.Population.PhysicalCharacterMap[c].gameObject.SetActive(false);
                                 }
                                 // Hide ghosts once they've given their clue last phase
-                                else if(!c.IsAlive && c.HasGhostGivenClue)
+                                else if(!c.IsAlive)
                                 {
-                                    Service.Population.PhysicalCharacterMap[c].gameObject.SetActive(false);
+                                    if (c.HasGhostGivenClue || CurrentTimeOfDay != TOD.Night)
+                                    { 
+                                        Service.Population.PhysicalCharacterMap[c].gameObject.SetActive(false);
+                                    }
                                 }
                             }
 
@@ -440,10 +472,12 @@ public class WerewolfGame : MonoBehaviour
                             if (CurrentTimeOfDay == TOD.Day)
                             {
                                 Service.Player.StartDay();
+                                Service.Lighting.SetDay();
                             }
                             else
                             {
                                 Service.Player.StartNight();
+                                Service.Lighting.SetNight();
                             }
                         }
 
@@ -471,16 +505,69 @@ public class WerewolfGame : MonoBehaviour
                 }
             case SubState.Finish:
                 {
-                    if (CurrentTimeOfDay == TOD.Day)
+                    Character v = CurrentTimeOfDay == TOD.Day ? Service.PhaseSolve.GetVictimFromDay(CurrentDay - 1) : null;
+
+                    if (v == null)
                     {
-                        Service.Audio.PlayRoosterCrow();
+                        Debug.Log("Transition finish, no victim");
+                        if (CurrentTimeOfDay == TOD.Day)
+                        {
+                            Service.Audio.PlayRoosterCrow();
+                        }
+                        DayCounterText.text = string.Format("Day {0}", CurrentDay);
+                        Service.Transition.BlendOut();
                     }
-                    DayCounterText.text = string.Format("Day {0}", CurrentDay);
-                    Service.Transition.BlendOut();
+
                     break;
                 }
         }
     }
+
+    IEnumerator DoFadeInDeathAnnouncementText()
+    {
+        DeathAnnouncementText.gameObject.SetActive(true);
+
+        Color col = DeathAnnouncementText.color;
+        col.a = 0.0f;
+        DeathAnnouncementText.color = col;
+
+        while(col.a < 1.0f)
+        {
+            col.a += Time.deltaTime;
+            DeathAnnouncementText.color = col;
+
+            yield return new WaitForSeconds(Time.deltaTime);
+        }
+
+        col.a = 1.0f;
+        DeathAnnouncementText.color = col;
+    }
+
+    IEnumerator DoFadeOutDeathAnnouncementText()
+    {
+        DeathAnnouncementText.gameObject.SetActive(true);
+
+        Color col = DeathAnnouncementText.color;
+        col.a = 1.0f;
+        DeathAnnouncementText.color = col;
+
+        while (col.a > 0.0f)
+        {
+            col.a -= Time.deltaTime;
+            DeathAnnouncementText.color = col;
+
+            yield return new WaitForSeconds(Time.deltaTime);
+        }
+
+        col.a = 0.0f;
+        DeathAnnouncementText.color = col;
+
+        DeathAnnouncementText.gameObject.SetActive(false);
+    }
+
+    private int iVictimText = 0;
+    private float fTimerForDeathAnnounce = 0.0f;
+    private bool deathAnnounceBringMusicBackIn = true;
     void ProcessVictimFoundAnnouncement()
     {
         switch (CurrentSubState)
@@ -490,9 +577,33 @@ public class WerewolfGame : MonoBehaviour
                     Character v = Service.PhaseSolve.GetVictimFromDay(CurrentDay - 1);
                     if (v != null)
                     {
-                        // Setup announcement
+                        switch (iVictimText++)
+                        {
+                            case 0:
+                                DeathAnnouncementText.text = string.Format("A fresh widow mourns; {0} was found in the early hours of the morning.", v.Name);
+                                break;
+                            case 1:
+                                DeathAnnouncementText.text = string.Format("Screams pierced the sky early in the morning. {0}'s body was found in pieces in the street.", v.Name);
+                                break;
+                            case 2:
+                                DeathAnnouncementText.text = string.Format("{0}'s warm blood fills the alleyway in the early morning. A figure reported leaving the scene. No traces.", v.Name);
+                                break;
+                            case 3:
+                                DeathAnnouncementText.text = string.Format("{0}'s body found this morning in their home. The residents are starting to get scared.", v.Name);
+                                break;
+                            case 4:
+                                DeathAnnouncementText.text = string.Format("You see a woman leaving the town in tears. The widow of {0}.", v.Name);
+                                break;
+                            default:
+                                DeathAnnouncementText.text = string.Format("Reported in the early hours of the morning, {0}'s murder adds onto the death toll.", v.Name);
+                                break;
+                        }
+                        StartCoroutine(DoFadeInDeathAnnouncementText());
 
-                        CurrentSubState = SubState.Finish; // Don't actually finish when we have a way to announce
+                        fTimerForDeathAnnounce = 0.0f;
+                        deathAnnounceBringMusicBackIn = true;
+
+                        CurrentSubState++;
                     }
                     else
                     {
@@ -503,7 +614,34 @@ public class WerewolfGame : MonoBehaviour
                 }
             case SubState.Update:
                 {
+                    fTimerForDeathAnnounce += Time.deltaTime;
+                    if(fTimerForDeathAnnounce >= 7f)
+                    {
+                        StartCoroutine(DoFadeOutDeathAnnouncementText());
 
+                        if (CurrentTimeOfDay == TOD.Day)
+                        {
+                            Service.Audio.PlayRoosterCrow();
+                        }
+                        DayCounterText.text = string.Format("Day {0}", CurrentDay);
+                        Service.Transition.BlendOut();
+
+                        CurrentSubState++;
+                    }
+
+                    if(deathAnnounceBringMusicBackIn && fTimerForDeathAnnounce >= 6.5f)
+                    {
+                        deathAnnounceBringMusicBackIn = false;
+                        if (CurrentTimeOfDay == TOD.Day)
+                        {
+                            Service.Audio.StartDay();
+                            
+                        }
+                        else
+                        {
+                            Service.Audio.StartNight();
+                        }
+                    }
                     break;
                 }
             case SubState.Finish:
@@ -690,7 +828,8 @@ public class WerewolfGame : MonoBehaviour
                 {
                     if(GoBackToTitleWhenAble)
                     {
-                        if(Service.Transition.IsBlendedIn())
+                        Debug.Log("Waiting for transition to blend in....");
+                        if (Service.Transition.IsBlendedIn())
                         {
                             GoBackToTitleWhenAble = false;
                             SceneManager.LoadScene(TitleScene.SceneName);
@@ -773,6 +912,7 @@ public class WerewolfGame : MonoBehaviour
             || CurrentState == GameState.GameSummaryLoss)
         {
             Debug.Log("Destroying Manager object at transition back to title");
+            SceneManager.sceneLoaded -= OnSceneLoaded;
             Object.Destroy(gameObject);
         }
     }

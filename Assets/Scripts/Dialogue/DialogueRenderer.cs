@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
-
+using UnityEngine.UI.Extensions;
 using DialogueActionEmoteMap = System.Collections.Generic.Dictionary<DialogueActionType, Emote.EmoteSubType>;
 
 public class DialogueRenderer : MonoBehaviour {
@@ -20,6 +20,7 @@ public class DialogueRenderer : MonoBehaviour {
     public Transform choiceButtonHolder;
     public TextMeshProUGUI speakerText;
     public EmoteTextRenderer sentenceText;
+    public DropDownList charactersDropdown;
     
     private bool _linePlaying;
     
@@ -36,11 +37,11 @@ public class DialogueRenderer : MonoBehaviour {
         // Code to execute after the delay
         StartConversation(Service.Population.GetRandomCharacter());
     }
-    
+
     private void Start() {
         container.gameObject.SetActive(false);
         //StartConversation(Service.Population.GetRandomCharacter());
-        StartCoroutine(ExecuteAfterTime(10f));
+        //StartCoroutine(ExecuteAfterTime(10f));
     }
 
     public void StartConversation(Character character) {
@@ -49,12 +50,13 @@ public class DialogueRenderer : MonoBehaviour {
         container.gameObject.SetActive(true);
         OnConversationStart.Invoke();
         StartCoroutine(DisplayDialogue(DialogueActionType.IssueGreeting, null));
+        PopulateCharactersDropdown();
         DisplayChoices();
     }
 
     private void EndConversation() {
         ClearDialogueBox(true);
-        container.gameObject.SetActive(true);
+        container.gameObject.SetActive(false);
         OnConversationEnd.Invoke();
     }
     
@@ -83,6 +85,38 @@ public class DialogueRenderer : MonoBehaviour {
         return Dialogue.FromClue(clue);
     }
 
+    private void PopulateCharactersDropdown() 
+    {
+        if (charactersDropdown == null) return;
+
+        charactersDropdown.ResetItems();
+
+        // Add a dummy character so we can always select to get a random character clue
+        Character dummyCharacter = new Character()
+        {
+            Name = "Random"
+        };
+
+        charactersDropdown.AddItem(new DropDownListItem<Character>(data: dummyCharacter));
+
+        foreach (Character character in Service.Population.ActiveCharacters) 
+        {
+            // Can't ask about self
+            if(character == _character)
+            {
+                continue;
+            }
+
+            // Only add discovered characters (otherwise we wouldn't be able to know to to ask about)
+            if (!Service.InfoManager.EmoteMapBySubType[character.GetHeadshotEmoteSubType()].HasDiscovered)
+            {
+                continue;
+            }
+
+            charactersDropdown.AddItem(new DropDownListItem<Character>(data: character));
+        }
+    }
+    
     /// <summary>
     /// The DisplayDialogue coroutine displays the dialogue character by character in a scrolling manner.
     /// </summary>
@@ -114,31 +148,82 @@ public class DialogueRenderer : MonoBehaviour {
     
     private void DoAction(DialogueActionType dialogueActionType, Character relatedCharacter) {
         ClearDialogueBox(true);
-        StartCoroutine(DisplayDialogue(dialogueActionType, relatedCharacter));
+
+        switch (dialogueActionType) {
+            case DialogueActionType.IssueFarewell:
+
+                // Fixes the tooltip staying around when leaving conversation.
+                TooltipManager.Instance?.HideActiveTooltip();
+
+                EndConversation();
+                break;
+            default:
+                StartCoroutine(DisplayDialogue(dialogueActionType, relatedCharacter));
+                break;
+        }
     }
+
+    const Emote.EmoteSubType eTypeForFarewell = Emote.EmoteSubType.Specific_Disapproves;
 
     private static readonly DialogueActionEmoteMap _dialogueActions = new DialogueActionEmoteMap() {
         //{DialogueActionType.IssueGreeting, Emote.EmoteSubType.Specific_Approves},
         {DialogueActionType.Gossip, Emote.EmoteSubType.Gossip_RelationshipFight},
-        {DialogueActionType.QuerySawAtLocation, Emote.EmoteSubType.Specific_Footsteps},
-        {DialogueActionType.QuerySawPassing, Emote.EmoteSubType.Specific_Eyes},
+        {DialogueActionType.QuerySawAtLocation, Emote.EmoteSubType.Specific_Eyes},
+        {DialogueActionType.QuerySawPassing, Emote.EmoteSubType.Specific_Footsteps},
         {DialogueActionType.QuerySawAtWork, Emote.EmoteSubType.Occupation_Bank},
-        {DialogueActionType.IssueFarewell, Emote.EmoteSubType.Specific_Disapproves},
+        {DialogueActionType.IssueFarewell, eTypeForFarewell},
     };
     
     protected void DisplayChoices() {
-        _choiceButtonInstances = new List<GameObject>();
-
-        foreach (KeyValuePair<DialogueActionType, Emote.EmoteSubType> dialogueAction in _dialogueActions) {
-            GameObject choiceButtonInstance = Instantiate(choiceButton, choiceButtonHolder);
-            Button button = choiceButtonInstance.GetComponent<Button>();
-            EmoteRenderer emoteRenderer = choiceButtonInstance.GetComponentInChildren<EmoteRenderer>();
+        if (_choiceButtonInstances == null) 
+        {
+            _choiceButtonInstances = new List<GameObject>();
             
-            _choiceButtonInstances.Add(choiceButtonInstance.gameObject);
-            emoteRenderer.Emote = new Emote(dialogueAction.Value);
-            button.onClick.AddListener(() => {
-                DoAction(dialogueAction.Key, Service.Population.GetRandomCharacter());
-            });
+            foreach (KeyValuePair<DialogueActionType, Emote.EmoteSubType> dialogueAction in _dialogueActions) 
+            {
+                GameObject choiceButtonInstance = Instantiate(choiceButton, choiceButtonHolder);
+                Button button = choiceButtonInstance.GetComponent<Button>();
+                EmoteRenderer emoteRenderer = choiceButtonInstance.GetComponentInChildren<EmoteRenderer>();
+
+                _choiceButtonInstances.Add(choiceButtonInstance.gameObject);
+                emoteRenderer.Emote = Service.InfoManager.EmoteMapBySubType[dialogueAction.Value];
+                button.onClick.AddListener(() => 
+                {
+                    Character characterToQueryAbout = null;
+                    DropDownListItem<Character> itemToUse = (DropDownListItem<Character>)charactersDropdown.SelectedItem;
+
+                    if(itemToUse != null && itemToUse.Data.Name != "Random")
+                    {
+                        characterToQueryAbout = itemToUse.Data;
+                    }
+
+                    Debug.LogFormat("The player has chosen dialog action {0}, to find out about {1}", 
+                        dialogueAction.Key, characterToQueryAbout != null ? characterToQueryAbout.Name : "Random");
+
+                    DoAction(dialogueAction.Key, characterToQueryAbout);
+                    HideChoices(true);
+                });
+            }
+        }
+
+        foreach (GameObject choiceButtonInstance in _choiceButtonInstances) {
+            choiceButtonInstance.SetActive(true);
+        }
+    }
+    
+    protected void HideChoices(bool bKeepIssueFarewell = false) {
+        foreach (GameObject choiceButtonInstance in _choiceButtonInstances) 
+        {
+            if(bKeepIssueFarewell)
+            {
+                EmoteRenderer emoteRenderer = choiceButtonInstance.GetComponentInChildren<EmoteRenderer>();
+                if(emoteRenderer && emoteRenderer.Emote.SubType == eTypeForFarewell)
+                {
+                    continue;
+                }
+            }
+
+            choiceButtonInstance.SetActive(false);
         }
     }
     
@@ -151,8 +236,9 @@ public class DialogueRenderer : MonoBehaviour {
         if (!newConversation) return;
         if (_choiceButtonInstances == null) return;
         
-        foreach (GameObject buttonInstance in _choiceButtonInstances) {
-            Destroy(buttonInstance);
-        }
+        //HideChoices();
+        // foreach (GameObject buttonInstance in _choiceButtonInstances) {
+        //     Destroy(buttonInstance);
+        // }
     }
 }

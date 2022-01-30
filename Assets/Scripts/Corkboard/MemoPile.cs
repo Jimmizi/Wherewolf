@@ -6,20 +6,15 @@ using UnityEngine.EventSystems;
 public class MemoPile : MonoBehaviour, IDropHandler, IBeginDragHandler, IDragHandler, IPointerClickHandler
 {
     [SerializeField]
-    Memo memoPrefab;
+    protected bool createNewMemos = true;
 
     [SerializeField]
-    Transform memoHolder;
+    protected bool collectMemos = true;
 
-    [SerializeField]
-    bool createNew = true;
-
-    List<MemoData> memos = new List<MemoData>();
-
-    static int baseNewId = 2000;
+    protected List<MemoData> memos = new List<MemoData>();
 
     RectTransform _rectTransform;
-    private RectTransform rectTransform
+    protected RectTransform rectTransform
     {
         get
         {
@@ -45,7 +40,15 @@ public class MemoPile : MonoBehaviour, IDropHandler, IBeginDragHandler, IDragHan
             return;
         }
 
-        memos.Add( memo.Data );
+        if (collectMemos)
+        {
+            OnMemoDropped(memo);
+        }
+    }
+
+    protected virtual void OnMemoDropped(Memo memo)
+    {
+        memos.Add(memo.Data);
         memo.Destroy();
     }
 
@@ -53,43 +56,29 @@ public class MemoPile : MonoBehaviour, IDropHandler, IBeginDragHandler, IDragHan
     {
         if (memos.Count <= 0)
         {
-            if (createNew)
+            if (createNewMemos)
             {
-                Memo newMemo = Instantiate(memoPrefab, memoHolder);
-                MemoData memoData = new MemoData();
-                memoData.position = rectTransform.anchoredPosition;
-                memoData.size = new Vector2(300, 256);
-                memoData.highlighted = false;
-                memoData.editable = true;
-                memoData.memoId = baseNewId;
-                baseNewId++;
-
-                newMemo.Data = memoData;
+                Memo newMemo = CreateNewMemo();                
                 eventData.pointerDrag = newMemo.gameObject;
             }
         }
         else
         {
-            Memo newMemo = Instantiate(memoPrefab, memoHolder);
-            MemoData memoData = memos[memos.Count - 1];
-            memoData.position = rectTransform.anchoredPosition;
-            newMemo.Data = memoData;
-            memos.RemoveAt(memos.Count - 1);
-
+            Memo newMemo = CreateMemoFromPile();
             eventData.pointerDrag = newMemo.gameObject;
         }
     }
 
-    // Start is called before the first frame update
-    void Start()
+    protected virtual Memo CreateNewMemo()
     {
-        
+        return MemoFactory.instance.CreateNew(rectTransform.anchoredPosition, false);
     }
 
-    // Update is called once per frame
-    void Update()
+    protected virtual Memo CreateMemoFromPile()
     {
-        
+        Memo newMemo = MemoFactory.instance.CreateFromData(memos[memos.Count - 1], rectTransform.anchoredPosition);
+        memos.RemoveAt(memos.Count - 1);
+        return newMemo;
     }
 
     public void OnDrag(PointerEventData eventData)

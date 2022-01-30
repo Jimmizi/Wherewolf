@@ -143,7 +143,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3489654593706655411, guid: 152d38ed35dba214e87c28d5a1525386, type: 3}
       propertyPath: m_Name
-      value: Home1 (13)
+      value: Home1
       objectReference: {fileID: 0}
     - target: {fileID: 4461080378620880651, guid: 152d38ed35dba214e87c28d5a1525386, type: 3}
       propertyPath: Location

@@ -326,6 +326,13 @@ public class Emote
     [SerializeField]
     public string Description;
 
+    public string GetDescription()
+    {
+        return HasDiscovered
+            ? Description
+            : "Character that you have not discovered yet.";
+    }
+
     // Has the player uncovered the meaning of this emote?
     //  Mostly to do with name discovery
     [HideInInspector]

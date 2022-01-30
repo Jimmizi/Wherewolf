@@ -179,6 +179,27 @@ public class Character
 
     public bool HasGivenAClueThisPhase = false;
 
+    public bool IsBeingTalkedTo = false;
+    private Vector3 vPreviousDestination = new Vector3();
+    public void SetBeingTalkedTo()
+    {
+        IsBeingTalkedTo = true;
+
+        PhysicalCharacter pc = Service.Population.PhysicalCharacterMap[this];
+
+        vPreviousDestination = pc.CurrentDestination;
+        pc.CurrentDestination = pc.gameObject.transform.position;
+    }
+    public void ReleaseFromBeingTalkedTo()
+    {
+        IsBeingTalkedTo = false;
+
+        PhysicalCharacter pc = Service.Population.PhysicalCharacterMap[this];
+        pc.CurrentDestination = vPreviousDestination;
+    }
+
+
+
     // Don't clear this - ghost can only give the clue once and then will disappear or remain static for the rest of the game
     public bool HasGhostGivenClue = false;
 
@@ -608,11 +629,20 @@ public class Character
             }
         }
 
-        CurrentTask? .UpdatePosition();
+        CurrentTask?.UpdatePosition();
+        if(CurrentTask != null)
+        {
+            Service.Population.PhysicalCharacterMap[this].SetNotWait();
+        }
     }
 
     public void Update()
     {
+        if(IsBeingTalkedTo)
+        {
+            return;
+        }
+
         if (!IsAlive)
         {
             return;

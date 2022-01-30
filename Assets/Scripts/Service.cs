@@ -16,6 +16,12 @@ public static class Service
     public static OptionsManager Options;
     public static TransitionScreenManager TransitionScreen;
     public static LocationManager Location;
+    public static LightingManager Lighting;
+    
+    public static DialogueManager DialogueManager;
+    public static CharacterGenerator CharacterGenerator;
+    public static TooltipManager TooltipManager;
+    public static EmoteLibrary EmoteLibrary;
 
     public static float MusicVolume = 0.75f;
 

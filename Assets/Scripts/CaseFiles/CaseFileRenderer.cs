@@ -7,6 +7,7 @@ public class CaseFileRenderer : MonoBehaviour {
     
     public GameObject CharacterAttributesPrefab;
     public GameObject StatementPrefab;
+    public Canvas Canvas;
 
     private List<CaseFilePageRenderer> _pages;
 
@@ -35,6 +36,7 @@ public class CaseFileRenderer : MonoBehaviour {
         gameObject.transform.Rotate(Vector3.forward, Random.Range(-4f, 4f));
         
         CaseFilePageRenderer pageRenderer = gameObject.GetComponent<CaseFilePageRenderer>();
+        pageRenderer.SetCanvas(Canvas);
         _pages.Add(pageRenderer);
         
         return pageRenderer;
@@ -55,7 +57,23 @@ public class CaseFileRenderer : MonoBehaviour {
             RectTransform statementRectTransform = statementObject.GetComponent<RectTransform>();
             CaseFileStatementRenderer statementRenderer = statementObject.GetComponent<CaseFileStatementRenderer>();
 
-            if (statementRenderer != null) {
+            if(Service.InfoManager != null)
+            {
+                if (statementRenderer != null)
+                {
+                    List<Emote> emotes = new List<Emote> {
+                    Service.InfoManager.EmoteMapBySubType[(Emote.EmoteSubType) Random.Range(0, 50)],
+                    Service.InfoManager.EmoteMapBySubType[(Emote.EmoteSubType) Random.Range(0, 50)],
+                    Service.InfoManager.EmoteMapBySubType[(Emote.EmoteSubType) Random.Range(0, 50)],
+                    Service.InfoManager.EmoteMapBySubType[(Emote.EmoteSubType) Random.Range(0, 50)],
+                    Service.InfoManager.EmoteMapBySubType[(Emote.EmoteSubType) Random.Range(0, 50)],
+                    Service.InfoManager.EmoteMapBySubType[(Emote.EmoteSubType) Random.Range(0, 50)]
+                };
+
+                    statementRenderer.Render(emotes);
+                }
+            }
+            else if (statementRenderer != null) {
                 List<Emote> emotes = new List<Emote> {
                     new Emote((Emote.EmoteSubType) Random.Range(0, 50)),
                     new Emote((Emote.EmoteSubType) Random.Range(0, 50)),

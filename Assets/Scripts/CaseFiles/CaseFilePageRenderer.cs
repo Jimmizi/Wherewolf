@@ -9,13 +9,23 @@ public class CaseFilePageRenderer : MonoBehaviour, IDragHandler, IBeginDragHandl
     public RectTransform Content;
 
     private float _contentSize;
-    private List<RectTransform> _sections;
-    
+    private List<RectTransform> _sections = new List<RectTransform>();
+
+    private RectTransform _rectTransform;
     private Vector2 _lastMousePosition;
+    private Canvas _canvas;
 
     private void Awake() {
         _sections = new List<RectTransform>();
         _contentSize = 0f;
+
+        if (_canvas == null) {
+            _canvas = GetComponentInParent<Canvas>();
+        }
+
+        if (_rectTransform == null) {
+            _rectTransform = GetComponent<RectTransform>();
+        }
     }
 
     public void AddSection(RectTransform section) {
@@ -23,6 +33,10 @@ public class CaseFilePageRenderer : MonoBehaviour, IDragHandler, IBeginDragHandl
         section.SetParent(Content, false);
         /* TODO: Add dynamic spacing, as set in VerticalLayoutGroup */
         _contentSize += section.rect.height + 20f;
+    }
+
+    public void SetCanvas(Canvas canvas) {
+        _canvas = canvas;
     }
 
     public bool TryAddSection(RectTransform section) {
@@ -50,18 +64,26 @@ public class CaseFilePageRenderer : MonoBehaviour, IDragHandler, IBeginDragHandl
     }
 
     public void OnDrag(PointerEventData eventData) {
-        Vector2 currentMousePosition = eventData.position;
-        Vector2 diff = currentMousePosition - _lastMousePosition;
-        RectTransform rect = GetComponent<RectTransform>();
-
-        Vector3 newPosition = rect.position + new Vector3(diff.x, diff.y, transform.position.z);
-        Vector3 oldPos = rect.position;
-        rect.position = newPosition;
-        if (!IsRectTransformInsideScreen(rect)) {
-            rect.position = oldPos;
-        }
-
-        _lastMousePosition = currentMousePosition;
+        if (_canvas == null) return;
+        
+        Vector2 pos;
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(_canvas.transform as RectTransform, eventData.position, _canvas.worldCamera, out pos);
+        _rectTransform.position = _canvas.transform.TransformPoint(pos);
+        
+        // Vector2 currentMousePosition = eventData.position;
+        // Vector2 diff = currentMousePosition - _lastMousePosition;
+        // RectTransform rect = GetComponent<RectTransform>();
+        //
+        // Vector3 newPosition = rect.position / _canvasScale + new Vector3(diff.x, diff.y, transform.position.z);
+        // Vector3 oldPos = rect.position;
+        //
+        // rect.position = newPosition * _canvasScale;
+        //
+        // if (!IsRectTransformInsideScreen(rect)) {
+        //     rect.position = oldPos;
+        // }
+        //
+        // _lastMousePosition = currentMousePosition;
     }
 
     public void OnEndDrag(PointerEventData eventData) {

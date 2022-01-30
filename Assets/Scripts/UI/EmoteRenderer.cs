@@ -8,7 +8,7 @@ using Random = UnityEngine.Random;
 public class EmoteRenderer : MonoBehaviour, IEmoteRenderer, IPointerEnterHandler, IPointerExitHandler {
     public Image Image;
     public CharacterEmoteRenderer CharacterEmoteRenderer;
-    
+
     [SerializeField] private Emote _emote;
 
     public Emote Emote {
@@ -52,23 +52,25 @@ public class EmoteRenderer : MonoBehaviour, IEmoteRenderer, IPointerEnterHandler
                     CharacterEmoteRenderer.gameObject.SetActive(true);
                     CharacterEmoteRenderer.SetAttributes(CharacterGenerator.Instance.AttributesForEmoteType(type));
                 }
+
                 break;
             }
             default: {
                 Image.gameObject.SetActive(true);
 
-                if (Service.InfoManager != null && Service.InfoManager.EmoteMapBySubType.ContainsKey(type))
-                {
-                    if (Service.InfoManager.EmoteMapBySubType[type].EmoteImage)
-                    {
+                if (Service.InfoManager != null && Service.InfoManager.EmoteMapBySubType.ContainsKey(type)) {
+                    if (Service.InfoManager.EmoteMapBySubType[type].EmoteImage) {
                         Image.sprite = Service.InfoManager.EmoteMapBySubType[type].EmoteImage;
                     }
+                } else {
+                    /* For debug purposes only */
+                    Image.sprite = EmoteLibrary.Instance.FindSprite(type);
                 }
 
-                //Image.sprite = EmoteLibrary.Instance.FindSprite(type);
                 if (CharacterEmoteRenderer != null) {
                     CharacterEmoteRenderer.gameObject.SetActive(false);
                 }
+
                 break;
             }
         }

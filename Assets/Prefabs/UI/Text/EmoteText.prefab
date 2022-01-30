@@ -64,8 +64,8 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 0
-  SpacingX: 0
-  SpacingY: 0
+  SpacingX: 10
+  SpacingY: 10
   ExpandHorizontalSpacing: 0
   ChildForceExpandWidth: 0
   ChildForceExpandHeight: 0
@@ -85,3 +85,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EmotePrefab: {fileID: 6689041651059275904, guid: b1d9295fe8b614ca0a9cf8fa2ceb24d4, type: 3}
   TextArea: {fileID: 2124338343364355408}
+  _maxVisibleCharacters: 32000

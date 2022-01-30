@@ -66,7 +66,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: 27d1893c93ae55499ad02c34935af1e0
     GuidInternal: 
-    m_lastTime: -8585582792635576338
+    m_lastTime: -8585581129712935995
     List:
     - name: DayCycle
       guid: bc075cfc31de414393ea76b6a8e3e228
@@ -150,7 +150,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: 36187f795aed7446a84c500d367dfcf3
     GuidInternal: 
-    m_lastTime: -8585581999274705268
+    m_lastTime: -8585581148034412296
     List:
     - name: AmbienceDay
       guid: 5b6ed9ad00e9af4b8714261614d3ada4
@@ -441,6 +441,23 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 4.263077
       minDuration: 1.409321
+    - name: StartDeathAnnouncement
+      guid: b5f5d55fcb3efb4b867b44998c57cca3
+      id: 1248669510
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 36187f795aed7446a84c500d367dfcf3
+      - ElementName: StartDeathAnnouncement
+        ObjectType: 3
+        guid: b5f5d55fcb3efb4b867b44998c57cca3
+      Path: Events\Default Work Unit\StartDeathAnnouncement
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
     - name: StartTheDay
       guid: 1dc886f903898540b733652fee0b61ce
       id: 2972317186
@@ -597,7 +614,7 @@ MonoBehaviour:
     m_lastTime: -8585588864557360343
     List: []
   ExpandedFileSystemItemIds: 
-  ExpandedWaapiItemIds: 01000000050000000600000007000000080000001c0000001d0000001e0000001f0000002000000021000000
+  ExpandedWaapiItemIds: 01000000050000000600000007000000080000001c0000001d0000001e0000001f000000200000002100000022000000
   AutoSyncSelection: 0
   autoPopulateEnabled: 1
   currentDataSource: 0
