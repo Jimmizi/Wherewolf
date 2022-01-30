@@ -128,6 +128,7 @@ public class ClueObject
             && UnityEngine.Random.Range(0, 100.0f) < Service.Config.ChanceToAddOpinionOfCharacterAtClueEnd)
         {
             // Add on: "Opinion" "CharacterHeadshot"
+            AddEmote(Emote.EmoteSubType.Specific_Spacing);
             AddEmote(Service.Population.GetCharactersOpinionOf(GivenByCharacter, RelatesToCharacter));
             AddEmote(RelatesToCharacter.GetHeadshotEmoteSubType());
         }
