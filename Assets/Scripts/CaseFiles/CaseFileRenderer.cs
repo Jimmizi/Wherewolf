@@ -7,6 +7,7 @@ public class CaseFileRenderer : MonoBehaviour {
     
     public GameObject CharacterAttributesPrefab;
     public GameObject StatementPrefab;
+    public Canvas Canvas;
 
     private List<CaseFilePageRenderer> _pages;
 
@@ -35,6 +36,7 @@ public class CaseFileRenderer : MonoBehaviour {
         gameObject.transform.Rotate(Vector3.forward, Random.Range(-4f, 4f));
         
         CaseFilePageRenderer pageRenderer = gameObject.GetComponent<CaseFilePageRenderer>();
+        pageRenderer.SetCanvas(Canvas);
         _pages.Add(pageRenderer);
         
         return pageRenderer;
