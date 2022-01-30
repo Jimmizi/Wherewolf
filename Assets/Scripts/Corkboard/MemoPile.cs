@@ -48,7 +48,16 @@ public class MemoPile : MonoBehaviour, IDropHandler, IBeginDragHandler, IDragHan
 
     protected virtual void OnMemoDropped(Memo memo)
     {
-        memos.Add(memo.Data);
+        MemoData data = memo.Data;
+        bool hasMessage = data.message != null && data.message.Length > 0;
+        bool hasEmotes = data.emotes != null && data.emotes.Count > 0;
+
+        // Avoid "collecting" empty notes
+        if (hasMessage || hasEmotes)
+        {
+            memos.Add(memo.Data);
+        }
+
         memo.Destroy();
     }
 
@@ -70,8 +79,6 @@ public class MemoPile : MonoBehaviour, IDropHandler, IBeginDragHandler, IDragHan
                 {
                     handler.OnBeginDrag(eventData);
                 }
-                //newMemo.OnPointerDown(eventData);
-                //newMemo.OnBeginDrag(eventData);
             }
         }
         else

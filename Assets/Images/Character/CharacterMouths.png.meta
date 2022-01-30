@@ -1,0 +1,588 @@
+fileFormatVersion: 2
+guid: edd7afbf289cc422b98819df1413bb33
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 3687545201210310320
+    second: CharacterMouths_0
+  - first:
+      213: 6072589164940646369
+    second: CharacterMouths_1
+  - first:
+      213: 4326884673135086607
+    second: CharacterMouths_2
+  - first:
+      213: 6290943428314828099
+    second: CharacterMouths_3
+  - first:
+      213: -2100578372297481983
+    second: CharacterMouths_4
+  - first:
+      213: -932727163446239653
+    second: CharacterMouths_5
+  - first:
+      213: -3711152915375527361
+    second: CharacterMouths_6
+  - first:
+      213: 502836142171127210
+    second: CharacterMouths_7
+  - first:
+      213: -2194342641013998749
+    second: CharacterMouths_8
+  - first:
+      213: 3692995495241229271
+    second: CharacterMouths_9
+  - first:
+      213: -2837444258032513461
+    second: CharacterMouths_10
+  - first:
+      213: 4745792597081111494
+    second: CharacterMouths_11
+  - first:
+      213: 7988721943392921829
+    second: CharacterMouths_12
+  - first:
+      213: 4183657480123382539
+    second: CharacterMouths_13
+  - first:
+      213: -6336181809038522799
+    second: CharacterMouths_14
+  - first:
+      213: -6094162614143718610
+    second: CharacterMouths_15
+  - first:
+      213: 2732773013891977248
+    second: CharacterMouths_16
+  - first:
+      213: -4421486525295723881
+    second: CharacterMouths_17
+  - first:
+      213: 7269879502874149123
+    second: CharacterMouths_18
+  - first:
+      213: 8200555347200295024
+    second: CharacterMouths_19
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 0
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: CharacterMouths_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2865
+        width: 925
+        height: 955
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0be3653b2dacc2330800000000000000
+      internalID: 3687545201210310320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterMouths_1
+      rect:
+        serializedVersion: 2
+        x: 925
+        y: 2865
+        width: 925
+        height: 955
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e75c2bebab264450800000000000000
+      internalID: 6072589164940646369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterMouths_2
+      rect:
+        serializedVersion: 2
+        x: 1850
+        y: 2865
+        width: 925
+        height: 955
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f0c8c467fae2c0c30800000000000000
+      internalID: 4326884673135086607
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterMouths_3
+      rect:
+        serializedVersion: 2
+        x: 2775
+        y: 2865
+        width: 925
+        height: 955
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34d88ca97bbed4750800000000000000
+      internalID: 6290943428314828099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterMouths_4
+      rect:
+        serializedVersion: 2
+        x: 3700
+        y: 2865
+        width: 925
+        height: 955
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1012758891f39d2e0800000000000000
+      internalID: -2100578372297481983
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterMouths_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1910
+        width: 925
+        height: 955
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5edd6e26994e03f0800000000000000
+      internalID: -932727163446239653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterMouths_6
+      rect:
+        serializedVersion: 2
+        x: 925
+        y: 1910
+        width: 925
+        height: 955
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3ae2e306165f7cc0800000000000000
+      internalID: -3711152915375527361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterMouths_7
+      rect:
+        serializedVersion: 2
+        x: 1850
+        y: 1910
+        width: 925
+        height: 955
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aad7652aece6af600800000000000000
+      internalID: 502836142171127210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterMouths_8
+      rect:
+        serializedVersion: 2
+        x: 2775
+        y: 1910
+        width: 925
+        height: 955
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36b3ede7ef02c81e0800000000000000
+      internalID: -2194342641013998749
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterMouths_9
+      rect:
+        serializedVersion: 2
+        x: 3700
+        y: 1910
+        width: 925
+        height: 955
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d3a8fa26d7204330800000000000000
+      internalID: 3692995495241229271
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterMouths_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 955
+        width: 925
+        height: 955
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4e00021b7f5f98d0800000000000000
+      internalID: -2837444258032513461
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterMouths_11
+      rect:
+        serializedVersion: 2
+        x: 925
+        y: 955
+        width: 925
+        height: 955
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6cbb2b609317cd140800000000000000
+      internalID: 4745792597081111494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterMouths_12
+      rect:
+        serializedVersion: 2
+        x: 1850
+        y: 955
+        width: 925
+        height: 955
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e8ad4d0844adde60800000000000000
+      internalID: 7988721943392921829
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterMouths_13
+      rect:
+        serializedVersion: 2
+        x: 2775
+        y: 955
+        width: 925
+        height: 955
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0bf8acef465f0a30800000000000000
+      internalID: 4183657480123382539
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterMouths_14
+      rect:
+        serializedVersion: 2
+        x: 3700
+        y: 955
+        width: 925
+        height: 955
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15687f7173c5118a0800000000000000
+      internalID: -6336181809038522799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterMouths_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 925
+        height: 955
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2b6f74046f2d6ba0800000000000000
+      internalID: -6094162614143718610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterMouths_16
+      rect:
+        serializedVersion: 2
+        x: 925
+        y: 0
+        width: 925
+        height: 955
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0201ec8c392cce520800000000000000
+      internalID: 2732773013891977248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterMouths_17
+      rect:
+        serializedVersion: 2
+        x: 1850
+        y: 0
+        width: 925
+        height: 955
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79a72986e69b3a2c0800000000000000
+      internalID: -4421486525295723881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterMouths_18
+      rect:
+        serializedVersion: 2
+        x: 2775
+        y: 0
+        width: 925
+        height: 955
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30105b0f3ecc3e460800000000000000
+      internalID: 7269879502874149123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterMouths_19
+      rect:
+        serializedVersion: 2
+        x: 3700
+        y: 0
+        width: 925
+        height: 955
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 070cdcec3a93ec170800000000000000
+      internalID: 8200555347200295024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

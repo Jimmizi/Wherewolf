@@ -1,0 +1,588 @@
+fileFormatVersion: 2
+guid: 8609c82965f47467187bf1adf30ba756
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 824490353566806412
+    second: CharacterEyes_0
+  - first:
+      213: -1470313960511352621
+    second: CharacterEyes_1
+  - first:
+      213: 4917600682452471082
+    second: CharacterEyes_2
+  - first:
+      213: -4741831767701635649
+    second: CharacterEyes_3
+  - first:
+      213: -3419737480282499915
+    second: CharacterEyes_4
+  - first:
+      213: -2360728620781913410
+    second: CharacterEyes_5
+  - first:
+      213: -5216014361952149337
+    second: CharacterEyes_6
+  - first:
+      213: 5023494473825032211
+    second: CharacterEyes_7
+  - first:
+      213: 3977086406747248324
+    second: CharacterEyes_8
+  - first:
+      213: 1026413328981736597
+    second: CharacterEyes_9
+  - first:
+      213: -1697188689284534592
+    second: CharacterEyes_10
+  - first:
+      213: -2199705524917757245
+    second: CharacterEyes_11
+  - first:
+      213: 6298487523679815913
+    second: CharacterEyes_12
+  - first:
+      213: 4287414070487037373
+    second: CharacterEyes_13
+  - first:
+      213: -9142674659240736993
+    second: CharacterEyes_14
+  - first:
+      213: 1644934031370344097
+    second: CharacterEyes_15
+  - first:
+      213: 6763729491539137720
+    second: CharacterEyes_16
+  - first:
+      213: -7635519276028695784
+    second: CharacterEyes_17
+  - first:
+      213: 5943168004006544343
+    second: CharacterEyes_18
+  - first:
+      213: -8048216584564214960
+    second: CharacterEyes_19
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 0
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: CharacterEyes_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1152
+        width: 773.4
+        height: 384
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c81f515bb9d217b00800000000000000
+      internalID: 824490353566806412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterEyes_1
+      rect:
+        serializedVersion: 2
+        x: 773
+        y: 1152
+        width: 773.4
+        height: 384
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d05c633e35689be0800000000000000
+      internalID: -1470313960511352621
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterEyes_2
+      rect:
+        serializedVersion: 2
+        x: 1546
+        y: 1152
+        width: 773.4
+        height: 384
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2d4cc024c3de3440800000000000000
+      internalID: 4917600682452471082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterEyes_3
+      rect:
+        serializedVersion: 2
+        x: 2319
+        y: 1152
+        width: 773.4
+        height: 384
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fbd3b7d6121a13eb0800000000000000
+      internalID: -4741831767701635649
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterEyes_4
+      rect:
+        serializedVersion: 2
+        x: 3092
+        y: 1152
+        width: 773.4
+        height: 384
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b41ca651e6aa80d0800000000000000
+      internalID: -3419737480282499915
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterEyes_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 768
+        width: 773.4
+        height: 384
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eba323bb3d10d3fd0800000000000000
+      internalID: -2360728620781913410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterEyes_6
+      rect:
+        serializedVersion: 2
+        x: 773
+        y: 768
+        width: 773.4
+        height: 384
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a0a18cc29efc97b0800000000000000
+      internalID: -5216014361952149337
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterEyes_7
+      rect:
+        serializedVersion: 2
+        x: 1546
+        y: 768
+        width: 773.4
+        height: 384
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3189a7bbb9907b540800000000000000
+      internalID: 5023494473825032211
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterEyes_8
+      rect:
+        serializedVersion: 2
+        x: 2319
+        y: 768
+        width: 773.4
+        height: 384
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c65433f303713730800000000000000
+      internalID: 3977086406747248324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterEyes_9
+      rect:
+        serializedVersion: 2
+        x: 3092
+        y: 768
+        width: 773.4
+        height: 384
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59cbeaa0c7d8e3e00800000000000000
+      internalID: 1026413328981736597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterEyes_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 384
+        width: 773.4
+        height: 384
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ce626211ef5278e0800000000000000
+      internalID: -1697188689284534592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterEyes_11
+      rect:
+        serializedVersion: 2
+        x: 773
+        y: 384
+        width: 773.4
+        height: 384
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ca10d8ca731971e0800000000000000
+      internalID: -2199705524917757245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterEyes_12
+      rect:
+        serializedVersion: 2
+        x: 1546
+        y: 384
+        width: 773.4
+        height: 384
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e84a2f2809b86750800000000000000
+      internalID: 6298487523679815913
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterEyes_13
+      rect:
+        serializedVersion: 2
+        x: 2319
+        y: 384
+        width: 773.4
+        height: 384
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db53464a164ff7b30800000000000000
+      internalID: 4287414070487037373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterEyes_14
+      rect:
+        serializedVersion: 2
+        x: 3092
+        y: 384
+        width: 773.4
+        height: 384
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f178dfe56d1be1180800000000000000
+      internalID: -9142674659240736993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterEyes_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 773.4
+        height: 384
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a6d7ca49caf3d610800000000000000
+      internalID: 1644934031370344097
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterEyes_16
+      rect:
+        serializedVersion: 2
+        x: 773
+        y: 0
+        width: 773.4
+        height: 384
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b4160403289ddd50800000000000000
+      internalID: 6763729491539137720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterEyes_17
+      rect:
+        serializedVersion: 2
+        x: 1546
+        y: 0
+        width: 773.4
+        height: 384
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81b69a45caf290690800000000000000
+      internalID: -7635519276028695784
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterEyes_18
+      rect:
+        serializedVersion: 2
+        x: 2319
+        y: 0
+        width: 773.4
+        height: 384
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d30747bfcf5a7250800000000000000
+      internalID: 5943168004006544343
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterEyes_19
+      rect:
+        serializedVersion: 2
+        x: 3092
+        y: 0
+        width: 773.4
+        height: 384
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05374a958adfe4090800000000000000
+      internalID: -8048216584564214960
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
