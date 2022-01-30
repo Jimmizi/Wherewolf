@@ -84,6 +84,24 @@ public class DragAndDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler
         Color color = image.color;
         color.a = 1.0f;
         image.color = color;
+
+        if (_rectTransform.anchoredPosition.x >= Screen.width / 2)
+        {
+            _rectTransform.anchoredPosition = new Vector2(0.0f, _rectTransform.anchoredPosition.y);
+        }
+        else if (_rectTransform.anchoredPosition.x < -(Screen.width / 2))
+        {
+            _rectTransform.anchoredPosition = new Vector2(0.0f, _rectTransform.anchoredPosition.y);
+        }
+
+        if (_rectTransform.anchoredPosition.y >= Screen.height / 2)
+        {
+            _rectTransform.anchoredPosition = new Vector2(_rectTransform.anchoredPosition.x, 0.0f);
+        }
+        else if (_rectTransform.anchoredPosition.y < -(Screen.height / 2))
+        {
+            _rectTransform.anchoredPosition = new Vector2(_rectTransform.anchoredPosition.x, 0.0f);
+        }
     }
 
     public void OnDrag(PointerEventData eventData)

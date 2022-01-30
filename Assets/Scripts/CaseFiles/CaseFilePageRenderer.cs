@@ -86,8 +86,25 @@ public class CaseFilePageRenderer : MonoBehaviour, IDragHandler, IBeginDragHandl
         // _lastMousePosition = currentMousePosition;
     }
 
-    public void OnEndDrag(PointerEventData eventData) {
-        // Does nothing.
+    public void OnEndDrag(PointerEventData eventData) 
+    {
+        if(_rectTransform.anchoredPosition.x >= Screen.width / 2)
+        {
+            _rectTransform.anchoredPosition = new Vector2(0.0f,_rectTransform.anchoredPosition.y);
+        }
+        else if (_rectTransform.anchoredPosition.x < -(Screen.width / 2))
+        {
+            _rectTransform.anchoredPosition = new Vector2(0.0f, _rectTransform.anchoredPosition.y);
+        }
+
+        if (_rectTransform.anchoredPosition.y >= Screen.height / 2)
+        {
+            _rectTransform.anchoredPosition = new Vector2(_rectTransform.anchoredPosition.x, 0.0f);
+        }
+        else if (_rectTransform.anchoredPosition.y < -(Screen.height / 2))
+        {
+            _rectTransform.anchoredPosition = new Vector2(_rectTransform.anchoredPosition.x, 0.0f);
+        }
     }
 
     private bool IsRectTransformInsideScreen(RectTransform rectTransform) {

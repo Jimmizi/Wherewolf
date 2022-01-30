@@ -914,6 +914,35 @@ public class PopulationManager : MonoBehaviour
                 if(c.Descriptors[desc].Count == 0)
                 {
                     Debug.LogWarning(string.Format("FAILED to add descriptor {0} for character [{1}] {2}", desc.ToString(), c.Index, c.Name));
+
+                    // Just manually add something
+                    switch (desc)
+                    {
+                        case Character.Descriptor.Hair:
+                            var hs = Service.InfoManager.GetRandomEmoteOfType(Emote.EmoteType.HairStyle);
+
+                            if (hs.SubType != Emote.EmoteSubType.HairStyle_Bald)
+                            {
+                                c.Descriptors[Character.Descriptor.Hair].Add(Service.InfoManager.GetRandomEmoteOfType(Emote.EmoteType.Color));
+                            }
+
+                            c.Descriptors[Character.Descriptor.Hair].Add(hs);
+
+                            break;
+                        case Character.Descriptor.Facial:
+                            c.Descriptors[Character.Descriptor.Facial].Add(Service.InfoManager.GetRandomEmoteOfType(Emote.EmoteType.FacialFeature));
+                            break;
+                        case Character.Descriptor.Clothing:
+                            // Clothing
+                            c.Descriptors[Character.Descriptor.Clothing].Add(Service.InfoManager.GetRandomEmoteOfType(Emote.EmoteType.Color));
+                            c.Descriptors[Character.Descriptor.Clothing].Add(Service.InfoManager.GetRandomEmoteOfType(Emote.EmoteType.Clothing));
+                            break;
+                    }
+
+                    if (c.Descriptors[desc].Count == 0)
+                    {
+                        Debug.LogError(string.Format("STILL FAILED to add descriptor {0} for character [{1}] {2}", desc.ToString(), c.Index, c.Name));
+                    }
                 }
             }
         }
