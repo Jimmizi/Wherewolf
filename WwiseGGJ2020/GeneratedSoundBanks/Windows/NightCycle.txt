@@ -4,6 +4,7 @@ Event	ID	Name			Wwise Object Path	Notes
 	1238766433	MusicNightSfx			\Default Work Unit\MusicNightSfx	
 	1268350941	GameOverNight			\Default Work Unit\GameOverNight	
 	1693860815	BackToTitle			\Default Work Unit\BackToTitle	
+	2052502914	MusicNightIntro			\Default Work Unit\MusicNightIntro	
 	2248987061	MusicDaySfx			\Default Work Unit\MusicDaySfx	
 	2373353387	StartNight			\Default Work Unit\StartNight	
 	2716737400	MusicCorkboardSfx			\Default Work Unit\MusicCorkboardSfx	
@@ -12,11 +13,13 @@ Event	ID	Name			Wwise Object Path	Notes
 	4148867748	DeathAnnounce			\Default Work Unit\DeathAnnounce	
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
-	25883968	AmbienceNight	C:\Users\jaket\Documents\GitHub\GGJ2022\WwiseGGJ2020\.cache\Windows\SFX\AmbienceNight_D79FB2B7.wem		\Actor-Mixer Hierarchy\Default Work Unit\AmbienceNight		13404144
-	206370308	GameOverNight	C:\Users\jaket\Documents\GitHub\GGJ2022\WwiseGGJ2020\.cache\Windows\SFX\GameOverNight_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\GameOverNight		960144
-	221210545	AmbienceDay	C:\Users\jaket\Documents\GitHub\GGJ2022\WwiseGGJ2020\.cache\Windows\SFX\AmbienceDay_D79FB2B7.wem		\Actor-Mixer Hierarchy\Default Work Unit\AmbienceDay		9984144
-	315214103	MusicCorkboardSfx	C:\Users\jaket\Documents\GitHub\GGJ2022\WwiseGGJ2020\.cache\Windows\SFX\MusicCorkboard_D79FB2B7.wem		\Actor-Mixer Hierarchy\Default Work Unit\MusicCorkboardSfx		20159552
-	324954291	MusicDaySfx	C:\Users\jaket\Documents\GitHub\GGJ2022\WwiseGGJ2020\.cache\Windows\SFX\MusicDay_D79FB2B7.wem		\Actor-Mixer Hierarchy\Default Work Unit\MusicDaySfx		16896064
-	746160009	MusicNight	C:\Users\jaket\Documents\GitHub\GGJ2022\WwiseGGJ2020\.cache\Windows\SFX\MusicNight_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\MusicNightLoop\MusicNight\MusicNight		13405236
-	838286607	DiscoveryNight	C:\Users\jaket\Documents\GitHub\GGJ2022\WwiseGGJ2020\.cache\Windows\SFX\DiscoveryPH_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\DiscoveryNight		801532
+	25883968	AmbienceNight	C:\Users\leoto\OneDrive\Documents\GitHub\GGJ2022\WwiseGGJ2020\.cache\Windows\SFX\AmbienceNight_D79FB2B7.wem		\Actor-Mixer Hierarchy\Default Work Unit\AmbienceNight		13404144
+	206370308	GameOverNight	C:\Users\leoto\OneDrive\Documents\GitHub\GGJ2022\WwiseGGJ2020\.cache\Windows\SFX\GameOverNight_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\GameOverNight		960144
+	221210545	AmbienceDay	C:\Users\leoto\OneDrive\Documents\GitHub\GGJ2022\WwiseGGJ2020\.cache\Windows\SFX\AmbienceDay_D79FB2B7.wem		\Actor-Mixer Hierarchy\Default Work Unit\AmbienceDay		9984144
+	315214103	MusicCorkboardSfx	C:\Users\leoto\OneDrive\Documents\GitHub\GGJ2022\WwiseGGJ2020\.cache\Windows\SFX\MusicCorkboard_D79FB2B7.wem		\Actor-Mixer Hierarchy\Default Work Unit\MusicCorkboardSfx		20159552
+	324954291	MusicDaySfx	C:\Users\leoto\OneDrive\Documents\GitHub\GGJ2022\WwiseGGJ2020\.cache\Windows\SFX\MusicDay_D79FB2B7.wem		\Actor-Mixer Hierarchy\Default Work Unit\MusicDaySfx		16896064
+	460683458	MusicNightIntroSFX	C:\Users\leoto\OneDrive\Documents\GitHub\GGJ2022\WwiseGGJ2020\.cache\Windows\SFX\MusicNightIntroSFX_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\MusicNightIntroSFX		3351416
+	746160009	MusicNight	C:\Users\leoto\OneDrive\Documents\GitHub\GGJ2022\WwiseGGJ2020\.cache\Windows\SFX\MusicNight_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\MusicNightLoop\MusicNight\MusicNight		13405236
+	838286607	DiscoveryNight	C:\Users\leoto\OneDrive\Documents\GitHub\GGJ2022\WwiseGGJ2020\.cache\Windows\SFX\DiscoveryPH_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\DiscoveryNight		801532
+	880405823	MusicNightIntro	C:\Users\leoto\OneDrive\Documents\GitHub\GGJ2022\WwiseGGJ2020\.cache\Windows\SFX\MusicNightIntro_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\MusicNightLoop\MusicNightIntro\MusicNightIntro		3351416
 

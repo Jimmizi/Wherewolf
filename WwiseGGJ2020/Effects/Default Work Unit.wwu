@@ -13,6 +13,35 @@
 						<Property Name="WetOut" Type="Real32" Value="12"/>
 					</PropertyList>
 				</Effect>
+				<Effect Name="New_Wwise_Delay" ID="{10437A6D-216D-4BDA-9811-FA2B11AFF8FF}" PluginName="Wwise Delay" CompanyID="0" PluginID="106" PluginType="3">
+					<PropertyList>
+						<Property Name="DelayTime" Type="Real32" Value="0.04"/>
+					</PropertyList>
+				</Effect>
+				<Effect Name="New_Wwise_Flanger" ID="{553A4606-CC1F-433C-88E9-019C7C8AFD70}" PluginName="Wwise Flanger" CompanyID="0" PluginID="125" PluginType="3">
+					<PropertyList>
+						<Property Name="ModDepth" Type="Real32" Value="10.5"/>
+						<Property Name="WetDryMix" Type="Real32" Value="84"/>
+					</PropertyList>
+				</Effect>
+				<Effect Name="New_Wwise_Harmonizer" ID="{BF7F4DA4-6F48-4E9A-9559-81A1E27635B1}" PluginName="Wwise Harmonizer" CompanyID="0" PluginID="138" PluginType="3">
+					<PropertyList>
+						<Property Name="Voice1FilterFrequency" Type="Real32" Value="95"/>
+						<Property Name="Voice1FilterType" Type="int32" Value="4"/>
+						<Property Name="Voice1Pitch" Type="Real32" Value="-300"/>
+						<Property Name="Voice2Enable" Type="bool" Value="True"/>
+						<Property Name="Voice2FilterFrequency" Type="Real32" Value="3512"/>
+						<Property Name="Voice2FilterType" Type="int32" Value="5"/>
+						<Property Name="Voice2Pitch" Type="Real32" Value="200"/>
+					</PropertyList>
+				</Effect>
+				<Effect Name="New_Wwise_Flanger_01" ID="{2E8A73F3-E06B-4A57-86C4-836A9B65EE0F}" PluginName="Wwise Flanger" CompanyID="0" PluginID="125" PluginType="3"/>
+				<Effect Name="New_Wwise_Parametric_EQ" ID="{A9C4F241-CB8A-4EE1-8DE9-8A40BD4D74BC}" PluginName="Wwise Parametric EQ" CompanyID="0" PluginID="105" PluginType="3">
+					<PropertyList>
+						<Property Name="FrequencyBand3" Type="Real32" Value="7962"/>
+						<Property Name="GainBand3" Type="Real32" Value="-1"/>
+					</PropertyList>
+				</Effect>
 			</ChildrenList>
 		</WorkUnit>
 	</Effects>

@@ -13,6 +13,7 @@
 						<ObjectRef Name="WinDay" ID="{769AC8D4-F574-4875-9464-91DF7EA02E41}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="MusicNightSfx" ID="{451DD45B-B5C3-48A1-8420-C3C045850DEF}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="MusicDayLoop" ID="{4492F738-1083-4906-BC04-4DEDCB118344}" WorkUnitID="{9277866B-E73D-4F74-B632-B6EF503A3632}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="MusicDayIntroSFX" ID="{F0BBBC8A-B2A8-4AC0-8FD6-5457B3832AF8}" WorkUnitID="{A81D3656-2325-46B3-9A64-828E3D72236B}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="GameOverDay" ID="{E4806E2F-144A-4B25-8DF5-C89FF84FC53A}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="AmbienceDay" ID="{ADD96E5B-E900-4BAF-8714-261614D3ADA4}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="MusicCorkboardSfx" ID="{B1605FD3-0991-4C02-8673-B164B6B53042}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
@@ -23,6 +24,7 @@
 				</SoundBank>
 				<SoundBank Name="NightCycle" ID="{BCA837B0-7050-4257-875D-ACDB506127D8}">
 					<ObjectInclusionList>
+						<ObjectRef Name="MusicNightIntroSFX" ID="{E7628545-A24F-4320-8733-76C14E16B510}" WorkUnitID="{A81D3656-2325-46B3-9A64-828E3D72236B}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="MusicNightLoop" ID="{29E874DC-2EA5-4355-AD7F-D28D81DF2D3B}" WorkUnitID="{9277866B-E73D-4F74-B632-B6EF503A3632}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="StartDay" ID="{22901984-2EC6-462A-B10F-32972D40C528}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="MusicDaySfx" ID="{9C705663-5A72-4644-BF1B-0C4AC537DD6E}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>

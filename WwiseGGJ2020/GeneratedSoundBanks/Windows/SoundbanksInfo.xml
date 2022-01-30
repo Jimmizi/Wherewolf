@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="12" SoundbankVersion="140">
 	<RootPaths>
-		<ProjectRoot>C:\Users\jaket\Documents\GitHub\GGJ2022\WwiseGGJ2020\</ProjectRoot>
-		<SourceFilesRoot>C:\Users\jaket\Documents\GitHub\GGJ2022\WwiseGGJ2020\.cache\Windows\</SourceFilesRoot>
-		<SoundBanksRoot>C:\Users\jaket\Documents\GitHub\GGJ2022\WwiseGGJ2020\GeneratedSoundBanks\Windows\</SoundBanksRoot>
+		<ProjectRoot>C:\Users\leoto\OneDrive\Documents\GitHub\GGJ2022\WwiseGGJ2020\</ProjectRoot>
+		<SourceFilesRoot>C:\Users\leoto\OneDrive\Documents\GitHub\GGJ2022\WwiseGGJ2020\.cache\Windows\</SourceFilesRoot>
+		<SoundBanksRoot>C:\Users\leoto\OneDrive\Documents\GitHub\GGJ2022\WwiseGGJ2020\GeneratedSoundBanks\Windows\</SoundBanksRoot>
 		<ExternalSourcesInputFile></ExternalSourcesInputFile>
-		<ExternalSourcesOutputRoot>C:\Users\jaket\Documents\GitHub\GGJ2022\WwiseGGJ2020\GeneratedSoundBanks\Windows</ExternalSourcesOutputRoot>
+		<ExternalSourcesOutputRoot>C:\Users\leoto\OneDrive\Documents\GitHub\GGJ2022\WwiseGGJ2020\GeneratedSoundBanks\Windows</ExternalSourcesOutputRoot>
 	</RootPaths>
 	<DialogueEvents/>
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="1355168291" Language="SFX" Hash="3402823713">
+		<SoundBank Id="1355168291" Language="SFX" Hash="2084601987">
 			<ObjectPath>Init</ObjectPath>
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
@@ -19,7 +19,7 @@
 				<GameParameter Id="4179668880" Name="master_volume" ObjectPath="\Game Parameters\Default Work Unit\master_volume"/>
 			</GameParameters>
 		</SoundBank>
-		<SoundBank Id="2276007709" Language="SFX" Hash="2648437769">
+		<SoundBank Id="2276007709" Language="SFX" Hash="165717591">
 			<ObjectPath>\SoundBanks\Default Work Unit\NightCycle</ObjectPath>
 			<ShortName>NightCycle</ShortName>
 			<Path>NightCycle.bnk</Path>
@@ -32,14 +32,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="1693860815" Name="BackToTitle" ObjectPath="\Events\Default Work Unit\BackToTitle" DurationType="Infinite">
-					<IncludedMemoryFiles>
-						<File Id="315214103" Language="SFX">
-							<ShortName>MusicCorkboard.wav</ShortName>
-							<Path>SFX\MusicCorkboard_D79FB2B7.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
-				</Event>
+				<Event Id="1693860815" Name="BackToTitle" ObjectPath="\Events\Default Work Unit\BackToTitle" DurationType="OneShot" DurationMin="0." DurationMax="0."/>
 				<Event Id="4148867748" Name="DeathAnnounce" ObjectPath="\Events\Default Work Unit\DeathAnnounce" DurationType="OneShot" DurationMin="0." DurationMax="0."/>
 				<Event Id="199733517" Name="DiscoveryNight" ObjectPath="\Events\Default Work Unit\DiscoveryNight" DurationType="OneShot" DurationMin="4.173896" DurationMax="4.173896">
 					<IncludedMemoryFiles>
@@ -74,6 +67,7 @@
 					</IncludedMemoryFiles>
 				</Event>
 				<Event Id="3028680700" Name="MusicNight" ObjectPath="\Events\Default Work Unit\MusicNight" DurationType="Infinite"/>
+				<Event Id="2052502914" Name="MusicNightIntro" ObjectPath="\Events\Default Work Unit\MusicNightIntro" DurationType="OneShot" DurationMin="17.454542" DurationMax="17.454542"/>
 				<Event Id="1238766433" Name="MusicNightSfx" ObjectPath="\Events\Default Work Unit\MusicNightSfx" DurationType="Infinite">
 					<IncludedMemoryFiles>
 						<File Id="746160009" Language="SFX">
@@ -108,13 +102,21 @@
 				</Event>
 			</IncludedEvents>
 			<IncludedMemoryFiles>
+				<File Id="460683458" Language="SFX">
+					<ShortName>MusicNightIntroSFX.wav</ShortName>
+					<Path>SFX\MusicNightIntroSFX_10C4C929.wem</Path>
+				</File>
 				<File Id="746160009" Language="SFX">
 					<ShortName>MusicNight.wav</ShortName>
 					<Path>SFX\MusicNight_D79FB2B7.wem</Path>
 				</File>
+				<File Id="880405823" Language="SFX">
+					<ShortName>MusicNightIntro.wav</ShortName>
+					<Path>SFX\MusicNightIntro_D79FB2B7.wem</Path>
+				</File>
 			</IncludedMemoryFiles>
 		</SoundBank>
-		<SoundBank Id="2769481441" Language="SFX" Hash="3145418288">
+		<SoundBank Id="2769481441" Language="SFX" Hash="4033160193">
 			<ObjectPath>\SoundBanks\Default Work Unit\DayCycle</ObjectPath>
 			<ShortName>DayCycle</ShortName>
 			<Path>DayCycle.bnk</Path>
@@ -127,14 +129,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="1693860815" Name="BackToTitle" ObjectPath="\Events\Default Work Unit\BackToTitle" DurationType="Infinite">
-					<IncludedMemoryFiles>
-						<File Id="315214103" Language="SFX">
-							<ShortName>MusicCorkboard.wav</ShortName>
-							<Path>SFX\MusicCorkboard_D79FB2B7.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
-				</Event>
+				<Event Id="1693860815" Name="BackToTitle" ObjectPath="\Events\Default Work Unit\BackToTitle" DurationType="OneShot" DurationMin="0." DurationMax="0."/>
 				<Event Id="4148867748" Name="DeathAnnounce" ObjectPath="\Events\Default Work Unit\DeathAnnounce" DurationType="OneShot" DurationMin="0." DurationMax="0."/>
 				<Event Id="2538410761" Name="DiscoveryDay" ObjectPath="\Events\Default Work Unit\DiscoveryDay" DurationType="OneShot" DurationMin="3.5" DurationMax="3.5">
 					<IncludedMemoryFiles>
@@ -161,6 +156,7 @@
 					</IncludedMemoryFiles>
 				</Event>
 				<Event Id="3155631888" Name="MusicDay" ObjectPath="\Events\Default Work Unit\MusicDay" DurationType="Infinite"/>
+				<Event Id="3242733350" Name="MusicDayIntro" ObjectPath="\Events\Default Work Unit\MusicDayIntro" DurationType="OneShot" DurationMin="2." DurationMax="2."/>
 				<Event Id="2248987061" Name="MusicDaySfx" ObjectPath="\Events\Default Work Unit\MusicDaySfx" DurationType="Infinite">
 					<IncludedMemoryFiles>
 						<File Id="324954291" Language="SFX">
@@ -215,13 +211,17 @@
 					<ShortName>MusicDay.wav</ShortName>
 					<Path>SFX\MusicDay_D79FB2B7.wem</Path>
 				</File>
+				<File Id="333707637" Language="SFX">
+					<ShortName>MusicDayIntroSFX.wav</ShortName>
+					<Path>SFX\MusicDayIntroSFX_10C4C929.wem</Path>
+				</File>
 				<File Id="381931166" Language="SFX">
 					<ShortName>MusicDayIntro.wav</ShortName>
 					<Path>SFX\MusicDayIntro_D79FB2B7.wem</Path>
 				</File>
 			</IncludedMemoryFiles>
 		</SoundBank>
-		<SoundBank Id="3062523257" Language="SFX" Hash="2123235886">
+		<SoundBank Id="3062523257" Language="SFX" Hash="924511997">
 			<ObjectPath>\SoundBanks\Default Work Unit\Misc</ObjectPath>
 			<ShortName>Misc</ShortName>
 			<Path>Misc.bnk</Path>
@@ -243,7 +243,7 @@
 				</File>
 			</IncludedMemoryFiles>
 		</SoundBank>
-		<SoundBank Id="3150299886" Language="SFX" Hash="624102342">
+		<SoundBank Id="3150299886" Language="SFX" Hash="3115725571">
 			<ObjectPath>\SoundBanks\Default Work Unit\OneShots</ObjectPath>
 			<ShortName>OneShots</ShortName>
 			<Path>OneShots.bnk</Path>
@@ -306,12 +306,12 @@
 				</Event>
 			</IncludedEvents>
 		</SoundBank>
-		<SoundBank Id="3313685232" Language="SFX" Hash="2124642494">
+		<SoundBank Id="3313685232" Language="SFX" Hash="389826463">
 			<ObjectPath>\SoundBanks\Default Work Unit\Voices</ObjectPath>
 			<ShortName>Voices</ShortName>
 			<Path>Voices.bnk</Path>
 			<IncludedEvents>
-				<Event Id="1369532193" Name="Speak_01" ObjectPath="\Events\Default Work Unit\Speak_01" DurationType="OneShot" DurationMin="2." DurationMax="2.875">
+				<Event Id="1369532193" Name="Speak_01" ObjectPath="\Events\Default Work Unit\Speak_01" DurationType="OneShot" DurationMin="1.35035" DurationMax="1.941128">
 					<IncludedMemoryFiles>
 						<File Id="262827715" Language="SFX">
 							<ShortName>speech3.wav</ShortName>
@@ -339,7 +339,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="1369532194" Name="Speak_02" ObjectPath="\Events\Default Work Unit\Speak_02" DurationType="OneShot" DurationMin="2." DurationMax="2.875">
+				<Event Id="1369532194" Name="Speak_02" ObjectPath="\Events\Default Work Unit\Speak_02" DurationType="OneShot" DurationMin="2.378414" DurationMax="3.41897">
 					<IncludedMemoryFiles>
 						<File Id="262827715" Language="SFX">
 							<ShortName>speech3.wav</ShortName>
@@ -367,7 +367,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="1369532195" Name="Speak_03" ObjectPath="\Events\Default Work Unit\Speak_03" DurationType="OneShot" DurationMin="2." DurationMax="2.875">
+				<Event Id="1369532195" Name="Speak_03" ObjectPath="\Events\Default Work Unit\Speak_03" DurationType="OneShot" DurationMin="1.681793" DurationMax="2.417577">
 					<IncludedMemoryFiles>
 						<File Id="262827715" Language="SFX">
 							<ShortName>speech3.wav</ShortName>
@@ -395,7 +395,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="1369532196" Name="Speak_04" ObjectPath="\Events\Default Work Unit\Speak_04" DurationType="OneShot" DurationMin="2." DurationMax="2.875">
+				<Event Id="1369532196" Name="Speak_04" ObjectPath="\Events\Default Work Unit\Speak_04" DurationType="OneShot" DurationMin="1.887748" DurationMax="2.713639">
 					<IncludedMemoryFiles>
 						<File Id="262827715" Language="SFX">
 							<ShortName>speech3.wav</ShortName>
@@ -423,7 +423,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="1369532197" Name="Speak_05" ObjectPath="\Events\Default Work Unit\Speak_05" DurationType="OneShot" DurationMin="2." DurationMax="2.875">
+				<Event Id="1369532197" Name="Speak_05" ObjectPath="\Events\Default Work Unit\Speak_05" DurationType="OneShot" DurationMin="2.181015" DurationMax="3.13521">
 					<IncludedMemoryFiles>
 						<File Id="262827715" Language="SFX">
 							<ShortName>speech3.wav</ShortName>
@@ -451,7 +451,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="1369532198" Name="Speak_06" ObjectPath="\Events\Default Work Unit\Speak_06" DurationType="OneShot" DurationMin="2." DurationMax="2.875">
+				<Event Id="1369532198" Name="Speak_06" ObjectPath="\Events\Default Work Unit\Speak_06" DurationType="OneShot" DurationMin="2.310705" DurationMax="3.321639">
 					<IncludedMemoryFiles>
 						<File Id="262827715" Language="SFX">
 							<ShortName>speech3.wav</ShortName>
@@ -479,7 +479,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="1369532199" Name="Speak_07" ObjectPath="\Events\Default Work Unit\Speak_07" DurationType="OneShot" DurationMin="2." DurationMax="2.875">
+				<Event Id="1369532199" Name="Speak_07" ObjectPath="\Events\Default Work Unit\Speak_07" DurationType="OneShot" DurationMin="2.685145" DurationMax="3.859896">
 					<IncludedMemoryFiles>
 						<File Id="262827715" Language="SFX">
 							<ShortName>speech3.wav</ShortName>
@@ -507,7 +507,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="1369532200" Name="Speak_08" ObjectPath="\Events\Default Work Unit\Speak_08" DurationType="OneShot" DurationMin="2." DurationMax="2.875">
+				<Event Id="1369532200" Name="Speak_08" ObjectPath="\Events\Default Work Unit\Speak_08" DurationType="OneShot" DurationMin="1.56013" DurationMax="2.242687">
 					<IncludedMemoryFiles>
 						<File Id="262827715" Language="SFX">
 							<ShortName>speech3.wav</ShortName>
@@ -535,7 +535,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="1369532201" Name="Speak_09" ObjectPath="\Events\Default Work Unit\Speak_09" DurationType="OneShot" DurationMin="2." DurationMax="2.875">
+				<Event Id="1369532201" Name="Speak_09" ObjectPath="\Events\Default Work Unit\Speak_09" DurationType="OneShot" DurationMin="1.447269" DurationMax="2.08045">
 					<IncludedMemoryFiles>
 						<File Id="262827715" Language="SFX">
 							<ShortName>speech3.wav</ShortName>
@@ -563,7 +563,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="1386309779" Name="Speak_10" ObjectPath="\Events\Default Work Unit\Speak_10" DurationType="OneShot" DurationMin="2." DurationMax="2.875">
+				<Event Id="1386309779" Name="Speak_10" ObjectPath="\Events\Default Work Unit\Speak_10" DurationType="OneShot" DurationMin="2.118926" DurationMax="3.045957">
 					<IncludedMemoryFiles>
 						<File Id="262827715" Language="SFX">
 							<ShortName>speech3.wav</ShortName>
@@ -591,7 +591,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="1386309778" Name="Speak_11" ObjectPath="\Events\Default Work Unit\Speak_11" DurationType="OneShot" DurationMin="2." DurationMax="2.875">
+				<Event Id="1386309778" Name="Speak_11" ObjectPath="\Events\Default Work Unit\Speak_11" DurationType="OneShot" DurationMin="1.182358" DurationMax="1.699639">
 					<IncludedMemoryFiles>
 						<File Id="262827715" Language="SFX">
 							<ShortName>speech3.wav</ShortName>
@@ -619,7 +619,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="1386309777" Name="Speak_12" ObjectPath="\Events\Default Work Unit\Speak_12" DurationType="OneShot" DurationMin="2." DurationMax="2.875">
+				<Event Id="1386309777" Name="Speak_12" ObjectPath="\Events\Default Work Unit\Speak_12" DurationType="OneShot" DurationMin="3.54307" DurationMax="5.093163">
 					<IncludedMemoryFiles>
 						<File Id="262827715" Language="SFX">
 							<ShortName>speech3.wav</ShortName>
@@ -647,7 +647,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="1386309776" Name="Speak_13" ObjectPath="\Events\Default Work Unit\Speak_13" DurationType="OneShot" DurationMin="2." DurationMax="2.875">
+				<Event Id="1386309776" Name="Speak_13" ObjectPath="\Events\Default Work Unit\Speak_13" DurationType="OneShot" DurationMin="2.155964" DurationMax="3.099199">
 					<IncludedMemoryFiles>
 						<File Id="262827715" Language="SFX">
 							<ShortName>speech3.wav</ShortName>
@@ -675,7 +675,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="1386309783" Name="Speak_14" ObjectPath="\Events\Default Work Unit\Speak_14" DurationType="OneShot" DurationMin="2." DurationMax="2.875">
+				<Event Id="1386309783" Name="Speak_14" ObjectPath="\Events\Default Work Unit\Speak_14" DurationType="OneShot" DurationMin="1.633916" DurationMax="2.348754">
 					<IncludedMemoryFiles>
 						<File Id="262827715" Language="SFX">
 							<ShortName>speech3.wav</ShortName>
@@ -703,7 +703,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="1386309782" Name="Speak_15" ObjectPath="\Events\Default Work Unit\Speak_15" DurationType="OneShot" DurationMin="2." DurationMax="2.875">
+				<Event Id="1386309782" Name="Speak_15" ObjectPath="\Events\Default Work Unit\Speak_15" DurationType="OneShot" DurationMin="3.138336" DurationMax="4.511358">
 					<IncludedMemoryFiles>
 						<File Id="262827715" Language="SFX">
 							<ShortName>speech3.wav</ShortName>

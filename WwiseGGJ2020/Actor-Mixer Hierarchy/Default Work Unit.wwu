@@ -140,9 +140,6 @@
 				<ActorMixer Name="speachsoundcontainer" ID="{2D5A37C2-D507-4DD6-8182-713A46EA603E}" ShortID="191996319">
 					<PropertyList>
 						<Property Name="Highpass" Type="int16">
-							<ValueList>
-								<Value>41</Value>
-							</ValueList>
 							<ModifierList>
 								<ModifierInfo>
 									<Modifier Name="" ID="{AD21F94B-0848-4060-B41B-46CD2EDB05D4}"/>
@@ -150,9 +147,6 @@
 							</ModifierList>
 						</Property>
 						<Property Name="Lowpass" Type="int16">
-							<ValueList>
-								<Value>39</Value>
-							</ValueList>
 							<ModifierList>
 								<ModifierInfo>
 									<Modifier Name="" ID="{F823D555-A440-4A57-8BC8-76C12D3FC266}"/>
@@ -194,6 +188,15 @@
 						<Reference Name="Effect0" PluginName="Wwise Pitch Shifter" CompanyID="0" PluginID="136" PluginType="3">
 							<ObjectRef Name="Octave_Up" ID="{A98F423C-EC97-49D8-8698-445CE91F24B7}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
 						</Reference>
+						<Reference Name="Effect1" PluginName="Wwise Harmonizer" CompanyID="0" PluginID="138" PluginType="3">
+							<ObjectRef Name="New_Wwise_Harmonizer" ID="{BF7F4DA4-6F48-4E9A-9559-81A1E27635B1}" WorkUnitID="{493D6CC6-A13B-4783-992B-9488CEB29067}"/>
+						</Reference>
+						<Reference Name="Effect2" PluginName="Wwise Flanger" CompanyID="0" PluginID="125" PluginType="3">
+							<ObjectRef Name="New_Wwise_Flanger_01" ID="{2E8A73F3-E06B-4A57-86C4-836A9B65EE0F}" WorkUnitID="{493D6CC6-A13B-4783-992B-9488CEB29067}"/>
+						</Reference>
+						<Reference Name="Effect3" PluginName="Wwise Parametric EQ" CompanyID="0" PluginID="105" PluginType="3">
+							<ObjectRef Name="New_Wwise_Parametric_EQ" ID="{A9C4F241-CB8A-4EE1-8DE9-8A40BD4D74BC}" WorkUnitID="{493D6CC6-A13B-4783-992B-9488CEB29067}"/>
+						</Reference>
 						<Reference Name="OutputBus">
 							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{307BF1A3-0DE3-4C85-8D5A-B0BBD3D00D42}"/>
 						</Reference>
@@ -202,12 +205,22 @@
 						<RandomSequenceContainer Name="speak_01" ID="{782BF0E6-4C4C-4BC2-A04D-A80C752CD3DB}" ShortID="474098358">
 							<PropertyList>
 								<Property Name="GlobalOrPerObject" Type="int16" Value="0"/>
+								<Property Name="Lowpass" Type="int16">
+									<ValueList>
+										<Value>25</Value>
+									</ValueList>
+								</Property>
 								<Property Name="MaxSoundPerInstance" Type="int16">
 									<ValueList>
 										<Value>1</Value>
 									</ValueList>
 								</Property>
 								<Property Name="NormalOrShuffle" Type="int16" Value="0"/>
+								<Property Name="Pitch" Type="int32">
+									<ValueList>
+										<Value>680</Value>
+									</ValueList>
+								</Property>
 								<Property Name="UseMaxSoundPerInstance" Type="bool">
 									<ValueList>
 										<Value>True</Value>
@@ -373,12 +386,27 @@
 						<RandomSequenceContainer Name="speak_02" ID="{01D0D95D-CCC9-4581-B232-513DBC3D8FD4}" ShortID="893406602">
 							<PropertyList>
 								<Property Name="GlobalOrPerObject" Type="int16" Value="0"/>
+								<Property Name="Highpass" Type="int16">
+									<ValueList>
+										<Value>35</Value>
+									</ValueList>
+								</Property>
+								<Property Name="Lowpass" Type="int16">
+									<ValueList>
+										<Value>29</Value>
+									</ValueList>
+								</Property>
 								<Property Name="MaxSoundPerInstance" Type="int16">
 									<ValueList>
 										<Value>1</Value>
 									</ValueList>
 								</Property>
 								<Property Name="NormalOrShuffle" Type="int16" Value="0"/>
+								<Property Name="Pitch" Type="int32">
+									<ValueList>
+										<Value>-300</Value>
+									</ValueList>
+								</Property>
 								<Property Name="UseMaxSoundPerInstance" Type="bool">
 									<ValueList>
 										<Value>True</Value>
@@ -544,12 +572,27 @@
 						<RandomSequenceContainer Name="speak_03" ID="{238DBF30-FC44-4349-B217-21999E80133A}" ShortID="112659844">
 							<PropertyList>
 								<Property Name="GlobalOrPerObject" Type="int16" Value="0"/>
+								<Property Name="Highpass" Type="int16">
+									<ValueList>
+										<Value>51</Value>
+									</ValueList>
+								</Property>
+								<Property Name="Lowpass" Type="int16">
+									<ValueList>
+										<Value>17</Value>
+									</ValueList>
+								</Property>
 								<Property Name="MaxSoundPerInstance" Type="int16">
 									<ValueList>
 										<Value>1</Value>
 									</ValueList>
 								</Property>
 								<Property Name="NormalOrShuffle" Type="int16" Value="0"/>
+								<Property Name="Pitch" Type="int32">
+									<ValueList>
+										<Value>300</Value>
+									</ValueList>
+								</Property>
 								<Property Name="UseMaxSoundPerInstance" Type="bool">
 									<ValueList>
 										<Value>True</Value>
@@ -715,12 +758,27 @@
 						<RandomSequenceContainer Name="speak_04" ID="{C8BA617C-134B-448A-8495-5949368650AE}" ShortID="273837756">
 							<PropertyList>
 								<Property Name="GlobalOrPerObject" Type="int16" Value="0"/>
+								<Property Name="Lowpass" Type="int16">
+									<ValueList>
+										<Value>61</Value>
+									</ValueList>
+								</Property>
+								<Property Name="MakeUpGain" Type="Real64">
+									<ValueList>
+										<Value>9</Value>
+									</ValueList>
+								</Property>
 								<Property Name="MaxSoundPerInstance" Type="int16">
 									<ValueList>
 										<Value>1</Value>
 									</ValueList>
 								</Property>
 								<Property Name="NormalOrShuffle" Type="int16" Value="0"/>
+								<Property Name="Pitch" Type="int32">
+									<ValueList>
+										<Value>100</Value>
+									</ValueList>
+								</Property>
 								<Property Name="UseMaxSoundPerInstance" Type="bool">
 									<ValueList>
 										<Value>True</Value>
@@ -886,12 +944,27 @@
 						<RandomSequenceContainer Name="speak_05" ID="{C33E3154-D1C3-4A37-B4D1-6A7343FE3DE3}" ShortID="83739385">
 							<PropertyList>
 								<Property Name="GlobalOrPerObject" Type="int16" Value="0"/>
+								<Property Name="Highpass" Type="int16">
+									<ValueList>
+										<Value>53</Value>
+									</ValueList>
+								</Property>
+								<Property Name="MakeUpGain" Type="Real64">
+									<ValueList>
+										<Value>-1</Value>
+									</ValueList>
+								</Property>
 								<Property Name="MaxSoundPerInstance" Type="int16">
 									<ValueList>
 										<Value>1</Value>
 									</ValueList>
 								</Property>
 								<Property Name="NormalOrShuffle" Type="int16" Value="0"/>
+								<Property Name="Pitch" Type="int32">
+									<ValueList>
+										<Value>-150</Value>
+									</ValueList>
+								</Property>
 								<Property Name="UseMaxSoundPerInstance" Type="bool">
 									<ValueList>
 										<Value>True</Value>
@@ -1057,12 +1130,27 @@
 						<RandomSequenceContainer Name="speak_06" ID="{41CA6CC1-7AE2-4E1A-AE03-2E2BF88427BC}" ShortID="1010537221">
 							<PropertyList>
 								<Property Name="GlobalOrPerObject" Type="int16" Value="0"/>
+								<Property Name="Highpass" Type="int16">
+									<ValueList>
+										<Value>26</Value>
+									</ValueList>
+								</Property>
+								<Property Name="Lowpass" Type="int16">
+									<ValueList>
+										<Value>40</Value>
+									</ValueList>
+								</Property>
 								<Property Name="MaxSoundPerInstance" Type="int16">
 									<ValueList>
 										<Value>1</Value>
 									</ValueList>
 								</Property>
 								<Property Name="NormalOrShuffle" Type="int16" Value="0"/>
+								<Property Name="Pitch" Type="int32">
+									<ValueList>
+										<Value>-250</Value>
+									</ValueList>
+								</Property>
 								<Property Name="UseMaxSoundPerInstance" Type="bool">
 									<ValueList>
 										<Value>True</Value>
@@ -1228,12 +1316,27 @@
 						<RandomSequenceContainer Name="speak_07" ID="{72A246B9-998C-4524-8DBA-CA972514BC66}" ShortID="809599430">
 							<PropertyList>
 								<Property Name="GlobalOrPerObject" Type="int16" Value="0"/>
+								<Property Name="Lowpass" Type="int16">
+									<ValueList>
+										<Value>38</Value>
+									</ValueList>
+								</Property>
+								<Property Name="MakeUpGain" Type="Real64">
+									<ValueList>
+										<Value>-2</Value>
+									</ValueList>
+								</Property>
 								<Property Name="MaxSoundPerInstance" Type="int16">
 									<ValueList>
 										<Value>1</Value>
 									</ValueList>
 								</Property>
 								<Property Name="NormalOrShuffle" Type="int16" Value="0"/>
+								<Property Name="Pitch" Type="int32">
+									<ValueList>
+										<Value>-510</Value>
+									</ValueList>
+								</Property>
 								<Property Name="UseMaxSoundPerInstance" Type="bool">
 									<ValueList>
 										<Value>True</Value>
@@ -1399,12 +1502,22 @@
 						<RandomSequenceContainer Name="speak_08" ID="{DDFFDC8A-EBB3-4094-BB23-6DE90A24EE72}" ShortID="927139504">
 							<PropertyList>
 								<Property Name="GlobalOrPerObject" Type="int16" Value="0"/>
+								<Property Name="Lowpass" Type="int16">
+									<ValueList>
+										<Value>28</Value>
+									</ValueList>
+								</Property>
 								<Property Name="MaxSoundPerInstance" Type="int16">
 									<ValueList>
 										<Value>1</Value>
 									</ValueList>
 								</Property>
 								<Property Name="NormalOrShuffle" Type="int16" Value="0"/>
+								<Property Name="Pitch" Type="int32">
+									<ValueList>
+										<Value>430</Value>
+									</ValueList>
+								</Property>
 								<Property Name="UseMaxSoundPerInstance" Type="bool">
 									<ValueList>
 										<Value>True</Value>
@@ -1570,12 +1683,27 @@
 						<RandomSequenceContainer Name="speak_09" ID="{24A68E94-DAA0-4AAE-B092-3430AD98BD40}" ShortID="918417972">
 							<PropertyList>
 								<Property Name="GlobalOrPerObject" Type="int16" Value="0"/>
+								<Property Name="Highpass" Type="int16">
+									<ValueList>
+										<Value>61</Value>
+									</ValueList>
+								</Property>
+								<Property Name="MakeUpGain" Type="Real64">
+									<ValueList>
+										<Value>5</Value>
+									</ValueList>
+								</Property>
 								<Property Name="MaxSoundPerInstance" Type="int16">
 									<ValueList>
 										<Value>1</Value>
 									</ValueList>
 								</Property>
 								<Property Name="NormalOrShuffle" Type="int16" Value="0"/>
+								<Property Name="Pitch" Type="int32">
+									<ValueList>
+										<Value>560</Value>
+									</ValueList>
+								</Property>
 								<Property Name="UseMaxSoundPerInstance" Type="bool">
 									<ValueList>
 										<Value>True</Value>
@@ -1741,12 +1869,22 @@
 						<RandomSequenceContainer Name="speak_10" ID="{B055BAA3-2078-4885-9C04-4B4A089CD3C4}" ShortID="140567867">
 							<PropertyList>
 								<Property Name="GlobalOrPerObject" Type="int16" Value="0"/>
+								<Property Name="Lowpass" Type="int16">
+									<ValueList>
+										<Value>31</Value>
+									</ValueList>
+								</Property>
 								<Property Name="MaxSoundPerInstance" Type="int16">
 									<ValueList>
 										<Value>1</Value>
 									</ValueList>
 								</Property>
 								<Property Name="NormalOrShuffle" Type="int16" Value="0"/>
+								<Property Name="Pitch" Type="int32">
+									<ValueList>
+										<Value>-100</Value>
+									</ValueList>
+								</Property>
 								<Property Name="UseMaxSoundPerInstance" Type="bool">
 									<ValueList>
 										<Value>True</Value>
@@ -1912,12 +2050,22 @@
 						<RandomSequenceContainer Name="speak_11" ID="{4AB834BB-6FCF-4CBD-B9D7-CAF4FACF3887}" ShortID="570944580">
 							<PropertyList>
 								<Property Name="GlobalOrPerObject" Type="int16" Value="0"/>
+								<Property Name="Highpass" Type="int16">
+									<ValueList>
+										<Value>26</Value>
+									</ValueList>
+								</Property>
 								<Property Name="MaxSoundPerInstance" Type="int16">
 									<ValueList>
 										<Value>1</Value>
 									</ValueList>
 								</Property>
 								<Property Name="NormalOrShuffle" Type="int16" Value="0"/>
+								<Property Name="Pitch" Type="int32">
+									<ValueList>
+										<Value>910</Value>
+									</ValueList>
+								</Property>
 								<Property Name="UseMaxSoundPerInstance" Type="bool">
 									<ValueList>
 										<Value>True</Value>
@@ -2083,12 +2231,27 @@
 						<RandomSequenceContainer Name="speak_12" ID="{90C861EB-199D-4CFD-B9D1-9B5BAC5E9CAF}" ShortID="351741697">
 							<PropertyList>
 								<Property Name="GlobalOrPerObject" Type="int16" Value="0"/>
+								<Property Name="Highpass" Type="int16">
+									<ValueList>
+										<Value>56</Value>
+									</ValueList>
+								</Property>
+								<Property Name="MakeUpGain" Type="Real64">
+									<ValueList>
+										<Value>11</Value>
+									</ValueList>
+								</Property>
 								<Property Name="MaxSoundPerInstance" Type="int16">
 									<ValueList>
 										<Value>1</Value>
 									</ValueList>
 								</Property>
 								<Property Name="NormalOrShuffle" Type="int16" Value="0"/>
+								<Property Name="Pitch" Type="int32">
+									<ValueList>
+										<Value>-990</Value>
+									</ValueList>
+								</Property>
 								<Property Name="UseMaxSoundPerInstance" Type="bool">
 									<ValueList>
 										<Value>True</Value>
@@ -2254,12 +2417,27 @@
 						<RandomSequenceContainer Name="speak_13" ID="{8A3EF4A7-0010-4BD5-BFD4-E6E018193AEB}" ShortID="708116986">
 							<PropertyList>
 								<Property Name="GlobalOrPerObject" Type="int16" Value="0"/>
+								<Property Name="Lowpass" Type="int16">
+									<ValueList>
+										<Value>72</Value>
+									</ValueList>
+								</Property>
+								<Property Name="MakeUpGain" Type="Real64">
+									<ValueList>
+										<Value>27</Value>
+									</ValueList>
+								</Property>
 								<Property Name="MaxSoundPerInstance" Type="int16">
 									<ValueList>
 										<Value>1</Value>
 									</ValueList>
 								</Property>
 								<Property Name="NormalOrShuffle" Type="int16" Value="0"/>
+								<Property Name="Pitch" Type="int32">
+									<ValueList>
+										<Value>-130</Value>
+									</ValueList>
+								</Property>
 								<Property Name="UseMaxSoundPerInstance" Type="bool">
 									<ValueList>
 										<Value>True</Value>
@@ -2425,12 +2603,27 @@
 						<RandomSequenceContainer Name="speak_14" ID="{1555FF4F-43D3-4700-91BA-F546B0F18468}" ShortID="204699235">
 							<PropertyList>
 								<Property Name="GlobalOrPerObject" Type="int16" Value="0"/>
+								<Property Name="Highpass" Type="int16">
+									<ValueList>
+										<Value>75</Value>
+									</ValueList>
+								</Property>
+								<Property Name="MakeUpGain" Type="Real64">
+									<ValueList>
+										<Value>20</Value>
+									</ValueList>
+								</Property>
 								<Property Name="MaxSoundPerInstance" Type="int16">
 									<ValueList>
 										<Value>1</Value>
 									</ValueList>
 								</Property>
 								<Property Name="NormalOrShuffle" Type="int16" Value="0"/>
+								<Property Name="Pitch" Type="int32">
+									<ValueList>
+										<Value>350</Value>
+									</ValueList>
+								</Property>
 								<Property Name="UseMaxSoundPerInstance" Type="bool">
 									<ValueList>
 										<Value>True</Value>
@@ -2596,12 +2789,27 @@
 						<RandomSequenceContainer Name="speak_15" ID="{6AB6C4A7-4F93-4CE4-B4DB-B0F90F1E8C35}" ShortID="593963684">
 							<PropertyList>
 								<Property Name="GlobalOrPerObject" Type="int16" Value="0"/>
+								<Property Name="Highpass" Type="int16">
+									<ValueList>
+										<Value>26</Value>
+									</ValueList>
+								</Property>
+								<Property Name="Lowpass" Type="int16">
+									<ValueList>
+										<Value>42</Value>
+									</ValueList>
+								</Property>
 								<Property Name="MaxSoundPerInstance" Type="int16">
 									<ValueList>
 										<Value>1</Value>
 									</ValueList>
 								</Property>
 								<Property Name="NormalOrShuffle" Type="int16" Value="0"/>
+								<Property Name="Pitch" Type="int32">
+									<ValueList>
+										<Value>-780</Value>
+									</ValueList>
+								</Property>
 								<Property Name="UseMaxSoundPerInstance" Type="bool">
 									<ValueList>
 										<Value>True</Value>
@@ -2767,6 +2975,16 @@
 						<RandomSequenceContainer Name="speak_16" ID="{C12858AF-E8FC-4E0E-A87D-857C9AF39A97}" ShortID="844758472">
 							<PropertyList>
 								<Property Name="GlobalOrPerObject" Type="int16" Value="0"/>
+								<Property Name="Lowpass" Type="int16">
+									<ValueList>
+										<Value>52</Value>
+									</ValueList>
+								</Property>
+								<Property Name="MakeUpGain" Type="Real64">
+									<ValueList>
+										<Value>1</Value>
+									</ValueList>
+								</Property>
 								<Property Name="MaxSoundPerInstance" Type="int16">
 									<ValueList>
 										<Value>1</Value>
@@ -2938,6 +3156,11 @@
 						<RandomSequenceContainer Name="speak_17" ID="{92B446D7-1F9F-4397-AADA-4644EED9E56D}" ShortID="148364588">
 							<PropertyList>
 								<Property Name="GlobalOrPerObject" Type="int16" Value="0"/>
+								<Property Name="Highpass" Type="int16">
+									<ValueList>
+										<Value>51</Value>
+									</ValueList>
+								</Property>
 								<Property Name="MaxSoundPerInstance" Type="int16">
 									<ValueList>
 										<Value>1</Value>
@@ -3109,6 +3332,16 @@
 						<RandomSequenceContainer Name="speak_18" ID="{5E1735CD-4177-4A5A-84EF-FE9CB609BB95}" ShortID="723972329">
 							<PropertyList>
 								<Property Name="GlobalOrPerObject" Type="int16" Value="0"/>
+								<Property Name="Lowpass" Type="int16">
+									<ValueList>
+										<Value>67</Value>
+									</ValueList>
+								</Property>
+								<Property Name="MakeUpGain" Type="Real64">
+									<ValueList>
+										<Value>16</Value>
+									</ValueList>
+								</Property>
 								<Property Name="MaxSoundPerInstance" Type="int16">
 									<ValueList>
 										<Value>1</Value>
@@ -3280,6 +3513,16 @@
 						<RandomSequenceContainer Name="speak_19" ID="{36E2FAE8-5221-406B-866D-6415B91DC83E}" ShortID="824456809">
 							<PropertyList>
 								<Property Name="GlobalOrPerObject" Type="int16" Value="0"/>
+								<Property Name="Highpass" Type="int16">
+									<ValueList>
+										<Value>72</Value>
+									</ValueList>
+								</Property>
+								<Property Name="MakeUpGain" Type="Real64">
+									<ValueList>
+										<Value>21</Value>
+									</ValueList>
+								</Property>
 								<Property Name="MaxSoundPerInstance" Type="int16">
 									<ValueList>
 										<Value>1</Value>
@@ -4006,6 +4249,13 @@
 								<MediaID ID="324954291"/>
 							</MediaIDList>
 						</AudioFileSource>
+						<AudioFileSource Name="MusicDayIntro" ID="{163C45CD-EDF0-4563-B85A-BF0CDAB23BC3}">
+							<Language>SFX</Language>
+							<AudioFile>MusicDayIntro.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="381931166"/>
+							</MediaIDList>
+						</AudioFileSource>
 					</ChildrenList>
 					<ObjectLists/>
 					<ActiveSourceList>
@@ -4062,6 +4312,52 @@
 					<ObjectLists/>
 					<ActiveSourceList>
 						<ActiveSource Name="MusicCorkboard" ID="{D878D567-C26D-41ED-8CC3-38B3CF5A9144}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="MusicDayIntroSFX" ID="{F0BBBC8A-B2A8-4AC0-8FD6-5457B3832AF8}" ShortID="757901283">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{CDCD3BA4-22DA-4D0F-B878-FE934CC7D525}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{307BF1A3-0DE3-4C85-8D5A-B0BBD3D00D42}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="MusicDayIntroSFX" ID="{B4414950-5EE0-45F1-B497-493B2E960B7C}">
+							<Language>SFX</Language>
+							<AudioFile>MusicDayIntroSFX.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="333707637"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ObjectLists/>
+					<ActiveSourceList>
+						<ActiveSource Name="MusicDayIntroSFX" ID="{B4414950-5EE0-45F1-B497-493B2E960B7C}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="MusicNightIntroSFX" ID="{E7628545-A24F-4320-8733-76C14E16B510}" ShortID="661101218">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{CDCD3BA4-22DA-4D0F-B878-FE934CC7D525}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{307BF1A3-0DE3-4C85-8D5A-B0BBD3D00D42}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="MusicNightIntroSFX" ID="{68391B0F-0CD8-4403-B835-F741A1A683DE}">
+							<Language>SFX</Language>
+							<AudioFile>MusicNightIntroSFX.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="460683458"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ObjectLists/>
+					<ActiveSourceList>
+						<ActiveSource Name="MusicNightIntroSFX" ID="{68391B0F-0CD8-4403-B835-F741A1A683DE}" Platform="Linked"/>
 					</ActiveSourceList>
 				</Sound>
 			</ChildrenList>
