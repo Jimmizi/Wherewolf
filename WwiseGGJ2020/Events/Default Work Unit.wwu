@@ -711,6 +711,28 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="MusicDayIntro" ID="{1F71BCB0-F98D-4E5E-8455-6D60BE73B969}">
+					<ChildrenList>
+						<Action Name="" ID="{3DBD52E3-7CAD-4A7E-82EC-8A8D959350BA}" ShortID="273109126">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="MusicDayIntroSFX" ID="{F0BBBC8A-B2A8-4AC0-8FD6-5457B3832AF8}" WorkUnitID="{A81D3656-2325-46B3-9A64-828E3D72236B}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="MusicNightIntro" ID="{CB599F04-1820-4DA8-9FA7-721EBA2281E4}">
+					<ChildrenList>
+						<Action Name="" ID="{FC12E525-544B-4A60-9381-D51CA9B8498C}" ShortID="114559820">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="MusicNightIntroSFX" ID="{E7628545-A24F-4320-8733-76C14E16B510}" WorkUnitID="{A81D3656-2325-46B3-9A64-828E3D72236B}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>
