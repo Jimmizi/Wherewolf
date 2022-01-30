@@ -1,5 +1,7 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI.Extensions;
 
 public class CaseFileRenderer : MonoBehaviour {
     
@@ -8,8 +10,11 @@ public class CaseFileRenderer : MonoBehaviour {
     public GameObject CharacterAttributesPrefab;
     public GameObject StatementPrefab;
     public Canvas Canvas;
+    public DropDownList charactersDropdown;
 
-    private List<CaseFilePageRenderer> _pages;
+    public Dictionary<Character, List<CaseFilePageRenderer>> CharacterPagesMap = new Dictionary<Character, List<CaseFilePageRenderer>>();
+
+    private Character characterPagesToDisplay = null;
 
     private static readonly List<string> _statements = new List<string> {
         "This is a first statement.",
@@ -27,7 +32,7 @@ public class CaseFileRenderer : MonoBehaviour {
         "This is a third statement.",
     };
 
-    private CaseFilePageRenderer NewPage() {
+    private CaseFilePageRenderer NewPage(Character c) {
         if (PagePrefab == null) return null;
 
         GameObject gameObject = Instantiate(PagePrefab); //, transform);
@@ -37,22 +42,129 @@ public class CaseFileRenderer : MonoBehaviour {
         
         CaseFilePageRenderer pageRenderer = gameObject.GetComponent<CaseFilePageRenderer>();
         pageRenderer.SetCanvas(Canvas);
-        _pages.Add(pageRenderer);
+        CharacterPagesMap[c].Add(pageRenderer);
         
         return pageRenderer;
     }
+
+    private void HideAll()
+    {
+        foreach(var pagelist in CharacterPagesMap)
+        {
+            foreach(var page in pagelist.Value)
+            {
+                page.gameObject.SetActive(false);
+            }
+        }
+    }
+
+    private void ShowForCharacter(Character c)
+    {
+        foreach (var page in CharacterPagesMap[c])
+        {
+            page.gameObject.SetActive(true);
+        }
+    }
+    private void HideForCharacter(Character c)
+    {
+        foreach (var page in CharacterPagesMap[c])
+        {
+            page.gameObject.SetActive(false);
+        }
+    }
+
+    private void OnChangedCharacterSelection(int index)
+    {
+        
+    }
+
+    public void AddClueToFile(ClueObject clue)
+    {
+        if (!CharacterPagesMap.ContainsKey(clue.RelatesToCharacter))
+        {
+            CharacterPagesMap.Add(clue.RelatesToCharacter, new List<CaseFilePageRenderer>());
+        }
+
+        AddStatement(clue.RelatesToCharacter, clue);
+    }
+
+    private void AddStatement(Character c, ClueObject clue)
+    {
+        CaseFilePageRenderer currentPage;
+
+        if (CharacterPagesMap[c].Count == 0)
+        {
+            currentPage = NewPage(c);
+
+            // First page gen
+
+            GameObject attributesObject = Instantiate(CharacterAttributesPrefab);
+            RectTransform attributesRectTransform = attributesObject.GetComponent<RectTransform>();
+
+            CaseFileAttributesCollection attributeCollection = attributesObject.GetComponent<CaseFileAttributesCollection>();
+            if (attributeCollection)
+            {
+                attributeCollection.NameText.text = c.Name;
+                attributeCollection.AgeText.text = c.Age.ToString();
+                attributeCollection.ProfilePicture.SetAttributes(CharacterGenerator.Instance.AttributesForEmoteType(c.GetHeadshotEmoteSubType()));
+            }
+
+            currentPage.AddSection(attributesRectTransform);
+
+            PopulateCharactersDropdown();
+        }
+        else
+        {
+            currentPage = CharacterPagesMap[c][CharacterPagesMap[c].Count - 1];
+        }
+
+        GameObject statementObject = Instantiate(StatementPrefab);
+        RectTransform statementRectTransform = statementObject.GetComponent<RectTransform>();
+        CaseFileStatementRenderer statementRenderer = statementObject.GetComponent<CaseFileStatementRenderer>();
+
+        TextMeshProUGUI statementName = statementRenderer.GetComponentInChildren<TextMeshProUGUI>();
+        if(statementName)
+        {
+            statementName.text = string.Format("Day {0}, {1}", Service.Game.CurrentDay, Service.Game.CurrentTimeOfDay.ToString());
+        }
+
+
+        statementRenderer.Render(clue.Emotes);
+
+        if (!currentPage.TryAddSection(statementRectTransform))
+        {
+            currentPage = NewPage(c);
+            currentPage.AddSection(statementRectTransform);
+        }
+
+        for (int i = CharacterPagesMap[c].Count - 1; i >= 0; i--)
+        {
+            CharacterPagesMap[c][i].transform.SetParent(transform, false);
+            CharacterPagesMap[c][i].gameObject.SetActive(false);
+        }
+    }
     
-    private void GenerateFile() {
-        CaseFilePageRenderer currentPage = NewPage();
+    private void GenerateFile(Character c) 
+    {
+        CaseFilePageRenderer currentPage = NewPage(c);
         
         /* Render attributes at the top of the first page. */
         GameObject attributesObject = Instantiate(CharacterAttributesPrefab);
         RectTransform attributesRectTransform = attributesObject.GetComponent<RectTransform>();
-        
+
+        CaseFileAttributesCollection attributeCollection = attributesObject.GetComponent<CaseFileAttributesCollection>();
+        if(attributeCollection)
+        {
+            attributeCollection.NameText.text = c.Name;
+            attributeCollection.AgeText.text = c.Age.ToString();
+            attributeCollection.ProfilePicture.SetAttributes(CharacterGenerator.Instance.AttributesForEmoteType(c.GetHeadshotEmoteSubType()));
+        }
+
         currentPage.AddSection(attributesRectTransform);
         
         /* Render statements on succesive pages. */
-        foreach (string statement in _statements) {
+        foreach (string statement in _statements) 
+        {
             GameObject statementObject = Instantiate(StatementPrefab);
             RectTransform statementRectTransform = statementObject.GetComponent<RectTransform>();
             CaseFileStatementRenderer statementRenderer = statementObject.GetComponent<CaseFileStatementRenderer>();
@@ -61,7 +173,8 @@ public class CaseFileRenderer : MonoBehaviour {
             {
                 if (statementRenderer != null)
                 {
-                    List<Emote> emotes = new List<Emote> {
+                    List<Emote> emotes = new List<Emote> 
+                    {
                     Service.InfoManager.EmoteMapBySubType[(Emote.EmoteSubType) Random.Range(0, 50)],
                     Service.InfoManager.EmoteMapBySubType[(Emote.EmoteSubType) Random.Range(0, 50)],
                     Service.InfoManager.EmoteMapBySubType[(Emote.EmoteSubType) Random.Range(0, 50)],
@@ -73,8 +186,10 @@ public class CaseFileRenderer : MonoBehaviour {
                     statementRenderer.Render(emotes);
                 }
             }
-            else if (statementRenderer != null) {
-                List<Emote> emotes = new List<Emote> {
+            else if (statementRenderer != null) 
+            {
+                List<Emote> emotes = new List<Emote> 
+                {
                     new Emote((Emote.EmoteSubType) Random.Range(0, 50)),
                     new Emote((Emote.EmoteSubType) Random.Range(0, 50)),
                     new Emote((Emote.EmoteSubType) Random.Range(0, 50)),
@@ -86,19 +201,116 @@ public class CaseFileRenderer : MonoBehaviour {
                 statementRenderer.Render(emotes);
             }
             
-            if (!currentPage.TryAddSection(statementRectTransform)) {
-                currentPage = NewPage();
+            if (!currentPage.TryAddSection(statementRectTransform)) 
+            {
+                currentPage = NewPage(c);
                 currentPage.AddSection(statementRectTransform);
             }
         }
         
-        for (int i = _pages.Count - 1; i >= 0; i--) {
-            _pages[i].transform.SetParent(transform, false);
+        for (int i = CharacterPagesMap[c].Count - 1; i >= 0; i--) 
+        {
+            CharacterPagesMap[c][i].transform.SetParent(transform, false);
+            CharacterPagesMap[c][i].gameObject.SetActive(false);
         }
     }
 
+    private void Awake()
+    {
+        Service.CaseFile = this;
+        charactersDropdown.OnSelectionChanged.AddListener(OnChangedCharacterSelection);
+    }
+
     private void Start() {
-        _pages = new List<CaseFilePageRenderer>();
-        GenerateFile();
+        
+        PopulateCharactersDropdown();
+    }
+
+    private void Update()
+    {
+        if (charactersDropdown != null)
+        {
+            DropDownListItem<Character> itemToUse = (DropDownListItem<Character>)charactersDropdown.SelectedItem;
+            if (itemToUse == null || itemToUse.Data == null)
+            {
+                return;
+            }
+
+            if(itemToUse.Data.Name == "None")
+            {
+                HideAll();
+                characterPagesToDisplay = null;
+                return;
+            }
+
+            if (characterPagesToDisplay != itemToUse.Data)
+            {
+                HideAll();
+
+                characterPagesToDisplay = itemToUse.Data;
+                ShowForCharacter(characterPagesToDisplay);
+            }
+        }
+    }
+
+    public void AddCharacterFirstPage(Character c)
+    {
+        if (CharacterPagesMap.ContainsKey(c))
+        {
+            return;
+        }
+
+        CharacterPagesMap.Add(c, new List<CaseFilePageRenderer>());
+        CaseFilePageRenderer currentPage = NewPage(c);
+
+        // First page gen
+
+        GameObject attributesObject = Instantiate(CharacterAttributesPrefab);
+        RectTransform attributesRectTransform = attributesObject.GetComponent<RectTransform>();
+
+        CaseFileAttributesCollection attributeCollection = attributesObject.GetComponent<CaseFileAttributesCollection>();
+        if (attributeCollection)
+        {
+            attributeCollection.NameText.text = c.Name;
+            attributeCollection.AgeText.text = c.Age.ToString();
+            attributeCollection.ProfilePicture.SetAttributes(CharacterGenerator.Instance.AttributesForEmoteType(c.GetHeadshotEmoteSubType()));
+        }
+
+        currentPage.AddSection(attributesRectTransform);
+
+        for (int i = CharacterPagesMap[c].Count - 1; i >= 0; i--)
+        {
+            CharacterPagesMap[c][i].transform.SetParent(transform, false);
+            CharacterPagesMap[c][i].gameObject.SetActive(false);
+        }
+
+        PopulateCharactersDropdown();
+    }
+
+    public void BringUpPages()
+    {
+        PopulateCharactersDropdown();
+    }
+
+    public void PopulateCharactersDropdown()
+    {
+        if (charactersDropdown == null) return;
+
+        HideAll();
+
+        charactersDropdown.ResetItems();
+
+        // Add a dummy character so we can always select to get a random character clue
+        Character dummyCharacter = new Character()
+        {
+            Name = "None"
+        };
+
+        charactersDropdown.AddItem(new DropDownListItem<Character>(data: dummyCharacter));
+
+        foreach (var c in CharacterPagesMap)
+        {
+            charactersDropdown.AddItem(new DropDownListItem<Character>(data: c.Key));
+        }
     }
 }

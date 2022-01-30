@@ -70,7 +70,14 @@ public class WerewolfGame : MonoBehaviour
     [SerializeField]
     public Text DeathAnnouncementText;
 
+    [SerializeField]
+    public GameObject InvestigateToolsCanvas;
+
+    [SerializeField]
+    public GameObject CorkboardGo;
+
     public GameObject corkboardOpenerGo;
+    public GameObject corkboardCloserGo;
 
     public GameState CurrentState = GameState.GeneratePopulation;
     private GameState NextState = InvalidState;
@@ -125,12 +132,18 @@ public class WerewolfGame : MonoBehaviour
     public void OpenInvestigateTools()
     {
         corkboardOpenerGo?.SetActive(false);
+        corkboardCloserGo.SetActive(true);
         AreInvestigateToolsOpen = true;
+        InvestigateToolsCanvas.SetActive(true);
+        CorkboardGo.SetActive(true);
     }
     public void CloseInvestigateTools()
     {
         corkboardOpenerGo?.SetActive(true);
+        corkboardCloserGo.SetActive(false);
         AreInvestigateToolsOpen = false;
+        InvestigateToolsCanvas.SetActive(false);
+        CorkboardGo.SetActive(false);
     }
 
 
@@ -162,7 +175,12 @@ public class WerewolfGame : MonoBehaviour
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
-    // Start is called before the first frame update
+    private void Start()
+    {
+        InvestigateToolsCanvas.SetActive(false);
+        CorkboardGo.SetActive(false);
+    }
+
     void Update()
     {
         #region DEBUG
@@ -836,6 +854,10 @@ public class WerewolfGame : MonoBehaviour
         {
             case SubState.Start:
                 {
+                    CloseInvestigateTools();
+                    corkboardOpenerGo.SetActive(false);
+                    corkboardCloserGo.SetActive(false);
+
                     SetSummaryScreenOpen();
                     CurrentSubState++;
                     break;
@@ -933,8 +955,21 @@ public class WerewolfGame : MonoBehaviour
         }
     }
 
-    public void ProgressGameFromExternal()
+    public void ProgressGameFromExternal(bool fromUI = false)
     {
+        if(fromUI)
+        {
+            if(AreInvestigateToolsOpen)
+            {
+                return;
+            }
+
+            if(Service.Player.IsTalkingToCharacter)
+            {
+                return;
+            }
+        }
+
         ProgressGame();
     }
     void ProgressGame(bool bProgressFromFinish = false)
@@ -987,6 +1022,8 @@ public class WerewolfGame : MonoBehaviour
         if(CurrentState != GameState.PlayerChoseToStake)
         {
             CloseInvestigateTools();
+            corkboardOpenerGo.SetActive(false);
+            corkboardCloserGo.SetActive(false);
             c.ChosenForStakeTarget = true;
             characterStaked = c;
             HasTriggeredStakeAction = true;

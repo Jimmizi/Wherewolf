@@ -17,7 +17,8 @@ public static class Service
     public static TransitionScreenManager TransitionScreen;
     public static LocationManager Location;
     public static LightingManager Lighting;
-    
+    public static CaseFileRenderer CaseFile;
+
     public static DialogueManager DialogueManager;
     public static CharacterGenerator CharacterGenerator;
     public static TooltipManager TooltipManager;

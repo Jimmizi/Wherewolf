@@ -66,7 +66,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: 27d1893c93ae55499ad02c34935af1e0
     GuidInternal: 
-    m_lastTime: -8585581033819841078
+    m_lastTime: -8585580931854456750
     List:
     - name: DayCycle
       guid: bc075cfc31de414393ea76b6a8e3e228
@@ -150,7 +150,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: 36187f795aed7446a84c500d367dfcf3
     GuidInternal: 
-    m_lastTime: -8585581033833175935
+    m_lastTime: -8585580931854647009
     List:
     - name: AmbienceDay
       guid: 5b6ed9ad00e9af4b8714261614d3ada4
@@ -186,9 +186,9 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
-    - name: BackToGameTitle
-      guid: 48d8c601e41f2041b77c042906706604
-      id: 1272348217
+    - name: BackToTitle
+      guid: 8fcea9b060504748b499b68f141fdd85
+      id: 1693860815
       PathAndIcons:
       - ElementName: Events
         ObjectType: 5
@@ -196,10 +196,10 @@ MonoBehaviour:
       - ElementName: Default Work Unit
         ObjectType: 12
         guid: 36187f795aed7446a84c500d367dfcf3
-      - ElementName: BackToGameTitle
+      - ElementName: BackToTitle
         ObjectType: 3
-        guid: 48d8c601e41f2041b77c042906706604
-      Path: Events\Default Work Unit\BackToGameTitle
+        guid: 8fcea9b060504748b499b68f141fdd85
+      Path: Events\Default Work Unit\BackToTitle
       maxAttenuation: 0
       maxDuration: 0
       minDuration: 0
@@ -237,6 +237,23 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
+    - name: DeathAnnounce
+      guid: c0edbe3a788b0248b85ea658d6101730
+      id: 4148867748
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 36187f795aed7446a84c500d367dfcf3
+      - ElementName: DeathAnnounce
+        ObjectType: 3
+        guid: c0edbe3a788b0248b85ea658d6101730
+      Path: Events\Default Work Unit\DeathAnnounce
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
     - name: DiscoveryDay
       guid: 8d19a217f5e63344b43a6ac6dbb65e32
       id: 2538410761
@@ -339,6 +356,23 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
+    - name: MusicCorkboardSfx
+      guid: d35f60b19109024c8673b164b6b53042
+      id: 2716737400
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 36187f795aed7446a84c500d367dfcf3
+      - ElementName: MusicCorkboardSfx
+        ObjectType: 3
+        guid: d35f60b19109024c8673b164b6b53042
+      Path: Events\Default Work Unit\MusicCorkboardSfx
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
     - name: MusicDay
       guid: cdff53690f5f5948ad84065244e07bf4
       id: 3155631888
@@ -356,6 +390,23 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
+    - name: MusicDaySfx
+      guid: 6356709c725a4446bf1b0c4ac537dd6e
+      id: 2248987061
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 36187f795aed7446a84c500d367dfcf3
+      - ElementName: MusicDaySfx
+        ObjectType: 3
+        guid: 6356709c725a4446bf1b0c4ac537dd6e
+      Path: Events\Default Work Unit\MusicDaySfx
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
     - name: MusicNight
       guid: ec4ca39e5bf3ef4d84b25152605a74fc
       id: 3028680700
@@ -370,6 +421,40 @@ MonoBehaviour:
         ObjectType: 3
         guid: ec4ca39e5bf3ef4d84b25152605a74fc
       Path: Events\Default Work Unit\MusicNight
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: MusicNightSfx
+      guid: 5bd41d45c3b5a1488420c3c045850def
+      id: 1238766433
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 36187f795aed7446a84c500d367dfcf3
+      - ElementName: MusicNightSfx
+        ObjectType: 3
+        guid: 5bd41d45c3b5a1488420c3c045850def
+      Path: Events\Default Work Unit\MusicNightSfx
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: MusicTitleSfx
+      guid: 9f174de54036f04ea746b49a2d80818f
+      id: 1736361041
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 36187f795aed7446a84c500d367dfcf3
+      - ElementName: MusicTitleSfx
+        ObjectType: 3
+        guid: 9f174de54036f04ea746b49a2d80818f
+      Path: Events\Default Work Unit\MusicTitleSfx
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
@@ -781,6 +866,40 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 2.875
       minDuration: 2
+    - name: StartDay
+      guid: 84199022c62e2a46b10f32972d40c528
+      id: 4004831775
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 36187f795aed7446a84c500d367dfcf3
+      - ElementName: StartDay
+        ObjectType: 3
+        guid: 84199022c62e2a46b10f32972d40c528
+      Path: Events\Default Work Unit\StartDay
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: StartNight
+      guid: 40d9ff96214aa94f890261d5f629f360
+      id: 2373353387
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 36187f795aed7446a84c500d367dfcf3
+      - ElementName: StartNight
+        ObjectType: 3
+        guid: 40d9ff96214aa94f890261d5f629f360
+      Path: Events\Default Work Unit\StartNight
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
     - name: WinDay
       guid: d4c89a7674f57548946491df7ea02e41
       id: 2364012353
@@ -903,7 +1022,7 @@ MonoBehaviour:
     m_lastTime: -8585588864557360343
     List: []
   ExpandedFileSystemItemIds: 
-  ExpandedWaapiItemIds: 01000000050000000600000007000000080000001c0000001d0000001e0000001f0000002000000021000000220000003100000032000000
+  ExpandedWaapiItemIds: 01000000050000000600000007000000080000001c0000001d0000001e0000001f000000200000002100000022000000310000003200000038000000390000006e0000006f000000
   AutoSyncSelection: 0
   autoPopulateEnabled: 1
   currentDataSource: 0

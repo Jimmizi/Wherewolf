@@ -4,7 +4,9 @@ public abstract class BaseCharacterRenderer : MonoBehaviour {
     
     protected CharacterAttributes _characterAttributes;
     
-    protected abstract void Assemble(); 
+    protected abstract void Assemble();
+
+    public bool ValidCharacterRenderer = false;
 
     public virtual void SetAttributes(CharacterAttributes attributes) {
         _characterAttributes = attributes;

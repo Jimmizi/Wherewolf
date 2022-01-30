@@ -66,6 +66,14 @@ public class PlayerManager : MonoBehaviour
             NumberOfCluesAboutWerewolf++;
         }
 
+        MemoFactory.instance.CreateNew(givenClue.Emotes, Vector2.zero, true);
+
+        // DON'T add clues given by ghosts, otherwise it shows on someones record that they're the werewolf
+        if (givenClue.Type != ClueObject.ClueType.VisualFromGhost)
+        {
+            Service.CaseFile.AddClueToFile(givenClue);
+        }
+
         CollectedClues.Add(givenClue);
 
         if (!SortedByDayAndPhaseClues.ContainsKey(Service.Game.CurrentDay))

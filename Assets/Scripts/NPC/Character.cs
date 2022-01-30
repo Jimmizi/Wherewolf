@@ -220,6 +220,7 @@ public class Character
     public void SetNameDiscovered()
     {
         Service.InfoManager.EmoteMapBySubType[GetHeadshotEmoteSubType()].HasDiscovered = true;
+        Service.CaseFile.AddCharacterFirstPage(this);
     }
 
     public string GetName()

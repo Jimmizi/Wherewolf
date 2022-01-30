@@ -20,8 +20,12 @@ public class EmoteRenderer : MonoBehaviour, IEmoteRenderer, IPointerEnterHandler
     }
 
     private void Awake() {
-        if (CharacterEmoteRenderer != null) {
-            CharacterEmoteRenderer.gameObject.SetActive(false);
+        if (CharacterEmoteRenderer != null) 
+        {
+            if (!CharacterEmoteRenderer.ValidCharacterRenderer)
+            {
+                CharacterEmoteRenderer.gameObject.SetActive(false);
+            }
         }
     }
 
@@ -46,10 +50,13 @@ public class EmoteRenderer : MonoBehaviour, IEmoteRenderer, IPointerEnterHandler
             case Emote.EmoteSubType.CharacterHeadshot_17:
             case Emote.EmoteSubType.CharacterHeadshot_18:
             case Emote.EmoteSubType.CharacterHeadshot_19:
-            case Emote.EmoteSubType.CharacterHeadshot_20: {
+            case Emote.EmoteSubType.CharacterHeadshot_20: 
+                {
                 Image.gameObject.SetActive(false);
-                if (CharacterEmoteRenderer != null && CharacterGenerator.Instance != null) {
+                if (CharacterEmoteRenderer != null && CharacterGenerator.Instance != null) 
+                {
                     CharacterEmoteRenderer.gameObject.SetActive(true);
+                    CharacterEmoteRenderer.ValidCharacterRenderer = true;
                     CharacterEmoteRenderer.SetAttributes(CharacterGenerator.Instance.AttributesForEmoteType(type));
                 }
 
