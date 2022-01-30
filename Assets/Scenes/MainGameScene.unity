@@ -361,7 +361,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6546185642195876980, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
       propertyPath: DebugDisableAudio
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8271228848285813583, guid: 455d980b05d2569408bd9875992b0c68, type: 3}
       propertyPath: m_AnchorMax.y

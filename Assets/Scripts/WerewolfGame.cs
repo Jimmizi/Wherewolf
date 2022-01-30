@@ -131,6 +131,8 @@ public class WerewolfGame : MonoBehaviour
     public bool AreInvestigateToolsOpen = false;
     public void OpenInvestigateTools()
     {
+        Service.Audio.PlayUIClick();
+
         corkboardOpenerGo?.SetActive(false);
         corkboardCloserGo.SetActive(true);
         AreInvestigateToolsOpen = true;
@@ -139,6 +141,7 @@ public class WerewolfGame : MonoBehaviour
     }
     public void CloseInvestigateTools()
     {
+        Service.Audio.PlayUIClick();
         corkboardOpenerGo?.SetActive(true);
         corkboardCloserGo.SetActive(false);
         AreInvestigateToolsOpen = false;
