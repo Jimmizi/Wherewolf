@@ -11,7 +11,7 @@
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="1355168291" Language="SFX" Hash="147798213">
+		<SoundBank Id="1355168291" Language="SFX" Hash="3402823713">
 			<ObjectPath>Init</ObjectPath>
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
@@ -19,7 +19,7 @@
 				<GameParameter Id="4179668880" Name="master_volume" ObjectPath="\Game Parameters\Default Work Unit\master_volume"/>
 			</GameParameters>
 		</SoundBank>
-		<SoundBank Id="2276007709" Language="SFX" Hash="3603879819">
+		<SoundBank Id="2276007709" Language="SFX" Hash="3494586372">
 			<ObjectPath>\SoundBanks\Default Work Unit\NightCycle</ObjectPath>
 			<ShortName>NightCycle</ShortName>
 			<Path>NightCycle.bnk</Path>
@@ -49,29 +49,19 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="3028680700" Name="MusicNight" ObjectPath="\Events\Default Work Unit\MusicNight" DurationType="OneShot" DurationMin="69.818184" DurationMax="69.818184">
-					<IncludedMemoryFiles>
-						<File Id="746160009" Language="SFX">
-							<ShortName>MusicNight.wav</ShortName>
-							<Path>SFX\MusicNight_D79FB2B7.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
-				</Event>
-				<Event Id="3670738982" Name="StartTheNight" ObjectPath="\Events\Default Work Unit\StartTheNight" DurationType="Infinite">
-					<IncludedMemoryFiles>
-						<File Id="25883968" Language="SFX">
-							<ShortName>AmbienceNight.wav</ShortName>
-							<Path>SFX\AmbienceNight_D79FB2B7.wem</Path>
-						</File>
-						<File Id="746160009" Language="SFX">
-							<ShortName>MusicNight.wav</ShortName>
-							<Path>SFX\MusicNight_D79FB2B7.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
-				</Event>
 			</IncludedEvents>
+			<IncludedMemoryFiles>
+				<File Id="746160009" Language="SFX">
+					<ShortName>MusicNight.wav</ShortName>
+					<Path>SFX\MusicNight_D79FB2B7.wem</Path>
+				</File>
+				<File Id="880405823" Language="SFX">
+					<ShortName>MusicNightIntro.wav</ShortName>
+					<Path>SFX\MusicNightIntro_D79FB2B7.wem</Path>
+				</File>
+			</IncludedMemoryFiles>
 		</SoundBank>
-		<SoundBank Id="2769481441" Language="SFX" Hash="2803150784">
+		<SoundBank Id="2769481441" Language="SFX" Hash="1766702094">
 			<ObjectPath>\SoundBanks\Default Work Unit\DayCycle</ObjectPath>
 			<ShortName>DayCycle</ShortName>
 			<Path>DayCycle.bnk</Path>
@@ -101,26 +91,6 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="3155631888" Name="MusicDay" ObjectPath="\Events\Default Work Unit\MusicDay" DurationType="OneShot" DurationMin="64." DurationMax="64.">
-					<IncludedMemoryFiles>
-						<File Id="403956677" Language="SFX">
-							<ShortName>DayMusicPH.wav</ShortName>
-							<Path>SFX\DayMusicPH_D79FB2B7.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
-				</Event>
-				<Event Id="2972317186" Name="StartTheDay" ObjectPath="\Events\Default Work Unit\StartTheDay" DurationType="Infinite">
-					<IncludedMemoryFiles>
-						<File Id="221210545" Language="SFX">
-							<ShortName>AmbienceDay.wav</ShortName>
-							<Path>SFX\AmbienceDay_D79FB2B7.wem</Path>
-						</File>
-						<File Id="403956677" Language="SFX">
-							<ShortName>DayMusicPH.wav</ShortName>
-							<Path>SFX\DayMusicPH_D79FB2B7.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
-				</Event>
 				<Event Id="2364012353" Name="WinDay" ObjectPath="\Events\Default Work Unit\WinDay" DurationType="OneShot" DurationMin="6.5" DurationMax="6.5">
 					<IncludedMemoryFiles>
 						<File Id="830455018" Language="SFX">
@@ -130,8 +100,18 @@
 					</IncludedMemoryFiles>
 				</Event>
 			</IncludedEvents>
+			<IncludedMemoryFiles>
+				<File Id="324954291" Language="SFX">
+					<ShortName>MusicDay.wav</ShortName>
+					<Path>SFX\MusicDay_D79FB2B7.wem</Path>
+				</File>
+				<File Id="381931166" Language="SFX">
+					<ShortName>MusicDayIntro.wav</ShortName>
+					<Path>SFX\MusicDayIntro_D79FB2B7.wem</Path>
+				</File>
+			</IncludedMemoryFiles>
 		</SoundBank>
-		<SoundBank Id="3062523257" Language="SFX" Hash="1161438855">
+		<SoundBank Id="3062523257" Language="SFX" Hash="3317566131">
 			<ObjectPath>\SoundBanks\Default Work Unit\Misc</ObjectPath>
 			<ShortName>Misc</ShortName>
 			<Path>Misc.bnk</Path>
@@ -145,6 +125,12 @@
 					</IncludedMemoryFiles>
 				</Event>
 			</IncludedEvents>
+			<IncludedMemoryFiles>
+				<File Id="315214103" Language="SFX">
+					<ShortName>MusicCorkboard.wav</ShortName>
+					<Path>SFX\MusicCorkboard_D79FB2B7.wem</Path>
+				</File>
+			</IncludedMemoryFiles>
 		</SoundBank>
 		<SoundBank Id="3150299886" Language="SFX" Hash="3115725571">
 			<ObjectPath>\SoundBanks\Default Work Unit\OneShots</ObjectPath>
@@ -209,12 +195,544 @@
 				</Event>
 			</IncludedEvents>
 		</SoundBank>
-		<SoundBank Id="3313685232" Language="SFX" Hash="618332901">
+		<SoundBank Id="3313685232" Language="SFX" Hash="2143399271">
 			<ObjectPath>\SoundBanks\Default Work Unit\Voices</ObjectPath>
 			<ShortName>Voices</ShortName>
 			<Path>Voices.bnk</Path>
 			<IncludedEvents>
-				<Event Id="4245458931" Name="Speech" ObjectPath="\Events\Default Work Unit\Speech" DurationType="OneShot" DurationMin="1.409321" DurationMax="4.263077">
+				<Event Id="1369532193" Name="Speak_01" ObjectPath="\Events\Default Work Unit\Speak_01" DurationType="OneShot" DurationMin="2." DurationMax="2.875">
+					<IncludedMemoryFiles>
+						<File Id="262827715" Language="SFX">
+							<ShortName>speech3.wav</ShortName>
+							<Path>SFX\speech3_10C4C929.wem</Path>
+						</File>
+						<File Id="368272965" Language="SFX">
+							<ShortName>speech6.wav</ShortName>
+							<Path>SFX\speech6_10C4C929.wem</Path>
+						</File>
+						<File Id="455956520" Language="SFX">
+							<ShortName>speech4.wav</ShortName>
+							<Path>SFX\speech4_10C4C929.wem</Path>
+						</File>
+						<File Id="551637967" Language="SFX">
+							<ShortName>speech2.wav</ShortName>
+							<Path>SFX\speech2_10C4C929.wem</Path>
+						</File>
+						<File Id="756625115" Language="SFX">
+							<ShortName>speech5.wav</ShortName>
+							<Path>SFX\speech5_10C4C929.wem</Path>
+						</File>
+						<File Id="977955553" Language="SFX">
+							<ShortName>speech1.wav</ShortName>
+							<Path>SFX\speech1_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1369532194" Name="Speak_02" ObjectPath="\Events\Default Work Unit\Speak_02" DurationType="OneShot" DurationMin="2." DurationMax="2.875">
+					<IncludedMemoryFiles>
+						<File Id="262827715" Language="SFX">
+							<ShortName>speech3.wav</ShortName>
+							<Path>SFX\speech3_10C4C929.wem</Path>
+						</File>
+						<File Id="368272965" Language="SFX">
+							<ShortName>speech6.wav</ShortName>
+							<Path>SFX\speech6_10C4C929.wem</Path>
+						</File>
+						<File Id="455956520" Language="SFX">
+							<ShortName>speech4.wav</ShortName>
+							<Path>SFX\speech4_10C4C929.wem</Path>
+						</File>
+						<File Id="551637967" Language="SFX">
+							<ShortName>speech2.wav</ShortName>
+							<Path>SFX\speech2_10C4C929.wem</Path>
+						</File>
+						<File Id="756625115" Language="SFX">
+							<ShortName>speech5.wav</ShortName>
+							<Path>SFX\speech5_10C4C929.wem</Path>
+						</File>
+						<File Id="977955553" Language="SFX">
+							<ShortName>speech1.wav</ShortName>
+							<Path>SFX\speech1_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1369532195" Name="Speak_03" ObjectPath="\Events\Default Work Unit\Speak_03" DurationType="OneShot" DurationMin="2." DurationMax="2.875">
+					<IncludedMemoryFiles>
+						<File Id="262827715" Language="SFX">
+							<ShortName>speech3.wav</ShortName>
+							<Path>SFX\speech3_10C4C929.wem</Path>
+						</File>
+						<File Id="368272965" Language="SFX">
+							<ShortName>speech6.wav</ShortName>
+							<Path>SFX\speech6_10C4C929.wem</Path>
+						</File>
+						<File Id="455956520" Language="SFX">
+							<ShortName>speech4.wav</ShortName>
+							<Path>SFX\speech4_10C4C929.wem</Path>
+						</File>
+						<File Id="551637967" Language="SFX">
+							<ShortName>speech2.wav</ShortName>
+							<Path>SFX\speech2_10C4C929.wem</Path>
+						</File>
+						<File Id="756625115" Language="SFX">
+							<ShortName>speech5.wav</ShortName>
+							<Path>SFX\speech5_10C4C929.wem</Path>
+						</File>
+						<File Id="977955553" Language="SFX">
+							<ShortName>speech1.wav</ShortName>
+							<Path>SFX\speech1_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1369532196" Name="Speak_04" ObjectPath="\Events\Default Work Unit\Speak_04" DurationType="OneShot" DurationMin="2." DurationMax="2.875">
+					<IncludedMemoryFiles>
+						<File Id="262827715" Language="SFX">
+							<ShortName>speech3.wav</ShortName>
+							<Path>SFX\speech3_10C4C929.wem</Path>
+						</File>
+						<File Id="368272965" Language="SFX">
+							<ShortName>speech6.wav</ShortName>
+							<Path>SFX\speech6_10C4C929.wem</Path>
+						</File>
+						<File Id="455956520" Language="SFX">
+							<ShortName>speech4.wav</ShortName>
+							<Path>SFX\speech4_10C4C929.wem</Path>
+						</File>
+						<File Id="551637967" Language="SFX">
+							<ShortName>speech2.wav</ShortName>
+							<Path>SFX\speech2_10C4C929.wem</Path>
+						</File>
+						<File Id="756625115" Language="SFX">
+							<ShortName>speech5.wav</ShortName>
+							<Path>SFX\speech5_10C4C929.wem</Path>
+						</File>
+						<File Id="977955553" Language="SFX">
+							<ShortName>speech1.wav</ShortName>
+							<Path>SFX\speech1_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1369532197" Name="Speak_05" ObjectPath="\Events\Default Work Unit\Speak_05" DurationType="OneShot" DurationMin="2." DurationMax="2.875">
+					<IncludedMemoryFiles>
+						<File Id="262827715" Language="SFX">
+							<ShortName>speech3.wav</ShortName>
+							<Path>SFX\speech3_10C4C929.wem</Path>
+						</File>
+						<File Id="368272965" Language="SFX">
+							<ShortName>speech6.wav</ShortName>
+							<Path>SFX\speech6_10C4C929.wem</Path>
+						</File>
+						<File Id="455956520" Language="SFX">
+							<ShortName>speech4.wav</ShortName>
+							<Path>SFX\speech4_10C4C929.wem</Path>
+						</File>
+						<File Id="551637967" Language="SFX">
+							<ShortName>speech2.wav</ShortName>
+							<Path>SFX\speech2_10C4C929.wem</Path>
+						</File>
+						<File Id="756625115" Language="SFX">
+							<ShortName>speech5.wav</ShortName>
+							<Path>SFX\speech5_10C4C929.wem</Path>
+						</File>
+						<File Id="977955553" Language="SFX">
+							<ShortName>speech1.wav</ShortName>
+							<Path>SFX\speech1_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1369532198" Name="Speak_06" ObjectPath="\Events\Default Work Unit\Speak_06" DurationType="OneShot" DurationMin="2." DurationMax="2.875">
+					<IncludedMemoryFiles>
+						<File Id="262827715" Language="SFX">
+							<ShortName>speech3.wav</ShortName>
+							<Path>SFX\speech3_10C4C929.wem</Path>
+						</File>
+						<File Id="368272965" Language="SFX">
+							<ShortName>speech6.wav</ShortName>
+							<Path>SFX\speech6_10C4C929.wem</Path>
+						</File>
+						<File Id="455956520" Language="SFX">
+							<ShortName>speech4.wav</ShortName>
+							<Path>SFX\speech4_10C4C929.wem</Path>
+						</File>
+						<File Id="551637967" Language="SFX">
+							<ShortName>speech2.wav</ShortName>
+							<Path>SFX\speech2_10C4C929.wem</Path>
+						</File>
+						<File Id="756625115" Language="SFX">
+							<ShortName>speech5.wav</ShortName>
+							<Path>SFX\speech5_10C4C929.wem</Path>
+						</File>
+						<File Id="977955553" Language="SFX">
+							<ShortName>speech1.wav</ShortName>
+							<Path>SFX\speech1_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1369532199" Name="Speak_07" ObjectPath="\Events\Default Work Unit\Speak_07" DurationType="OneShot" DurationMin="2." DurationMax="2.875">
+					<IncludedMemoryFiles>
+						<File Id="262827715" Language="SFX">
+							<ShortName>speech3.wav</ShortName>
+							<Path>SFX\speech3_10C4C929.wem</Path>
+						</File>
+						<File Id="368272965" Language="SFX">
+							<ShortName>speech6.wav</ShortName>
+							<Path>SFX\speech6_10C4C929.wem</Path>
+						</File>
+						<File Id="455956520" Language="SFX">
+							<ShortName>speech4.wav</ShortName>
+							<Path>SFX\speech4_10C4C929.wem</Path>
+						</File>
+						<File Id="551637967" Language="SFX">
+							<ShortName>speech2.wav</ShortName>
+							<Path>SFX\speech2_10C4C929.wem</Path>
+						</File>
+						<File Id="756625115" Language="SFX">
+							<ShortName>speech5.wav</ShortName>
+							<Path>SFX\speech5_10C4C929.wem</Path>
+						</File>
+						<File Id="977955553" Language="SFX">
+							<ShortName>speech1.wav</ShortName>
+							<Path>SFX\speech1_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1369532200" Name="Speak_08" ObjectPath="\Events\Default Work Unit\Speak_08" DurationType="OneShot" DurationMin="2." DurationMax="2.875">
+					<IncludedMemoryFiles>
+						<File Id="262827715" Language="SFX">
+							<ShortName>speech3.wav</ShortName>
+							<Path>SFX\speech3_10C4C929.wem</Path>
+						</File>
+						<File Id="368272965" Language="SFX">
+							<ShortName>speech6.wav</ShortName>
+							<Path>SFX\speech6_10C4C929.wem</Path>
+						</File>
+						<File Id="455956520" Language="SFX">
+							<ShortName>speech4.wav</ShortName>
+							<Path>SFX\speech4_10C4C929.wem</Path>
+						</File>
+						<File Id="551637967" Language="SFX">
+							<ShortName>speech2.wav</ShortName>
+							<Path>SFX\speech2_10C4C929.wem</Path>
+						</File>
+						<File Id="756625115" Language="SFX">
+							<ShortName>speech5.wav</ShortName>
+							<Path>SFX\speech5_10C4C929.wem</Path>
+						</File>
+						<File Id="977955553" Language="SFX">
+							<ShortName>speech1.wav</ShortName>
+							<Path>SFX\speech1_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1369532201" Name="Speak_09" ObjectPath="\Events\Default Work Unit\Speak_09" DurationType="OneShot" DurationMin="2." DurationMax="2.875">
+					<IncludedMemoryFiles>
+						<File Id="262827715" Language="SFX">
+							<ShortName>speech3.wav</ShortName>
+							<Path>SFX\speech3_10C4C929.wem</Path>
+						</File>
+						<File Id="368272965" Language="SFX">
+							<ShortName>speech6.wav</ShortName>
+							<Path>SFX\speech6_10C4C929.wem</Path>
+						</File>
+						<File Id="455956520" Language="SFX">
+							<ShortName>speech4.wav</ShortName>
+							<Path>SFX\speech4_10C4C929.wem</Path>
+						</File>
+						<File Id="551637967" Language="SFX">
+							<ShortName>speech2.wav</ShortName>
+							<Path>SFX\speech2_10C4C929.wem</Path>
+						</File>
+						<File Id="756625115" Language="SFX">
+							<ShortName>speech5.wav</ShortName>
+							<Path>SFX\speech5_10C4C929.wem</Path>
+						</File>
+						<File Id="977955553" Language="SFX">
+							<ShortName>speech1.wav</ShortName>
+							<Path>SFX\speech1_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1386309779" Name="Speak_10" ObjectPath="\Events\Default Work Unit\Speak_10" DurationType="OneShot" DurationMin="2." DurationMax="2.875">
+					<IncludedMemoryFiles>
+						<File Id="262827715" Language="SFX">
+							<ShortName>speech3.wav</ShortName>
+							<Path>SFX\speech3_10C4C929.wem</Path>
+						</File>
+						<File Id="368272965" Language="SFX">
+							<ShortName>speech6.wav</ShortName>
+							<Path>SFX\speech6_10C4C929.wem</Path>
+						</File>
+						<File Id="455956520" Language="SFX">
+							<ShortName>speech4.wav</ShortName>
+							<Path>SFX\speech4_10C4C929.wem</Path>
+						</File>
+						<File Id="551637967" Language="SFX">
+							<ShortName>speech2.wav</ShortName>
+							<Path>SFX\speech2_10C4C929.wem</Path>
+						</File>
+						<File Id="756625115" Language="SFX">
+							<ShortName>speech5.wav</ShortName>
+							<Path>SFX\speech5_10C4C929.wem</Path>
+						</File>
+						<File Id="977955553" Language="SFX">
+							<ShortName>speech1.wav</ShortName>
+							<Path>SFX\speech1_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1386309778" Name="Speak_11" ObjectPath="\Events\Default Work Unit\Speak_11" DurationType="OneShot" DurationMin="2." DurationMax="2.875">
+					<IncludedMemoryFiles>
+						<File Id="262827715" Language="SFX">
+							<ShortName>speech3.wav</ShortName>
+							<Path>SFX\speech3_10C4C929.wem</Path>
+						</File>
+						<File Id="368272965" Language="SFX">
+							<ShortName>speech6.wav</ShortName>
+							<Path>SFX\speech6_10C4C929.wem</Path>
+						</File>
+						<File Id="455956520" Language="SFX">
+							<ShortName>speech4.wav</ShortName>
+							<Path>SFX\speech4_10C4C929.wem</Path>
+						</File>
+						<File Id="551637967" Language="SFX">
+							<ShortName>speech2.wav</ShortName>
+							<Path>SFX\speech2_10C4C929.wem</Path>
+						</File>
+						<File Id="756625115" Language="SFX">
+							<ShortName>speech5.wav</ShortName>
+							<Path>SFX\speech5_10C4C929.wem</Path>
+						</File>
+						<File Id="977955553" Language="SFX">
+							<ShortName>speech1.wav</ShortName>
+							<Path>SFX\speech1_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1386309777" Name="Speak_12" ObjectPath="\Events\Default Work Unit\Speak_12" DurationType="OneShot" DurationMin="2." DurationMax="2.875">
+					<IncludedMemoryFiles>
+						<File Id="262827715" Language="SFX">
+							<ShortName>speech3.wav</ShortName>
+							<Path>SFX\speech3_10C4C929.wem</Path>
+						</File>
+						<File Id="368272965" Language="SFX">
+							<ShortName>speech6.wav</ShortName>
+							<Path>SFX\speech6_10C4C929.wem</Path>
+						</File>
+						<File Id="455956520" Language="SFX">
+							<ShortName>speech4.wav</ShortName>
+							<Path>SFX\speech4_10C4C929.wem</Path>
+						</File>
+						<File Id="551637967" Language="SFX">
+							<ShortName>speech2.wav</ShortName>
+							<Path>SFX\speech2_10C4C929.wem</Path>
+						</File>
+						<File Id="756625115" Language="SFX">
+							<ShortName>speech5.wav</ShortName>
+							<Path>SFX\speech5_10C4C929.wem</Path>
+						</File>
+						<File Id="977955553" Language="SFX">
+							<ShortName>speech1.wav</ShortName>
+							<Path>SFX\speech1_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1386309776" Name="Speak_13" ObjectPath="\Events\Default Work Unit\Speak_13" DurationType="OneShot" DurationMin="2." DurationMax="2.875">
+					<IncludedMemoryFiles>
+						<File Id="262827715" Language="SFX">
+							<ShortName>speech3.wav</ShortName>
+							<Path>SFX\speech3_10C4C929.wem</Path>
+						</File>
+						<File Id="368272965" Language="SFX">
+							<ShortName>speech6.wav</ShortName>
+							<Path>SFX\speech6_10C4C929.wem</Path>
+						</File>
+						<File Id="455956520" Language="SFX">
+							<ShortName>speech4.wav</ShortName>
+							<Path>SFX\speech4_10C4C929.wem</Path>
+						</File>
+						<File Id="551637967" Language="SFX">
+							<ShortName>speech2.wav</ShortName>
+							<Path>SFX\speech2_10C4C929.wem</Path>
+						</File>
+						<File Id="756625115" Language="SFX">
+							<ShortName>speech5.wav</ShortName>
+							<Path>SFX\speech5_10C4C929.wem</Path>
+						</File>
+						<File Id="977955553" Language="SFX">
+							<ShortName>speech1.wav</ShortName>
+							<Path>SFX\speech1_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1386309783" Name="Speak_14" ObjectPath="\Events\Default Work Unit\Speak_14" DurationType="OneShot" DurationMin="2." DurationMax="2.875">
+					<IncludedMemoryFiles>
+						<File Id="262827715" Language="SFX">
+							<ShortName>speech3.wav</ShortName>
+							<Path>SFX\speech3_10C4C929.wem</Path>
+						</File>
+						<File Id="368272965" Language="SFX">
+							<ShortName>speech6.wav</ShortName>
+							<Path>SFX\speech6_10C4C929.wem</Path>
+						</File>
+						<File Id="455956520" Language="SFX">
+							<ShortName>speech4.wav</ShortName>
+							<Path>SFX\speech4_10C4C929.wem</Path>
+						</File>
+						<File Id="551637967" Language="SFX">
+							<ShortName>speech2.wav</ShortName>
+							<Path>SFX\speech2_10C4C929.wem</Path>
+						</File>
+						<File Id="756625115" Language="SFX">
+							<ShortName>speech5.wav</ShortName>
+							<Path>SFX\speech5_10C4C929.wem</Path>
+						</File>
+						<File Id="977955553" Language="SFX">
+							<ShortName>speech1.wav</ShortName>
+							<Path>SFX\speech1_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1386309782" Name="Speak_15" ObjectPath="\Events\Default Work Unit\Speak_15" DurationType="OneShot" DurationMin="2." DurationMax="2.875">
+					<IncludedMemoryFiles>
+						<File Id="262827715" Language="SFX">
+							<ShortName>speech3.wav</ShortName>
+							<Path>SFX\speech3_10C4C929.wem</Path>
+						</File>
+						<File Id="368272965" Language="SFX">
+							<ShortName>speech6.wav</ShortName>
+							<Path>SFX\speech6_10C4C929.wem</Path>
+						</File>
+						<File Id="455956520" Language="SFX">
+							<ShortName>speech4.wav</ShortName>
+							<Path>SFX\speech4_10C4C929.wem</Path>
+						</File>
+						<File Id="551637967" Language="SFX">
+							<ShortName>speech2.wav</ShortName>
+							<Path>SFX\speech2_10C4C929.wem</Path>
+						</File>
+						<File Id="756625115" Language="SFX">
+							<ShortName>speech5.wav</ShortName>
+							<Path>SFX\speech5_10C4C929.wem</Path>
+						</File>
+						<File Id="977955553" Language="SFX">
+							<ShortName>speech1.wav</ShortName>
+							<Path>SFX\speech1_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1386309781" Name="Speak_16" ObjectPath="\Events\Default Work Unit\Speak_16" DurationType="OneShot" DurationMin="2." DurationMax="2.875">
+					<IncludedMemoryFiles>
+						<File Id="262827715" Language="SFX">
+							<ShortName>speech3.wav</ShortName>
+							<Path>SFX\speech3_10C4C929.wem</Path>
+						</File>
+						<File Id="368272965" Language="SFX">
+							<ShortName>speech6.wav</ShortName>
+							<Path>SFX\speech6_10C4C929.wem</Path>
+						</File>
+						<File Id="455956520" Language="SFX">
+							<ShortName>speech4.wav</ShortName>
+							<Path>SFX\speech4_10C4C929.wem</Path>
+						</File>
+						<File Id="551637967" Language="SFX">
+							<ShortName>speech2.wav</ShortName>
+							<Path>SFX\speech2_10C4C929.wem</Path>
+						</File>
+						<File Id="756625115" Language="SFX">
+							<ShortName>speech5.wav</ShortName>
+							<Path>SFX\speech5_10C4C929.wem</Path>
+						</File>
+						<File Id="977955553" Language="SFX">
+							<ShortName>speech1.wav</ShortName>
+							<Path>SFX\speech1_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1386309780" Name="Speak_17" ObjectPath="\Events\Default Work Unit\Speak_17" DurationType="OneShot" DurationMin="2." DurationMax="2.875">
+					<IncludedMemoryFiles>
+						<File Id="262827715" Language="SFX">
+							<ShortName>speech3.wav</ShortName>
+							<Path>SFX\speech3_10C4C929.wem</Path>
+						</File>
+						<File Id="368272965" Language="SFX">
+							<ShortName>speech6.wav</ShortName>
+							<Path>SFX\speech6_10C4C929.wem</Path>
+						</File>
+						<File Id="455956520" Language="SFX">
+							<ShortName>speech4.wav</ShortName>
+							<Path>SFX\speech4_10C4C929.wem</Path>
+						</File>
+						<File Id="551637967" Language="SFX">
+							<ShortName>speech2.wav</ShortName>
+							<Path>SFX\speech2_10C4C929.wem</Path>
+						</File>
+						<File Id="756625115" Language="SFX">
+							<ShortName>speech5.wav</ShortName>
+							<Path>SFX\speech5_10C4C929.wem</Path>
+						</File>
+						<File Id="977955553" Language="SFX">
+							<ShortName>speech1.wav</ShortName>
+							<Path>SFX\speech1_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1386309787" Name="Speak_18" ObjectPath="\Events\Default Work Unit\Speak_18" DurationType="OneShot" DurationMin="2." DurationMax="2.875">
+					<IncludedMemoryFiles>
+						<File Id="262827715" Language="SFX">
+							<ShortName>speech3.wav</ShortName>
+							<Path>SFX\speech3_10C4C929.wem</Path>
+						</File>
+						<File Id="368272965" Language="SFX">
+							<ShortName>speech6.wav</ShortName>
+							<Path>SFX\speech6_10C4C929.wem</Path>
+						</File>
+						<File Id="455956520" Language="SFX">
+							<ShortName>speech4.wav</ShortName>
+							<Path>SFX\speech4_10C4C929.wem</Path>
+						</File>
+						<File Id="551637967" Language="SFX">
+							<ShortName>speech2.wav</ShortName>
+							<Path>SFX\speech2_10C4C929.wem</Path>
+						</File>
+						<File Id="756625115" Language="SFX">
+							<ShortName>speech5.wav</ShortName>
+							<Path>SFX\speech5_10C4C929.wem</Path>
+						</File>
+						<File Id="977955553" Language="SFX">
+							<ShortName>speech1.wav</ShortName>
+							<Path>SFX\speech1_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1386309786" Name="Speak_19" ObjectPath="\Events\Default Work Unit\Speak_19" DurationType="OneShot" DurationMin="2." DurationMax="2.875">
+					<IncludedMemoryFiles>
+						<File Id="262827715" Language="SFX">
+							<ShortName>speech3.wav</ShortName>
+							<Path>SFX\speech3_10C4C929.wem</Path>
+						</File>
+						<File Id="368272965" Language="SFX">
+							<ShortName>speech6.wav</ShortName>
+							<Path>SFX\speech6_10C4C929.wem</Path>
+						</File>
+						<File Id="455956520" Language="SFX">
+							<ShortName>speech4.wav</ShortName>
+							<Path>SFX\speech4_10C4C929.wem</Path>
+						</File>
+						<File Id="551637967" Language="SFX">
+							<ShortName>speech2.wav</ShortName>
+							<Path>SFX\speech2_10C4C929.wem</Path>
+						</File>
+						<File Id="756625115" Language="SFX">
+							<ShortName>speech5.wav</ShortName>
+							<Path>SFX\speech5_10C4C929.wem</Path>
+						</File>
+						<File Id="977955553" Language="SFX">
+							<ShortName>speech1.wav</ShortName>
+							<Path>SFX\speech1_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1403087366" Name="Speak_20" ObjectPath="\Events\Default Work Unit\Speak_20" DurationType="OneShot" DurationMin="2." DurationMax="2.875">
 					<IncludedMemoryFiles>
 						<File Id="262827715" Language="SFX">
 							<ShortName>speech3.wav</ShortName>

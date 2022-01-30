@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{493D6CC6-A13B-4783-992B-9488CEB29067}" SchemaVersion="103">
 	<Effects>
-		<WorkUnit Name="Default Work Unit" ID="{493D6CC6-A13B-4783-992B-9488CEB29067}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{493D6CC6-A13B-4783-992B-9488CEB29067}" PersistMode="Standalone">
+			<ChildrenList>
+				<Effect Name="New_Wwise_Pitch_Shifter" ID="{5287AD79-6938-4AAF-BDC6-D37D38FBBB33}" PluginName="Wwise Pitch Shifter" CompanyID="0" PluginID="136" PluginType="3"/>
+				<Effect Name="New_iZotope_Trash_Delay" ID="{264785C8-E4C3-4991-BA23-2CFA98CDABEC}" PluginName="iZotope Trash Delay" CompanyID="259" PluginID="4" PluginType="3">
+					<PropertyList>
+						<Property Name="DelayType" Type="int32" Value="1"/>
+						<Property Name="HighCutoff" Type="Real32" Value="7200"/>
+						<Property Name="Time" Type="Real32" Value="180"/>
+						<Property Name="Trash" Type="Real32" Value="0"/>
+						<Property Name="WetOut" Type="Real32" Value="12"/>
+					</PropertyList>
+				</Effect>
+			</ChildrenList>
+		</WorkUnit>
 	</Effects>
 </WwiseDocument>
