@@ -112,3 +112,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 897b32646b5ab48a894475be09600ffb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Sway: 1
+  MaxSway: 0.02
+  Rigidness: 50
