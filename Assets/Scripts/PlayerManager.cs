@@ -40,7 +40,45 @@ public class PlayerManager : MonoBehaviour
 
     public int NumberOfActionsLeft = 3;
 
-    public bool TryGetClueFromCharacter(Character c)
+    public void AddClueGiven(ClueObject givenClue, bool bSpendAction = true)
+    {
+        // Should NEVER be null but handle it just in case
+        if (givenClue == null)
+        {
+            Debug.LogError("Something went wrong when trying to get a clue");
+            // If something went really wrong, give the action back to the player
+            if (bSpendAction)
+            {
+                ++NumberOfActionsLeft;
+            }
+            VisuallyUpdateAmountOfUsedActionPoints();
+            return;
+        }
+
+        if (bSpendAction && HasActionPointsLeft())
+        {
+            --NumberOfActionsLeft;
+            VisuallyUpdateAmountOfUsedActionPoints();
+        }
+
+        if (givenClue.RelatesToCharacter?.IsWerewolf ?? false)
+        {
+            NumberOfCluesAboutWerewolf++;
+        }
+
+        CollectedClues.Add(givenClue);
+
+        if (!SortedByDayAndPhaseClues.ContainsKey(Service.Game.CurrentDay))
+        {
+            SortedByDayAndPhaseClues.Add(Service.Game.CurrentDay, new Dictionary<WerewolfGame.TOD, List<ClueObject>>());
+            SortedByDayAndPhaseClues[Service.Game.CurrentDay].Add(WerewolfGame.TOD.Day, new List<ClueObject>());
+            SortedByDayAndPhaseClues[Service.Game.CurrentDay].Add(WerewolfGame.TOD.Night, new List<ClueObject>());
+        }
+
+        SortedByDayAndPhaseClues[Service.Game.CurrentDay][Service.Game.CurrentTimeOfDay].Add(givenClue);
+    }
+
+    public bool CanGetClueFromCharacter(Character c)
     {
         if(Service.Game.CurrentState != WerewolfGame.GameState.PlayerInvestigateDay
             && Service.Game.CurrentState != WerewolfGame.GameState.PlayerInvestigateNight)
@@ -57,39 +95,6 @@ public class PlayerManager : MonoBehaviour
         {
             return false;
         }
-
-        if(!TryConsumeActionPoint())
-        {
-            return false;
-        }
-
-        ClueObject givenClue = c.ServeClueToPlayer();
-
-        // Should NEVER be null but handle it just in case
-        if(givenClue == null)
-        {
-            Debug.LogError("Something went wrong when trying to get a clue from " + c.Name);
-            // If something went really wrong, give the action back to the player
-            ++NumberOfActionsLeft;
-            VisuallyUpdateAmountOfUsedActionPoints();
-            return false;
-        }
-
-        if(givenClue.RelatesToCharacter?.IsWerewolf ?? false)
-        {
-            NumberOfCluesAboutWerewolf++;
-        }
-
-        CollectedClues.Add(givenClue);
-
-        if (!SortedByDayAndPhaseClues.ContainsKey(Service.Game.CurrentDay))
-        {
-            SortedByDayAndPhaseClues.Add(Service.Game.CurrentDay, new Dictionary<WerewolfGame.TOD, List<ClueObject>>());
-            SortedByDayAndPhaseClues[Service.Game.CurrentDay].Add(WerewolfGame.TOD.Day, new List<ClueObject>());
-            SortedByDayAndPhaseClues[Service.Game.CurrentDay].Add(WerewolfGame.TOD.Night, new List<ClueObject>());
-        }
-
-        SortedByDayAndPhaseClues[Service.Game.CurrentDay][Service.Game.CurrentTimeOfDay].Add(givenClue);
 
         return true;
     }

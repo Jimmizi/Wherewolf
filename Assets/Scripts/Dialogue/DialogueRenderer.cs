@@ -87,6 +87,13 @@ public class DialogueRenderer : MonoBehaviour {
                 break;
         }
 
+        if (dialogueActionType != DialogueActionType.IssueFarewell)
+        {
+            // Discover names when receiving clues about them.
+            clue.RelatesToCharacter?.SetNameDiscovered();
+            Service.Player.AddClueGiven(clue, dialogueActionType != DialogueActionType.IssueGreeting);
+        }
+
         return Dialogue.FromClue(clue);
     }
 
@@ -211,11 +218,33 @@ public class DialogueRenderer : MonoBehaviour {
             }
         }
 
-        foreach (GameObject choiceButtonInstance in _choiceButtonInstances) {
-            choiceButtonInstance.SetActive(true);
+        if (_character?.IsAlive ?? true)
+        {
+            ShowAllButFarewell();
+        }
+        else
+        {
+            HideChoices(true);
         }
     }
     
+    void ShowAllButFarewell()
+    {
+        foreach (GameObject choiceButtonInstance in _choiceButtonInstances)
+        {
+            EmoteRenderer emoteRenderer = choiceButtonInstance.GetComponentInChildren<EmoteRenderer>();
+            if (emoteRenderer && emoteRenderer.Emote.SubType == eTypeForFarewell)
+            {
+                choiceButtonInstance.SetActive(false);
+            }
+            else
+            {
+                choiceButtonInstance.SetActive(true);
+            }
+        }
+
+    }
+
     protected void HideChoices(bool bKeepIssueFarewell = false) {
         foreach (GameObject choiceButtonInstance in _choiceButtonInstances) 
         {
@@ -224,6 +253,7 @@ public class DialogueRenderer : MonoBehaviour {
                 EmoteRenderer emoteRenderer = choiceButtonInstance.GetComponentInChildren<EmoteRenderer>();
                 if(emoteRenderer && emoteRenderer.Emote.SubType == eTypeForFarewell)
                 {
+                    choiceButtonInstance.SetActive(true);
                     continue;
                 }
             }

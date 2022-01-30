@@ -20,6 +20,8 @@ public class EmoteTextRenderer : MonoBehaviour {
     private List<EmoteRenderer> _emoteRenderers = new List<EmoteRenderer>();
     private List<Emote> _emotes;
 
+    public List<EmoteRenderer> GetEmoteRenderers() => _emoteRenderers;
+
     private void Awake() {
         _emoteRenderers = new List<EmoteRenderer>();
     }

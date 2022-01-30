@@ -1095,7 +1095,7 @@ public class WerewolfGame : MonoBehaviour
 
                     if (GUI.Button(new Rect(vPosition.x, vPosition.y, 140, 24), string.Format("[{0}] {1}", c.Index, c.Name)))
                     {
-                        Service.Player.TryGetClueFromCharacter(c);
+                        //Service.Player.TryGetClueFromCharacter(c);
                     }
                     vPosition.y += 28;
                 }

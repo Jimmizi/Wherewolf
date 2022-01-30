@@ -94,11 +94,12 @@ namespace UnityEngine.UI.Extensions {
                 // Give the player some names to work with from the start
 
                 bAddedDefaultItems = true;
-                AddItem(new DropDownListItem<Character>(data: Service.Population.GetRandomCharacter()));
-                AddItem(new DropDownListItem<Character>(data: Service.Population.GetRandomCharacter()));
-                AddItem(new DropDownListItem<Character>(data: Service.Population.GetRandomCharacter()));
-                AddItem(new DropDownListItem<Character>(data: Service.Population.GetRandomCharacter()));
-                AddItem(new DropDownListItem<Character>(data: Service.Population.GetRandomCharacter()));
+                //for(int i = 0; i < 3; ++i)
+                //{
+                //    Character c = Service.Population.GetRandomCharacter();
+                //    c.SetNameDiscovered();
+                //    AddItem(new DropDownListItem<Character>(data: c));
+                //}
             }
         }
 

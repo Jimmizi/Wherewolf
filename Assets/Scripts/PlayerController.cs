@@ -14,6 +14,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     public RectTransform ActionPanel;
 
+    
+    private Image TalkActionSprite;
+
     [SerializeField]
     public string ForwardsBackwardsMovementKey = "Vertical";
 
@@ -64,7 +67,6 @@ public class PlayerController : MonoBehaviour
 
     public void DialogueFinished()
     {
-
         Service.Player.IsTalkingToCharacter = false;
         CurrentlySelectedCharacter.AssociatedCharacter.ReleaseFromBeingTalkedTo();
         CurrentlySelectedCharacter = null;
@@ -75,6 +77,12 @@ public class PlayerController : MonoBehaviour
 
     public void PickedTalkAction()
     {
+        if(!Service.Player.CanGetClueFromCharacter(CurrentlySelectedCharacter.AssociatedCharacter))
+        {
+            HideActionPanel();
+            return;
+        }
+
         DialogueRenderer.OnConversationEnd.AddListener(DialogueFinished);
         
         Service.Audio.PlayUIClick();
@@ -185,6 +193,12 @@ public class PlayerController : MonoBehaviour
             ChooseActionRenderer.SortEmotes(125f);
 
             ActionPanel.gameObject.SetActive(false);
+
+            var emoteRender = ChooseActionRenderer.GetEmoteRenderers();
+            if (emoteRender.Count > 0)
+            {
+                TalkActionSprite = emoteRender[0].gameObject.transform.Find("StaticEmote")?.GetComponent<Image>();
+            }
         }
     }
 
@@ -230,6 +244,18 @@ public class PlayerController : MonoBehaviour
                     HoverNameText.gameObject.SetActive(true);
                     HoverNameText.text = pc.AssociatedCharacter.GetName();
                     HoverNameText.GetComponent<RectTransform>().anchoredPosition = screenPos;
+
+                    if (TalkActionSprite)
+                    {
+                        if (!Service.Player.CanGetClueFromCharacter(pc.AssociatedCharacter))
+                        {
+                            TalkActionSprite.color = new Color(0.5f, 0.5f, 0.5f);
+                        }
+                        else
+                        {
+                            TalkActionSprite.color = Color.white;
+                        }
+                    }
                 }
             }
         }
