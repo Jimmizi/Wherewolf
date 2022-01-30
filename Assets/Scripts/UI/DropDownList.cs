@@ -86,21 +86,21 @@ namespace UnityEngine.UI.Extensions {
             RedrawPanel();
         }
 
-        // Uncomment if you want to test with some populated characters
-        //  But by default the player shouldn't have discovered anyone
-        //private bool bAddedDefaultItems = false;
-        //private void Update()
-        //{
-        //    if (!bAddedDefaultItems && Service.Population.CharacterCreationDone)
-        //    {
-        //        bAddedDefaultItems = true;
-        //        AddItem(new DropDownListItem<Character>(data: Service.Population.GetRandomCharacter()));
-        //        AddItem(new DropDownListItem<Character>(data: Service.Population.GetRandomCharacter()));
-        //        AddItem(new DropDownListItem<Character>(data: Service.Population.GetRandomCharacter()));
-        //        AddItem(new DropDownListItem<Character>(data: Service.Population.GetRandomCharacter()));
-        //        AddItem(new DropDownListItem<Character>(data: Service.Population.GetRandomCharacter()));
-        //    }
-        //}
+        private bool bAddedDefaultItems = false;
+        private void Update()
+        {
+            if (!bAddedDefaultItems && Service.Population.CharacterCreationDone)
+            {
+                // Give the player some names to work with from the start
+
+                bAddedDefaultItems = true;
+                AddItem(new DropDownListItem<Character>(data: Service.Population.GetRandomCharacter()));
+                AddItem(new DropDownListItem<Character>(data: Service.Population.GetRandomCharacter()));
+                AddItem(new DropDownListItem<Character>(data: Service.Population.GetRandomCharacter()));
+                AddItem(new DropDownListItem<Character>(data: Service.Population.GetRandomCharacter()));
+                AddItem(new DropDownListItem<Character>(data: Service.Population.GetRandomCharacter()));
+            }
+        }
 
         private bool Initialize() {
             bool success = true;

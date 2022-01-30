@@ -66,7 +66,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: 27d1893c93ae55499ad02c34935af1e0
     GuidInternal: 
-    m_lastTime: -8585581129712935995
+    m_lastTime: -8585581033819841078
     List:
     - name: DayCycle
       guid: bc075cfc31de414393ea76b6a8e3e228
@@ -150,7 +150,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: 36187f795aed7446a84c500d367dfcf3
     GuidInternal: 
-    m_lastTime: -8585581148034412296
+    m_lastTime: -8585581033833175935
     List:
     - name: AmbienceDay
       guid: 5b6ed9ad00e9af4b8714261614d3ada4
@@ -322,8 +322,25 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 5
       minDuration: 5
+    - name: MusicCorkboard
+      guid: 1c1858ead0047c4c99f88c209e52ad3b
+      id: 3514557227
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 36187f795aed7446a84c500d367dfcf3
+      - ElementName: MusicCorkboard
+        ObjectType: 3
+        guid: 1c1858ead0047c4c99f88c209e52ad3b
+      Path: Events\Default Work Unit\MusicCorkboard
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
     - name: MusicDay
-      guid: 2eba308ffe2cdb44a3070044ef142f75
+      guid: cdff53690f5f5948ad84065244e07bf4
       id: 3155631888
       PathAndIcons:
       - ElementName: Events
@@ -334,13 +351,13 @@ MonoBehaviour:
         guid: 36187f795aed7446a84c500d367dfcf3
       - ElementName: MusicDay
         ObjectType: 3
-        guid: 2eba308ffe2cdb44a3070044ef142f75
+        guid: cdff53690f5f5948ad84065244e07bf4
       Path: Events\Default Work Unit\MusicDay
       maxAttenuation: 0
-      maxDuration: 64
-      minDuration: 64
+      maxDuration: -1
+      minDuration: -1
     - name: MusicNight
-      guid: 939d1699fa93b54fb16d9b9cd91a6107
+      guid: ec4ca39e5bf3ef4d84b25152605a74fc
       id: 3028680700
       PathAndIcons:
       - ElementName: Events
@@ -351,11 +368,11 @@ MonoBehaviour:
         guid: 36187f795aed7446a84c500d367dfcf3
       - ElementName: MusicNight
         ObjectType: 3
-        guid: 939d1699fa93b54fb16d9b9cd91a6107
+        guid: ec4ca39e5bf3ef4d84b25152605a74fc
       Path: Events\Default Work Unit\MusicNight
       maxAttenuation: 0
-      maxDuration: 69.818184
-      minDuration: 69.818184
+      maxDuration: -1
+      minDuration: -1
     - name: PaperCrumple
       guid: e2c9cfb3d6e4f84998aa0637065ea312
       id: 4104216053
@@ -424,9 +441,9 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
-    - name: Speech
-      guid: 4bc04484ebc14c45801d7a0d8d55830d
-      id: 4245458931
+    - name: Speak_01
+      guid: 5e71039a54148648a224a24a2bbbafea
+      id: 1369532193
       PathAndIcons:
       - ElementName: Events
         ObjectType: 5
@@ -434,16 +451,16 @@ MonoBehaviour:
       - ElementName: Default Work Unit
         ObjectType: 12
         guid: 36187f795aed7446a84c500d367dfcf3
-      - ElementName: Speech
+      - ElementName: Speak_01
         ObjectType: 3
-        guid: 4bc04484ebc14c45801d7a0d8d55830d
-      Path: Events\Default Work Unit\Speech
+        guid: 5e71039a54148648a224a24a2bbbafea
+      Path: Events\Default Work Unit\Speak_01
       maxAttenuation: 0
-      maxDuration: 4.263077
-      minDuration: 1.409321
-    - name: StartDeathAnnouncement
-      guid: b5f5d55fcb3efb4b867b44998c57cca3
-      id: 1248669510
+      maxDuration: 2.875
+      minDuration: 2
+    - name: Speak_02
+      guid: b0c910693cab824c867d407518c23e9a
+      id: 1369532194
       PathAndIcons:
       - ElementName: Events
         ObjectType: 5
@@ -451,16 +468,16 @@ MonoBehaviour:
       - ElementName: Default Work Unit
         ObjectType: 12
         guid: 36187f795aed7446a84c500d367dfcf3
-      - ElementName: StartDeathAnnouncement
+      - ElementName: Speak_02
         ObjectType: 3
-        guid: b5f5d55fcb3efb4b867b44998c57cca3
-      Path: Events\Default Work Unit\StartDeathAnnouncement
+        guid: b0c910693cab824c867d407518c23e9a
+      Path: Events\Default Work Unit\Speak_02
       maxAttenuation: 0
-      maxDuration: 0
-      minDuration: 0
-    - name: StartTheDay
-      guid: 1dc886f903898540b733652fee0b61ce
-      id: 2972317186
+      maxDuration: 2.875
+      minDuration: 2
+    - name: Speak_03
+      guid: be69d930ede4fe4da0169a3f5c9b5958
+      id: 1369532195
       PathAndIcons:
       - ElementName: Events
         ObjectType: 5
@@ -468,16 +485,16 @@ MonoBehaviour:
       - ElementName: Default Work Unit
         ObjectType: 12
         guid: 36187f795aed7446a84c500d367dfcf3
-      - ElementName: StartTheDay
+      - ElementName: Speak_03
         ObjectType: 3
-        guid: 1dc886f903898540b733652fee0b61ce
-      Path: Events\Default Work Unit\StartTheDay
+        guid: be69d930ede4fe4da0169a3f5c9b5958
+      Path: Events\Default Work Unit\Speak_03
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
-    - name: StartTheNight
-      guid: e723e9e9fae27945b52628ffc96f3cbe
-      id: 3670738982
+      maxDuration: 2.875
+      minDuration: 2
+    - name: Speak_04
+      guid: 29b58d558c812744ab3597a277f9dcf0
+      id: 1369532196
       PathAndIcons:
       - ElementName: Events
         ObjectType: 5
@@ -485,13 +502,285 @@ MonoBehaviour:
       - ElementName: Default Work Unit
         ObjectType: 12
         guid: 36187f795aed7446a84c500d367dfcf3
-      - ElementName: StartTheNight
+      - ElementName: Speak_04
         ObjectType: 3
-        guid: e723e9e9fae27945b52628ffc96f3cbe
-      Path: Events\Default Work Unit\StartTheNight
+        guid: 29b58d558c812744ab3597a277f9dcf0
+      Path: Events\Default Work Unit\Speak_04
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 2.875
+      minDuration: 2
+    - name: Speak_05
+      guid: be7a6ce340e51e4e8cb2191bacbef36d
+      id: 1369532197
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 36187f795aed7446a84c500d367dfcf3
+      - ElementName: Speak_05
+        ObjectType: 3
+        guid: be7a6ce340e51e4e8cb2191bacbef36d
+      Path: Events\Default Work Unit\Speak_05
+      maxAttenuation: 0
+      maxDuration: 2.875
+      minDuration: 2
+    - name: Speak_06
+      guid: 18c1e4f8bb31a94fb133a428896cd6b0
+      id: 1369532198
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 36187f795aed7446a84c500d367dfcf3
+      - ElementName: Speak_06
+        ObjectType: 3
+        guid: 18c1e4f8bb31a94fb133a428896cd6b0
+      Path: Events\Default Work Unit\Speak_06
+      maxAttenuation: 0
+      maxDuration: 2.875
+      minDuration: 2
+    - name: Speak_07
+      guid: d55de09b3b88d4448cd9dd20dc7a9f84
+      id: 1369532199
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 36187f795aed7446a84c500d367dfcf3
+      - ElementName: Speak_07
+        ObjectType: 3
+        guid: d55de09b3b88d4448cd9dd20dc7a9f84
+      Path: Events\Default Work Unit\Speak_07
+      maxAttenuation: 0
+      maxDuration: 2.875
+      minDuration: 2
+    - name: Speak_08
+      guid: 79a9c524cfa26241aa138de976c2791e
+      id: 1369532200
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 36187f795aed7446a84c500d367dfcf3
+      - ElementName: Speak_08
+        ObjectType: 3
+        guid: 79a9c524cfa26241aa138de976c2791e
+      Path: Events\Default Work Unit\Speak_08
+      maxAttenuation: 0
+      maxDuration: 2.875
+      minDuration: 2
+    - name: Speak_09
+      guid: 275639a75049884eba7cd35d274ade83
+      id: 1369532201
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 36187f795aed7446a84c500d367dfcf3
+      - ElementName: Speak_09
+        ObjectType: 3
+        guid: 275639a75049884eba7cd35d274ade83
+      Path: Events\Default Work Unit\Speak_09
+      maxAttenuation: 0
+      maxDuration: 2.875
+      minDuration: 2
+    - name: Speak_10
+      guid: a3ee95213fa6da44805d63e6827700da
+      id: 1386309779
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 36187f795aed7446a84c500d367dfcf3
+      - ElementName: Speak_10
+        ObjectType: 3
+        guid: a3ee95213fa6da44805d63e6827700da
+      Path: Events\Default Work Unit\Speak_10
+      maxAttenuation: 0
+      maxDuration: 2.875
+      minDuration: 2
+    - name: Speak_11
+      guid: 0a2a2f7daadcf3408d59b641c37c90b7
+      id: 1386309778
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 36187f795aed7446a84c500d367dfcf3
+      - ElementName: Speak_11
+        ObjectType: 3
+        guid: 0a2a2f7daadcf3408d59b641c37c90b7
+      Path: Events\Default Work Unit\Speak_11
+      maxAttenuation: 0
+      maxDuration: 2.875
+      minDuration: 2
+    - name: Speak_12
+      guid: 1d67f11486ea014dad3d84f5dddf19e3
+      id: 1386309777
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 36187f795aed7446a84c500d367dfcf3
+      - ElementName: Speak_12
+        ObjectType: 3
+        guid: 1d67f11486ea014dad3d84f5dddf19e3
+      Path: Events\Default Work Unit\Speak_12
+      maxAttenuation: 0
+      maxDuration: 2.875
+      minDuration: 2
+    - name: Speak_13
+      guid: 1c46b8a97a7d1a40a56af107ff4168e0
+      id: 1386309776
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 36187f795aed7446a84c500d367dfcf3
+      - ElementName: Speak_13
+        ObjectType: 3
+        guid: 1c46b8a97a7d1a40a56af107ff4168e0
+      Path: Events\Default Work Unit\Speak_13
+      maxAttenuation: 0
+      maxDuration: 2.875
+      minDuration: 2
+    - name: Speak_14
+      guid: 4488b513b866e14dbc86ef56419fa40f
+      id: 1386309783
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 36187f795aed7446a84c500d367dfcf3
+      - ElementName: Speak_14
+        ObjectType: 3
+        guid: 4488b513b866e14dbc86ef56419fa40f
+      Path: Events\Default Work Unit\Speak_14
+      maxAttenuation: 0
+      maxDuration: 2.875
+      minDuration: 2
+    - name: Speak_15
+      guid: 498db4f04b50964d892eea679eecdbcd
+      id: 1386309782
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 36187f795aed7446a84c500d367dfcf3
+      - ElementName: Speak_15
+        ObjectType: 3
+        guid: 498db4f04b50964d892eea679eecdbcd
+      Path: Events\Default Work Unit\Speak_15
+      maxAttenuation: 0
+      maxDuration: 2.875
+      minDuration: 2
+    - name: Speak_16
+      guid: a1c438722ce8db41b6027cdc0bcc74bb
+      id: 1386309781
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 36187f795aed7446a84c500d367dfcf3
+      - ElementName: Speak_16
+        ObjectType: 3
+        guid: a1c438722ce8db41b6027cdc0bcc74bb
+      Path: Events\Default Work Unit\Speak_16
+      maxAttenuation: 0
+      maxDuration: 2.875
+      minDuration: 2
+    - name: Speak_17
+      guid: 927838067511e64485cf1303431c5e71
+      id: 1386309780
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 36187f795aed7446a84c500d367dfcf3
+      - ElementName: Speak_17
+        ObjectType: 3
+        guid: 927838067511e64485cf1303431c5e71
+      Path: Events\Default Work Unit\Speak_17
+      maxAttenuation: 0
+      maxDuration: 2.875
+      minDuration: 2
+    - name: Speak_18
+      guid: 6533eab4e4f3694e8e11ea150f8659fc
+      id: 1386309787
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 36187f795aed7446a84c500d367dfcf3
+      - ElementName: Speak_18
+        ObjectType: 3
+        guid: 6533eab4e4f3694e8e11ea150f8659fc
+      Path: Events\Default Work Unit\Speak_18
+      maxAttenuation: 0
+      maxDuration: 2.875
+      minDuration: 2
+    - name: Speak_19
+      guid: 65a3ee2be5fc9d4ca44e33c9dda1e0a4
+      id: 1386309786
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 36187f795aed7446a84c500d367dfcf3
+      - ElementName: Speak_19
+        ObjectType: 3
+        guid: 65a3ee2be5fc9d4ca44e33c9dda1e0a4
+      Path: Events\Default Work Unit\Speak_19
+      maxAttenuation: 0
+      maxDuration: 2.875
+      minDuration: 2
+    - name: Speak_20
+      guid: 361bf69344d24d45bad0ae00d08ece3e
+      id: 1403087366
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 36187f795aed7446a84c500d367dfcf3
+      - ElementName: Speak_20
+        ObjectType: 3
+        guid: 361bf69344d24d45bad0ae00d08ece3e
+      Path: Events\Default Work Unit\Speak_20
+      maxAttenuation: 0
+      maxDuration: 2.875
+      minDuration: 2
     - name: WinDay
       guid: d4c89a7674f57548946491df7ea02e41
       id: 2364012353
@@ -614,7 +903,7 @@ MonoBehaviour:
     m_lastTime: -8585588864557360343
     List: []
   ExpandedFileSystemItemIds: 
-  ExpandedWaapiItemIds: 01000000050000000600000007000000080000001c0000001d0000001e0000001f000000200000002100000022000000
+  ExpandedWaapiItemIds: 01000000050000000600000007000000080000001c0000001d0000001e0000001f0000002000000021000000220000003100000032000000
   AutoSyncSelection: 0
   autoPopulateEnabled: 1
   currentDataSource: 0

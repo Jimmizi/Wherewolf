@@ -168,6 +168,20 @@ public class AudioManager : MonoBehaviour
         DeathAnnounceEvent.Post(gameObject);
     }
 
+    public void PlaySpeech(int iInstance)
+    {
+        int iNumberToUse = iInstance + 1;
+        string speechName = "Speak_";
+
+        if(iNumberToUse < 10)
+        {
+            speechName += "0";
+        }
+        speechName += iNumberToUse.ToString();
+
+        AkSoundEngine.PostEvent(speechName, gameObject);
+    }
+
     // Start is called before the first frame update
     void Awake()
     {

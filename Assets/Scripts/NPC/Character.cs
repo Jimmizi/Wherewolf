@@ -28,6 +28,13 @@ public class Character
     public bool ChosenForStakeTarget = false;
     public Schedule TaskSchedule = new Schedule();
 
+    public int VoiceNumber;
+    public void TriggerSpeechSound()
+    {
+        Service.Audio.PlaySpeech(VoiceNumber);
+    }
+
+
     public Emote CurrentClothingCondition = null;
 
     // Pointer towards the last list of clues the character was able to give

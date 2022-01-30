@@ -158,6 +158,11 @@ public class PlayerController : MonoBehaviour
         if (Service.Game.CurrentState == WerewolfGame.GameState.PlayerInvestigateDay
             || Service.Game.CurrentState == WerewolfGame.GameState.PlayerInvestigateNight)
         {
+            if(Service.Game.AreInvestigateToolsOpen)
+            {
+                return;
+            }
+
             ProcessUpdateInit();
             ProcessMovement();
             ProcessClicking();

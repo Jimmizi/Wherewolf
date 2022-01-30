@@ -70,6 +70,8 @@ public class WerewolfGame : MonoBehaviour
     [SerializeField]
     public Text DeathAnnouncementText;
 
+    public GameObject corkboardOpenerGo;
+
     public GameState CurrentState = GameState.GeneratePopulation;
     private GameState NextState = InvalidState;
 
@@ -118,6 +120,19 @@ public class WerewolfGame : MonoBehaviour
 
         return true;
     }
+
+    public bool AreInvestigateToolsOpen = false;
+    public void OpenInvestigateTools()
+    {
+        corkboardOpenerGo?.SetActive(false);
+        AreInvestigateToolsOpen = true;
+    }
+    public void CloseInvestigateTools()
+    {
+        corkboardOpenerGo?.SetActive(true);
+        AreInvestigateToolsOpen = false;
+    }
+
 
     [SerializeField]
     public GameObject SummaryScreenGameObject;

@@ -21,6 +21,7 @@ public class DialogueRenderer : MonoBehaviour {
     public TextMeshProUGUI speakerText;
     public EmoteTextRenderer sentenceText;
     public DropDownList charactersDropdown;
+    public GameObject corkboardOpenerGo;
     
     private bool _linePlaying;
     
@@ -52,17 +53,21 @@ public class DialogueRenderer : MonoBehaviour {
         StartCoroutine(DisplayDialogue(DialogueActionType.IssueGreeting, null));
         PopulateCharactersDropdown();
         DisplayChoices();
+        corkboardOpenerGo?.SetActive(false);
     }
 
     private void EndConversation() {
         ClearDialogueBox(true);
         container.gameObject.SetActive(false);
         OnConversationEnd.Invoke();
+        corkboardOpenerGo?.SetActive(true);
     }
     
     private Dialogue GenerateResponseDialogue(DialogueActionType dialogueActionType, Character relatedCharacter) {
         ClueObject clue;
-        
+
+        _character?.TriggerSpeechSound();
+
         switch (dialogueActionType) {
             case DialogueActionType.IssueGreeting:
             case DialogueActionType.Gossip:
@@ -163,7 +168,7 @@ public class DialogueRenderer : MonoBehaviour {
         }
     }
 
-    const Emote.EmoteSubType eTypeForFarewell = Emote.EmoteSubType.Specific_Disapproves;
+    const Emote.EmoteSubType eTypeForFarewell = Emote.EmoteSubType.Specific_Handshake;
 
     private static readonly DialogueActionEmoteMap _dialogueActions = new DialogueActionEmoteMap() {
         //{DialogueActionType.IssueGreeting, Emote.EmoteSubType.Specific_Approves},

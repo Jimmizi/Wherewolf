@@ -919,6 +919,19 @@ public class PopulationManager : MonoBehaviour
         }
 #endif
 
+        List<int> vRandomVoice = new List<int>();
+        for (int i = 0; i < ActiveCharacters.Count; ++i)
+        {
+            vRandomVoice.Add(i);
+        }
+
+        vRandomVoice.Shuffle();
+
+        for (int i = 0; i < ActiveCharacters.Count; ++i)
+        {
+            ActiveCharacters[i].VoiceNumber = vRandomVoice[i];
+        }
+
         bDoneCharacterGeneration = true;
     }
 

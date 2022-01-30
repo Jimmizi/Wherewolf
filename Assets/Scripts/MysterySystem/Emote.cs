@@ -99,6 +99,12 @@ public class Emote
         Specific_Disapproves,
         Specific_TalkAction,
         Specific_StakeAction,
+        Specific_Handshake,
+        Specific_Name,
+        Specific_Occupation,
+        Specific_Location,
+        Specific_Question,
+        Specific_Wave,
 
         Gossip_Gossip,
         Gossip_RelationshipKiss,
@@ -281,6 +287,12 @@ public class Emote
             case EmoteSubType.Specific_Disapproves:
             case EmoteSubType.Specific_TalkAction:
             case EmoteSubType.Specific_StakeAction:
+            case EmoteSubType.Specific_Handshake:
+            case EmoteSubType.Specific_Name:
+            case EmoteSubType.Specific_Occupation:
+            case EmoteSubType.Specific_Location:
+            case EmoteSubType.Specific_Question:
+            case EmoteSubType.Specific_Wave:
                 return EmoteType.Specific;
 
             case EmoteSubType.Gossip_Gossip:
