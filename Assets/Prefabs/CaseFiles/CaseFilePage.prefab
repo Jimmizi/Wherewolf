@@ -136,6 +136,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Content: {fileID: 1579620411277517499}
+  ScreenPadding: {x: 100, y: 100}
 --- !u!1 &3555095181668853879
 GameObject:
   m_ObjectHideFlags: 0
