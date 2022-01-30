@@ -35,9 +35,9 @@ namespace UnityEngine.UI.Extensions {
 
         private ScrollRect _scrollRect;
 
-        [SerializeField] private List<IDropDownListItem> Items = new List<IDropDownListItem>();
+        [SerializeField] private List<IDropDownListItem> Items;
 
-        private List<IDropDownListItemRenderer> _panelItems = new List<IDropDownListItemRenderer>();
+        private List<IDropDownListItemRenderer> _panelItems;
 
         public GameObject ItemTemplate;
 
@@ -75,9 +75,11 @@ namespace UnityEngine.UI.Extensions {
         // fires when item is changed;
         public SelectionChangedEvent OnSelectionChanged;
 
+        public bool Initialised = false;
 
         public void Start() {
-            Initialize();
+            //if (!Initialised)
+                Initialize();
             if (SelectFirstItemOnStart && Items.Count > 0) {
                 ToggleDropdownPanel(false);
                 OnItemClicked(0);
@@ -103,7 +105,24 @@ namespace UnityEngine.UI.Extensions {
             }
         }
 
+        public void DoInitialise()
+        {
+            Initialize();
+            if (SelectFirstItemOnStart && Items.Count > 0)
+            {
+                ToggleDropdownPanel(false);
+                OnItemClicked(0);
+            }
+
+            RedrawPanel();
+        }
+
         private bool Initialize() {
+
+            if (Initialised)
+            {
+                return true;
+            }
             bool success = true;
             try {
                 Items = new List<IDropDownListItem>();
@@ -141,6 +160,7 @@ namespace UnityEngine.UI.Extensions {
                 success = false;
             }
 
+            Initialised = success;
             _panelItems = new List<IDropDownListItemRenderer>();
             _mainButton.btn.onClick.AddListener(() => {
                 Debug.Log("Dropdown toggle");

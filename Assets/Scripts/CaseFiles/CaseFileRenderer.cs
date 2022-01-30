@@ -253,40 +253,6 @@ public class CaseFileRenderer : MonoBehaviour {
         }
     }
 
-    public void AddCharacterFirstPage(Character c)
-    {
-        if (CharacterPagesMap.ContainsKey(c))
-        {
-            return;
-        }
-
-        CharacterPagesMap.Add(c, new List<CaseFilePageRenderer>());
-        CaseFilePageRenderer currentPage = NewPage(c);
-
-        // First page gen
-
-        GameObject attributesObject = Instantiate(CharacterAttributesPrefab);
-        RectTransform attributesRectTransform = attributesObject.GetComponent<RectTransform>();
-
-        CaseFileAttributesCollection attributeCollection = attributesObject.GetComponent<CaseFileAttributesCollection>();
-        if (attributeCollection)
-        {
-            attributeCollection.NameText.text = c.Name;
-            attributeCollection.AgeText.text = c.Age.ToString();
-            attributeCollection.ProfilePicture.SetAttributes(CharacterGenerator.Instance.AttributesForEmoteType(c.GetHeadshotEmoteSubType()));
-        }
-
-        currentPage.AddSection(attributesRectTransform);
-
-        for (int i = CharacterPagesMap[c].Count - 1; i >= 0; i--)
-        {
-            CharacterPagesMap[c][i].transform.SetParent(transform, false);
-            CharacterPagesMap[c][i].gameObject.SetActive(false);
-        }
-
-        PopulateCharactersDropdown();
-    }
-
     public void BringUpPages()
     {
         PopulateCharactersDropdown();
@@ -297,7 +263,10 @@ public class CaseFileRenderer : MonoBehaviour {
         if (charactersDropdown == null) return;
 
         HideAll();
-
+        if(!charactersDropdown.Initialised)
+        {
+            charactersDropdown.DoInitialise();
+        }
         charactersDropdown.ResetItems();
 
         // Add a dummy character so we can always select to get a random character clue

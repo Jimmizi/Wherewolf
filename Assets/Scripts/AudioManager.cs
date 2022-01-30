@@ -194,6 +194,9 @@ public class AudioManager : MonoBehaviour
 
     public void PlaySpeech(int iInstance)
     {
+#if UNITY_EDITOR
+        if (DebugDisableAudio) return;
+#endif
         int iNumberToUse = iInstance + 1;
         string speechName = "Speak_";
 

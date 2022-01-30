@@ -148,6 +148,10 @@ public class DialogueRenderer : MonoBehaviour {
     {
         if (charactersDropdown == null) return;
 
+        if (!charactersDropdown.Initialised)
+        {
+            charactersDropdown.DoInitialise();
+        }
         charactersDropdown.ResetItems();
 
         // Add a dummy character so we can always select to get a random character clue
