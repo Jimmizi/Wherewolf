@@ -335,6 +335,7 @@ public class PhaseSolver : MonoBehaviour
         foreach (var c in Service.Population.ActiveCharacters)
         {
             c.HasGivenAClueThisPhase = false;
+            c.IsBeingTalkedTo = false;
 
             if (!c.IsAlive)
             {
