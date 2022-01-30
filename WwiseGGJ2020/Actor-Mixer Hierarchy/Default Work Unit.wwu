@@ -3976,6 +3976,84 @@
 						<ActiveSource Name="GameOverNight" ID="{6837C0E3-F6DF-45EE-88BE-E8C150CE10C3}" Platform="Linked"/>
 					</ActiveSourceList>
 				</Sound>
+				<Sound Name="MusicDaySfx" ID="{FEF54076-0A96-42C2-B575-619292B00F3A}" ShortID="519014296">
+					<PropertyList>
+						<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{CDCD3BA4-22DA-4D0F-B878-FE934CC7D525}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{307BF1A3-0DE3-4C85-8D5A-B0BBD3D00D42}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="MusicDay" ID="{C25475C5-8FB0-4750-AAE9-886A81ACC696}">
+							<Language>SFX</Language>
+							<AudioFile>MusicDay.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="324954291"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ObjectLists/>
+					<ActiveSourceList>
+						<ActiveSource Name="MusicDay" ID="{C25475C5-8FB0-4750-AAE9-886A81ACC696}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="MusicNightSfx" ID="{8AEB54CE-2796-4801-A003-470D71BB075A}" ShortID="696914106">
+					<PropertyList>
+						<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{CDCD3BA4-22DA-4D0F-B878-FE934CC7D525}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{307BF1A3-0DE3-4C85-8D5A-B0BBD3D00D42}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="MusicNight" ID="{650A0E08-D0CC-4740-BBAE-DFA9F3BDD39B}">
+							<Language>SFX</Language>
+							<AudioFile>MusicNight.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="746160009"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ObjectLists/>
+					<ActiveSourceList>
+						<ActiveSource Name="MusicNight" ID="{650A0E08-D0CC-4740-BBAE-DFA9F3BDD39B}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="MusicCorkboardSfx" ID="{EEFEECC2-AB8B-42E0-A6D6-374903043641}" ShortID="482627390">
+					<PropertyList>
+						<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{CDCD3BA4-22DA-4D0F-B878-FE934CC7D525}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{307BF1A3-0DE3-4C85-8D5A-B0BBD3D00D42}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="MusicCorkboard" ID="{D878D567-C26D-41ED-8CC3-38B3CF5A9144}">
+							<Language>SFX</Language>
+							<AudioFile>MusicCorkboard.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="315214103"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ObjectLists/>
+					<ActiveSourceList>
+						<ActiveSource Name="MusicCorkboard" ID="{D878D567-C26D-41ED-8CC3-38B3CF5A9144}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
 			</ChildrenList>
 		</WorkUnit>
 	</AudioObjects>

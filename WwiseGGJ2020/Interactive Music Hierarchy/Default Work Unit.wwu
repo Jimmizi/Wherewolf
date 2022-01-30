@@ -248,7 +248,7 @@
 																						<PointList>
 																							<Point>
 																								<XPos>0</XPos>
-																								<YPos>-0</YPos>
+																								<YPos>0</YPos>
 																								<Flags>5</Flags>
 																							</Point>
 																							<Point>
@@ -295,6 +295,11 @@
 						<MusicSegment Name="MusicNightIntro" ID="{6C2554EE-7CF6-46FE-AB32-08B8235FC6D9}" ShortID="926863945">
 							<PropertyList>
 								<Property Name="EndPosition" Type="Real64" Value="18368.5219929623"/>
+								<Property Name="Inclusion" Type="bool">
+									<ValueList>
+										<Value>False</Value>
+									</ValueList>
+								</Property>
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">

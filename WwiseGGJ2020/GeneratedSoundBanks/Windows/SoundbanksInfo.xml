@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="12" SoundbankVersion="140">
 	<RootPaths>
-		<ProjectRoot>C:\Users\leoto\OneDrive\Documents\GitHub\GGJ2022\WwiseGGJ2020\</ProjectRoot>
-		<SourceFilesRoot>C:\Users\leoto\OneDrive\Documents\GitHub\GGJ2022\WwiseGGJ2020\.cache\Windows\</SourceFilesRoot>
-		<SoundBanksRoot>C:\Users\leoto\OneDrive\Documents\GitHub\GGJ2022\WwiseGGJ2020\GeneratedSoundBanks\Windows\</SoundBanksRoot>
+		<ProjectRoot>C:\Users\jaket\Documents\GitHub\GGJ2022\WwiseGGJ2020\</ProjectRoot>
+		<SourceFilesRoot>C:\Users\jaket\Documents\GitHub\GGJ2022\WwiseGGJ2020\.cache\Windows\</SourceFilesRoot>
+		<SoundBanksRoot>C:\Users\jaket\Documents\GitHub\GGJ2022\WwiseGGJ2020\GeneratedSoundBanks\Windows\</SoundBanksRoot>
 		<ExternalSourcesInputFile></ExternalSourcesInputFile>
-		<ExternalSourcesOutputRoot>C:\Users\leoto\OneDrive\Documents\GitHub\GGJ2022\WwiseGGJ2020\GeneratedSoundBanks\Windows</ExternalSourcesOutputRoot>
+		<ExternalSourcesOutputRoot>C:\Users\jaket\Documents\GitHub\GGJ2022\WwiseGGJ2020\GeneratedSoundBanks\Windows</ExternalSourcesOutputRoot>
 	</RootPaths>
 	<DialogueEvents/>
 	<StreamedFiles/>
@@ -19,7 +19,7 @@
 				<GameParameter Id="4179668880" Name="master_volume" ObjectPath="\Game Parameters\Default Work Unit\master_volume"/>
 			</GameParameters>
 		</SoundBank>
-		<SoundBank Id="2276007709" Language="SFX" Hash="770622938">
+		<SoundBank Id="2276007709" Language="SFX" Hash="3820622555">
 			<ObjectPath>\SoundBanks\Default Work Unit\NightCycle</ObjectPath>
 			<ShortName>NightCycle</ShortName>
 			<Path>NightCycle.bnk</Path>
@@ -32,7 +32,8 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="1272348217" Name="BackToGameTitle" ObjectPath="\Events\Default Work Unit\BackToGameTitle" DurationType="OneShot" DurationMin="0." DurationMax="0."/>
+				<Event Id="1693860815" Name="BackToTitle" ObjectPath="\Events\Default Work Unit\BackToTitle" DurationType="OneShot" DurationMin="0." DurationMax="0."/>
+				<Event Id="4148867748" Name="DeathAnnounce" ObjectPath="\Events\Default Work Unit\DeathAnnounce" DurationType="OneShot" DurationMin="0." DurationMax="0."/>
 				<Event Id="199733517" Name="DiscoveryNight" ObjectPath="\Events\Default Work Unit\DiscoveryNight" DurationType="OneShot" DurationMin="4.173896" DurationMax="4.173896">
 					<IncludedMemoryFiles>
 						<File Id="838286607" Language="SFX">
@@ -49,20 +50,64 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
+				<Event Id="2716737400" Name="MusicCorkboardSfx" ObjectPath="\Events\Default Work Unit\MusicCorkboardSfx" DurationType="Infinite">
+					<IncludedMemoryFiles>
+						<File Id="315214103" Language="SFX">
+							<ShortName>MusicCorkboard.wav</ShortName>
+							<Path>SFX\MusicCorkboard_D79FB2B7.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2248987061" Name="MusicDaySfx" ObjectPath="\Events\Default Work Unit\MusicDaySfx" DurationType="Infinite">
+					<IncludedMemoryFiles>
+						<File Id="324954291" Language="SFX">
+							<ShortName>MusicDay.wav</ShortName>
+							<Path>SFX\MusicDay_D79FB2B7.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
 				<Event Id="3028680700" Name="MusicNight" ObjectPath="\Events\Default Work Unit\MusicNight" DurationType="Infinite"/>
+				<Event Id="1238766433" Name="MusicNightSfx" ObjectPath="\Events\Default Work Unit\MusicNightSfx" DurationType="Infinite">
+					<IncludedMemoryFiles>
+						<File Id="746160009" Language="SFX">
+							<ShortName>MusicNight.wav</ShortName>
+							<Path>SFX\MusicNight_D79FB2B7.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="4004831775" Name="StartDay" ObjectPath="\Events\Default Work Unit\StartDay" DurationType="Infinite">
+					<IncludedMemoryFiles>
+						<File Id="221210545" Language="SFX">
+							<ShortName>AmbienceDay.wav</ShortName>
+							<Path>SFX\AmbienceDay_D79FB2B7.wem</Path>
+						</File>
+						<File Id="324954291" Language="SFX">
+							<ShortName>MusicDay.wav</ShortName>
+							<Path>SFX\MusicDay_D79FB2B7.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2373353387" Name="StartNight" ObjectPath="\Events\Default Work Unit\StartNight" DurationType="Infinite">
+					<IncludedMemoryFiles>
+						<File Id="25883968" Language="SFX">
+							<ShortName>AmbienceNight.wav</ShortName>
+							<Path>SFX\AmbienceNight_D79FB2B7.wem</Path>
+						</File>
+						<File Id="746160009" Language="SFX">
+							<ShortName>MusicNight.wav</ShortName>
+							<Path>SFX\MusicNight_D79FB2B7.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
 			</IncludedEvents>
 			<IncludedMemoryFiles>
 				<File Id="746160009" Language="SFX">
 					<ShortName>MusicNight.wav</ShortName>
 					<Path>SFX\MusicNight_D79FB2B7.wem</Path>
 				</File>
-				<File Id="880405823" Language="SFX">
-					<ShortName>MusicNightIntro.wav</ShortName>
-					<Path>SFX\MusicNightIntro_D79FB2B7.wem</Path>
-				</File>
 			</IncludedMemoryFiles>
 		</SoundBank>
-		<SoundBank Id="2769481441" Language="SFX" Hash="1255410825">
+		<SoundBank Id="2769481441" Language="SFX" Hash="2573072019">
 			<ObjectPath>\SoundBanks\Default Work Unit\DayCycle</ObjectPath>
 			<ShortName>DayCycle</ShortName>
 			<Path>DayCycle.bnk</Path>
@@ -75,7 +120,8 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="1272348217" Name="BackToGameTitle" ObjectPath="\Events\Default Work Unit\BackToGameTitle" DurationType="OneShot" DurationMin="0." DurationMax="0."/>
+				<Event Id="1693860815" Name="BackToTitle" ObjectPath="\Events\Default Work Unit\BackToTitle" DurationType="OneShot" DurationMin="0." DurationMax="0."/>
+				<Event Id="4148867748" Name="DeathAnnounce" ObjectPath="\Events\Default Work Unit\DeathAnnounce" DurationType="OneShot" DurationMin="0." DurationMax="0."/>
 				<Event Id="2538410761" Name="DiscoveryDay" ObjectPath="\Events\Default Work Unit\DiscoveryDay" DurationType="OneShot" DurationMin="3.5" DurationMax="3.5">
 					<IncludedMemoryFiles>
 						<File Id="6432356" Language="SFX">
@@ -92,7 +138,55 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
+				<Event Id="2716737400" Name="MusicCorkboardSfx" ObjectPath="\Events\Default Work Unit\MusicCorkboardSfx" DurationType="Infinite">
+					<IncludedMemoryFiles>
+						<File Id="315214103" Language="SFX">
+							<ShortName>MusicCorkboard.wav</ShortName>
+							<Path>SFX\MusicCorkboard_D79FB2B7.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
 				<Event Id="3155631888" Name="MusicDay" ObjectPath="\Events\Default Work Unit\MusicDay" DurationType="Infinite"/>
+				<Event Id="2248987061" Name="MusicDaySfx" ObjectPath="\Events\Default Work Unit\MusicDaySfx" DurationType="Infinite">
+					<IncludedMemoryFiles>
+						<File Id="324954291" Language="SFX">
+							<ShortName>MusicDay.wav</ShortName>
+							<Path>SFX\MusicDay_D79FB2B7.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1238766433" Name="MusicNightSfx" ObjectPath="\Events\Default Work Unit\MusicNightSfx" DurationType="Infinite">
+					<IncludedMemoryFiles>
+						<File Id="746160009" Language="SFX">
+							<ShortName>MusicNight.wav</ShortName>
+							<Path>SFX\MusicNight_D79FB2B7.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="4004831775" Name="StartDay" ObjectPath="\Events\Default Work Unit\StartDay" DurationType="Infinite">
+					<IncludedMemoryFiles>
+						<File Id="221210545" Language="SFX">
+							<ShortName>AmbienceDay.wav</ShortName>
+							<Path>SFX\AmbienceDay_D79FB2B7.wem</Path>
+						</File>
+						<File Id="324954291" Language="SFX">
+							<ShortName>MusicDay.wav</ShortName>
+							<Path>SFX\MusicDay_D79FB2B7.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2373353387" Name="StartNight" ObjectPath="\Events\Default Work Unit\StartNight" DurationType="Infinite">
+					<IncludedMemoryFiles>
+						<File Id="25883968" Language="SFX">
+							<ShortName>AmbienceNight.wav</ShortName>
+							<Path>SFX\AmbienceNight_D79FB2B7.wem</Path>
+						</File>
+						<File Id="746160009" Language="SFX">
+							<ShortName>MusicNight.wav</ShortName>
+							<Path>SFX\MusicNight_D79FB2B7.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
 				<Event Id="2364012353" Name="WinDay" ObjectPath="\Events\Default Work Unit\WinDay" DurationType="OneShot" DurationMin="6.5" DurationMax="6.5">
 					<IncludedMemoryFiles>
 						<File Id="830455018" Language="SFX">
@@ -113,7 +207,7 @@
 				</File>
 			</IncludedMemoryFiles>
 		</SoundBank>
-		<SoundBank Id="3062523257" Language="SFX" Hash="924511997">
+		<SoundBank Id="3062523257" Language="SFX" Hash="2123235886">
 			<ObjectPath>\SoundBanks\Default Work Unit\Misc</ObjectPath>
 			<ShortName>Misc</ShortName>
 			<Path>Misc.bnk</Path>
@@ -135,7 +229,7 @@
 				</File>
 			</IncludedMemoryFiles>
 		</SoundBank>
-		<SoundBank Id="3150299886" Language="SFX" Hash="3115725571">
+		<SoundBank Id="3150299886" Language="SFX" Hash="624102342">
 			<ObjectPath>\SoundBanks\Default Work Unit\OneShots</ObjectPath>
 			<ShortName>OneShots</ShortName>
 			<Path>OneShots.bnk</Path>
@@ -198,7 +292,7 @@
 				</Event>
 			</IncludedEvents>
 		</SoundBank>
-		<SoundBank Id="3313685232" Language="SFX" Hash="2143399271">
+		<SoundBank Id="3313685232" Language="SFX" Hash="2124642494">
 			<ObjectPath>\SoundBanks\Default Work Unit\Voices</ObjectPath>
 			<ShortName>Voices</ShortName>
 			<Path>Voices.bnk</Path>

@@ -201,54 +201,6 @@
 						</Action>
 					</ChildrenList>
 				</Event>
-				<Event Name="BackToGameTitle" ID="{01C6D848-1FE4-4120-B77C-042906706604}">
-					<ChildrenList>
-						<Action Name="" ID="{37CA5FF4-CA3D-4E2E-B93B-84BB21A020E5}" ShortID="789111997">
-							<PropertyList>
-								<Property Name="ActionType" Type="int16" Value="2"/>
-								<Property Name="FadeTime" Type="Real64" Value="2"/>
-							</PropertyList>
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="MusicDayLoop" ID="{4492F738-1083-4906-BC04-4DEDCB118344}" WorkUnitID="{9277866B-E73D-4F74-B632-B6EF503A3632}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
-						<Action Name="" ID="{3939C154-9CC1-448D-92C2-6CC7E7282625}" ShortID="647449121">
-							<PropertyList>
-								<Property Name="ActionType" Type="int16" Value="2"/>
-								<Property Name="FadeTime" Type="Real64" Value="2"/>
-							</PropertyList>
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="AmbienceDay" ID="{0A94AB01-BD5D-4966-8A0F-4EE4F2F936FE}" WorkUnitID="{A81D3656-2325-46B3-9A64-828E3D72236B}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
-						<Action Name="" ID="{90F88551-ED1C-46F8-99FF-631FAE1E944B}" ShortID="47181371">
-							<PropertyList>
-								<Property Name="ActionType" Type="int16" Value="2"/>
-								<Property Name="FadeTime" Type="Real64" Value="2"/>
-							</PropertyList>
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="AmbienceNight" ID="{74AF0224-1060-4EEE-9E98-4EFC5677CD60}" WorkUnitID="{A81D3656-2325-46B3-9A64-828E3D72236B}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
-						<Action Name="" ID="{3BBAF789-3130-413C-B50B-0063A8E22BBB}" ShortID="82320542">
-							<PropertyList>
-								<Property Name="ActionType" Type="int16" Value="2"/>
-								<Property Name="FadeTime" Type="Real64" Value="2"/>
-							</PropertyList>
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="MusicNight" ID="{6ADE9F7E-4D99-4313-BD8E-A0459D935384}" WorkUnitID="{9277866B-E73D-4F74-B632-B6EF503A3632}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
-					</ChildrenList>
-				</Event>
 				<Event Name="Speak_01" ID="{9A03715E-1454-4886-A224-A24A2BBBAFEA}">
 					<ChildrenList>
 						<Action Name="" ID="{772EDB5D-8660-4AE6-84B1-F7E5BDFF8967}" ShortID="393846326">
@@ -497,6 +449,263 @@
 							<ReferenceList>
 								<Reference Name="Target">
 									<ObjectRef Name="MusicCorkboard" ID="{BC6905A2-68F0-4C0A-AC37-9871FDE72C78}" WorkUnitID="{9277866B-E73D-4F74-B632-B6EF503A3632}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="DeathAnnounce" ID="{3ABEEDC0-8B78-4802-B85E-A658D6101730}">
+					<ChildrenList>
+						<Action Name="" ID="{C0CC2EA7-6D99-4020-857D-066E24616A4F}" ShortID="697203174">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+								<Property Name="FadeTime" Type="Real64" Value="2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="MusicDaySfx" ID="{FEF54076-0A96-42C2-B575-619292B00F3A}" WorkUnitID="{A81D3656-2325-46B3-9A64-828E3D72236B}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{651C48F5-3F88-4C0E-9D64-4474F4FD8BBA}" ShortID="849954569">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+								<Property Name="FadeTime" Type="Real64" Value="2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="MusicNightSfx" ID="{8AEB54CE-2796-4801-A003-470D71BB075A}" WorkUnitID="{A81D3656-2325-46B3-9A64-828E3D72236B}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{99087460-767F-4255-A47A-C30E58761B55}" ShortID="852617373">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+								<Property Name="FadeTime" Type="Real64" Value="2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="AmbienceDay" ID="{0A94AB01-BD5D-4966-8A0F-4EE4F2F936FE}" WorkUnitID="{A81D3656-2325-46B3-9A64-828E3D72236B}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{927DFC8E-B85E-4AEA-93DD-B7034E4E4F89}" ShortID="302354138">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+								<Property Name="FadeTime" Type="Real64" Value="2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="AmbienceNight" ID="{74AF0224-1060-4EEE-9E98-4EFC5677CD60}" WorkUnitID="{A81D3656-2325-46B3-9A64-828E3D72236B}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{29648C4E-4893-40AB-84FA-F025103B169F}" ShortID="198100828">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+								<Property Name="FadeTime" Type="Real64" Value="2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="MusicCorkboardSfx" ID="{EEFEECC2-AB8B-42E0-A6D6-374903043641}" WorkUnitID="{A81D3656-2325-46B3-9A64-828E3D72236B}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="BackToTitle" ID="{B0A9CE8F-5060-4847-B499-B68F141FDD85}">
+					<ChildrenList>
+						<Action Name="" ID="{141DB5ED-5109-4996-9FA0-5D6131713BFF}" ShortID="369492386">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+								<Property Name="FadeTime" Type="Real64" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="MusicCorkboardSfx" ID="{EEFEECC2-AB8B-42E0-A6D6-374903043641}" WorkUnitID="{A81D3656-2325-46B3-9A64-828E3D72236B}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{4318B839-CB51-48BC-A43C-9BF5DA6F7052}" ShortID="485498809">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+								<Property Name="FadeTime" Type="Real64" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="MusicDaySfx" ID="{FEF54076-0A96-42C2-B575-619292B00F3A}" WorkUnitID="{A81D3656-2325-46B3-9A64-828E3D72236B}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{B6D74885-3BDB-4961-BB85-700DD0798316}" ShortID="712130269">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+								<Property Name="FadeTime" Type="Real64" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="MusicNightSfx" ID="{8AEB54CE-2796-4801-A003-470D71BB075A}" WorkUnitID="{A81D3656-2325-46B3-9A64-828E3D72236B}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{C84F0959-BBCE-44FB-9C89-8BE1E511FD06}" ShortID="661756120">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+								<Property Name="FadeTime" Type="Real64" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="AmbienceDay" ID="{0A94AB01-BD5D-4966-8A0F-4EE4F2F936FE}" WorkUnitID="{A81D3656-2325-46B3-9A64-828E3D72236B}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{57C4105A-0658-4057-A382-200D046C33E3}" ShortID="612074762">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+								<Property Name="FadeTime" Type="Real64" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="AmbienceNight" ID="{74AF0224-1060-4EEE-9E98-4EFC5677CD60}" WorkUnitID="{A81D3656-2325-46B3-9A64-828E3D72236B}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="MusicTitleSfx" ID="{E54D179F-3640-4EF0-A746-B49A2D80818F}">
+					<ChildrenList>
+						<Action Name="" ID="{196E0345-9F84-4AF3-8159-0F690ABEF6D8}" ShortID="1012598754"/>
+					</ChildrenList>
+				</Event>
+				<Event Name="MusicDaySfx" ID="{9C705663-5A72-4644-BF1B-0C4AC537DD6E}">
+					<ChildrenList>
+						<Action Name="" ID="{55DF6A7D-4C21-4281-833F-C3A647F7E552}" ShortID="345885897">
+							<PropertyList>
+								<Property Name="FadeTime" Type="Real64" Value="2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="MusicDaySfx" ID="{FEF54076-0A96-42C2-B575-619292B00F3A}" WorkUnitID="{A81D3656-2325-46B3-9A64-828E3D72236B}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="MusicNightSfx" ID="{451DD45B-B5C3-48A1-8420-C3C045850DEF}">
+					<ChildrenList>
+						<Action Name="" ID="{9B534282-2271-475F-8C1E-439F8D0EF7CE}" ShortID="440104066">
+							<PropertyList>
+								<Property Name="FadeTime" Type="Real64" Value="2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="MusicNightSfx" ID="{8AEB54CE-2796-4801-A003-470D71BB075A}" WorkUnitID="{A81D3656-2325-46B3-9A64-828E3D72236B}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="MusicCorkboardSfx" ID="{B1605FD3-0991-4C02-8673-B164B6B53042}">
+					<ChildrenList>
+						<Action Name="" ID="{725BA235-6276-4BE9-8582-34C5751FFA74}" ShortID="607246298">
+							<PropertyList>
+								<Property Name="FadeTime" Type="Real64" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="MusicCorkboardSfx" ID="{EEFEECC2-AB8B-42E0-A6D6-374903043641}" WorkUnitID="{A81D3656-2325-46B3-9A64-828E3D72236B}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="StartDay" ID="{22901984-2EC6-462A-B10F-32972D40C528}">
+					<ChildrenList>
+						<Action Name="" ID="{F3FF99EB-8004-4144-9D85-6133519D0E11}" ShortID="824250290">
+							<PropertyList>
+								<Property Name="FadeTime" Type="Real64" Value="2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="MusicDaySfx" ID="{FEF54076-0A96-42C2-B575-619292B00F3A}" WorkUnitID="{A81D3656-2325-46B3-9A64-828E3D72236B}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{3B2A13CF-B000-47CA-878B-F745E1C31BEB}" ShortID="853020316">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+								<Property Name="FadeTime" Type="Real64" Value="2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="MusicNightSfx" ID="{8AEB54CE-2796-4801-A003-470D71BB075A}" WorkUnitID="{A81D3656-2325-46B3-9A64-828E3D72236B}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{E13E75FC-7624-4E56-BD56-2FE664AD169C}" ShortID="674791620">
+							<PropertyList>
+								<Property Name="FadeTime" Type="Real64" Value="2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="AmbienceDay" ID="{0A94AB01-BD5D-4966-8A0F-4EE4F2F936FE}" WorkUnitID="{A81D3656-2325-46B3-9A64-828E3D72236B}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{346E00C0-C832-4DAD-AC15-30DE350D05AA}" ShortID="770341557">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+								<Property Name="FadeTime" Type="Real64" Value="2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="AmbienceNight" ID="{74AF0224-1060-4EEE-9E98-4EFC5677CD60}" WorkUnitID="{A81D3656-2325-46B3-9A64-828E3D72236B}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="StartNight" ID="{96FFD940-4A21-4FA9-8902-61D5F629F360}">
+					<ChildrenList>
+						<Action Name="" ID="{AEBAB267-FF21-4FB6-A427-672CD4C6A6E3}" ShortID="766232834">
+							<PropertyList>
+								<Property Name="FadeTime" Type="Real64" Value="2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="MusicNightSfx" ID="{8AEB54CE-2796-4801-A003-470D71BB075A}" WorkUnitID="{A81D3656-2325-46B3-9A64-828E3D72236B}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{EE0BF008-5528-4B08-846B-6F7D150BB570}" ShortID="253628933">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+								<Property Name="FadeTime" Type="Real64" Value="2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="AmbienceDay" ID="{0A94AB01-BD5D-4966-8A0F-4EE4F2F936FE}" WorkUnitID="{A81D3656-2325-46B3-9A64-828E3D72236B}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{A3142C32-A6EB-4B59-8C38-64F71F6A51B2}" ShortID="868824315">
+							<PropertyList>
+								<Property Name="FadeTime" Type="Real64" Value="2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="AmbienceNight" ID="{74AF0224-1060-4EEE-9E98-4EFC5677CD60}" WorkUnitID="{A81D3656-2325-46B3-9A64-828E3D72236B}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{2CA125FF-F307-4E62-A688-26E877761832}" ShortID="775300493">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+								<Property Name="FadeTime" Type="Real64" Value="2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="MusicDaySfx" ID="{FEF54076-0A96-42C2-B575-619292B00F3A}" WorkUnitID="{A81D3656-2325-46B3-9A64-828E3D72236B}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>

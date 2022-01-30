@@ -5,25 +5,35 @@
 			<ChildrenList>
 				<SoundBank Name="DayCycle" ID="{FC5C07BC-DE31-4341-93EA-76B6A8E3E228}">
 					<ObjectInclusionList>
-						<ObjectRef Name="BackToGameTitle" ID="{01C6D848-1FE4-4120-B77C-042906706604}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="DiscoveryDay" ID="{17A2198D-E6F5-4433-B43A-6AC6DBB65E32}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="StartDay" ID="{22901984-2EC6-462A-B10F-32972D40C528}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="MusicDaySfx" ID="{9C705663-5A72-4644-BF1B-0C4AC537DD6E}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="DeathAnnounce" ID="{3ABEEDC0-8B78-4802-B85E-A658D6101730}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="BackToTitle" ID="{B0A9CE8F-5060-4847-B499-B68F141FDD85}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="WinDay" ID="{769AC8D4-F574-4875-9464-91DF7EA02E41}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="MusicNightSfx" ID="{451DD45B-B5C3-48A1-8420-C3C045850DEF}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="MusicDayLoop" ID="{4492F738-1083-4906-BC04-4DEDCB118344}" WorkUnitID="{9277866B-E73D-4F74-B632-B6EF503A3632}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="GameOverDay" ID="{E4806E2F-144A-4B25-8DF5-C89FF84FC53A}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="AmbienceDay" ID="{ADD96E5B-E900-4BAF-8714-261614D3ADA4}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
-						<ObjectRef Name="StartDeathAnnouncement" ID="{5FD5F5B5-3ECB-4BFB-867B-44998C57CCA3}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="MusicCorkboardSfx" ID="{B1605FD3-0991-4C02-8673-B164B6B53042}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="StartNight" ID="{96FFD940-4A21-4FA9-8902-61D5F629F360}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
 					</ObjectInclusionList>
 					<ObjectExclusionList/>
 					<GameSyncExclusionList/>
 				</SoundBank>
 				<SoundBank Name="NightCycle" ID="{BCA837B0-7050-4257-875D-ACDB506127D8}">
 					<ObjectInclusionList>
-						<ObjectRef Name="BackToGameTitle" ID="{01C6D848-1FE4-4120-B77C-042906706604}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="MusicNightLoop" ID="{29E874DC-2EA5-4355-AD7F-D28D81DF2D3B}" WorkUnitID="{9277866B-E73D-4F74-B632-B6EF503A3632}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="StartDay" ID="{22901984-2EC6-462A-B10F-32972D40C528}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="MusicDaySfx" ID="{9C705663-5A72-4644-BF1B-0C4AC537DD6E}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="DeathAnnounce" ID="{3ABEEDC0-8B78-4802-B85E-A658D6101730}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="BackToTitle" ID="{B0A9CE8F-5060-4847-B499-B68F141FDD85}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="MusicNightSfx" ID="{451DD45B-B5C3-48A1-8420-C3C045850DEF}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="GameOverNight" ID="{C33449F5-E63A-4964-AF7B-CC7E99795733}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="AmbienceNight" ID="{736BAED1-44A6-4A25-9FE4-FE21FA75A128}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
-						<ObjectRef Name="StartDeathAnnouncement" ID="{5FD5F5B5-3ECB-4BFB-867B-44998C57CCA3}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="MusicCorkboardSfx" ID="{B1605FD3-0991-4C02-8673-B164B6B53042}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="DiscoveryNight" ID="{B7A00018-7450-4C68-BFE0-4F085EBCA65D}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="StartNight" ID="{96FFD940-4A21-4FA9-8902-61D5F629F360}" WorkUnitID="{797F1836-ED5A-4674-A84C-500D367DFCF3}" Origin="Manual" Filter="7"/>
 					</ObjectInclusionList>
 					<ObjectExclusionList/>
 					<GameSyncExclusionList/>

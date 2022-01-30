@@ -8,164 +8,179 @@ public class AudioManager : MonoBehaviour
     public bool DebugDisableAudio;
 #endif
 
-    [SerializeField]
-    AK.Wwise.Event StartDayEvent;
+    //[SerializeField]
+    //AK.Wwise.Event StartDayEvent;
     public void StartDay()
     {
 #if UNITY_EDITOR
         if (DebugDisableAudio) return;
 #endif
-        StartDayEvent.Post(gameObject);
+        // StartDayEvent.Post(gameObject);
+        AkSoundEngine.PostEvent("StartDay", gameObject);
     }
 
-    [SerializeField]
-    AK.Wwise.Event StartNightEvent;
+   // [SerializeField]
+    //AK.Wwise.Event StartNightEvent;
     public void StartNight()
     {
 #if UNITY_EDITOR
         if (DebugDisableAudio) return;
 #endif
-        StartNightEvent.Post(gameObject);
+        // StartNightEvent.Post(gameObject);
+        AkSoundEngine.PostEvent("StartNight", gameObject);
     }
 
-    [SerializeField]
-    AK.Wwise.Event UIClickEvent;
+    //[SerializeField]
+    //AK.Wwise.Event UIClickEvent;
     public void PlayUIClick()
     {
 #if UNITY_EDITOR
         if (DebugDisableAudio) return;
 #endif
-        UIClickEvent.Post(gameObject);
+        // UIClickEvent.Post(gameObject);
+        AkSoundEngine.PostEvent("Click", gameObject);
     }
 
-    [SerializeField]
-    AK.Wwise.Event DiscoveryDayEvent;
+    //[SerializeField]
+    //AK.Wwise.Event DiscoveryDayEvent;
     public void PlayDiscoveryDay()
     {
 #if UNITY_EDITOR
         if (DebugDisableAudio) return;
 #endif
-        DiscoveryDayEvent.Post(gameObject);
+        // DiscoveryDayEvent.Post(gameObject);
+        AkSoundEngine.PostEvent("DiscoveryDay", gameObject);
     }
 
-    [SerializeField]
-    AK.Wwise.Event DiscoveryNightEvent;
+   // [SerializeField]
+    //AK.Wwise.Event DiscoveryNightEvent;
     public void PlayDiscoveryNight()
     {
 #if UNITY_EDITOR
         if (DebugDisableAudio) return;
 #endif
-        DiscoveryNightEvent.Post(gameObject);
+        // DiscoveryNightEvent.Post(gameObject);
+        AkSoundEngine.PostEvent("DiscoveryNight", gameObject);
     }
 
-    [SerializeField]
-    AK.Wwise.Event GameOverDayEvent;
+    //[SerializeField]
+    //AK.Wwise.Event GameOverDayEvent;
     public void PlayGameOverDay()
     {
 #if UNITY_EDITOR
         if (DebugDisableAudio) return;
 #endif
-        GameOverDayEvent.Post(gameObject);
+        // GameOverDayEvent.Post(gameObject);
+        AkSoundEngine.PostEvent("GameOverDay", gameObject);
     }
 
-    [SerializeField]
-    AK.Wwise.Event GameOverNightEvent;
+    //[SerializeField]
+    //AK.Wwise.Event GameOverNightEvent;
     public void PlayGameOverNight()
     {
 #if UNITY_EDITOR
         if (DebugDisableAudio) return;
 #endif
-        GameOverNightEvent.Post(gameObject);
+        //GameOverNightEvent.Post(gameObject);
+        AkSoundEngine.PostEvent("GameOverNight", gameObject);
     }
 
-    [SerializeField]
-    AK.Wwise.Event PaperCrumpleEvent;
+    //[SerializeField]
+   // AK.Wwise.Event PaperCrumpleEvent;
     public void PlayPaperCrumple()
     {
 #if UNITY_EDITOR
         if (DebugDisableAudio) return;
 #endif
-        PaperCrumpleEvent.Post(gameObject);
+        // PaperCrumpleEvent.Post(gameObject);
+        AkSoundEngine.PostEvent("PaperCrumple", gameObject);
     }
 
-    [SerializeField]
-    AK.Wwise.Event PaperMoveEvent;
+    //[SerializeField]
+    //AK.Wwise.Event PaperMoveEvent;
     public void PlayPaperMove()
     {
 #if UNITY_EDITOR
         if (DebugDisableAudio) return;
 #endif
-        PaperMoveEvent.Post(gameObject);
+        //PaperMoveEvent.Post(gameObject);
+        AkSoundEngine.PostEvent("PaperMove", gameObject);
     }
 
-    [SerializeField]
-    AK.Wwise.Event RoosterCrowEvent;
+    //[SerializeField]
+    //AK.Wwise.Event RoosterCrowEvent;
     public void PlayRoosterCrow()
     {
 #if UNITY_EDITOR
         if (DebugDisableAudio) return;
 #endif
-        RoosterCrowEvent.Post(gameObject);
+        //RoosterCrowEvent.Post(gameObject);
+        AkSoundEngine.PostEvent("RoosterCrow", gameObject);
     }
 
-    [SerializeField]
-    AK.Wwise.Event SpeechEvent;
+    //[SerializeField]
+    //AK.Wwise.Event SpeechEvent;
     public void PlaySpeech()
     {
 #if UNITY_EDITOR
         if (DebugDisableAudio) return;
 #endif
-        SpeechEvent.Post(gameObject);
+        //SpeechEvent.Post(gameObject);
     }
 
-    [SerializeField]
-    AK.Wwise.Event WinDayEvent;
+    //[SerializeField]
+    //AK.Wwise.Event WinDayEvent;
     public void PlayWinDay()
     {
 #if UNITY_EDITOR
         if (DebugDisableAudio) return;
 #endif
-        WinDayEvent.Post(gameObject);
+        //WinDayEvent.Post(gameObject);
+        AkSoundEngine.PostEvent("WinDay", gameObject);
     }
 
-    [SerializeField]
-    AK.Wwise.Event WinNightEvent;
+   // [SerializeField]
+   // AK.Wwise.Event WinNightEvent;
     public void PlayWinNight()
     {
 #if UNITY_EDITOR
         if (DebugDisableAudio) return;
 #endif
-        WinNightEvent.Post(gameObject);
+        //WinNightEvent.Post(gameObject);
+        AkSoundEngine.PostEvent("WinNight", gameObject);
     }
 
-    [SerializeField]
-    AK.Wwise.Event WolfHowlEvent;
+    //[SerializeField]
+    //AK.Wwise.Event WolfHowlEvent;
     public void PlayWolfHowl()
     {
 #if UNITY_EDITOR
         if (DebugDisableAudio) return;
 #endif
-        WolfHowlEvent.Post(gameObject);
+        //WolfHowlEvent.Post(gameObject);
+        AkSoundEngine.PostEvent("WolfHowl", gameObject);
     }
 
-    [SerializeField]
-    AK.Wwise.Event BackToTitleEvent;
+   // [SerializeField]
+    //AK.Wwise.Event BackToTitleEvent;
     public void PlayBackToTitle()
     {
 #if UNITY_EDITOR
         if (DebugDisableAudio) return;
 #endif
-        BackToTitleEvent.Post(gameObject);
+        //BackToTitleEvent.Post(gameObject);
+        AkSoundEngine.PostEvent("BackToTitle", gameObject);
     }
 
-    [SerializeField]
-    AK.Wwise.Event DeathAnnounceEvent;
+   // [SerializeField]
+    //AK.Wwise.Event DeathAnnounceEvent;
     public void PlayDeathAnnounce()
     {
 #if UNITY_EDITOR
         if (DebugDisableAudio) return;
 #endif
-        DeathAnnounceEvent.Post(gameObject);
+        // DeathAnnounceEvent.Post(gameObject);
+        AkSoundEngine.PostEvent("DeathAnnounce", gameObject);
     }
 
     public void PlaySpeech(int iInstance)

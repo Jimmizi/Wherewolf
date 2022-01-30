@@ -596,7 +596,7 @@ public class WerewolfGame : MonoBehaviour
                         switch (iVictimText++)
                         {
                             case 0:
-                                DeathAnnouncementText.text = string.Format("A fresh widow mourns; {0} was found in the early hours of the morning.", v.Name);
+                                DeathAnnouncementText.text = string.Format("A fresh widow mourns; {0}'s corpse was found in the early hours of the morning.", v.Name);
                                 break;
                             case 1:
                                 DeathAnnouncementText.text = string.Format("Screams pierced the sky early in the morning. {0}'s body was found in pieces in the street.", v.Name);
