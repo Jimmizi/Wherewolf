@@ -18,6 +18,7 @@ public static class Service
     public static LocationManager Location;
     public static LightingManager Lighting;
     public static CaseFileRenderer CaseFile;
+    public static DialogueRenderer Dialogue;
 
     public static DialogueManager DialogueManager;
     public static CharacterGenerator CharacterGenerator;

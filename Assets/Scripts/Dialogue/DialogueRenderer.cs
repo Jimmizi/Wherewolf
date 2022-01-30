@@ -39,6 +39,11 @@ public class DialogueRenderer : MonoBehaviour {
         StartConversation(Service.Population.GetRandomCharacter());
     }
 
+    private void Awake()
+    {
+       // Service.Dialogue = this;
+    }
+
     private void Start() {
         container.gameObject.SetActive(false);
         //StartConversation(Service.Population.GetRandomCharacter());

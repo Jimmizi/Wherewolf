@@ -213,7 +213,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 200
+  m_SortingOrder: 32767
   m_TargetDisplay: 0
 --- !u!114 &108094757
 MonoBehaviour:
@@ -562,7 +562,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 32767
+  m_SortingOrder: 31000
   m_TargetDisplay: 0
 --- !u!114 &300781859
 MonoBehaviour:
@@ -5276,7 +5276,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63ddea758dd4fe74f91048202e08f763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DebugDisableAudio: 1
+  DebugDisableAudio: 0
 --- !u!114 &2868963963725791734
 MonoBehaviour:
   m_ObjectHideFlags: 0

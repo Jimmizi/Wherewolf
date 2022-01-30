@@ -35,9 +35,9 @@ namespace UnityEngine.UI.Extensions {
 
         private ScrollRect _scrollRect;
 
-        [SerializeField] private List<IDropDownListItem> Items;
-        
-        private List<IDropDownListItemRenderer> _panelItems;
+        [SerializeField] private List<IDropDownListItem> Items = new List<IDropDownListItem>();
+
+        private List<IDropDownListItemRenderer> _panelItems = new List<IDropDownListItemRenderer>();
 
         public GameObject ItemTemplate;
 
@@ -206,7 +206,7 @@ namespace UnityEngine.UI.Extensions {
         /// Rebuilds the contents of the panel in response to items being added.
         /// </summary>
         private void RebuildPanel() {
-            if (Items.Count == 0) return;
+            if (Items == null || Items.Count == 0) return;
 
             int indx = _panelItems.Count;
             while (_panelItems.Count < Items.Count) {

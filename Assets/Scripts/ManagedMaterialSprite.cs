@@ -9,9 +9,19 @@ public class ManagedMaterialSprite : MonoBehaviour {
     private void Awake() {
         _spriteRenderer = GetComponent<SpriteRenderer>();
     }
+    private void Start()
+    {
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+    }
 
     public void SetMaterial(Material material) {
         _material = material;
+
+        if(!_spriteRenderer)
+        {
+            _spriteRenderer = GetComponent<SpriteRenderer>();
+        }
+
         _spriteRenderer.sharedMaterial = material;
     }
 }

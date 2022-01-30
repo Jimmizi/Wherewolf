@@ -382,12 +382,7 @@ public class PhaseSolver : MonoBehaviour
             // If the day time didn't produce a victim, do it now
             return CurrentPhase.Victim == null;
         }
-        // DO NOT SUBMIT
-        if(Service.Game.CurrentTimeOfDay == WerewolfGame.TOD.Day)
-        {
-            return true;
-        }
-
+        
         // Otherwise it's either the first day time, or a new day in which case we have a random chance of striking in the day time
         //  If it fails here, we will generate during the night above
         return UnityEngine.Random.Range(0.0f, 100.0f) < 50.0f;
