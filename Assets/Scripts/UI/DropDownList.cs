@@ -256,6 +256,15 @@ namespace UnityEngine.UI.Extensions {
                     .SetActive(i < Items.Count); // if we have more thanks in the panel than Items in the list hide them
             }
         }
+        
+        public void SelectItem(System.Predicate<IDropDownListItem> match)
+        {
+            int idx = Items.FindIndex(match);
+            if (idx >= 0)
+            {
+                OnItemClicked(idx);
+            }
+        }
 
         private void OnItemClicked(int indx) {
             //Debug.Log("item " + indx + " clicked");

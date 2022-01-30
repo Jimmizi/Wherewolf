@@ -3,9 +3,10 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using UnityEngine.UI.Extensions;
 using Random = UnityEngine.Random;
 
-public class EmoteRenderer : MonoBehaviour, IEmoteRenderer, IPointerEnterHandler, IPointerExitHandler {
+public class EmoteRenderer : MonoBehaviour, IEmoteRenderer, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler {
     public Image Image;
     public CharacterEmoteRenderer CharacterEmoteRenderer;
 
@@ -98,5 +99,13 @@ public class EmoteRenderer : MonoBehaviour, IEmoteRenderer, IPointerEnterHandler
 
     public void OnPointerExit(PointerEventData eventData) {
         Service.TooltipManager.HideActiveTooltip();
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        if (_emote.Type == Emote.EmoteType.CharacterHeadshot)
+        {
+            Service.CaseFile.charactersDropdown.SelectItem(d => (d as DropDownListItem<Character>).Data.Name == Emote.Name);
+        }        
     }
 }
