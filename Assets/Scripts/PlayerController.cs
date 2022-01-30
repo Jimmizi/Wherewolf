@@ -93,7 +93,6 @@ public class PlayerController : MonoBehaviour
         CurrentlySelectedCharacter.AssociatedCharacter.SetNameDiscovered();
         ActionPanel.gameObject.SetActive(false);
 
-        //Service.Dialogue.StartConversation(CurrentlySelectedCharacter.AssociatedCharacter);
         Service.DialogueManager.StartConversation(CurrentlySelectedCharacter.AssociatedCharacter);
 
         Service.Player.IsTalkingToCharacter = true;
@@ -113,7 +112,7 @@ public class PlayerController : MonoBehaviour
         if(!CurrentlySelectedCharacter.AssociatedCharacter.IsAlive)
         {
             ActionPanel.gameObject.SetActive(false);
-            CurrentlySelectedCharacter.AssociatedCharacter.ReleaseFromBeingTalkedTo();
+            CurrentlySelectedCharacter?.AssociatedCharacter?.ReleaseFromBeingTalkedTo();
             CurrentlySelectedCharacter = null;
             return;
         }
@@ -291,6 +290,13 @@ public class PlayerController : MonoBehaviour
                 {
                     Service.Audio.PlayUIClick();
 
+
+                    if(CurrentlySelectedCharacter != null)
+                    {
+                        // make sure to clean up talked to just in case
+                        CurrentlySelectedCharacter.AssociatedCharacter.IsBeingTalkedTo = false;
+                    }
+                        
                     CurrentlySelectedCharacter = pc;
 
                     var pos = GetUIPositionForCharacterAction();

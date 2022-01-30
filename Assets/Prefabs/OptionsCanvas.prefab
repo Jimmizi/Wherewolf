@@ -2182,7 +2182,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.75
+  m_Value: 0.5
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -3961,7 +3961,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9002809193385624165, guid: 988306a355a51334c83bf542bab25b68, type: 3}
       propertyPath: m_FontData.m_FontSize
-      value: 63
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 9002809193385624165, guid: 988306a355a51334c83bf542bab25b68, type: 3}
       propertyPath: m_FontData.m_Alignment
