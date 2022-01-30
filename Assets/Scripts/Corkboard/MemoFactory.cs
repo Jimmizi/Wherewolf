@@ -28,6 +28,9 @@ public class MemoFactory : MonoBehaviour
 
     [SerializeField]
     private int baseNewId = 200;
+    
+    public delegate void MemoCreatedDelegate(Memo newMemo);
+    public event MemoCreatedDelegate OnMemoCreated;
 
     void Start()
     {
@@ -90,6 +93,8 @@ public class MemoFactory : MonoBehaviour
         Memo newMemo = Instantiate(memoPrefab, memoHolder);
         memoData.position = position;
         newMemo.Data = memoData;
+
+        OnMemoCreated?.Invoke(newMemo);
 
         return newMemo;
     }

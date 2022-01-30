@@ -58,8 +58,20 @@ public class MemoPile : MonoBehaviour, IDropHandler, IBeginDragHandler, IDragHan
         {
             if (createNewMemos)
             {
-                Memo newMemo = CreateNewMemo();                
+                Memo newMemo = CreateNewMemo();
                 eventData.pointerDrag = newMemo.gameObject;
+
+                foreach (var handler in eventData.pointerDrag.GetComponentsInChildren< IPointerDownHandler>())
+                {
+                    handler.OnPointerDown(eventData);
+                }
+
+                foreach (var handler in eventData.pointerDrag.GetComponentsInChildren<IBeginDragHandler>())
+                {
+                    handler.OnBeginDrag(eventData);
+                }
+                //newMemo.OnPointerDown(eventData);
+                //newMemo.OnBeginDrag(eventData);
             }
         }
         else

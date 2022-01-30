@@ -33,7 +33,7 @@ public class Memo : MonoBehaviour
     private List<Emote> emotes = new List<Emote>();
 
     RectTransform _rectTransform;
-    private RectTransform rectTransform
+    public RectTransform rectTransform
     {
         get
         {
@@ -44,6 +44,26 @@ public class Memo : MonoBehaviour
 
             return _rectTransform;
         }
+    }
+
+    Canvas _canvas;
+    public Canvas canvas
+    {
+        get
+        {
+            if (!_canvas)
+            {
+                _canvas = GetComponent<Canvas>();
+            }
+
+            return _canvas;
+        }
+    }
+
+    public int sortOrder
+    {
+        get { return canvas ? canvas.sortingOrder : 0; }
+        set { if (canvas) canvas.sortingOrder = value; }
     }
 
     public MemoData Data

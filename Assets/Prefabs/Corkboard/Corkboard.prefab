@@ -95,7 +95,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: -100
+  m_SortingOrder: 10
   m_TargetDisplay: 0
 --- !u!1 &1474576337213638544
 GameObject:
@@ -110,6 +110,7 @@ GameObject:
   - component: {fileID: 1474576337213638541}
   - component: {fileID: 1474576337213638546}
   - component: {fileID: 6450085222195578590}
+  - component: {fileID: 743879773265010998}
   m_Layer: 5
   m_Name: Corkboard
   m_TagString: Untagged
@@ -159,7 +160,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_TargetDisplay: 0
 --- !u!114 &1474576337213638541
 MonoBehaviour:
@@ -183,7 +184,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &1474576337213638546
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,6 +218,20 @@ MonoBehaviour:
   memoPrefab: {fileID: 824337718127794735, guid: 9b2108f776b76424ba39d64c6f685e40, type: 3}
   defaultRectTransform: {fileID: 5145787052557302776}
   baseNewId: 200
+--- !u!114 &743879773265010998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1474576337213638544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05fe2a75ac34d3d4db8db0e150cdf4fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minSortOrder: 11
+  maxSortOrder: 250
 --- !u!1 &1474576338300629080
 GameObject:
   m_ObjectHideFlags: 0
@@ -273,7 +288,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 32767
+  m_SortingOrder: 300
   m_TargetDisplay: 0
 --- !u!114 &1474576338300629082
 MonoBehaviour:
@@ -331,7 +346,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 823354268, guid: 4ea92a6162bceb7438109f62841b7f8a, type: 3}
       propertyPath: m_SortingOrder
-      value: 32766
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 1228540084421605224, guid: 4ea92a6162bceb7438109f62841b7f8a, type: 3}
       propertyPath: m_Pivot.x

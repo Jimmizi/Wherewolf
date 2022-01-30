@@ -59,15 +59,11 @@ public class DragAndDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler
         }
     }
 
-    private static int currentSortOrder=1;
-
     public void OnPointerDown(PointerEventData eventData)
     {
-        currentSortOrder++;
-        canvas.sortingOrder = currentSortOrder;
-
         if (memo)
         {
+            MemoSorter.instance.PlaceOnTop(memo);
             memo.Highlighted = false;
         }
     }
