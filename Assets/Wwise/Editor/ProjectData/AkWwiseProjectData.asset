@@ -150,7 +150,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: 36187f795aed7446a84c500d367dfcf3
     GuidInternal: 
-    m_lastTime: -8585580931854647009
+    m_lastTime: -8585580783821681650
     List:
     - name: AmbienceDay
       guid: 5b6ed9ad00e9af4b8714261614d3ada4
@@ -201,8 +201,8 @@ MonoBehaviour:
         guid: 8fcea9b060504748b499b68f141fdd85
       Path: Events\Default Work Unit\BackToTitle
       maxAttenuation: 0
-      maxDuration: 0
-      minDuration: 0
+      maxDuration: -1
+      minDuration: -1
     - name: Click
       guid: b7a7a6a7fa68554d854264b17a611a74
       id: 1584507803
@@ -1022,7 +1022,7 @@ MonoBehaviour:
     m_lastTime: -8585588864557360343
     List: []
   ExpandedFileSystemItemIds: 
-  ExpandedWaapiItemIds: 01000000050000000600000007000000080000001c0000001d0000001e0000001f000000200000002100000022000000310000003200000038000000390000006e0000006f000000
+  ExpandedWaapiItemIds: 01000000050000000600000007000000080000001c0000001d0000001e0000001f000000200000002100000022000000310000003200000038000000390000003a0000006e0000006f000000
   AutoSyncSelection: 0
   autoPopulateEnabled: 1
   currentDataSource: 0

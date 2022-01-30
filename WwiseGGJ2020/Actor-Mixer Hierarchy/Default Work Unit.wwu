@@ -3729,6 +3729,11 @@
 								<Value>True</Value>
 							</ValueList>
 						</Property>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-8</Value>
+							</ValueList>
+						</Property>
 					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
@@ -3755,6 +3760,11 @@
 				<Sound Name="AmbienceNight" ID="{74AF0224-1060-4EEE-9E98-4EFC5677CD60}" ShortID="183041373">
 					<PropertyList>
 						<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-8</Value>
+							</ValueList>
+						</Property>
 					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">

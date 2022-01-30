@@ -369,7 +369,6 @@ GameObject:
   - component: {fileID: 235615802384601703}
   - component: {fileID: 235615802384601696}
   - component: {fileID: 235615801623706262}
-  - component: {fileID: 235615801623706261}
   - component: {fileID: 235615801623706260}
   m_Layer: 0
   m_Name: LevelLoaderTitleScreen
@@ -458,43 +457,9 @@ MonoBehaviour:
   decodeBank: 0
   loadAsynchronous: 0
   saveDecodedBank: 0
-  unloadTriggerList: 958ca0ea
+  unloadTriggerList: 
   bankNameInternal: 
   valueGuidInternal: 
---- !u!114 &235615801623706261
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 235615802384601697}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b3f4d1be43a096429e8f24ce1b07663, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  triggerList: 
-  useOtherObject: 0
-  actionOnEventType: 0
-  curveInterpolation: 4
-  enableActionOnEvent: 0
-  data:
-    idInternal: 0
-    valueGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: 55c1b4c1b297642448e40bd405450f28, type: 2}
-  useCallbacks: 0
-  Callbacks: []
-  playingId: 0
-  soundEmitterObject: {fileID: 0}
-  transitionDuration: 0
-  eventIdInternal: 0
-  valueGuidInternal: 
-  m_callbackDataInternal: {fileID: 0}
-  MultiPositionType: 1
-  multiPositionTypeLabel: 0
-  attenuationSphereColor: {r: 1, g: 0, b: 0, a: 0.1}
-  LargeModePositions: []
-  multiPositionArray: []
 --- !u!114 &235615801623706260
 MonoBehaviour:
   m_ObjectHideFlags: 0

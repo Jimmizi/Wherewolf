@@ -19,7 +19,7 @@
 				<GameParameter Id="4179668880" Name="master_volume" ObjectPath="\Game Parameters\Default Work Unit\master_volume"/>
 			</GameParameters>
 		</SoundBank>
-		<SoundBank Id="2276007709" Language="SFX" Hash="3820622555">
+		<SoundBank Id="2276007709" Language="SFX" Hash="2648437769">
 			<ObjectPath>\SoundBanks\Default Work Unit\NightCycle</ObjectPath>
 			<ShortName>NightCycle</ShortName>
 			<Path>NightCycle.bnk</Path>
@@ -32,7 +32,14 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="1693860815" Name="BackToTitle" ObjectPath="\Events\Default Work Unit\BackToTitle" DurationType="OneShot" DurationMin="0." DurationMax="0."/>
+				<Event Id="1693860815" Name="BackToTitle" ObjectPath="\Events\Default Work Unit\BackToTitle" DurationType="Infinite">
+					<IncludedMemoryFiles>
+						<File Id="315214103" Language="SFX">
+							<ShortName>MusicCorkboard.wav</ShortName>
+							<Path>SFX\MusicCorkboard_D79FB2B7.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
 				<Event Id="4148867748" Name="DeathAnnounce" ObjectPath="\Events\Default Work Unit\DeathAnnounce" DurationType="OneShot" DurationMin="0." DurationMax="0."/>
 				<Event Id="199733517" Name="DiscoveryNight" ObjectPath="\Events\Default Work Unit\DiscoveryNight" DurationType="OneShot" DurationMin="4.173896" DurationMax="4.173896">
 					<IncludedMemoryFiles>
@@ -107,7 +114,7 @@
 				</File>
 			</IncludedMemoryFiles>
 		</SoundBank>
-		<SoundBank Id="2769481441" Language="SFX" Hash="2573072019">
+		<SoundBank Id="2769481441" Language="SFX" Hash="3145418288">
 			<ObjectPath>\SoundBanks\Default Work Unit\DayCycle</ObjectPath>
 			<ShortName>DayCycle</ShortName>
 			<Path>DayCycle.bnk</Path>
@@ -120,7 +127,14 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="1693860815" Name="BackToTitle" ObjectPath="\Events\Default Work Unit\BackToTitle" DurationType="OneShot" DurationMin="0." DurationMax="0."/>
+				<Event Id="1693860815" Name="BackToTitle" ObjectPath="\Events\Default Work Unit\BackToTitle" DurationType="Infinite">
+					<IncludedMemoryFiles>
+						<File Id="315214103" Language="SFX">
+							<ShortName>MusicCorkboard.wav</ShortName>
+							<Path>SFX\MusicCorkboard_D79FB2B7.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
 				<Event Id="4148867748" Name="DeathAnnounce" ObjectPath="\Events\Default Work Unit\DeathAnnounce" DurationType="OneShot" DurationMin="0." DurationMax="0."/>
 				<Event Id="2538410761" Name="DiscoveryDay" ObjectPath="\Events\Default Work Unit\DiscoveryDay" DurationType="OneShot" DurationMin="3.5" DurationMax="3.5">
 					<IncludedMemoryFiles>

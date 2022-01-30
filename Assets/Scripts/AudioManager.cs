@@ -19,7 +19,16 @@ public class AudioManager : MonoBehaviour
         AkSoundEngine.PostEvent("StartDay", gameObject);
     }
 
-   // [SerializeField]
+    public void GoToCorkboard()
+    {
+#if UNITY_EDITOR
+        if (DebugDisableAudio) return;
+#endif
+        // StartDayEvent.Post(gameObject);
+        AkSoundEngine.PostEvent("MusicCorkboardSfx", gameObject);
+    }
+
+    // [SerializeField]
     //AK.Wwise.Event StartNightEvent;
     public void StartNight()
     {
