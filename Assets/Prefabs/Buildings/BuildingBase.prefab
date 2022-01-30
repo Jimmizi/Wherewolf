@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4968476732294095526}
   - component: {fileID: 7585494559910454558}
   - component: {fileID: -8663846970966565244}
+  - component: {fileID: 8572332798406154254}
   m_Layer: 0
   m_Name: BuildingBase
   m_TagString: Untagged
@@ -68,7 +69,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: a53e60841c2ba47968c0ed0226e8087e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -100,3 +101,15 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &8572332798406154254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7259901237767093414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 897b32646b5ab48a894475be09600ffb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
