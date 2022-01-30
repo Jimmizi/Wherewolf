@@ -198,7 +198,7 @@ namespace UnityEngine.UI.Extensions {
         }
         
         public void ResetItems() {
-            Items.Clear();
+            Items?.Clear();
             RebuildPanel();
         }
 

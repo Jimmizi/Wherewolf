@@ -498,7 +498,7 @@ public class WerewolfGame : MonoBehaviour
                                 // Hide ghosts once they've given their clue last phase
                                 else if(!c.IsAlive)
                                 {
-                                    if (c.HasGhostGivenClue || CurrentTimeOfDay != TOD.Night)
+                                    if (c.HasGhostGivenClue || CurrentTimeOfDay != TOD.Night || c.DeathDay == CurrentDay)
                                     { 
                                         Service.Population.PhysicalCharacterMap[c].gameObject.SetActive(false);
                                     }

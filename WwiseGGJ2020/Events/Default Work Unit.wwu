@@ -664,6 +664,22 @@
 				</Event>
 				<Event Name="StartDay" ID="{22901984-2EC6-462A-B10F-32972D40C528}">
 					<ChildrenList>
+						<Action Name="" ID="{D735AB9D-1723-47EB-B205-F6A964047A4F}" ShortID="883306470">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="3"/>
+								<Property Name="FadeTime" Type="Real64" Value="0.5"/>
+							</PropertyList>
+							<ReferenceList/>
+							<ChildrenList>
+								<EventActionException Name="" ID="{CDA02FA1-CC52-46F5-851B-B161F8907109}">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="MusicDaySfx" ID="{FEF54076-0A96-42C2-B575-619292B00F3A}" WorkUnitID="{A81D3656-2325-46B3-9A64-828E3D72236B}"/>
+										</Reference>
+									</ReferenceList>
+								</EventActionException>
+							</ChildrenList>
+						</Action>
 						<Action Name="" ID="{F3FF99EB-8004-4144-9D85-6133519D0E11}" ShortID="824250290">
 							<PropertyList>
 								<Property Name="FadeTime" Type="Real64" Value="2"/>

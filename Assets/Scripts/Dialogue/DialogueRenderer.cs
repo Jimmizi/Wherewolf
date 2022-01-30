@@ -90,11 +90,50 @@ public class DialogueRenderer : MonoBehaviour {
                 break;
         }
 
+        // In an extreme case, steal a clue from someone else
+        if(clue == null)
+        {
+            Debug.LogError("Shouldn't really be able to get a null clue.");
+            foreach(var cl in Service.PhaseSolve.CurrentPhase.CharacterCluesToGive)
+            {
+                bool foundSomething = false;
+
+                foreach(var clu in cl.Value)
+                {
+                    if(clu != null)
+                    {
+                        clue = clu;
+                        clue.GivenByCharacter = _character;
+                        clue.RelatesToCharacter = relatedCharacter;
+                        clue.IsTruth = false;
+                        _character.HasGivenAClueThisPhase = true;
+
+                        foundSomething = true;
+                        break;
+                    }
+                }
+
+                if(foundSomething)
+                {
+                    break;
+                }
+            }
+        }
+
         if (dialogueActionType != DialogueActionType.IssueFarewell)
         {
+            bool bSpendsPoint = true;
+
+            // NPCs give a greeting but we don't want that to cost us an action point
+            //  but ghosts give their clue as a greeting.
+            if(dialogueActionType == DialogueActionType.IssueGreeting && _character.IsAlive)
+            {
+                bSpendsPoint = false;
+            }
+
             // Discover names when receiving clues about them.
             clue.RelatesToCharacter?.SetNameDiscovered();
-            Service.Player.AddClueGiven(clue, dialogueActionType != DialogueActionType.IssueGreeting);
+            Service.Player.AddClueGiven(clue, bSpendsPoint);
         }
 
         return Dialogue.FromClue(clue);
