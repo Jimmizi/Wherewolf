@@ -27,6 +27,9 @@ public class MemoFactory : MonoBehaviour
     private RectTransform defaultRectTransform;
 
     [SerializeField]
+    private RectTransform defaultSpawnRange;
+
+    [SerializeField]
     private int baseNewId = 200;
     
     public delegate void MemoCreatedDelegate(Memo newMemo);
@@ -75,14 +78,14 @@ public class MemoFactory : MonoBehaviour
 
     public Memo CreateNew(string subtitle, string message, bool highlighted = true, bool editable = false)
     {
-        Vector3 defaultPosition = defaultRectTransform ? defaultRectTransform.position : new Vector3(0, 0);
-        return CreateNew(subtitle, message, defaultPosition, highlighted, editable);
+        Vector2 spawnPosition = GetNewMemoPosition();
+        return CreateNew(subtitle, message, spawnPosition, highlighted, editable);
     }
 
     public Memo CreateNew(string subtitle, List<Emote> emotes, bool highlighted = true)
     {
-        Vector3 defaultPosition = defaultRectTransform ? defaultRectTransform.position : new Vector3(0, 0);
-        return CreateNew(subtitle, emotes, defaultPosition, highlighted);
+        Vector2 spawnPosition = GetNewMemoPosition();
+        return CreateNew(subtitle, emotes, spawnPosition, highlighted);
     }
 
     public Memo CreateNew(bool highlighted = true)
@@ -114,5 +117,26 @@ public class MemoFactory : MonoBehaviour
         }
 
         return "";
+    }
+
+    private Vector2 GetNewMemoPosition()
+    {
+        if (defaultSpawnRange)
+        {
+            Vector2 spawnOffset = new Vector2(
+                Random.Range(defaultSpawnRange.offsetMin.x, defaultSpawnRange.offsetMax.x),
+                Random.Range(defaultSpawnRange.offsetMin.y, defaultSpawnRange.offsetMax.y)
+                );
+
+            return spawnOffset;
+        }
+        else if (defaultRectTransform)
+        {
+            return defaultRectTransform.position;
+        }
+        else
+        {
+            return Vector2.zero;
+        }
     }
 }

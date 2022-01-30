@@ -69,7 +69,7 @@ public class PlayerManager : MonoBehaviour
         // Don't add in responses of "didn't have something to tell you" to memos, case files, or collected clues in general
         if (!givenClue.DidntHaveClueAboutPerson)
         {
-            MemoFactory.instance.CreateNew(givenClue.GivenByCharacter.Name, givenClue.Emotes, Vector2.zero, true);
+            MemoFactory.instance.CreateNew(givenClue.GivenByCharacter.Name, givenClue.Emotes, true);
 
             // DON'T add clues given by ghosts, otherwise it shows on someones record that they're the werewolf
             if (givenClue.Type != ClueObject.ClueType.VisualFromGhost)
