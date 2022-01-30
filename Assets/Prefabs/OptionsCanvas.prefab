@@ -1,5 +1,101 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &233835931
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 233835932}
+  - component: {fileID: 233835935}
+  - component: {fileID: 233835934}
+  - component: {fileID: 233835933}
+  m_Layer: 0
+  m_Name: Text (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &233835932
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 233835931}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6266841761141922521}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 327.4, y: -215}
+  m_SizeDelta: {x: 634.1, y: 147.69}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &233835935
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 233835931}
+  m_CullTransparentMesh: 1
+--- !u!114 &233835934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 233835931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.2924528, g: 0.2924528, b: 0.2924528, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 32
+    m_FontStyle: 2
+    m_BestFit: 0
+    m_MinSize: 3
+    m_MaxSize: 128
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 1
+    m_LineSpacing: 1
+  m_Text: 'Detective-to-detective tip: look out for the ghosts of past victims during
+    the night, they can provide the most valuable information about the werewolf!'
+--- !u!114 &233835933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 233835931}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &263889259
 GameObject:
   m_ObjectHideFlags: 0
@@ -1308,7 +1404,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 327.4, y: -61.2}
+  m_AnchoredPosition: {x: 327.4, y: 55}
   m_SizeDelta: {x: 634.1, y: 297.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1468837762
@@ -1697,7 +1793,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: I'm sure a detective as fine as yourself as near picture perfect memory,
+  m_Text: I'm sure a detective as fine as yourself has near picture perfect memory,
     but just in case you need a refresher on something you've learnt about, check
     out the investigation tools accessible by clicking on the book at the bottom
     middle of the screen when in game! There you'll have a corkboard and a case files
@@ -3335,9 +3431,8 @@ MonoBehaviour:
 
     Use your
     wits, the games tools, and maybe some pen and paper if you''re really looking
-    to get into it - to correlate the clues given to you; but beware because there''s
-    certainly a few people telling fibs, especially those damn ghosts. Well, some
-    of the time.
+    to get into it - to correlate the clues given to you. Everyone but the werewolf
+    is trying to help you!
 
 
 '
@@ -4230,34 +4325,14 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 9002809193595970464, guid: 988306a355a51334c83bf542bab25b68, type: 3}
   m_PrefabInstance: {fileID: 3028719281741904249}
   m_PrefabAsset: {fileID: 0}
---- !u!224 &6266841759610073985 stripped
+--- !u!224 &6266841759450350688 stripped
 RectTransform:
-  m_CorrespondingSourceObject: {fileID: 9002809193677081336, guid: 988306a355a51334c83bf542bab25b68, type: 3}
-  m_PrefabInstance: {fileID: 3028719281741904249}
-  m_PrefabAsset: {fileID: 0}
---- !u!224 &6266841759421829716 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 9002809194007898925, guid: 988306a355a51334c83bf542bab25b68, type: 3}
-  m_PrefabInstance: {fileID: 3028719281741904249}
-  m_PrefabAsset: {fileID: 0}
---- !u!224 &6266841759890422039 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 9002809194474111086, guid: 988306a355a51334c83bf542bab25b68, type: 3}
-  m_PrefabInstance: {fileID: 3028719281741904249}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &6266841760946010906 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9002809193385624163, guid: 988306a355a51334c83bf542bab25b68, type: 3}
+  m_CorrespondingSourceObject: {fileID: 9002809194034068761, guid: 988306a355a51334c83bf542bab25b68, type: 3}
   m_PrefabInstance: {fileID: 3028719281741904249}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &6266841759450350719 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9002809194034068742, guid: 988306a355a51334c83bf542bab25b68, type: 3}
-  m_PrefabInstance: {fileID: 3028719281741904249}
-  m_PrefabAsset: {fileID: 0}
---- !u!224 &6266841759434707358 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 9002809194019727591, guid: 988306a355a51334c83bf542bab25b68, type: 3}
   m_PrefabInstance: {fileID: 3028719281741904249}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &6266841761401584563 stripped
@@ -4275,9 +4350,29 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 9002809193341723020, guid: 988306a355a51334c83bf542bab25b68, type: 3}
   m_PrefabInstance: {fileID: 3028719281741904249}
   m_PrefabAsset: {fileID: 0}
---- !u!224 &6266841759450350688 stripped
+--- !u!224 &6266841759421829716 stripped
 RectTransform:
-  m_CorrespondingSourceObject: {fileID: 9002809194034068761, guid: 988306a355a51334c83bf542bab25b68, type: 3}
+  m_CorrespondingSourceObject: {fileID: 9002809194007898925, guid: 988306a355a51334c83bf542bab25b68, type: 3}
+  m_PrefabInstance: {fileID: 3028719281741904249}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &6266841759890422039 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 9002809194474111086, guid: 988306a355a51334c83bf542bab25b68, type: 3}
+  m_PrefabInstance: {fileID: 3028719281741904249}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &6266841759610073985 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 9002809193677081336, guid: 988306a355a51334c83bf542bab25b68, type: 3}
+  m_PrefabInstance: {fileID: 3028719281741904249}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6266841760946010906 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9002809193385624163, guid: 988306a355a51334c83bf542bab25b68, type: 3}
+  m_PrefabInstance: {fileID: 3028719281741904249}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &6266841759434707358 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 9002809194019727591, guid: 988306a355a51334c83bf542bab25b68, type: 3}
   m_PrefabInstance: {fileID: 3028719281741904249}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &8098412602229327836

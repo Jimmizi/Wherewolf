@@ -133,7 +133,7 @@ public class ClueManager : MonoBehaviour
                 // Getting further into the game, the ghosts will potentially lie less often (no decrease on the first day)
                 fLieChance -= Service.Config.GhostLieChanceFalloffPerDay * (Service.Game.CurrentDay - 1);
 
-                bool bShouldGenerateALie = fLieChance > 0.0f && UnityEngine.Random.Range(0.0f, 100.0f) < fLieChance;
+                bool bShouldGenerateALie = false; // fLieChance > 0.0f && UnityEngine.Random.Range(0.0f, 100.0f) < fLieChance;
 
                 // 1) Generate ghost visual clue
                 GenerateGhostVisualClue(currentPhase, c, bShouldGenerateALie);
