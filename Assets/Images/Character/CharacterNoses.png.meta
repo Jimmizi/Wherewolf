@@ -1,0 +1,588 @@
+fileFormatVersion: 2
+guid: d901f2693f8364c6f8f2697989bb832f
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8550397404480527602
+    second: CharacterNoses_0
+  - first:
+      213: 3194853673282245835
+    second: CharacterNoses_1
+  - first:
+      213: -2176504488806175182
+    second: CharacterNoses_2
+  - first:
+      213: -7799172629597731002
+    second: CharacterNoses_3
+  - first:
+      213: -4535080385390648680
+    second: CharacterNoses_4
+  - first:
+      213: -5529733482554159099
+    second: CharacterNoses_5
+  - first:
+      213: -5253453629502342256
+    second: CharacterNoses_6
+  - first:
+      213: 2000450556247719763
+    second: CharacterNoses_7
+  - first:
+      213: -4245977128194276857
+    second: CharacterNoses_8
+  - first:
+      213: 1123243512638127779
+    second: CharacterNoses_9
+  - first:
+      213: -3349489730735161466
+    second: CharacterNoses_10
+  - first:
+      213: 4237044609164766916
+    second: CharacterNoses_11
+  - first:
+      213: -5814590299080499701
+    second: CharacterNoses_12
+  - first:
+      213: -3610966599881356673
+    second: CharacterNoses_13
+  - first:
+      213: -3777575740156347771
+    second: CharacterNoses_14
+  - first:
+      213: 1688138943509012611
+    second: CharacterNoses_15
+  - first:
+      213: 9083904742810656008
+    second: CharacterNoses_16
+  - first:
+      213: -2621684201747626866
+    second: CharacterNoses_17
+  - first:
+      213: 401474009501643745
+    second: CharacterNoses_18
+  - first:
+      213: -1113760918192026768
+    second: CharacterNoses_19
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 0
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: CharacterNoses_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1812
+        width: 948.8
+        height: 604
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2fcdb7e232d19a670800000000000000
+      internalID: 8550397404480527602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterNoses_1
+      rect:
+        serializedVersion: 2
+        x: 948
+        y: 1812
+        width: 948.8
+        height: 604
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc417512d76665c20800000000000000
+      internalID: 3194853673282245835
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterNoses_2
+      rect:
+        serializedVersion: 2
+        x: 1896
+        y: 1812
+        width: 948.8
+        height: 604
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23e2aa4f2b08bc1e0800000000000000
+      internalID: -2176504488806175182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterNoses_3
+      rect:
+        serializedVersion: 2
+        x: 2844
+        y: 1812
+        width: 948.8
+        height: 604
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 647c0eea0d5c3c390800000000000000
+      internalID: -7799172629597731002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterNoses_4
+      rect:
+        serializedVersion: 2
+        x: 3792
+        y: 1812
+        width: 948.8
+        height: 604
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 892e2f8da682011c0800000000000000
+      internalID: -4535080385390648680
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterNoses_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1208
+        width: 948.8
+        height: 604
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50096c502b07243b0800000000000000
+      internalID: -5529733482554159099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterNoses_6
+      rect:
+        serializedVersion: 2
+        x: 948
+        y: 1208
+        width: 948.8
+        height: 604
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09bb68902cbf717b0800000000000000
+      internalID: -5253453629502342256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterNoses_7
+      rect:
+        serializedVersion: 2
+        x: 1896
+        y: 1208
+        width: 948.8
+        height: 604
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35fb0eb9e2703cb10800000000000000
+      internalID: 2000450556247719763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterNoses_8
+      rect:
+        serializedVersion: 2
+        x: 2844
+        y: 1208
+        width: 948.8
+        height: 604
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7020c8d4c424315c0800000000000000
+      internalID: -4245977128194276857
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterNoses_9
+      rect:
+        serializedVersion: 2
+        x: 3792
+        y: 1208
+        width: 948.8
+        height: 604
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3aebe070600969f00800000000000000
+      internalID: 1123243512638127779
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterNoses_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 604
+        width: 948.8
+        height: 604
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68f36b416d83481d0800000000000000
+      internalID: -3349489730735161466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterNoses_11
+      rect:
+        serializedVersion: 2
+        x: 948
+        y: 604
+        width: 948.8
+        height: 604
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ceefba8f910dca30800000000000000
+      internalID: 4237044609164766916
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterNoses_12
+      rect:
+        serializedVersion: 2
+        x: 1896
+        y: 604
+        width: 948.8
+        height: 604
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0edfd41eec6e4fa0800000000000000
+      internalID: -5814590299080499701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterNoses_13
+      rect:
+        serializedVersion: 2
+        x: 2844
+        y: 604
+        width: 948.8
+        height: 604
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7a8546520543edc0800000000000000
+      internalID: -3610966599881356673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterNoses_14
+      rect:
+        serializedVersion: 2
+        x: 3792
+        y: 604
+        width: 948.8
+        height: 604
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58af8d7f0ea539bc0800000000000000
+      internalID: -3777575740156347771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterNoses_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 948.8
+        height: 604
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 380ab5bcc697d6710800000000000000
+      internalID: 1688138943509012611
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterNoses_16
+      rect:
+        serializedVersion: 2
+        x: 948
+        y: 0
+        width: 948.8
+        height: 604
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80d17b82c33801e70800000000000000
+      internalID: 9083904742810656008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterNoses_17
+      rect:
+        serializedVersion: 2
+        x: 1896
+        y: 0
+        width: 948.8
+        height: 604
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e844499db18ed9bd0800000000000000
+      internalID: -2621684201747626866
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterNoses_18
+      rect:
+        serializedVersion: 2
+        x: 2844
+        y: 0
+        width: 948.8
+        height: 604
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e3b5ea0c72529500800000000000000
+      internalID: 401474009501643745
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterNoses_19
+      rect:
+        serializedVersion: 2
+        x: 3792
+        y: 0
+        width: 948.8
+        height: 604
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07b837a88502b80f0800000000000000
+      internalID: -1113760918192026768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

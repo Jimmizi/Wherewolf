@@ -20,6 +20,9 @@ public class PhysicalCharacter : MonoBehaviour
         }
     }
 
+    public GameObject CharacterRenderer;
+    private float bounceOffset;
+    
     private NavMeshAgent navMesh;
 
     private Vector3 _destination = new Vector3();
@@ -49,6 +52,7 @@ public class PhysicalCharacter : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        bounceOffset = Random.Range(0f, 1f);
         navMesh = GetComponent<NavMeshAgent>();
         Debug.Assert(navMesh);
     }
@@ -100,5 +104,24 @@ public class PhysicalCharacter : MonoBehaviour
                 }
             }
         }
+
+        if (navMesh != null && navMesh.velocity.sqrMagnitude > 0f) {
+            float bounceIntensity = 0.12f;
+            float speed = 24f;
+            float time = Quantize(Time.time + bounceOffset, 12);
+                
+            CharacterRenderer.transform.localPosition = new Vector3(
+                Mathf.Cos(time * speed) * bounceIntensity * 0.1f,
+                Mathf.Abs(Mathf.Sin(time * speed) * bounceIntensity) + 0.65f,
+                0f);
+            CharacterRenderer.transform.localRotation = Quaternion.Euler(0f, 0f, Mathf.Sin(time * speed) * 5f);
+        } else {
+            CharacterRenderer.transform.localPosition = new Vector3(0f, 0.65f, 0f);
+            CharacterRenderer.transform.localRotation = Quaternion.identity;
+        }
+    }
+    
+    public static float Quantize(float x, int steps) {
+        return Mathf.Round(x * steps) / steps;
     }
 }
