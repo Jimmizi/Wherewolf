@@ -94,14 +94,21 @@ public class CaseFilePageRenderer : MonoBehaviour, IDragHandler, IBeginDragHandl
     }
 
     private bool IsRectTransformInsideScreen(RectTransform rectTransform) {
+        float canvasScale = 1f;
+
+        if (_canvas != null) {
+            canvasScale = _canvas.scaleFactor;
+        }
+        
         bool isInside = false;
         Vector3[] corners = new Vector3[4];
         rectTransform.GetWorldCorners(corners);
         int visibleCorners = 0;
+        Vector2 modifiedScreenPadding = ScreenPadding * canvasScale;
 
         Rect rect = new Rect(
-            ScreenPadding.x, ScreenPadding.y,
-            Screen.width - ScreenPadding.x * 2, Screen.height - ScreenPadding.y * 2);
+            modifiedScreenPadding.x, modifiedScreenPadding.y,
+            Screen.width - modifiedScreenPadding.x * 2, Screen.height - modifiedScreenPadding.y * 2);
 
         foreach (Vector3 corner in corners) {
             if (rect.Contains(corner)) {
