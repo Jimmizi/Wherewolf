@@ -168,7 +168,7 @@ public class DialogueRenderer : MonoBehaviour {
             case DialogueActionType.IssueFarewell:
 
                 // Fixes the tooltip staying around when leaving conversation.
-                TooltipManager.Instance?.HideActiveTooltip();
+                Service.TooltipManager.HideActiveTooltip();
 
                 EndConversation();
                 break;

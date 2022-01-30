@@ -17,7 +17,7 @@ public class TMP_DecoratedText : MonoBehaviour {
     }
 
     private void Start() {
-        _tooltip = TooltipManager.Instance.NewTooltip();
+        _tooltip = Service.TooltipManager.NewTooltip();
     }
 
     private Vector3 CalcLinkCenterPosition(int linkIndex) {
@@ -58,9 +58,9 @@ public class TMP_DecoratedText : MonoBehaviour {
         int linkIndex = TMP_TextUtilities.FindIntersectingLink(_textMesh, Input.mousePosition, null);
         if (linkIndex != -1) {
             //TMP_LinkInfo linkInfo = _textMesh.textInfo.linkInfo[linkIndex];
-            TooltipManager.Instance.ShowTooltip(_tooltip, CalcLinkCenterPosition(linkIndex));
+            Service.TooltipManager.ShowTooltip(_tooltip, CalcLinkCenterPosition(linkIndex));
         } else {
-            TooltipManager.Instance.HideTooltip(_tooltip);
+            Service.TooltipManager.HideTooltip(_tooltip);
         }
     }
 }

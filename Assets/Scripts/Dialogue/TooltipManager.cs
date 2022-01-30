@@ -4,8 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class TooltipManager : MonoBehaviour {
-    public static TooltipManager Instance { get; private set; }
-    
     public GameObject TooltipPrefab;
     public Canvas TooltipCanvas;
     public Vector2 ScreenPadding = Vector2.zero;
@@ -17,13 +15,7 @@ public class TooltipManager : MonoBehaviour {
     private static readonly Vector3 offset = new Vector3(0f, 40f, 0f);
 
     protected void Awake() {
-        if (Instance != null && Instance != this) {
-            Destroy(gameObject);
-        } else {
-            Instance = this;
-            Service.TooltipManager = this;
-        }
-
+        Service.TooltipManager = this;
         _tooltips = new List<Tooltip>();
         _emoteTooltips = new Dictionary<Emote.EmoteSubType, Tooltip>();
     }
