@@ -66,7 +66,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: 27d1893c93ae55499ad02c34935af1e0
     GuidInternal: 
-    m_lastTime: -8585580931854456750
+    m_lastTime: -8585580773725613461
     List:
     - name: DayCycle
       guid: bc075cfc31de414393ea76b6a8e3e228
@@ -150,7 +150,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: 36187f795aed7446a84c500d367dfcf3
     GuidInternal: 
-    m_lastTime: -8585580783821681650
+    m_lastTime: -8585580766754275107
     List:
     - name: AmbienceDay
       guid: 5b6ed9ad00e9af4b8714261614d3ada4
@@ -390,6 +390,23 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
+    - name: MusicDayIntro
+      guid: b0bc711f8df95e4e84556d60be73b969
+      id: 3242733350
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 36187f795aed7446a84c500d367dfcf3
+      - ElementName: MusicDayIntro
+        ObjectType: 3
+        guid: b0bc711f8df95e4e84556d60be73b969
+      Path: Events\Default Work Unit\MusicDayIntro
+      maxAttenuation: 0
+      maxDuration: 2
+      minDuration: 2
     - name: MusicDaySfx
       guid: 6356709c725a4446bf1b0c4ac537dd6e
       id: 2248987061
@@ -424,6 +441,23 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
+    - name: MusicNightIntro
+      guid: 049f59cb2018a84d9fa7721eba2281e4
+      id: 2052502914
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 36187f795aed7446a84c500d367dfcf3
+      - ElementName: MusicNightIntro
+        ObjectType: 3
+        guid: 049f59cb2018a84d9fa7721eba2281e4
+      Path: Events\Default Work Unit\MusicNightIntro
+      maxAttenuation: 0
+      maxDuration: 17.454542
+      minDuration: 17.454542
     - name: MusicNightSfx
       guid: 5bd41d45c3b5a1488420c3c045850def
       id: 1238766433
@@ -541,8 +575,8 @@ MonoBehaviour:
         guid: 5e71039a54148648a224a24a2bbbafea
       Path: Events\Default Work Unit\Speak_01
       maxAttenuation: 0
-      maxDuration: 2.875
-      minDuration: 2
+      maxDuration: 1.941128
+      minDuration: 1.35035
     - name: Speak_02
       guid: b0c910693cab824c867d407518c23e9a
       id: 1369532194
@@ -558,8 +592,8 @@ MonoBehaviour:
         guid: b0c910693cab824c867d407518c23e9a
       Path: Events\Default Work Unit\Speak_02
       maxAttenuation: 0
-      maxDuration: 2.875
-      minDuration: 2
+      maxDuration: 3.41897
+      minDuration: 2.378414
     - name: Speak_03
       guid: be69d930ede4fe4da0169a3f5c9b5958
       id: 1369532195
@@ -575,8 +609,8 @@ MonoBehaviour:
         guid: be69d930ede4fe4da0169a3f5c9b5958
       Path: Events\Default Work Unit\Speak_03
       maxAttenuation: 0
-      maxDuration: 2.875
-      minDuration: 2
+      maxDuration: 2.417577
+      minDuration: 1.681793
     - name: Speak_04
       guid: 29b58d558c812744ab3597a277f9dcf0
       id: 1369532196
@@ -592,8 +626,8 @@ MonoBehaviour:
         guid: 29b58d558c812744ab3597a277f9dcf0
       Path: Events\Default Work Unit\Speak_04
       maxAttenuation: 0
-      maxDuration: 2.875
-      minDuration: 2
+      maxDuration: 2.713639
+      minDuration: 1.887748
     - name: Speak_05
       guid: be7a6ce340e51e4e8cb2191bacbef36d
       id: 1369532197
@@ -609,8 +643,8 @@ MonoBehaviour:
         guid: be7a6ce340e51e4e8cb2191bacbef36d
       Path: Events\Default Work Unit\Speak_05
       maxAttenuation: 0
-      maxDuration: 2.875
-      minDuration: 2
+      maxDuration: 3.13521
+      minDuration: 2.181015
     - name: Speak_06
       guid: 18c1e4f8bb31a94fb133a428896cd6b0
       id: 1369532198
@@ -626,8 +660,8 @@ MonoBehaviour:
         guid: 18c1e4f8bb31a94fb133a428896cd6b0
       Path: Events\Default Work Unit\Speak_06
       maxAttenuation: 0
-      maxDuration: 2.875
-      minDuration: 2
+      maxDuration: 3.321639
+      minDuration: 2.310705
     - name: Speak_07
       guid: d55de09b3b88d4448cd9dd20dc7a9f84
       id: 1369532199
@@ -643,8 +677,8 @@ MonoBehaviour:
         guid: d55de09b3b88d4448cd9dd20dc7a9f84
       Path: Events\Default Work Unit\Speak_07
       maxAttenuation: 0
-      maxDuration: 2.875
-      minDuration: 2
+      maxDuration: 3.859896
+      minDuration: 2.685145
     - name: Speak_08
       guid: 79a9c524cfa26241aa138de976c2791e
       id: 1369532200
@@ -660,8 +694,8 @@ MonoBehaviour:
         guid: 79a9c524cfa26241aa138de976c2791e
       Path: Events\Default Work Unit\Speak_08
       maxAttenuation: 0
-      maxDuration: 2.875
-      minDuration: 2
+      maxDuration: 2.242687
+      minDuration: 1.56013
     - name: Speak_09
       guid: 275639a75049884eba7cd35d274ade83
       id: 1369532201
@@ -677,8 +711,8 @@ MonoBehaviour:
         guid: 275639a75049884eba7cd35d274ade83
       Path: Events\Default Work Unit\Speak_09
       maxAttenuation: 0
-      maxDuration: 2.875
-      minDuration: 2
+      maxDuration: 2.08045
+      minDuration: 1.447269
     - name: Speak_10
       guid: a3ee95213fa6da44805d63e6827700da
       id: 1386309779
@@ -694,8 +728,8 @@ MonoBehaviour:
         guid: a3ee95213fa6da44805d63e6827700da
       Path: Events\Default Work Unit\Speak_10
       maxAttenuation: 0
-      maxDuration: 2.875
-      minDuration: 2
+      maxDuration: 3.045957
+      minDuration: 2.118926
     - name: Speak_11
       guid: 0a2a2f7daadcf3408d59b641c37c90b7
       id: 1386309778
@@ -711,8 +745,8 @@ MonoBehaviour:
         guid: 0a2a2f7daadcf3408d59b641c37c90b7
       Path: Events\Default Work Unit\Speak_11
       maxAttenuation: 0
-      maxDuration: 2.875
-      minDuration: 2
+      maxDuration: 1.699639
+      minDuration: 1.182358
     - name: Speak_12
       guid: 1d67f11486ea014dad3d84f5dddf19e3
       id: 1386309777
@@ -728,8 +762,8 @@ MonoBehaviour:
         guid: 1d67f11486ea014dad3d84f5dddf19e3
       Path: Events\Default Work Unit\Speak_12
       maxAttenuation: 0
-      maxDuration: 2.875
-      minDuration: 2
+      maxDuration: 5.093163
+      minDuration: 3.54307
     - name: Speak_13
       guid: 1c46b8a97a7d1a40a56af107ff4168e0
       id: 1386309776
@@ -745,8 +779,8 @@ MonoBehaviour:
         guid: 1c46b8a97a7d1a40a56af107ff4168e0
       Path: Events\Default Work Unit\Speak_13
       maxAttenuation: 0
-      maxDuration: 2.875
-      minDuration: 2
+      maxDuration: 3.099199
+      minDuration: 2.155964
     - name: Speak_14
       guid: 4488b513b866e14dbc86ef56419fa40f
       id: 1386309783
@@ -762,8 +796,8 @@ MonoBehaviour:
         guid: 4488b513b866e14dbc86ef56419fa40f
       Path: Events\Default Work Unit\Speak_14
       maxAttenuation: 0
-      maxDuration: 2.875
-      minDuration: 2
+      maxDuration: 2.348754
+      minDuration: 1.633916
     - name: Speak_15
       guid: 498db4f04b50964d892eea679eecdbcd
       id: 1386309782
@@ -779,8 +813,8 @@ MonoBehaviour:
         guid: 498db4f04b50964d892eea679eecdbcd
       Path: Events\Default Work Unit\Speak_15
       maxAttenuation: 0
-      maxDuration: 2.875
-      minDuration: 2
+      maxDuration: 4.511358
+      minDuration: 3.138336
     - name: Speak_16
       guid: a1c438722ce8db41b6027cdc0bcc74bb
       id: 1386309781
@@ -1022,7 +1056,7 @@ MonoBehaviour:
     m_lastTime: -8585588864557360343
     List: []
   ExpandedFileSystemItemIds: 
-  ExpandedWaapiItemIds: 01000000050000000600000007000000080000001c0000001d0000001e0000001f000000200000002100000022000000310000003200000038000000390000003a0000006e0000006f000000
+  ExpandedWaapiItemIds: 01000000050000000600000007000000080000001c0000001d0000001e0000001f000000200000002100000022000000310000003200000038000000390000003a0000003b0000006e0000006f000000
   AutoSyncSelection: 0
   autoPopulateEnabled: 1
   currentDataSource: 0

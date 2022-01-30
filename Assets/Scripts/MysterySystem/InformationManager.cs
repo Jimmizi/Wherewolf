@@ -83,7 +83,7 @@ public class InformationManager : MonoBehaviour
         AddDefaultNames();
         availableNamePool.AddRange(customNames);
 
-#if DEBUG
+#if UNITY_EDITOR
         // Utility to help us populate default emotes
         if (emoteList.Count == 0)
         {

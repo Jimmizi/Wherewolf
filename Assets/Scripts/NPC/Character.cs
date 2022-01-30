@@ -47,7 +47,7 @@ public class Character
             // When only looking for a type, we'll just grab that type from the pre-generated clues to give
             if (relatesToCharacter == null)
             {
-                List<ClueObject> myCluesToGive = Service.PhaseSolve.CurrentPhase.CharacterCluesToGive[this];
+                List<ClueObject> myCluesToGive = GetMyCluesToGive();
                 foreach (var clue in myCluesToGive)
                 {
                     if (clue.Type == eType)
@@ -67,7 +67,7 @@ public class Character
             else
             {
                 // Test to make sure we don't already have a clue ready for this character
-                List<ClueObject> myCluesToGive = Service.PhaseSolve.CurrentPhase.CharacterCluesToGive[this];
+                List<ClueObject> myCluesToGive = GetMyCluesToGive();
                 foreach(var clue in myCluesToGive)
                 {
                     if(clue.Type == eType && clue.RelatesToCharacter == relatesToCharacter)
@@ -131,6 +131,36 @@ public class Character
         return ServeClueToPlayer();
     }
 
+    private List<ClueObject> GetMyCluesToGive()
+    {
+        if(Service.PhaseSolve.CurrentPhase.CharacterCluesToGive.ContainsKey(this))
+        {
+            return Service.PhaseSolve.CurrentPhase.CharacterCluesToGive[this];
+        }
+
+        // This can happen if the ghost dies in the day phase and you question them at night
+        //  or if you question them later
+        for(int i = Service.Game.CurrentDay - 1; i >= 0; --i)
+        {
+            if (Service.PhaseSolve.PhaseHistory[i].Count > 1)
+            {
+                if (Service.PhaseSolve.PhaseHistory[i][1].CharacterCluesToGive.ContainsKey(this))
+                {
+                    return Service.PhaseSolve.PhaseHistory[i][1].CharacterCluesToGive[this];
+                }
+            }
+            if (Service.PhaseSolve.PhaseHistory[i].Count > 0)
+            {
+                if (Service.PhaseSolve.PhaseHistory[i][0].CharacterCluesToGive.ContainsKey(this))
+                {
+                    return Service.PhaseSolve.PhaseHistory[i][0].CharacterCluesToGive[this];
+                }
+            }
+        }
+
+        return null;
+    }
+
     public ClueObject ServeClueToPlayer()
     {
         if(Service.PhaseSolve.CurrentPhase == null)
@@ -140,7 +170,12 @@ public class Character
         }
 
         int iClueIndex = 0;
-        List<ClueObject> myCluesToGive = Service.PhaseSolve.CurrentPhase.CharacterCluesToGive[this];
+        List<ClueObject> myCluesToGive = GetMyCluesToGive();
+
+        if(myCluesToGive == null)
+        {
+            return null;
+        }
 
         if (myCluesToGive.Count > 1)
         {

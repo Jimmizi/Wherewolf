@@ -109,6 +109,14 @@ public class PlayerController : MonoBehaviour
 
     public void ShowStakeConfirmation()
     {
+        if(!CurrentlySelectedCharacter.AssociatedCharacter.IsAlive)
+        {
+            ActionPanel.gameObject.SetActive(false);
+            CurrentlySelectedCharacter.AssociatedCharacter.ReleaseFromBeingTalkedTo();
+            CurrentlySelectedCharacter = null;
+            return;
+        }
+
         Service.Audio.PlayUIClick();
         StakeText.text = string.Format("Stake '{0}'?", CurrentlySelectedCharacter.AssociatedCharacter.GetName());
 

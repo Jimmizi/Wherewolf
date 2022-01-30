@@ -1080,9 +1080,9 @@ public class PopulationManager : MonoBehaviour
                 var iRandTask = UnityEngine.Random.Range(0, 3);
 
                 // Try set a bunch to just sleep
-                if(i == 0 && !bIsDaySchedule && iNumberImmediatelySleeping < 5)
+                if(i == 0 && !bIsDaySchedule && iNumberImmediatelySleeping < 4)
                 {
-                    if(UnityEngine.Random.Range(0.0f, 100.0f) < 50)
+                    if(UnityEngine.Random.Range(0.0f, 100.0f) < 20)
                     {
                         iRandTask = 2;
                     }
