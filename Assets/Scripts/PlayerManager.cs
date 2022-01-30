@@ -66,24 +66,28 @@ public class PlayerManager : MonoBehaviour
             NumberOfCluesAboutWerewolf++;
         }
 
-        MemoFactory.instance.CreateNew(givenClue.Emotes, Vector2.zero, true);
-
-        // DON'T add clues given by ghosts, otherwise it shows on someones record that they're the werewolf
-        if (givenClue.Type != ClueObject.ClueType.VisualFromGhost)
+        // Don't add in responses of "didn't have something to tell you" to memos, case files, or collected clues in general
+        if (!givenClue.DidntHaveClueAboutPerson)
         {
-            Service.CaseFile.AddClueToFile(givenClue);
+            MemoFactory.instance.CreateNew(givenClue.Emotes, Vector2.zero, true);
+
+            // DON'T add clues given by ghosts, otherwise it shows on someones record that they're the werewolf
+            if (givenClue.Type != ClueObject.ClueType.VisualFromGhost)
+            {
+                Service.CaseFile.AddClueToFile(givenClue);
+            }
+
+            CollectedClues.Add(givenClue);
+
+            if (!SortedByDayAndPhaseClues.ContainsKey(Service.Game.CurrentDay))
+            {
+                SortedByDayAndPhaseClues.Add(Service.Game.CurrentDay, new Dictionary<WerewolfGame.TOD, List<ClueObject>>());
+                SortedByDayAndPhaseClues[Service.Game.CurrentDay].Add(WerewolfGame.TOD.Day, new List<ClueObject>());
+                SortedByDayAndPhaseClues[Service.Game.CurrentDay].Add(WerewolfGame.TOD.Night, new List<ClueObject>());
+            }
+
+            SortedByDayAndPhaseClues[Service.Game.CurrentDay][Service.Game.CurrentTimeOfDay].Add(givenClue);
         }
-
-        CollectedClues.Add(givenClue);
-
-        if (!SortedByDayAndPhaseClues.ContainsKey(Service.Game.CurrentDay))
-        {
-            SortedByDayAndPhaseClues.Add(Service.Game.CurrentDay, new Dictionary<WerewolfGame.TOD, List<ClueObject>>());
-            SortedByDayAndPhaseClues[Service.Game.CurrentDay].Add(WerewolfGame.TOD.Day, new List<ClueObject>());
-            SortedByDayAndPhaseClues[Service.Game.CurrentDay].Add(WerewolfGame.TOD.Night, new List<ClueObject>());
-        }
-
-        SortedByDayAndPhaseClues[Service.Game.CurrentDay][Service.Game.CurrentTimeOfDay].Add(givenClue);
     }
 
     public bool CanGetClueFromCharacter(Character c)

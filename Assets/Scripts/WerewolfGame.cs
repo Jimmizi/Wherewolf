@@ -479,16 +479,20 @@ public class WerewolfGame : MonoBehaviour
                                 c.OnTimeOfDayPhaseShift();
                                 c.Update();
 
-                                // half and half, put people already in place, and have the other half travel, so
-                                //  things aren't super idle when starting a phase
-                                if (UnityEngine.Random.Range(0.0f, 100.0f) < 50.0f)
+                                if (c.IsAlive)
                                 {
-                                    c.TryWarpToTaskLocation();
-                                }
-                                else
-                                {
-                                    Service.Population.PhysicalCharacterMap[c].gameObject.transform.position = 
-                                        Service.Location.GetRandomNavmeshPositionInLocation(Task.GetRandomLocation());
+
+                                    // half and half, put people already in place, and have the other half travel, so
+                                    //  things aren't super idle when starting a phase
+                                    if (UnityEngine.Random.Range(0.0f, 100.0f) < 50.0f)
+                                    {
+                                        c.TryWarpToTaskLocation();
+                                    }
+                                    else
+                                    {
+                                        Service.Population.PhysicalCharacterMap[c].gameObject.transform.position =
+                                            Service.Location.GetRandomNavmeshPositionInLocation(Task.GetRandomLocation());
+                                    }
                                 }
 
                                 if(c.IsAlive && c.IsSleeping())

@@ -4931,7 +4931,7 @@ MonoBehaviour:
     HasDiscovered: 1
     Type: 8
     SubType: 67
-    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+    EmoteImage: {fileID: 21300000, guid: 2a208339dfe47fe4785bf60324cb6c09, type: 3}
   - Name: Wave
     Description: 
     HasDiscovered: 1
@@ -4944,202 +4944,208 @@ MonoBehaviour:
     Type: 8
     SubType: 69
     EmoteImage: {fileID: 21300000, guid: 6d287289d1503ff4587f3f244bead8b8, type: 3}
+  - Name: Shrug
+    Description: Probably doesn't know.
+    HasDiscovered: 1
+    Type: 8
+    SubType: 70
+    EmoteImage: {fileID: 21300000, guid: a5df334c823af794e823aedf0ee15f51, type: 3}
   - Name: Gossip
     Description: Ask for some juicy gossip.
     HasDiscovered: 1
     Type: 9
-    SubType: 70
+    SubType: 71
     EmoteImage: {fileID: 21300000, guid: 9ee2d16c02b89f84bb632529496ea2c6, type: 3}
   - Name: Relationship Kiss
     Description: Someones been kissing and telling.
     HasDiscovered: 1
     Type: 9
-    SubType: 71
+    SubType: 72
     EmoteImage: {fileID: 21300000, guid: 9dd5d1620f3170d4bb00251f738b0293, type: 3}
   - Name: Relationship Fight
     Description: Left the fists to do the talking.
     HasDiscovered: 1
     Type: 9
-    SubType: 72
+    SubType: 73
     EmoteImage: {fileID: 21300000, guid: 04b3daae9392a894f9b9608fd6664f78, type: 3}
   - Name: Relationship Marriage
     Description: Someone got married.
     HasDiscovered: 1
     Type: 9
-    SubType: 73
-    EmoteImage: {fileID: 21300000, guid: 5c7de32f6b414d947adb5cd29d0e286b, type: 3}
-  - Name: Emily
-    Description: Indicates that the emotes preceeding or following this relate to
-      Emily.
-    HasDiscovered: 0
-    Type: 10
     SubType: 74
-    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
-  - Name: Ray
+    EmoteImage: {fileID: 21300000, guid: 5c7de32f6b414d947adb5cd29d0e286b, type: 3}
+  - Name: Goldie
     Description: Indicates that the emotes preceeding or following this relate to
-      Ray.
+      Goldie.
     HasDiscovered: 0
     Type: 10
     SubType: 75
     EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
-  - Name: Alva
+  - Name: Chester
     Description: Indicates that the emotes preceeding or following this relate to
-      Alva.
+      Chester.
     HasDiscovered: 0
     Type: 10
     SubType: 76
     EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
-  - Name: Levi
+  - Name: Sara
     Description: Indicates that the emotes preceeding or following this relate to
-      Levi.
+      Sara.
     HasDiscovered: 0
     Type: 10
     SubType: 77
     EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
-  - Name: Isabelle
+  - Name: Etta
     Description: Indicates that the emotes preceeding or following this relate to
-      Isabelle.
+      Etta.
     HasDiscovered: 0
     Type: 10
     SubType: 78
     EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
-  - Name: Adeline
+  - Name: Edwin
     Description: Indicates that the emotes preceeding or following this relate to
-      Adeline.
+      Edwin.
     HasDiscovered: 0
     Type: 10
     SubType: 79
     EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
-  - Name: Mamie
+  - Name: Clifford
     Description: Indicates that the emotes preceeding or following this relate to
-      Mamie.
+      Clifford.
     HasDiscovered: 0
     Type: 10
     SubType: 80
     EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
-  - Name: Alex
+  - Name: Morris
     Description: Indicates that the emotes preceeding or following this relate to
-      Alex.
+      Morris.
     HasDiscovered: 0
     Type: 10
     SubType: 81
     EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
-  - Name: Ralph
+  - Name: Noah
     Description: Indicates that the emotes preceeding or following this relate to
-      Ralph.
+      Noah.
     HasDiscovered: 0
     Type: 10
     SubType: 82
     EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
-  - Name: Celia
+  - Name: Lester
     Description: Indicates that the emotes preceeding or following this relate to
-      Celia.
+      Lester.
     HasDiscovered: 0
     Type: 10
     SubType: 83
     EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
-  - Name: Mathilda
+  - Name: Emil
     Description: Indicates that the emotes preceeding or following this relate to
-      Mathilda.
+      Emil.
     HasDiscovered: 0
     Type: 10
     SubType: 84
     EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
-  - Name: Philip
+  - Name: Olive
     Description: Indicates that the emotes preceeding or following this relate to
-      Philip.
+      Olive.
     HasDiscovered: 0
     Type: 10
     SubType: 85
     EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
-  - Name: Ruth
+  - Name: Inez
     Description: Indicates that the emotes preceeding or following this relate to
-      Ruth.
+      Inez.
     HasDiscovered: 0
     Type: 10
     SubType: 86
     EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
-  - Name: Verna
+  - Name: Gus
     Description: Indicates that the emotes preceeding or following this relate to
-      Verna.
+      Gus.
     HasDiscovered: 0
     Type: 10
     SubType: 87
     EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
-  - Name: Jennie
+  - Name: Laura
     Description: Indicates that the emotes preceeding or following this relate to
-      Jennie.
+      Laura.
     HasDiscovered: 0
     Type: 10
     SubType: 88
     EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
-  - Name: Jack
+  - Name: Ethel
     Description: Indicates that the emotes preceeding or following this relate to
-      Jack.
+      Ethel.
     HasDiscovered: 0
     Type: 10
     SubType: 89
     EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
-  - Name: Ada
+  - Name: Maria
     Description: Indicates that the emotes preceeding or following this relate to
-      Ada.
+      Maria.
     HasDiscovered: 0
     Type: 10
     SubType: 90
     EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
-  - Name: Hattie
+  - Name: Lois
     Description: Indicates that the emotes preceeding or following this relate to
-      Hattie.
+      Lois.
     HasDiscovered: 0
     Type: 10
     SubType: 91
     EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
-  - Name: Horace
+  - Name: Hiram
     Description: Indicates that the emotes preceeding or following this relate to
-      Horace.
+      Hiram.
     HasDiscovered: 0
     Type: 10
     SubType: 92
     EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
-  - Name: Mike
+  - Name: Ed
     Description: Indicates that the emotes preceeding or following this relate to
-      Mike.
+      Ed.
     HasDiscovered: 0
     Type: 10
     SubType: 93
+    EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
+  - Name: Harry
+    Description: Indicates that the emotes preceeding or following this relate to
+      Harry.
+    HasDiscovered: 0
+    Type: 10
+    SubType: 94
     EmoteImage: {fileID: 21300000, guid: d6992846171358842922d052ea14a635, type: 3}
   - Name: Love
     Description: 
     HasDiscovered: 1
     Type: 11
-    SubType: 94
+    SubType: 95
     EmoteImage: {fileID: 21300000, guid: 6ae8ec6f7851e544383e359ec29b1092, type: 3}
   - Name: Like
     Description: 
     HasDiscovered: 1
     Type: 11
-    SubType: 95
+    SubType: 96
     EmoteImage: {fileID: 21300000, guid: ed93054b867642a478e3b7c17ff3d5db, type: 3}
   - Name: Neutral
     Description: 
     HasDiscovered: 1
     Type: 11
-    SubType: 96
+    SubType: 97
     EmoteImage: {fileID: 21300000, guid: 05ca9fcc61e4d2b408647adfae010913, type: 3}
   - Name: Dislike
     Description: 
     HasDiscovered: 1
     Type: 11
-    SubType: 97
+    SubType: 98
     EmoteImage: {fileID: 21300000, guid: 18b0d3426c74bb64f947462cf8c91993, type: 3}
   - Name: Hate
     Description: 
     HasDiscovered: 1
     Type: 11
-    SubType: 98
+    SubType: 99
     EmoteImage: {fileID: 21300000, guid: 48ce7a7a686f02f419edfe7dc5c864f7, type: 3}
   AvailableOccupations: 
-  DebugScanForNewEmotes: 1
+  DebugScanForNewEmotes: 0
 --- !u!114 &4957857799237703566
 MonoBehaviour:
   m_ObjectHideFlags: 0

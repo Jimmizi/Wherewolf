@@ -81,6 +81,8 @@ public class ClueObject
     // Whether the string of emotes relates to a true statement.
     public bool IsTruth = true;
 
+    public bool DidntHaveClueAboutPerson = false;
+
     // What day was the clue given on
     public int Day = 0;
 
@@ -273,5 +275,27 @@ public class ClueObject
         {
             AddEmote(emote.SubType);
         }
+    }
+
+    public static ClueObject GetDontKnowClue(Character giver, Character about)
+    {
+        ClueObject clue = new ClueObject(ClueType.CommentGossip)
+        {
+            GivenByCharacter = giver,
+            RelatesToCharacter = about,
+            LocationSeenIn = -1,
+            DidntHaveClueAboutPerson = true
+        };
+
+        clue.Day = Service.Game.CurrentDay;
+        clue.TimeOfDay = Service.Game.CurrentTimeOfDay;
+        clue.Emotes = new List<Emote>();
+
+        clue.AddEmote(about.GetHeadshotEmoteSubType());
+        clue.AddEmote(Emote.EmoteSubType.Specific_Question);
+        clue.AddEmote(Emote.EmoteSubType.Specific_Spacing);
+        clue.AddEmote(Emote.EmoteSubType.Specific_Shrug);
+
+        return clue;
     }
 }
