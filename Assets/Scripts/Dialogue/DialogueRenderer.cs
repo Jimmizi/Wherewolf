@@ -167,7 +167,7 @@ public class DialogueRenderer : MonoBehaviour {
 
     private static readonly DialogueActionEmoteMap _dialogueActions = new DialogueActionEmoteMap() {
         //{DialogueActionType.IssueGreeting, Emote.EmoteSubType.Specific_Approves},
-        {DialogueActionType.Gossip, Emote.EmoteSubType.Gossip_RelationshipFight},
+        {DialogueActionType.Gossip, Emote.EmoteSubType.Gossip_Gossip},
         {DialogueActionType.QuerySawAtLocation, Emote.EmoteSubType.Specific_Eyes},
         {DialogueActionType.QuerySawPassing, Emote.EmoteSubType.Specific_Footsteps},
         {DialogueActionType.QuerySawAtWork, Emote.EmoteSubType.Occupation_Bank},

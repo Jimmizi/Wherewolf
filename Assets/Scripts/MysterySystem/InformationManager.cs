@@ -23,6 +23,11 @@ public class InformationManager : MonoBehaviour
 
     public List<Emote.EmoteSubType> AvailableOccupations = new List<Emote.EmoteSubType>();
 
+#if UNITY_EDITOR
+    public bool DebugScanForNewEmotes = false;
+
+#endif
+
     // API Access
 
     public string GetRandomName()
@@ -83,6 +88,10 @@ public class InformationManager : MonoBehaviour
         if (emoteList.Count == 0)
         {
             AddDefaultEmotes();
+        }
+        else if(DebugScanForNewEmotes)
+        {
+            AddDefaultEmotes(true);
         }
 #endif
 
@@ -578,8 +587,8 @@ public class InformationManager : MonoBehaviour
         }
     }
 
-#if DEBUG
-    void AddDefaultEmotes()
+#if UNITY_EDITOR
+    void AddDefaultEmotes(bool bScanForMore = false)
     {
         var blankIcon = Resources.Load<Sprite>("Emotes/blankicon");
 
@@ -590,6 +599,17 @@ public class InformationManager : MonoBehaviour
         {
             allEmotes.Add(spr.name, spr);
         }
+
+        Dictionary<Emote.EmoteSubType, string> existingDescriptions = new Dictionary<Emote.EmoteSubType, string>();
+        if(bScanForMore)
+        {
+            foreach(var e in emoteList)
+            {
+                existingDescriptions.Add(e.SubType, e.Description);
+            }
+        }
+
+        emoteList.Clear();
 
         for (int i = 0; i <= (int)Emote.GetLastSubType; ++i)
         {
@@ -653,6 +673,14 @@ public class InformationManager : MonoBehaviour
             else
             {
                 newEmote.EmoteImage = blankIcon;
+            }
+
+            if(bScanForMore)
+            {
+                if(existingDescriptions.ContainsKey(eSubType))
+                {
+                    newEmote.Description = existingDescriptions[eSubType];
+                }
             }
 
             emoteList.Add(newEmote);

@@ -100,6 +100,7 @@ public class Emote
         Specific_TalkAction,
         Specific_StakeAction,
 
+        Gossip_Gossip,
         Gossip_RelationshipKiss,
         Gossip_RelationshipFight,
         Gossip_RelationshipMarriage,
@@ -282,6 +283,7 @@ public class Emote
             case EmoteSubType.Specific_StakeAction:
                 return EmoteType.Specific;
 
+            case EmoteSubType.Gossip_Gossip:
             case EmoteSubType.Gossip_RelationshipKiss:
             case EmoteSubType.Gossip_RelationshipFight:
             case EmoteSubType.Gossip_RelationshipMarriage:

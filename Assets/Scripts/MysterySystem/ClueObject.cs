@@ -265,7 +265,7 @@ public class ClueObject
     void GenerateVisualFromGhostEmotes()
     {
         // Should be: "CharacterHeadshot" "Hair/Facial/Clothing"
-        AddEmote(RelatesToCharacter.GetHeadshotEmoteSubType());
+        AddEmote(Emote.EmoteSubType.Specific_Werewolf);
 
         List<Emote> descriptors = RelatesToCharacter.GetDescriptors(GhostGivenClueType);
         foreach(var emote in descriptors)
